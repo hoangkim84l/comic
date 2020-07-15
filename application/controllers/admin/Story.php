@@ -9,8 +9,12 @@ Class Story extends MY_Controller
         
     }
     
-    /*
-     * Hien thi danh sach story
+    /**
+     * Description: Hiển thị danh sách truyện chia 20 records 1 trang
+     * Function: index()
+     * @author: Di
+     * @params: none
+     * @return: list of stories
      */
     function index()
     {
@@ -18,24 +22,60 @@ Class Story extends MY_Controller
         $total_rows = $this->story_model->get_total();
         $this->data['total_rows'] = $total_rows;
 
+        //load ra thu vien phan trang
+        $this->load->library('pagination');
+        $config = array();
+        $config['total_rows'] = $total_rows;//tong tat ca cac san pham tren website
+        $config['base_url']   = admin_url('story/index'); //link hien thi ra danh sach san pham
+        $config['per_page']   = 10;//so luong san pham hien thi tren 1 trang
+        $config['uri_segment'] = 4;//phan doan hien thi ra so trang tren url
+        $config['next_link']   = 'Trang kế tiếp';
+        $config['prev_link']   = 'Trang trước';
+        //khoi tao cac cau hinh phan trang
+        $this->pagination->initialize($config);
+        
+        $segment = $this->uri->segment(4);
+        $segment = intval($segment);
+        
         $input = array();
-       
-        //lay danh sach story
+        $input['limit'] = array($config['per_page'], $segment);
+        
+        //kiem tra co thuc hien loc du lieu hay khong
+        $id = $this->input->get('id');
+        $id = intval($id);
+        $input['where'] = array();
+        if($id > 0)
+        {
+            $input['where']['id'] = $id;
+        }
+        $name = $this->input->get('name');
+        if($name)
+        {
+            $input['like'] = array('name', $name);
+        }
+        $category_id = $this->input->get('category_id');
+        $category_id = intval($category_id);
+        if($category_id > 0)
+        {
+            $input['where']['category_id'] = $category_id;
+        }
+        
+        //lay danh sach san pha
         $list = $this->story_model->get_list($input);
         $this->data['list'] = $list;
-
-         //lay danh sach danh muc truyện
-         $this->load->model('catalog_model');
-         $input = array();
-         $input['where'] = array('parent_id' => 0);
-         $catalogs = $this->catalog_model->get_list($input);
-         foreach ($catalogs as $row)
-         {
-             $input['where'] = array('parent_id' => $row->id);
-             $subs = $this->catalog_model->get_list($input);
-             $row->subs = $subs;
-         }
-         $this->data['catalogs'] = $catalogs;
+       
+        //lay danh sach danh muc san pham
+        $this->load->model('catalog_model');
+        $input = array();
+        $input['where'] = array('parent_id' => 0);
+        $catalogs = $this->catalog_model->get_list($input);
+        foreach ($catalogs as $row)
+        {
+            $input['where'] = array('parent_id' => $row->id);
+            $subs = $this->catalog_model->get_list($input);
+            $row->subs = $subs;
+        }
+        $this->data['catalogs'] = $catalogs;
        
         //lay nội dung của biến message
         $message = $this->session->flashdata('message');
@@ -46,8 +86,12 @@ Class Story extends MY_Controller
         $this->load->view('admin/main', $this->data);
     }
     
-    /*
-     * Them story moi
+    /**
+     * Description: Thêm truyện mới
+     * Function: add()
+     * @author: Di
+     * @params: name, slug, description, image, catagory, status, view, created, updated.
+     * @return: Store data to database
      */
     function add()
     {
@@ -83,13 +127,22 @@ Class Story extends MY_Controller
             //nhập liệu chính xác
             if($this->form_validation->run())
             {
-               
-                $name        = $this->input->post('name');
+                //lay ten file upload
+                $this->load->library('upload_library');
+                $upload_path = './upload/stories';
+                $upload_data = $this->upload_library->upload($upload_path, 'image');
+                $image_link = '';
+                if(isset($upload_data['file_name'])){
+                    $image_link = $upload_data['file_name'];
+                }
+
+                $name = $this->input->post('name');
                 //luu du lieu can them
                 $data = array(
                     'name'       => $this->input->post('name'),
                     'category_id' => $this->input->post('category_id'),
                     'description' => $this->input->post('description'),
+                    'image_link'  => $image_link,
                     'status' => $this->input->post('status'),
                     'created' => date("Y-m-d H:i:s"),
                     'updated' => date("Y-m-d H:i:s"),
@@ -107,15 +160,18 @@ Class Story extends MY_Controller
                 redirect(admin_url('story'));
             }
         }
-        
-        
+    
         //load view
         $this->data['temp'] = 'admin/story/add';
         $this->load->view('admin/main', $this->data);
     }
     
-    /*
-     * Chinh sua story
+    /**
+     * Description: Cập nhật thông tin
+     * Function: edit()
+     * @author: Di
+     * @params: id, name, slug, description, image, catagory, status, view, created, updated.
+     * @return: Store new data to database
      */
     function edit()
     {
@@ -134,6 +190,7 @@ Class Story extends MY_Controller
             redirect(admin_url('story'));
         }
         $this->data['story'] = $story;
+
        //lay danh sach danh muc san pham
        $this->load->model('catalog_model');
        $input = array();
@@ -160,6 +217,15 @@ Class Story extends MY_Controller
             //nhập liệu chính xác
             if($this->form_validation->run())
             {
+                //lấy tên file ảnh bìa được admin upload
+                $this->load->library('upload_library');
+                $upload_path = './upload/stories';
+                $upload_data = $this->upload_library->upload($upload_path, 'image');
+                $image_link = '';
+                if(isset($upload_data['file_name'])){
+                    $image_link = $upload_data['file_name'];
+                }
+
                 $name = $this->input->post('name');
                 //luu du lieu can them
                 $data = array(
@@ -169,6 +235,9 @@ Class Story extends MY_Controller
                     'updated' => date("Y-m-d H:i:s"),
                 ); 
                 $data['slug'] = $this->slug_library->create_uri($name);
+                if($image_link != ''){
+                    $data['image_link'] = $image_link;
+                }
                 //them moi vao csdl
                 if($this->story_model->update($story->id, $data))
                 {
@@ -182,14 +251,17 @@ Class Story extends MY_Controller
             }
         }
         
-        
         //load view
         $this->data['temp'] = 'admin/story/edit';
         $this->load->view('admin/main', $this->data);
     }
     
-    /*
-     * Xoa du lieu
+    /**
+     * Description: Xóa truyện
+     * Function: del()
+     * @author: Di
+     * @params: id.
+     * @return: delete record to database
      */
     function del()
     {
@@ -201,8 +273,12 @@ Class Story extends MY_Controller
         redirect(admin_url('story'));
     }
     
-    /*
-     * Xóa nhiều story
+    /**
+     * Description: Xóa tất cả
+     * Function: delete_all()
+     * @author: Di
+     * @params: list of id.
+     * @return: Remove all data in database
      */
     function delete_all()
     {
@@ -214,8 +290,12 @@ Class Story extends MY_Controller
         }
     }
     
-    /*
-     *Xoa story
+    /**
+     * Description: Xóa truyện và ảnh bìa kèm theo
+     * Function: del()
+     * @author: Di
+     * @params: id.
+     * @return: delete record to database
      */
     private function _del($id)
     {
@@ -229,7 +309,7 @@ Class Story extends MY_Controller
         //thuc hien xoa story
         $this->story_model->delete($id);
         //xoa cac anh cua story
-        $image_link = './upload/story/'.$story->image_link;
+        $image_link = './upload/stories/'.$story->image_link;
         if(file_exists($image_link))
         {
             unlink($image_link);

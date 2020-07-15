@@ -34,6 +34,17 @@
                      <div class="clear"></div>
                   </div>
                   <div class="formRow">
+                     <label class="formLeft">Ảnh bìa:</label>
+                     <div class="formRight">
+                        <div class="left">
+                           <input type="file" name="image" id="image" size="25"><br/> <br/>
+                           <img src="<?php echo $story->image_link != '' ? base_url('upload/stories/'.$story->image_link) : base_url('upload/stories/default.jpg')?>" style="height:150px">
+                        </div>
+                        <div class="clear error" name="image_error"></div>
+                     </div>
+                     <div class="clear"></div>
+                  </div>
+                  <div class="formRow">
                      <label for="param_cat" class="formLeft">Thể loại:<span class="req">*</span></label>
                      <div class="formRight">
                         <select name="category_id" class="left">

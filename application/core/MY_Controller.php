@@ -14,6 +14,7 @@ Class MY_Controller extends CI_Controller
         {
             case 'admin' :
                 {
+                    
                     $this->load->helper('language');
                     $this->lang->load('admin/common');
                     
@@ -23,7 +24,7 @@ Class MY_Controller extends CI_Controller
                     break;
                 }
             default:
-                {
+                {  
                     //xu ly du lieu o trang ngoai
                     //lay danh sach danh muc san pham
                     $this->load->model('catalog_model');
@@ -38,9 +39,6 @@ Class MY_Controller extends CI_Controller
                     }
                     $this->data['catalog_list'] = $catalog_list;
                     
-                    //lay danh sach bai viet moi
-                    
-                    
                     //kiem tra xem thanh vien da dang nhap hay chua
                     $user_id_login = $this->session->userdata('user_id_login');
                     $this->data['user_id_login'] = $user_id_login;
@@ -51,7 +49,7 @@ Class MY_Controller extends CI_Controller
                         $user_info = $this->user_model->get_info($user_id_login);
                         $this->data['user_info'] = $user_info;
                     }
-                    
+                   
                     //load model ho tro truc tuyen
                     // $this->load->model('support_model');
                     //lay danh sach ho tro truc tuyen
@@ -85,5 +83,3 @@ Class MY_Controller extends CI_Controller
         }
     }
 }
-
-

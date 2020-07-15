@@ -1,9 +1,9 @@
 <!-- head -->
-<?php $this->load->view('admin/story/head', $this->data)?>
+<?php $this->load->view('admin/chapter/head', $this->data)?>
 <div class="line"></div>
 <div class="wrapper">
    <!-- Form -->
-   <form enctype="multipart/form-data" method="post" action="<?php echo admin_url('story/add')?>" id="form" class="form">
+   <form enctype="multipart/form-data" method="post" action="<?php echo admin_url('chapter/add')?>" id="form" class="form">
       <fieldset>
          <div class="widget">
             <div class="title">
@@ -16,7 +16,7 @@
             <div class="tab_container">
                <div class="tab_content pd0" id="tab1" style="display: block;">
                   <div class="formRow">
-                     <label for="param_name" class="formLeft">Tên truyện:<span class="req">*</span></label>
+                     <label for="param_name" class="formLeft">Tên chương:<span class="req">*</span></label>
                      <div class="formRight">
                         <span class="oneTwo"><input type="text" _autocheck="true" id="param_name" name="name"></span>
                         <span class="autocheck" name="name_autocheck"></span>
@@ -24,17 +24,9 @@
                      </div>
                      <div class="clear"></div>
                   </div>
+                
                   <div class="formRow">
-                     <label for="param_name" class="formLeft">Mô tả ngắn:</label>
-                     <div class="formRight">
-                        <span class="oneTwo"><input type="text" _autocheck="true" id="param_description" name="description"></span>
-                        <span class="autocheck" name="name_autocheck"></span>
-                        <div class="clear error" name="name_error"></div>
-                     </div>
-                     <div class="clear"></div>
-                  </div>
-                  <div class="formRow">
-                     <label class="formLeft">Ảnh bìa:</label>
+                     <label class="formLeft">Nội dung:</label>
                      <div class="formRight">
                         <div class="left">
                            <input type="file" name="image" id="image" size="25">
@@ -44,21 +36,11 @@
                      <div class="clear"></div>
                   </div>
                   <div class="formRow">
-                     <label for="param_cat" class="formLeft">Thể loại:<span class="req">*</span></label>
+                     <label for="param_cat" class="formLeft">Thể loại:</label>
                      <div class="formRight">
                         <select name="category_id" class="left">
-                           <option value=""></option>
-                           <!-- kiem tra danh muc co danh muc con hay khong -->
                            <?php foreach ($catalogs as $row):?>
                            <?php if(count($row->subs) > 1):?>
-                           <optgroup label="<?php echo $row->name?>">
-                              <?php foreach ($row->subs as $sub):?>
-                              <option value="<?php echo $sub->id?>">
-                                 <?php echo $sub->name?>
-                              </option>
-                              <?php endforeach;?>
-                           </optgroup>
-                           <?php else:?>
                            <option value="<?php echo $row->id?>">
                               <?php echo $row->name?>
                            </option>
@@ -80,7 +62,14 @@
                      </div>
                      <div class="clear"></div>
                   </div>
-                  <div class="formRow hide"></div>
+                  <div class="formRow">
+                     <label for="param_name" class="formLeft">Vị trí:</label>
+                     <div class="formRight">
+                        <span class="oneTwo"><input type="text" _autocheck="true" id="param_ordering" name="ordering"></span>
+                        <span class="autocheck" name="name_autocheck"></span>
+                     </div>
+                     <div class="clear"></div>
+                  </div>
                   <div class="formRow hide"></div>
                </div>
             </div>

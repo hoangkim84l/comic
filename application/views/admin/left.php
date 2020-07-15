@@ -4,7 +4,7 @@
 
     <div class="sideProfile">
         <a href="#" title="" class="profileFace"><img src="<?php echo public_url('admin')?>/images/user.png" width="40"></a>
-        
+        <span>B Project</span>
         <span>Xin chào: <strong>admin!</strong></span>
         <div class="clear"></div>
     </div>
@@ -33,7 +33,7 @@
                 </li>
                 <li>
                     <a href="<?php echo admin_url('chapter')?>">
-                        Chapters						
+                        Chương						
                     </a>
                 </li>
                 <li>

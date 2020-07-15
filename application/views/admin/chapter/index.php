@@ -1,46 +1,40 @@
 <!-- head -->
-<?php $this->load->view('admin/story/head', $this->data)?>
+<?php $this->load->view('admin/chapter/head', $this->data)?>
 
 <div class="line"></div>
 
-<div id="main_story" class="wrapper">
+<div id="main_chapter" class="wrapper">
 <?php $this->load->view('admin/message', $this->data);?>
 	<div class="widget">
 		
 		<div class="title">
 			<span class="titleIcon"><input type="checkbox" name="titleCheck" id="titleCheck"></span>
 			<h6>
-				Danh sách truyện
+				Danh sách chương
 			</h6>
 			<div class="num f12">Số lượng: <b><?php echo $total_rows?></b></div>
 		</div>
 		
 		<table width="100%" cellspacing="0" cellpadding="0" id="checkAll" class="sTable mTable myTable">
-		<thead class="filter"><tr><td colspan="11">
-				<form method="get" action="<?php echo admin_url('story')?>" class="list_filter form">
+		<thead class="filter"><tr><td colspan="8">
+				<form method="get" action="<?php echo admin_url('chapter')?>" class="list_filter form">
 					<table width="80%" cellspacing="0" cellpadding="0"><tbody>
 
 						<tr>
 							<td style="width:40px;" class="label"><label for="filter_id">Mã số</label></td>
 							<td class="item"><input type="text" style="width:55px;" id="filter_id" value="<?php echo $this->input->get('id')?>" name="id"></td>
 							
-							<td style="width:40px;" class="label"><label for="filter_id">Tên</label></td>
+							<td style="width:40px;" class="label"><label for="filter_id">Tên chương</label></td>
 							<td style="width:155px;" class="item"><input type="text" style="width:155px;" id="filter_iname" value="<?php echo $this->input->get('name')?>" name="name"></td>
 							
-							<td style="width:60px;" class="label"><label for="filter_status">Thể loại</label></td>
+							<td style="width:60px;" class="label"><label for="filter_status">Tên truyện</label></td>
 							<td class="item">
-								<select name="category_id">
+								<select name="story_id">
 									<option value=""></option>
 									<!-- kiem tra danh muc co danh muc con hay khong -->
 									<?php foreach ($catalogs as $row):?>
 										<?php if(count($row->subs) > 1):?>
-											<optgroup label="<?php echo $row->name?>">
-												<?php foreach ($row->subs as $sub):?>
-													<option value="<?php echo $sub->id?>" <?php echo ($this->input->get('category_id') == $sub->id) ? 'selected' : ''?>> <?php echo $sub->name?> </option>
-												<?php endforeach;?>
-											</optgroup>
-											<?php else:?>
-												<option value="<?php echo $row->id?>" <?php echo ($this->input->get('category_id') == $row->id) ? 'selected' : ''?>><?php echo $row->name?></option>
+												<option value="<?php echo $row->id?>" <?php echo ($this->input->get('story_id') == $row->id) ? 'selected' : ''?>><?php echo $row->name?></option>
 											<?php endif;?>
 										<?php endforeach;?>
 									</select>
@@ -48,27 +42,24 @@
 
 								<td style="width:150px">
 									<input type="submit" value="Lọc" class="button blueB">
-									<input type="reset" onclick="window.location.href = '<?php echo admin_url('story')?>'; " value="Reset" class="basic">
+									<input type="reset" onclick="window.location.href = '<?php echo admin_url('chapter')?>'; " value="Reset" class="basic">
 								</td>
 
 							</tr>
-						</tbody>
-					</table>
+						</tbody></table>
 					</form>
 				</td>
-			</tr>	
+			</tr>
+			</thead>
 			<thead>
 				<tr>
 					<td style="width:21px;"><img src="<?php echo public_url('admin/images')?>/icons/tableArrows.png"></td>
 					<td style="width:60px;">Mã số</td>
-					<td>Tiêu đề</td>
-					<td style="width:75px;">Mô tả</td>
-					<td style="width:75px;">Ảnh bìa</td>
-					<td style="width:75px;">Danh mục</td>
+					<td>Tên chương</td>
+					<td style="width:75px;">Tên truyện</td>
 					<td style="width:75px;">ngày Tạo</td>
-					<td style="width:75px;">Cập nhật lần cuối</td>
 					<td style="width:75px;">Trạng thái</td>
-					<td style="width:75px;">lược xem</td>
+					<td style="width:75px;">Sắp xếp</td>
 					<td style="width:120px;">Hành động</td>
 				</tr>
 			</thead>
@@ -77,7 +68,7 @@
 				<tr>
 					<td colspan="11">
 						<div class="list_action itemActions">
-							<a url="<?php echo admin_url('story/delete_all')?>" class="button blueB" id="submit" href="#submit">
+							<a url="<?php echo admin_url('chapter/delete_all')?>" class="button blueB" id="submit" href="#submit">
 								<span style="color:white;">Xóa hết</span>
 							</a>
 						</div>
@@ -97,27 +88,23 @@
 						<td>
 							<b><?php echo $row->name?></b>
 						</td>
-						<td><?php echo $row->description?></td>
-						<td align="center"><img height="150" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg')?>"></td>
 						<td>
 							<?php
-								$this->load->model('catalog_model');
-								$catalog = $this->catalog_model->get_info($row->category_id);	
-								echo $catalog->name;
+								$this->load->model('story_model');
+								$story = $this->story_model->get_info($row->story_id);	
+								echo $story->name;
 							?>
 						</td>
 						<td><?php echo $row->created ?></td>
-						<td><?php echo $row->updated ?></td>
-						<td><?php echo $row->status == 1 ? "Hoạt động" :  "Tạm dừng";?></td>
-						<td><?php echo $row->view?></td>
+						<td><?php echo $row->status == 1 ? "Hoạt động" :  "Ẩn";?></td>
+						<td><?php echo $row->ordering?></td>
 						
 						<td class="option textC">
-							
-							<a class="tipS" title="Chỉnh sửa" href="<?php echo admin_url('story/edit/'.$row->id)?>">
+							<a class="tipS" title="Chỉnh sửa" href="<?php echo admin_url('chapter/edit/'.$row->id)?>">
 								<img src="<?php echo public_url('admin/images')?>/icons/color/edit.png">
 							</a>
 							
-							<a class="tipS verify_action" title="Xóa" href="<?php echo admin_url('story/del/'.$row->id)?>">
+							<a class="tipS verify_action" title="Xóa" href="<?php echo admin_url('chapter/del/'.$row->id)?>">
 								<img src="<?php echo public_url('admin/images')?>/icons/color/delete.png">
 							</a>
 						</td>

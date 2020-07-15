@@ -7,8 +7,12 @@ Class Catalog extends MY_Controller
         $this->load->model('catalog_model');
     }
     
-    /*
-     * Lay ra danh sach danh muc san pham
+    /**
+     * Description: Lấy ra danh sách danh mục của truyện
+     * Function: index()
+     * @author: Di
+     * @params: none
+     * @return: list of category
      */
     function index()
     {
@@ -24,8 +28,12 @@ Class Catalog extends MY_Controller
         $this->load->view('admin/main', $this->data);
     }
     
-    /*
-     * Them moi du lieu
+    /**
+     * Description: Thêm mới dữ liệu
+     * Function: add()
+     * @author: Di
+     * @params: 
+     * @return: Store data to database
      */
     function add()
     {
@@ -83,8 +91,12 @@ Class Catalog extends MY_Controller
         $this->load->view('admin/main', $this->data);
     }
     
-    /*
-     * Cập nhật du lieu
+    /**
+     * Description: Cập nhật thông tin
+     * Function: edit()
+     * @author: Di
+     * @params: id.
+     * @return: Store new data to database
      */
     function edit()
     {
@@ -152,8 +164,12 @@ Class Catalog extends MY_Controller
         $this->load->view('admin/main', $this->data);
     }
     
-    /*
-     * Xoa danh mục
+    /**
+     * Description: Xóa danh mục
+     * Function: delete()
+     * @author: Di
+     * @params: id.
+     * @return: delete record to database
      */
     function delete()
     {
@@ -166,8 +182,12 @@ Class Catalog extends MY_Controller
         redirect(admin_url('catalog'));
     }
     
-    /*
-     * Xoa nhieu danh muc san pham
+    /**
+     * Description: Xóa tất cả
+     * Function: delete_all()
+     * @author: Di
+     * @params: list of id.
+     * @return: Remove all data in database
      */
     function delete_all()
     {
@@ -178,8 +198,12 @@ Class Catalog extends MY_Controller
         }
     }
     
-    /*
-     * Thuc hien xoa
+    /**
+     * Description: Xóa danh mục vaf các bảng liên quan
+     * Function: _del()
+     * @author: Di
+     * @params: id.
+     * @return: delete record to database
      */
     private function _del($id, $rediect = true)
     {

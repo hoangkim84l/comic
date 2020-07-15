@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2020 at 01:00 PM
+-- Generation Time: Jul 15, 2020 at 07:50 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.26
 
@@ -139,7 +139,7 @@ CREATE TABLE `chapters` (
   `name` varchar(220) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `story_id` int(11) NOT NULL DEFAULT 0,
-  `link_img` text COLLATE utf8_unicode_ci NOT NULL,
+  `image_link` text COLLATE utf8_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `status` tinyint(5) NOT NULL DEFAULT 1,
   `ordering` int(11) NOT NULL DEFAULT 0
@@ -149,10 +149,13 @@ CREATE TABLE `chapters` (
 -- Dumping data for table `chapters`
 --
 
-INSERT INTO `chapters` (`id`, `name`, `slug`, `story_id`, `link_img`, `created`, `status`, `ordering`) VALUES
-(1, 'Chap 1', '', 1, 'http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36FKyKRtI/AAAAAAAADNA/c91pz_es7Tw/s0/Chuong_001-OP01-00.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36F6K8-LI/AAAAAAAADNM/torkW5limjw/s0/Chuong_001-OP01-01.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36GhEMhZI/AAAAAAAADNY/so64eQU23xQ/s0/Chuong_001-OP01-02-03.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36HSJqTmI/AAAAAAAADNk/Vbhw3weHk-M/s0/Chuong_001-OP01-04.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36IIGhCCI/AAAAAAAADN0/3yKOzu3iES8/s0/Chuong_001-OP01-05.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36It7RIiI/AAAAAAAADOA/FqyM8VODgT8/s0/Chuong_001-OP01-06.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36JWzWjwI/AAAAAAAADOM/is-H8V0VuSo/s0/Chuong_001-OP01-07.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36LGpCYYI/AAAAAAAADOg/SKqp-muWZ8o/s0/Chuong_001-OP01-08.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36L4W0sAI/AAAAAAAADOs/zAoTkWBeAq8/s0/Chuong_001-OP01-09.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36NTH_I1I/AAAAAAAADO8/mXJ0k94hu7E/s0/Chuong_001-OP01-10.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36On5R8tI/AAAAAAAADPI/ynsdrnR5z2k/s0/Chuong_001-OP01-11.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36PJEc39I/AAAAAAAADPU/wV-j7bfiOuc/s0/Chuong_001-OP01-12.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36P04cXGI/AAAAAAAADPg/YTb2CfSh18g/s0/Chuong_001-OP01-13.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36Qn08J8I/AAAAAAAADPs/VeyUFGqIhsw/s0/Chuong_001-OP01-14.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36Rtq6nxI/AAAAAAAADPw/2baj2uPXjIM/s0/Chuong_001-OP01-15.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36SXXE5bI/AAAAAAAADP4/EE8t0WewTKs/s0/Chuong_001-OP01-16.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36S4p10dI/AAAAAAAADQE/LdhwVi2n_CI/s0/Chuong_001-OP01-17.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36Tk08NsI/AAAAAAAADQQ/8XbFQD0M5Nc/s0/Chuong_001-OP01-18.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36UdM8W6I/AAAAAAAADQc/O8Cn-970rWc/s0/Chuong_001-OP01-19.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36VJK3aMI/AAAAAAAADQw/2rNEyRPCguc/s0/Chuong_001-OP01-20.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36WG4Xj-I/AAAAAAAADRI/m1PTiHJ1DTg/s0/Chuong_001-OP01-21.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36XMNDHkI/AAAAAAAADRU/8e4lIuNfWMw/s0/Chuong_001-OP01-22.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36X6qJiNI/AAAAAAAADRk/z0Guvd8loZE/s0/Chuong_001-OP01-23.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36Y0zKEFI/AAAAAAAADRw/AoBVs2G9WQ8/s0/Chuong_001-OP01-24.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36ZpHJ_eI/AAAAAAAADR8/uLElHbov1_4/s0/Chuong_001-OP01-25.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36aXYLvaI/AAAAAAAADSM/Ezn1ZwL3O1c/s0/Chuong_001-OP01-26.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36bBfcygI/AAAAAAAADSY/xCD1QRXODGI/s0/Chuong_001-OP01-27.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36b8TQD3I/AAAAAAAADSk/6-2useWJpj0/s0/Chuong_001-OP01-28.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36cYGKmDI/AAAAAAAADS0/4YnAzZImMG0/s0/Chuong_001-OP01-29.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36dFSoTdI/AAAAAAAADTA/CE2A2LmRRIk/s0/Chuong_001-OP01-30.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36eH_uYnI/AAAAAAAADTM/hC7NnuD1hE4/s0/Chuong_001-OP01-31.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36ep4-reI/AAAAAAAADTc/NrKjqrTo1-4/s0/Chuong_001-OP01-32.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36fVPXJGI/AAAAAAAADTo/fDf3YQvLJ3E/s0/Chuong_001-OP01-33.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36gC83DjI/AAAAAAAADT0/9eDiQRvTeR0/s0/Chuong_001-OP01-34.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36gz_KzII/AAAAAAAADUE/0RIY38S6KMI/s0/Chuong_001-OP01-35.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36hXpObDI/AAAAAAAADUQ/MLcVZESMd7w/s0/Chuong_001-OP01-36.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36iL61ysI/AAAAAAAADUg/n8CPopEyc5o/s0/Chuong_001-OP01-37.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36jDJt8yI/AAAAAAAADUs/89r6Ogksrts/s0/Chuong_001-OP01-38.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36kL6YQnI/AAAAAAAADU8/1ebzF9rVgs8/s0/Chuong_001-OP01-39.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36k5ylHuI/AAAAAAAADVI/M974yk-83eY/s0/Chuong_001-OP01-40.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36mHerwlI/AAAAAAAADVU/g5AK7-t_-zE/s0/Chuong_001-OP01-41.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36m775t6I/AAAAAAAADVY/6KmJsDyh55o/s0/Chuong_001-OP01-42.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36pTQ5b4I/AAAAAAAADVo/7RBwsRgRPp4/s0/Chuong_001-OP01-43.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36qNIqQJI/AAAAAAAADV0/0U5yKvBOBTU/s0/Chuong_001-OP01-44.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36qlB6vEI/AAAAAAAADWE/mxjYL27xB9c/s0/Chuong_001-OP01-45.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36rVDJvsI/AAAAAAAADWQ/J3FEQaZnhFA/s0/Chuong_001-OP01-46.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36sOpApfI/AAAAAAAADWg/7Er_KvAA_-A/s0/Chuong_001-OP01-47.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36s4rU8_I/AAAAAAAADWw/pHPt9itxzXI/s0/Chuong_001-OP01-48.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36tuaXohI/AAAAAAAADW8/KGHr_Nun5WQ/s0/Chuong_001-OP01-49.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36up2DEwI/AAAAAAAADXE/2_CmkueoHis/s0/Chuong_001-OP01-50-51.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36vcutyrI/AAAAAAAADXg/06x4rqFqdgU/s0/Chuong_001-OP01-52.jpg#http://2.bp.blogspot.com/_BW4Xi0F0vXI/Tc36wJebeDI/AAAAAAAADXs/lgc0iiESzUA/s0/Chuong_001-OP01-53.jpg', '2017-05-31 11:37:50', 1, 1),
-(2, 'Chap 2', '', 1, 'http://1.bp.blogspot.com/_dlrtpMg80uE/TW9YEvYjJLI/AAAAAAAAgc0/cCqW6pq_cI8/s0/OP02-00.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9YGnyfN1I/AAAAAAAAgc8/qAva_W1wTyI/s0/OP02-01.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9YImjYEpI/AAAAAAAAgdE/hzNIJveneuM/s0/OP02-02.jpg#http://3.bp.blogspot.com/_dlrtpMg80uE/TW9YJiC5p9I/AAAAAAAAgdM/rOEtYmjN6EU/s0/OP02-03.jpg#http://3.bp.blogspot.com/_dlrtpMg80uE/TW9YK7uQRzI/AAAAAAAAgdU/MM6AR1_cDUw/s0/OP02-04.jpg#http://3.bp.blogspot.com/_dlrtpMg80uE/TW9YMD4_YwI/AAAAAAAAgdc/IvEvFCz_xCo/s0/OP02-05.jpg#http://3.bp.blogspot.com/_dlrtpMg80uE/TW9YNp7JQGI/AAAAAAAAgdk/tR0jc9LCIwE/s0/OP02-06.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9YPDlmI2I/AAAAAAAAgds/vO8C6FR6p7c/s0/OP02-07.jpg#http://4.bp.blogspot.com/_dlrtpMg80uE/TW9YQPAAYUI/AAAAAAAAgd0/QxBF5EaMtpo/s0/OP02-08.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9YSTUYWeI/AAAAAAAAgd8/3vT-EJm4_Yc/s0/OP02-09.jpg#http://4.bp.blogspot.com/_dlrtpMg80uE/TW9YUdVD8pI/AAAAAAAAgeE/F7PSlevOQs8/s0/OP02-10.jpg#http://3.bp.blogspot.com/_dlrtpMg80uE/TW9YVqdd1dI/AAAAAAAAgeQ/y2RVVV-WzEI/s0/OP02-11.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9YW2aneBI/AAAAAAAAgeY/DiZTxmeVeJ0/s0/OP02-12.jpg#http://4.bp.blogspot.com/_dlrtpMg80uE/TW9YY07hI-I/AAAAAAAAgeg/nUSfH15FFoc/s0/OP02-13.jpg#http://3.bp.blogspot.com/_dlrtpMg80uE/TW9YaC2Xg_I/AAAAAAAAgeo/IiaTfqW_xyI/s0/OP02-14.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9YcMRJCLI/AAAAAAAAgew/_Q1JGCvpPqI/s0/OP02-15.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9YdZUZ2DI/AAAAAAAAge8/T6PVZ1dCSoE/s0/OP02-16.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9YfTPEptI/AAAAAAAAgfI/-smgWADTwsQ/s0/OP02-17.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9YhawENnI/AAAAAAAAgfQ/viJP-ebTXjQ/s0/OP02-18.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9Yi4lrAeI/AAAAAAAAgfY/x7XvBKosfwQ/s0/OP02-19.jpg#http://3.bp.blogspot.com/_dlrtpMg80uE/TW9Yk6bAiLI/AAAAAAAAgfg/U3FavS8nVTo/s0/OP02-20.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9YmcSBx6I/AAAAAAAAgfo/N7rRikMvYD8/s0/OP02-21.jpg#http://4.bp.blogspot.com/_dlrtpMg80uE/TW9YnhvuMUI/AAAAAAAAgfw/dBEbxq0ySoQ/s0/OP02-22.jpg#http://4.bp.blogspot.com/_dlrtpMg80uE/TW9Yo__RCRI/AAAAAAAAgf4/ApIr7Q9BALw/s0/OP02-23.jpg', '2017-04-19 06:17:45', 1, 2),
-(3, 'Chap 3', '', 1, 'http://4.bp.blogspot.com/_dlrtpMg80uE/TW9XlkRegEI/AAAAAAAAgZ0/lQW9wV5ynao/s0/OP03-00.jpg#http://4.bp.blogspot.com/_dlrtpMg80uE/TW9XmrUGvNI/AAAAAAAAgZ8/j4LOPsYv5UY/s0/OP03-01.jpg#http://4.bp.blogspot.com/_dlrtpMg80uE/TW9Xn7-d-6I/AAAAAAAAgaE/qPNXwq0VDi0/s0/OP03-02.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9XpIo2YDI/AAAAAAAAgaM/j41PK0Vp5Po/s0/OP03-03.jpg#http://3.bp.blogspot.com/_dlrtpMg80uE/TW9XqQbertI/AAAAAAAAgaU/vii2Kf3PnHQ/s0/OP03-04.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9Xr00KorI/AAAAAAAAgac/Fof8lm6D-bs/s0/OP03-05.jpg#http://4.bp.blogspot.com/_dlrtpMg80uE/TW9Xs1btaPI/AAAAAAAAgak/ts6oGQ4su7o/s0/OP03-06.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9XuPodOCI/AAAAAAAAgas/_h_wfqg-2Xc/s0/OP03-07.jpg#http://4.bp.blogspot.com/_dlrtpMg80uE/TW9Xu_8l-mI/AAAAAAAAga0/hHXPunZZ54Y/s0/OP03-08.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9XwCE-_hI/AAAAAAAAga8/R_xj4ugPGgA/s0/OP03-09.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9XxzYGBTI/AAAAAAAAgbE/qgVIeLJPGgc/s0/OP03-10.jpg#http://3.bp.blogspot.com/_dlrtpMg80uE/TW9XzWjmf4I/AAAAAAAAgbM/UUiJ46fVQuU/s0/OP03-11.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9X0a4RBgI/AAAAAAAAgbU/G5Gl_m8xVgE/s0/OP03-12.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9X10mL4gI/AAAAAAAAgbg/kRm3qVHH8lk/s0/OP03-13.jpg#http://4.bp.blogspot.com/_dlrtpMg80uE/TW9X4o3iJ8I/AAAAAAAAgbo/MYDJesiXhcA/s0/OP03-14.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9X6khgehI/AAAAAAAAgbw/j4wKWRBwys0/s0/OP03-15.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9X7htAPVI/AAAAAAAAgb4/ir7h5OhcQ40/s0/OP03-16.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9X9tgvFJI/AAAAAAAAgcI/0mI9__BAMaM/s0/OP03-17.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9X-5F_GbI/AAAAAAAAgcQ/8r0nnrxvO38/s0/OP03-18.jpg#http://1.bp.blogspot.com/_dlrtpMg80uE/TW9YACjWqGI/AAAAAAAAgcY/yovzvR-98sA/s0/OP03-19.jpg#http://4.bp.blogspot.com/_dlrtpMg80uE/TW9YBk52IlI/AAAAAAAAgcg/QAzqNPDHrOE/s0/OP03-20.jpg#http://4.bp.blogspot.com/_dlrtpMg80uE/TW9YClLqPLI/AAAAAAAAgco/PCbCScFx2Cw/s0/OP03-21.jpg', '2017-04-19 06:18:03', 1, 3);
+INSERT INTO `chapters` (`id`, `name`, `slug`, `story_id`, `image_link`, `created`, `status`, `ordering`) VALUES
+(1, 'Chap 1', 'chap-1-1', 5, 'gi1.jpg', '2020-07-15 06:39:00', 1, 1),
+(2, 'Chap 2', 'chap-2', 5, 'gi26.jpg', '2020-07-15 06:39:25', 1, 2),
+(3, 'Chap 3', 'chap-3', 5, 'gi78.jpg', '2020-07-15 06:39:37', 1, 3),
+(5, 'Chap 1', 'chap-1', 30, '001.jpg', '2020-07-15 06:44:12', 1, 1),
+(6, 'Chap 2', 'chap-2-1', 30, '002.jpg', '2020-07-15 06:44:28', 1, 2),
+(7, 'Chap 3', 'chap-3-1', 30, '003.jpg', '2020-07-15 06:44:40', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -252,6 +255,7 @@ CREATE TABLE `stories` (
   `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image_link` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `category_id` int(11) NOT NULL DEFAULT 1,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
@@ -263,33 +267,33 @@ CREATE TABLE `stories` (
 -- Dumping data for table `stories`
 --
 
-INSERT INTO `stories` (`id`, `name`, `slug`, `description`, `category_id`, `created`, `updated`, `status`, `view`) VALUES
-(1, 'One Pice', '', 'truyenej nha', 3, '2017-04-18 04:04:03', '2017-05-31 11:37:50', 1, 6),
-(4, 'Hiệp Khách Giang Hồ', '', 'Hiệp Khách Giang Hồ', 4, '2017-04-18 04:16:24', '2017-05-31 03:05:08', 1, 19),
-(5, 'Hôn Trộm 55 Lần', '', '', 5, '2017-04-18 04:17:00', '2017-05-31 03:04:29', 1, 1),
-(7, 'Attack On Titan', '', 'Attack On Titan', 6, '2017-05-31 03:07:35', '2017-05-31 03:07:35', 1, 0),
-(8, 'Fairy Tail', '', 'Fairy Tail', 3, '2017-05-31 03:09:01', '2017-05-31 03:09:01', 1, 3),
-(9, 'Người trong giang hồ', '', 'Người trong giang hồ', 1, '2017-05-31 03:09:35', '2017-05-31 03:09:35', 1, 4),
-(10, 'Danchi Majo', '', 'Danchi Majo', 1, '2017-05-31 03:12:01', '2017-05-31 03:12:01', 1, 0),
-(11, 'Danh Sách Yêu Quái', '', 'Danh Sách Yêu Quái', 2, '2017-05-31 03:13:02', '2017-05-31 03:13:02', 1, 0),
-(12, 'Lady Justice', '', 'Lady Justice', 2, '2017-05-31 03:13:52', '2017-05-31 03:13:52', 1, 4),
-(13, 'Legend 2', '', 'Legend 2', 1, '2017-05-31 03:14:49', '2017-05-31 03:14:49', 1, 5),
-(14, 'Hajimete No Gal', '', 'Hajimete No Gal', 4, '2017-05-31 03:15:35', '2017-05-31 03:15:35', 1, 3),
-(15, 'Bokura No Fushidara', '', 'Bokura No Fushidara', 5, '2017-05-31 03:16:45', '2017-05-31 03:16:45', 1, 10),
-(16, 'One Pice2', '', 'truyenej nha', 3, '2017-04-18 04:04:03', '2017-05-31 11:37:50', 1, 6),
-(17, 'Hiệp Khách Giang Hồ2', '', 'Hiệp Khách Giang Hồ', 4, '2017-04-18 04:16:24', '2017-05-31 03:05:08', 1, 19),
-(18, 'Hôn Trộm 55 Lần2', '', '', 5, '2017-04-18 04:17:00', '2017-05-31 03:04:29', 1, 1),
-(19, 'Go! Go!', '', 'Go!', 1, '2017-05-31 03:05:52', '2020-07-14 12:19:16', 1, 2),
-(20, 'Attack On Titan2', '', 'Attack On Titan', 6, '2017-05-31 03:07:35', '2017-05-31 03:07:35', 1, 0),
-(21, 'Fairy Tail2', '', 'Fairy Tail', 3, '2017-05-31 03:09:01', '2017-05-31 03:09:01', 1, 3),
-(22, 'Người trong giang hồ2', '', 'Người trong giang hồ', 1, '2017-05-31 03:09:35', '2017-05-31 03:09:35', 1, 4),
-(23, 'Danchi Majo2', '', 'Danchi Majo', 1, '2017-05-31 03:12:01', '2017-05-31 03:12:01', 1, 0),
-(24, 'Danh Sách Yêu Quái2', '', 'Danh Sách Yêu Quái', 2, '2017-05-31 03:13:02', '2017-05-31 03:13:02', 1, 0),
-(25, 'Lady Justice2', '', 'Lady Justice', 2, '2017-05-31 03:13:52', '2017-05-31 03:13:52', 1, 4),
-(26, 'Legend 22', '', 'Legend 2', 1, '2017-05-31 03:14:49', '2017-05-31 03:14:49', 1, 5),
-(27, 'Hajimete No Gal2', '', 'Hajimete No Gal', 4, '2017-05-31 03:15:35', '2017-05-31 03:15:35', 1, 3),
-(28, 'Bokura No Fushidara2', '', 'Bokura No Fushidara', 5, '2017-05-31 03:16:45', '2017-05-31 03:16:45', 1, 10),
-(30, 'Design Css', 'design-css', 'Cập nhật slug', 6, '2020-07-14 12:35:52', '2020-07-14 12:37:35', 1, 0);
+INSERT INTO `stories` (`id`, `name`, `slug`, `description`, `image_link`, `category_id`, `created`, `updated`, `status`, `view`) VALUES
+(1, 'One Pice', '', 'truyenej nha', '', 3, '2017-04-18 04:04:03', '2017-05-31 11:37:50', 1, 6),
+(4, 'Hiệp Khách Giang Hồ', '', 'Hiệp Khách Giang Hồ', '', 4, '2017-04-18 04:16:24', '2017-05-31 03:05:08', 1, 19),
+(5, 'Hôn Trộm 55 Lần', '', '', '', 5, '2017-04-18 04:17:00', '2017-05-31 03:04:29', 1, 1),
+(7, 'Attack On Titan', '', 'Attack On Titan', '', 6, '2017-05-31 03:07:35', '2017-05-31 03:07:35', 1, 0),
+(8, 'Fairy Tail', '', 'Fairy Tail', '', 3, '2017-05-31 03:09:01', '2017-05-31 03:09:01', 1, 3),
+(9, 'Người trong giang hồ', '', 'Người trong giang hồ', '', 1, '2017-05-31 03:09:35', '2017-05-31 03:09:35', 1, 4),
+(10, 'Danchi Majo', '', 'Danchi Majo', '', 1, '2017-05-31 03:12:01', '2017-05-31 03:12:01', 1, 0),
+(11, 'Danh Sách Yêu Quái', '', 'Danh Sách Yêu Quái', '', 2, '2017-05-31 03:13:02', '2017-05-31 03:13:02', 1, 0),
+(12, 'Lady Justice', '', 'Lady Justice', '', 2, '2017-05-31 03:13:52', '2017-05-31 03:13:52', 1, 4),
+(13, 'Legend 2', '', 'Legend 2', '', 1, '2017-05-31 03:14:49', '2017-05-31 03:14:49', 1, 5),
+(14, 'Hajimete No Gal', '', 'Hajimete No Gal', '', 4, '2017-05-31 03:15:35', '2017-05-31 03:15:35', 1, 3),
+(15, 'Bokura No Fushidara', '', 'Bokura No Fushidara', '', 5, '2017-05-31 03:16:45', '2017-05-31 03:16:45', 1, 10),
+(16, 'One Pice2', '', 'truyenej nha', '', 3, '2017-04-18 04:04:03', '2017-05-31 11:37:50', 1, 6),
+(17, 'Hiệp Khách Giang Hồ2', '', 'Hiệp Khách Giang Hồ', '', 4, '2017-04-18 04:16:24', '2017-05-31 03:05:08', 1, 19),
+(18, 'Hôn Trộm 55 Lần2', '', '', '', 5, '2017-04-18 04:17:00', '2017-05-31 03:04:29', 1, 1),
+(19, 'Go! Go!', '', 'Go!', '', 1, '2017-05-31 03:05:52', '2020-07-14 12:19:16', 1, 2),
+(20, 'Attack On Titan2', '', 'Attack On Titan', '', 6, '2017-05-31 03:07:35', '2017-05-31 03:07:35', 1, 0),
+(21, 'Fairy Tail2', '', 'Fairy Tail', '', 3, '2017-05-31 03:09:01', '2017-05-31 03:09:01', 1, 3),
+(22, 'Người trong giang hồ2', '', 'Người trong giang hồ', '', 1, '2017-05-31 03:09:35', '2017-05-31 03:09:35', 1, 4),
+(23, 'Danchi Majo2', '', 'Danchi Majo', '', 1, '2017-05-31 03:12:01', '2017-05-31 03:12:01', 1, 0),
+(24, 'Danh Sách Yêu Quái2', '', 'Danh Sách Yêu Quái', '', 2, '2017-05-31 03:13:02', '2017-05-31 03:13:02', 1, 0),
+(25, 'Lady Justice2', '', 'Lady Justice', '', 2, '2017-05-31 03:13:52', '2017-05-31 03:13:52', 1, 4),
+(26, 'Legend 22', '', 'Legend 2', '', 1, '2017-05-31 03:14:49', '2017-05-31 03:14:49', 1, 5),
+(27, 'Hajimete No Gal2', '', 'Hajimete No Gal', '', 4, '2017-05-31 03:15:35', '2017-05-31 03:15:35', 1, 3),
+(28, 'Bokura No Fushidara2', '', 'Bokura No Fushidara', '', 5, '2017-05-31 03:16:45', '2017-05-31 03:16:45', 1, 10),
+(30, 'Trở Về Địa Cầu Làm Thần Côn', 'tro-ve-djia-cau-lam-than-con', 'Trở Về Địa Cầu Làm Thần Côn', 'anime-blazblue-1149.jpg', 5, '2020-07-14 12:35:52', '2020-07-15 06:43:50', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -301,6 +305,8 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_created` datetime NOT NULL,
@@ -311,10 +317,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`, `date_created`, `date_updated`) VALUES
-(2, 'Nguyễn Quốc Sử', 'nqsu381@gmail.com', 'nongdanit', '$2a$10$RJX6k5GCxNuTzsD6FtBzQe8F.aQgMbX/QeKKM4G5nAGsTyyanCsTK', '2013-10-31 03:24:42', '2017-03-27 04:52:53'),
-(65, 'Loan', 'nqsu381@gmail.com', 'tuyetloan', '$2a$10$MEEQeiTY8ebDoINH7w.Bb.xPac8MSce.HXSWSXXiONXrlOhmyUsaa', '2013-10-31 03:24:42', '2014-12-10 21:01:28'),
-(67, 'edjaskljd', 'abd@yahoo.com', 'nongdanit1', '$2a$10$OtmMXYGjKdcl8/biyrGJzudXplwxzbQhb43dwTkfdNJLHsY0e6r5W', '2017-04-03 06:52:35', '2017-04-03 06:52:35');
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `address`, `username`, `password`, `date_created`, `date_updated`) VALUES
+(2, 'Nguyễn Quốc Sử', 'nqsu381@gmail.com', '', '', 'nongdanit', '$2a$10$RJX6k5GCxNuTzsD6FtBzQe8F.aQgMbX/QeKKM4G5nAGsTyyanCsTK', '2013-10-31 03:24:42', '2017-03-27 04:52:53'),
+(65, 'Loan', 'nqsu381@gmail.com', '', '', 'tuyetloan', '$2a$10$MEEQeiTY8ebDoINH7w.Bb.xPac8MSce.HXSWSXXiONXrlOhmyUsaa', '2013-10-31 03:24:42', '2014-12-10 21:01:28');
 
 --
 -- Indexes for dumped tables
@@ -418,7 +423,7 @@ ALTER TABLE `catalog`
 -- AUTO_INCREMENT for table `chapters`
 --
 ALTER TABLE `chapters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `contact`
