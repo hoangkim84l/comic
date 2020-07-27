@@ -1,93 +1,49 @@
 <?php $this->load->view('site/slide', $this->data);?>
 
-<div class="box-center"><!-- The box-center product-->
-             <div class="tittle-box-center">
-		        <h2>Sản phẩm mới</h2>
-		      </div>
-		      <div class="box-content-center product"><!-- The box-content-center -->
-		            <?php foreach ($product_newest as $row):?>
-		            <div class="product_item">
-                       <h3>
-                         <a title="<?php echo $row->name?>" href="<?php echo base_url('product/view/'.$row->id)?>">
-                              <?php echo $row->name?>	                    
-                          </a>
-	                   </h3>
-                       <div class="product_img">
-                             <a title="<?php echo $row->name?>" href="<?php echo base_url('product/view/'.$row->id)?>">
-                                <img alt="<?php echo $row->name?>" src="<?php echo base_url('upload/product/'.$row->image_link)?>">
-                            </a>
-                       </div>
-          
-                       <p class="price">
-                              <?php if($row->discount > 0):?>
-                              <?php $price_new = $row->price - $row->discount;?>
-                              <?php echo number_format($price_new)?> đ <span class="price_old"><?php echo number_format($row->price)?> đ</span>
-				              <?php else:?>
-				                <?php echo number_format($row->price)?> đ
-				              <?php endif;?>
-		                 </p>
-		                 
-                        <center>
-                           <div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div>
-                        </center>
-                        
-                       <div class="action">
-                           <p style="float:left;margin-left:10px">Lượt xem: <b><?php echo $row->view?></b></p>
-	                       <a title="Chi tiết" href="<?php echo base_url('product/view/'.$row->id)?>" class="button">Chi tiết</a>
-	                       <div class="clear"></div>
-                       </div>
-                   </div>
-                   <?php endforeach;?>
-                           
-               
-		            <div class="clear"></div>
-		      </div><!-- End box-content-center -->
-</div>
-
-
-
-<div class="box-center"><!-- The box-center product-->
-             <div class="tittle-box-center">
-		        <h2>Sản phẩm được mua nhiều</h2>
-		      </div>
-		      <div class="box-content-center product"><!-- The box-content-center -->
-		            <?php foreach ($product_buy as $row):?>
-		            <div class="product_item">
-                       <h3>
-                         <a title="<?php echo $row->name?>" href="<?php echo base_url('product/view/'.$row->id)?>">
-                              <?php echo $row->name?>	                    
-                          </a>
-	                   </h3>
-                       <div class="product_img">
-                             <a title="<?php echo $row->name?>" href="<?php echo base_url('product/view/'.$row->id)?>">
-                                <img alt="<?php echo $row->name?>" src="<?php echo base_url('upload/product/'.$row->image_link)?>">
-                            </a>
-                       </div>
-          
-                       <p class="price">
-                              <?php if($row->discount > 0):?>
-                              <?php $price_new = $row->price - $row->discount;?>
-                              <?php echo number_format($price_new)?> đ <span class="price_old"><?php echo number_format($row->price)?> đ</span>
-				              <?php else:?>
-				                <?php echo number_format($row->price)?> đ
-				              <?php endif;?>
-		                 </p>
-		                 
-                          <center>
-                           <div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div>
-                        </center>
-                        
-                       <div class="action">
-                           <p style="float:left;margin-left:10px">Lượt mua: <b><?php echo $row->buyed?></b></p>
-	                       <a title="Chi tiết" href="<?php echo base_url('product/view/'.$row->id)?>" class="button">Chi tiết</a>
-	                       <div class="clear"></div>
-                       </div>
-                   </div>
-                   <?php endforeach;?>
-                           
-               
-		            <div class="clear"></div>
-		      </div><!-- End box-content-center -->
-</div>
-
-
+<!-- blog post -->
+<section class="section">
+  <div class="container">
+    <div class="row masonry-container">
+      <?php foreach($data_home as $row) : ?>
+      <div class="col-lg-4 col-sm-6 mb-5">
+        <article class="text-center">
+          <img class="img-fluid mb-4" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>">
+          <p class="text-uppercase mb-2">
+            <?php 
+              $this->load->model('catalog_model');
+              $catalog = $this->catalog_model->get_info($row->category_id);
+              echo $catalog->name;
+            ?>
+          </p>
+          <h4 class="title-border"><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id.'.html')?>"><?php echo $row->name?></a></h4>
+          <p><?php echo substr($row->description,0,200).'...'?></p>
+          <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id.'.html')?>" class="btn btn-transparent">xem hết</a>
+        </article>
+      </div>
+      <?php endforeach ?>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <nav>
+          <ul class="pagination justify-content-center align-items-center">
+            <li class="page-item">
+              <span class="page-link">&laquo; Previous</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">01</a></li>
+            <li class="page-item active">
+              <span class="page-link">02</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">03</a></li>
+            <li class="page-item"><a class="page-link" href="#">04</a></li>
+            <li class="page-item"><a class="page-link" href="#">05</a></li>
+            <li class="page-item"><a class="page-link" href="#">06</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next &raquo;</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /blog post -->

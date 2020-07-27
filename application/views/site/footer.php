@@ -1,51 +1,36 @@
-<!-- The box-footer-->
-<html>
-	<head>
-		<meta name="generator"
-    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
-		<title/>
-	</head>
-	<body>
-		<div id="footer_text">
-			<!-- The footer_text -->
-			<strong>Học lập trình website online miễn phí.</strong>
-			<p>Hướng dẫn xây dựng website bán hàng và thanh toán trực tuyến.</p>
-			<p>Video hướng dẫn: 
-				<a target="_blank"
-			href="http://freetuts.net/video/xay-dung-website-ban-hang-thanh-toan-truc-tuyen-voi-codeigniter-3x-19.html#-H9577DrJHQ">Tại
-      đây</a> Hoặc 
-				<a href="https://www.youtube.com/watch?v=qMwvZqCKUbk&amp;list=PLShhnaMcz_Zy1ipos-PUP9UrJauBkKUza&amp;index=16"
-      target="_blank">tại đây</a>
-			</p>
-			<p>Website: 
-				<a href="http://hocphp.info">hocphp.info</a>
-			</p>
-			<p>Fanpage: 
-				<a href="https://www.facebook.com/nobitacnt/">https://www.facebook.com/nobitacnt/</a>
-			</p>
-			<p>kết bạn: 
-				<a href="https://www.facebook.com/tuyen.hoangvan.31">https://www.facebook.com/tuyen.hoangvan.31</a>
-			</p>
-			<p>Tham gia nhóm học lập trình php: 
-				<a href="https://www.facebook.com/groups/1713692865571869">https://www.facebook.com/groups/1713692865571869</a>
-			</p>
-		</div>
-		<!-- End footer_text -->
-		<div id="footer_face">
-			<!-- The footer_face -->
-			<a title="trên facebook" target="_blank" href="https://www.facebook.com/nobitacnt" rel="nofollow">
-				<img alt="trên facebook" src="%3C?php%20echo%20public_url()?%3E/site/images/facebook.png" />
-			</a> 
-			<a title="trên twitter" target="_blank" href="https://twitter.com/" rel="nofollow">
-				<img alt="trên twitter" src="%3C?php%20echo%20public_url()?%3E/site/images/twitter.png" />
-			</a> 
-			<a title="trên google" target="_blank" href="https://plus.google.com/" rel="nofollow">
-				<img alt="trên google" src="%3C?php%20echo%20public_url()?%3E/site/images/google.png" />
-			</a>
-		</div>
-		<!-- End footer_face -->
-		<div class="clear"/>
-		<!-- clear float -->
-		<!-- End box-footer -->
-	</body>
-</html>
+<div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <a href="index.html"><img src="<?php echo public_url()?>/site/images/logo.png" alt="persa" class="img-fluid"></a>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <h6>Address</h6>
+          <ul class="list-unstyled">
+            <li class="font-secondary text-dark">Sydney</li>
+            <li class="font-secondary text-dark">6 rip carl Avenue CA 90733</li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <h6>Contact Info</h6>
+          <ul class="list-unstyled">
+            <li class="font-secondary text-dark">Tel: +90 000 333 22</li>
+            <li class="font-secondary text-dark">Mail: exmaple@ymail.com</li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <h6>Follow</h6>
+          <ul class="list-inline d-inline-block">
+            <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-twitter-alt"></i></a></li>
+            <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-linkedin"></i></a></li>
+            <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-github"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center pb-3">
+    <p class="mb-0">Copyright ©<script>var CurrentYear = new Date().getFullYear()
+    document.write(CurrentYear)</script> </p>
+  </div>

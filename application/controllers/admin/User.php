@@ -72,7 +72,9 @@ class User extends MY_Controller {
 	           'email'    => $email,
 	           'password' => $password,
 	           'phone'    => $phone,
-	           'address'  => $address
+			   'address'  => $address,
+			   'date_created' => date("Y-m-d H:i:s"),
+			   'date_updated' => date("Y-m-d H:i:s"),
  	       );
 	       //them thanh vien vao trong csdl
 	       if($this->user_model->create($data))
@@ -131,7 +133,8 @@ class User extends MY_Controller {
 	       $data = array(
 	           'name'     => $name,
 	           'phone'    => $phone,
-	           'address'  => $address
+			   'address'  => $address,
+			   'date_updated' => date("Y-m-d H:i:s"),
  	       );
  	       if($password)//nếu cập nhật cả mật khẩu
 	       {

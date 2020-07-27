@@ -1,86 +1,25 @@
-
-<div class="box-center"><!-- The box-center contact-->
-             <div class="tittle-box-center">
-		        <h2>Liên hệ</h2>
-		      </div>
-		      <div class="box-content-center contact"><!-- The box-content-center -->
-            <form class="t-form form_action" method="POST" action="">
-            
-                  <div class="form-row">
-						<label for="param_name" class="form-label">Họ và tên:<span class="req">*</span></label>
-						<div class="form-item">
-							<input type="text" class="input" id="name" name="name" value="<?php echo set_value('name')?>">
-							<div class="clear"></div>
-							<div class="error" id="name_error"><?php echo form_error('name')?></div>
-						</div>
-						<div class="clear"></div>
-				  </div>
-				  
-                  <div class="form-row">
-						<label for="param_email" class="form-label">Email:<span class="req">*</span></label>
-						<div class="form-item">
-							<input type="text" class="input" id="email" name="email" value="<?php echo set_value('email')?>">
-							<div class="clear"></div>
-							<div class="error" id="email_error"><?php echo form_error('email')?></div>
-						</div>
-						<div class="clear"></div>
-				  </div>
-				  
-				  <div class="form-row">
-						<label for="param_phone" class="form-label">Số điện thoại:<span class="req">*</span></label>
-						<div class="form-item">
-							<input type="text" class="input" id="phone" name="phone" value="<?php echo set_value('phone')?>">
-							<div class="clear"></div>
-							<div class="error" id="phone_error"><?php echo form_error('phone')?></div>
-						</div>
-						<div class="clear"></div>
-				  </div>
-				  
-				  <div class="form-row">
-						<label for="param_address" class="form-label">Địa chỉ:<span class="req">*</span></label>
-						<div class="form-item">
-							<textarea  class="input" id="address" name="address"><?php echo set_value('address')?></textarea>
-							<div class="clear"></div>
-							<div class="error" id="address_error"><?php echo form_error('address')?></div>
-						</div>
-						<div class="clear"></div>
-				  </div>
-				  
-				  
-				  <div class="form-row">
-						<label for="param_title" class="form-label">Tiêu đề liên hệ:<span class="req">*</span></label>
-						<div class="form-item">
-							<input type="text" class="input" id="title" name="title" value="<?php echo set_value('title')?>">
-							<div class="clear"></div>
-							<div class="error" id="title_error"><?php echo form_error('title')?></div>
-						</div>
-						<div class="clear"></div>
-				  </div>
-				  
-				   <div class="form-row">
-						<label for="param_address" class="form-label">Nội dung liên hệ:<span class="req">*</span></label>
-						<div class="form-item">
-							<textarea  class="input" id="content" name="content"><?php echo set_value('content')?></textarea>
-							<div class="clear"></div>
-							<div class="error" id="content_error"><?php echo form_error('content')?></div>
-						</div>
-						<div class="clear"></div>
-				  </div>
-                
-				  
-				  <div class="form-row">
-						<label class="form-label">&nbsp;</label>
-						<div class="form-item">
-				           	<input type="submit" class="button" value="Liên hệ" name='submit'>
-				           	<div class="load"></div>
-						</div>
-				   </div>
-            </form>
-            <div class='clear'></div>
-            <div id='content_contact'>
-            
-            </div>
-            
-         </div><!-- End box-content-center contact-->
- </div><!-- End box-center -->
- 
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="mb-4">Contact Us</h2>
+        <img src="<?php echo public_url()?>site/images/contact.jpg" alt="author" class="img-fluid w-100 mb-4">
+        <p class="mb-5">Strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream and, as I lie close to the earth, a thousand unknown plants are noticed by me.<br><br>When I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath of that universal love which bears and sustains.</p>
+        <form action="#" class="row">
+          <div class="col-lg-6">
+            <input type="text" class="form-control mb-4" name="name" id="name" placeholder="Name">
+          </div>
+          <div class="col-lg-6">
+            <input type="email" class="form-control mb-4" name="email" id="email" placeholder="Email">
+          </div>
+          <div class="col-12">
+            <textarea name="message" id="message" class="form-control mb-4" placeholder="Message..."></textarea>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
