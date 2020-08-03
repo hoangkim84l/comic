@@ -1,12 +1,11 @@
 <?php
-Class Story extends MY_Controller
+class Story extends MY_Controller
 {
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         //load ra file model
         $this->load->model('story_model');
-        
     }
     
     /**
@@ -16,7 +15,7 @@ Class Story extends MY_Controller
      * @params: none
      * @return: list of stories
      */
-    function index()
+    public function index()
     {
         //lay tong so luong ta ca cac story trong websit
         $total_rows = $this->story_model->get_total();
@@ -44,19 +43,16 @@ Class Story extends MY_Controller
         $id = $this->input->get('id');
         $id = intval($id);
         $input['where'] = array();
-        if($id > 0)
-        {
+        if ($id > 0) {
             $input['where']['id'] = $id;
         }
         $name = $this->input->get('name');
-        if($name)
-        {
+        if ($name) {
             $input['like'] = array('name', $name);
         }
         $category_id = $this->input->get('category_id');
         $category_id = intval($category_id);
-        if($category_id > 0)
-        {
+        if ($category_id > 0) {
             $input['where']['category_id'] = $category_id;
         }
         
@@ -69,14 +65,13 @@ Class Story extends MY_Controller
         $input = array();
         $input['where'] = array('parent_id' => 0);
         $catalogs = $this->catalog_model->get_list($input);
-        foreach ($catalogs as $row)
-        {
+        foreach ($catalogs as $row) {
             $input['where'] = array('parent_id' => $row->id);
             $subs = $this->catalog_model->get_list($input);
             $row->subs = $subs;
         }
         $this->data['catalogs'] = $catalogs;
-       
+
         //lay nội dung của biến message
         $message = $this->session->flashdata('message');
         $this->data['message'] = $message;
@@ -93,7 +88,7 @@ Class Story extends MY_Controller
      * @params: name, slug, description, image, catagory, status, view, created, updated.
      * @return: Store data to database
      */
-    function add()
+    public function add()
     {
         $config = array(
             'field' => 'slug',
@@ -104,15 +99,14 @@ Class Story extends MY_Controller
         //load thư viện validate dữ liệu
         $this->load->library('form_validation');
         $this->load->helper('form');
-        $this->load->library('slug_library',$config);
+        $this->load->library('slug_library', $config);
 
         //lay danh sach danh muc san pham
         $this->load->model('catalog_model');
         $input = array();
         $input['where'] = array('parent_id' => 0);
         $catalogs = $this->catalog_model->get_list($input);
-        foreach ($catalogs as $row)
-        {
+        foreach ($catalogs as $row) {
             $input['where'] = array('parent_id' => $row->id);
             $subs = $this->catalog_model->get_list($input);
             $row->subs = $subs;
@@ -120,19 +114,17 @@ Class Story extends MY_Controller
         $this->data['catalogs'] = $catalogs;
 
         //neu ma co du lieu post len thi kiem tra
-        if($this->input->post())
-        {
+        if ($this->input->post()) {
             $this->form_validation->set_rules('name', 'Tên story', 'required');
             
             //nhập liệu chính xác
-            if($this->form_validation->run())
-            {
+            if ($this->form_validation->run()) {
                 //lay ten file upload
                 $this->load->library('upload_library');
                 $upload_path = './upload/stories';
                 $upload_data = $this->upload_library->upload($upload_path, 'image');
                 $image_link = '';
-                if(isset($upload_data['file_name'])){
+                if (isset($upload_data['file_name'])) {
                     $image_link = $upload_data['file_name'];
                 }
 
@@ -146,14 +138,13 @@ Class Story extends MY_Controller
                     'status' => $this->input->post('status'),
                     'created' => date("Y-m-d H:i:s"),
                     'updated' => date("Y-m-d H:i:s"),
-                ); 
+                );
                 $data['slug'] = $this->slug_library->create_uri($name);
                 //them moi vao csdl
-                if($this->story_model->create($data))
-                {
+                if ($this->story_model->create($data)) {
                     //tạo ra nội dung thông báo
                     $this->session->set_flashdata('message', 'Thêm mới dữ liệu thành công');
-                }else{
+                } else {
                     $this->session->set_flashdata('message', 'Không thêm được');
                 }
                 //chuyen tới trang danh sách
@@ -173,7 +164,7 @@ Class Story extends MY_Controller
      * @params: id, name, slug, description, image, catagory, status, view, created, updated.
      * @return: Store new data to database
      */
-    function edit()
+    public function edit()
     {
         $config = array(
             'field' => 'slug',
@@ -183,46 +174,42 @@ Class Story extends MY_Controller
 
         $id = $this->uri->rsegment('3');
         $story = $this->story_model->get_info($id);
-        if(!$story)
-        {
+        if (!$story) {
             //tạo ra nội dung thông báo
             $this->session->set_flashdata('message', 'Không tồn tại story này');
             redirect(admin_url('story'));
         }
         $this->data['story'] = $story;
 
-       //lay danh sach danh muc san pham
-       $this->load->model('catalog_model');
-       $input = array();
-       $input['where'] = array('parent_id' => 0);
-       $catalogs = $this->catalog_model->get_list($input);
-       foreach ($catalogs as $row)
-       {
-           $input['where'] = array('parent_id' => $row->id);
-           $subs = $this->catalog_model->get_list($input);
-           $row->subs = $subs;
-       }
-       $this->data['catalogs'] = $catalogs;
+        //lay danh sach danh muc san pham
+        $this->load->model('catalog_model');
+        $input = array();
+        $input['where'] = array('parent_id' => 0);
+        $catalogs = $this->catalog_model->get_list($input);
+        foreach ($catalogs as $row) {
+            $input['where'] = array('parent_id' => $row->id);
+            $subs = $this->catalog_model->get_list($input);
+            $row->subs = $subs;
+        }
+        $this->data['catalogs'] = $catalogs;
        
         //load thư viện validate dữ liệu
         $this->load->library('form_validation');
         $this->load->helper('form');
-         $this->load->library('slug_library',$config);
+        $this->load->library('slug_library', $config);
 
         //neu ma co du lieu post len thi kiem tra
-        if($this->input->post())
-        {
+        if ($this->input->post()) {
             $this->form_validation->set_rules('name', 'Tên story', 'required');
             
             //nhập liệu chính xác
-            if($this->form_validation->run())
-            {
+            if ($this->form_validation->run()) {
                 //lấy tên file ảnh bìa được admin upload
                 $this->load->library('upload_library');
                 $upload_path = './upload/stories';
                 $upload_data = $this->upload_library->upload($upload_path, 'image');
                 $image_link = '';
-                if(isset($upload_data['file_name'])){
+                if (isset($upload_data['file_name'])) {
                     $image_link = $upload_data['file_name'];
                 }
 
@@ -233,17 +220,16 @@ Class Story extends MY_Controller
                     'category_id' => $this->input->post('category_id'),
                     'description'       => $this->input->post('description'),
                     'updated' => date("Y-m-d H:i:s"),
-                ); 
+                );
                 $data['slug'] = $this->slug_library->create_uri($name);
-                if($image_link != ''){
+                if ($image_link != '') {
                     $data['image_link'] = $image_link;
                 }
                 //them moi vao csdl
-                if($this->story_model->update($story->id, $data))
-                {
+                if ($this->story_model->update($story->id, $data)) {
                     //tạo ra nội dung thông báo
                     $this->session->set_flashdata('message', 'Cập nhật dữ liệu thành công');
-                }else{
+                } else {
                     $this->session->set_flashdata('message', 'Không cập nhật được');
                 }
                 //chuyen tới trang danh sách
@@ -263,7 +249,7 @@ Class Story extends MY_Controller
      * @params: id.
      * @return: delete record to database
      */
-    function del()
+    public function del()
     {
         $id = $this->uri->rsegment(3);
         $this->_del($id);
@@ -280,12 +266,11 @@ Class Story extends MY_Controller
      * @params: list of id.
      * @return: Remove all data in database
      */
-    function delete_all()
+    public function delete_all()
     {
         //lay tat ca id story muon xoa
         $ids = $this->input->post('ids');
-        foreach ($ids as $id)
-        {
+        foreach ($ids as $id) {
             $this->_del($id);
         }
     }
@@ -300,8 +285,7 @@ Class Story extends MY_Controller
     private function _del($id)
     {
         $story = $this->story_model->get_info($id);
-        if(!$story)
-        {
+        if (!$story) {
             //tạo ra nội dung thông báo
             $this->session->set_flashdata('message', 'không tồn tại truyện này');
             redirect(admin_url('story'));
@@ -310,13 +294,29 @@ Class Story extends MY_Controller
         $this->story_model->delete($id);
         //xoa cac anh cua story
         $image_link = './upload/stories/'.$story->image_link;
-        if(file_exists($image_link))
-        {
+        if (file_exists($image_link)) {
             unlink($image_link);
         }
-        
+    }
+
+    /**
+     * Description: Lấy data từ medoctruyentranh.net
+     * Function: craw()
+     * @author: Di
+     * @params: none.
+     * @return: Lấy về rồi store trong database
+     */
+    public function craw(){
+
+        $this->load->library('crawler');
+       
+        for($i = 1; $i <= 999 ; $i++){
+            $html = file_get_html('https://webtruyen.com/truyen-full/'.$i);
+            foreach ($html->find('img') as $link) {
+                    echo  $link->src.'<br>';
+                    echo  $link->alt.'<br>';
+                    echo  $link.'<br>';
+                }
+        }
     }
 }
-
-
-
