@@ -15,9 +15,9 @@
               echo $catalog->name;
             ?>
           </p>
-          <h4 class="title-border"><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id.'.html')?>"><?php echo $row->name?></a></h4>
+          <h4 class="title-border"><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a></h4>
           <p><?php echo substr($row->description,0,200).'...'?></p>
-          <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id.'.html')?>" class="btn btn-transparent">xem hết</a>
+          <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>" class="btn btn-transparent">xem hết</a>
         </article>
       </div>
       <?php endforeach ?>

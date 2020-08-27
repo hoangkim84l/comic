@@ -34,6 +34,15 @@
                      <div class="clear"></div>
                   </div>
                   <div class="formRow">
+                     <label for="param_name" class="formLeft">Tác giả:</label>
+                     <div class="formRight">
+                        <span class="oneTwo"><input type="text" _autocheck="true" id="param_author" name="author"></span>
+                        <span class="autocheck" name="author_autocheck"></span>
+                        <div class="clear error" name="author_error"></div>
+                     </div>
+                     <div class="clear"></div>
+                  </div>
+                  <div class="formRow">
                      <label class="formLeft">Ảnh bìa:</label>
                      <div class="formRight">
                         <div class="left">

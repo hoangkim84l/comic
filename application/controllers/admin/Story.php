@@ -134,6 +134,7 @@ class Story extends MY_Controller
                     'name'       => $this->input->post('name'),
                     'category_id' => $this->input->post('category_id'),
                     'description' => $this->input->post('description'),
+                    'author' => $this->input->post('author'),
                     'image_link'  => $image_link,
                     'status' => $this->input->post('status'),
                     'created' => date("Y-m-d H:i:s"),
@@ -219,6 +220,7 @@ class Story extends MY_Controller
                     'name'       => $this->input->post('name'),
                     'category_id' => $this->input->post('category_id'),
                     'description'       => $this->input->post('description'),
+                    'author'       => $this->input->post('author'),
                     'updated' => date("Y-m-d H:i:s"),
                 );
                 $data['slug'] = $this->slug_library->create_uri($name);

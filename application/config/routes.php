@@ -5,9 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['trang-chu.html'] = 'home';
 $route['lien-he.html'] = 'contact';
+//tab truyen
 $route['truyen.html'] = 'stories';
 $route['xem-truyen/(:any)'] = 'stories/view/$1';
-
+$route['xem-truyen/(:any)-(:num)'] = 'stories/view/$1/$2';
 
 $route['san-pham/chi-tiet/(:any)-(:num)'] = 'product/view/$1/$2';
 $route['san-pham/danh-muc/(:any)'] = 'product/catalog/$1';

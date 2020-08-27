@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2020 at 07:50 AM
+-- Generation Time: Aug 27, 2020 at 07:56 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.26
 
@@ -140,6 +140,7 @@ CREATE TABLE `chapters` (
   `slug` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `story_id` int(11) NOT NULL DEFAULT 0,
   `image_link` text COLLATE utf8_unicode_ci NOT NULL,
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `status` tinyint(5) NOT NULL DEFAULT 1,
   `ordering` int(11) NOT NULL DEFAULT 0
@@ -149,13 +150,13 @@ CREATE TABLE `chapters` (
 -- Dumping data for table `chapters`
 --
 
-INSERT INTO `chapters` (`id`, `name`, `slug`, `story_id`, `image_link`, `created`, `status`, `ordering`) VALUES
-(1, 'Chap 1', 'chap-1-1', 5, 'gi1.jpg', '2020-07-15 06:39:00', 1, 1),
-(2, 'Chap 2', 'chap-2', 5, 'gi26.jpg', '2020-07-15 06:39:25', 1, 2),
-(3, 'Chap 3', 'chap-3', 5, 'gi78.jpg', '2020-07-15 06:39:37', 1, 3),
-(5, 'Chap 1', 'chap-1', 30, '001.jpg', '2020-07-15 06:44:12', 1, 1),
-(6, 'Chap 2', 'chap-2-1', 30, '002.jpg', '2020-07-15 06:44:28', 1, 2),
-(7, 'Chap 3', 'chap-3-1', 30, '003.jpg', '2020-07-15 06:44:40', 1, 3);
+INSERT INTO `chapters` (`id`, `name`, `slug`, `story_id`, `image_link`, `content`, `created`, `status`, `ordering`) VALUES
+(1, 'Chap 1', 'chap-1-1', 5, 'gi1.jpg', '', '2020-07-15 06:39:00', 1, 1),
+(2, 'Chap 2', 'chap-2', 5, 'gi26.jpg', '', '2020-07-15 06:39:25', 1, 2),
+(3, 'Chap 3', 'chap-3', 5, 'gi78.jpg', '', '2020-07-15 06:39:37', 1, 3),
+(5, 'Chap 1', 'chap-1', 30, '001.jpg', '', '2020-07-15 06:44:12', 1, 1),
+(6, 'Chap 2', 'chap-2-1', 30, '002.jpg', '', '2020-07-15 06:44:28', 1, 2),
+(7, 'Chap 3', 'chap-3-1', 30, '003.jpg', '', '2020-07-15 06:44:40', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -173,42 +174,6 @@ CREATE TABLE `contact` (
   `phone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `created` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `generals`
---
-
-CREATE TABLE `generals` (
-  `id` int(11) NOT NULL COMMENT 'khóa chính, tự tăng',
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Tên website',
-  `description` varchar(800) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Giới thiệu tóm tắt về website',
-  `keywords` varchar(800) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'keyword của website',
-  `email` varchar(45) COLLATE utf8_unicode_ci NOT NULL COMMENT 'email của website',
-  `site_name` varchar(800) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Tên công ty',
-  `smtp_username` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'mailserver để dùng sendmail.',
-  `smtp_password` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'pass word để tự động login mail server khi send mail',
-  `smtp_host` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Địa chỉ IP gửi mail',
-  `google_analytic` text COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'code google',
-  `smtp_port` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT '25' COMMENT 'port send mail',
-  `facebook` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'địa chỉ facebook',
-  `hotline` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'số điện thoại hotline của công ty',
-  `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'địa chỉ công ty',
-  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'số điện thoại công ty',
-  `fax` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'số fax công ty',
-  `price` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `logo` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'logo công ty',
-  `googleplus` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'địa chỉ googleplus',
-  `smtp_ssl` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Tât cả thông tin chung';
-
---
--- Dumping data for table `generals`
---
-
-INSERT INTO `generals` (`id`, `name`, `description`, `keywords`, `email`, `site_name`, `smtp_username`, `smtp_password`, `smtp_host`, `google_analytic`, `smtp_port`, `facebook`, `hotline`, `address`, `phone`, `fax`, `price`, `logo`, `googleplus`, `smtp_ssl`) VALUES
-(1, 'Dynamic English - Anh ngữ sinh động, dạy tiếng anh online', '', 'dạy tiếng anh, tiếng anh online, học tiếng anh, học tiếng anh online, anh ngữ sinh động, Dynamic English', 'info@abc.com', '', 'marketing@anhngusinhdong.com', 'anhngusinhdong2014', 'mail.anhngusinhdong.com', '<script>var i=1;</script>', '25', 'https://www.facebook.com/readbookonline.info', '', '1B - 22.3 La Casa Bulding, 89 Hoang Quoc Viet, Phu Thuan Ward , District 7, HCMC', '(0939) 598926', '', NULL, NULL, 'https://google.com.vn', 'tsl');
 
 -- --------------------------------------------------------
 
@@ -260,40 +225,70 @@ CREATE TABLE `stories` (
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
-  `view` int(11) NOT NULL DEFAULT 0
+  `view` int(11) NOT NULL DEFAULT 0,
+  `author` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `stories`
 --
 
-INSERT INTO `stories` (`id`, `name`, `slug`, `description`, `image_link`, `category_id`, `created`, `updated`, `status`, `view`) VALUES
-(1, 'One Pice', '', 'truyenej nha', '', 3, '2017-04-18 04:04:03', '2017-05-31 11:37:50', 1, 6),
-(4, 'Hiệp Khách Giang Hồ', '', 'Hiệp Khách Giang Hồ', '', 4, '2017-04-18 04:16:24', '2017-05-31 03:05:08', 1, 19),
-(5, 'Hôn Trộm 55 Lần', '', '', '', 5, '2017-04-18 04:17:00', '2017-05-31 03:04:29', 1, 1),
-(7, 'Attack On Titan', '', 'Attack On Titan', '', 6, '2017-05-31 03:07:35', '2017-05-31 03:07:35', 1, 0),
-(8, 'Fairy Tail', '', 'Fairy Tail', '', 3, '2017-05-31 03:09:01', '2017-05-31 03:09:01', 1, 3),
-(9, 'Người trong giang hồ', '', 'Người trong giang hồ', '', 1, '2017-05-31 03:09:35', '2017-05-31 03:09:35', 1, 4),
-(10, 'Danchi Majo', '', 'Danchi Majo', '', 1, '2017-05-31 03:12:01', '2017-05-31 03:12:01', 1, 0),
-(11, 'Danh Sách Yêu Quái', '', 'Danh Sách Yêu Quái', '', 2, '2017-05-31 03:13:02', '2017-05-31 03:13:02', 1, 0),
-(12, 'Lady Justice', '', 'Lady Justice', '', 2, '2017-05-31 03:13:52', '2017-05-31 03:13:52', 1, 4),
-(13, 'Legend 2', '', 'Legend 2', '', 1, '2017-05-31 03:14:49', '2017-05-31 03:14:49', 1, 5),
-(14, 'Hajimete No Gal', '', 'Hajimete No Gal', '', 4, '2017-05-31 03:15:35', '2017-05-31 03:15:35', 1, 3),
-(15, 'Bokura No Fushidara', '', 'Bokura No Fushidara', '', 5, '2017-05-31 03:16:45', '2017-05-31 03:16:45', 1, 10),
-(16, 'One Pice2', '', 'truyenej nha', '', 3, '2017-04-18 04:04:03', '2017-05-31 11:37:50', 1, 6),
-(17, 'Hiệp Khách Giang Hồ2', '', 'Hiệp Khách Giang Hồ', '', 4, '2017-04-18 04:16:24', '2017-05-31 03:05:08', 1, 19),
-(18, 'Hôn Trộm 55 Lần2', '', '', '', 5, '2017-04-18 04:17:00', '2017-05-31 03:04:29', 1, 1),
-(19, 'Go! Go!', '', 'Go!', '', 1, '2017-05-31 03:05:52', '2020-07-14 12:19:16', 1, 2),
-(20, 'Attack On Titan2', '', 'Attack On Titan', '', 6, '2017-05-31 03:07:35', '2017-05-31 03:07:35', 1, 0),
-(21, 'Fairy Tail2', '', 'Fairy Tail', '', 3, '2017-05-31 03:09:01', '2017-05-31 03:09:01', 1, 3),
-(22, 'Người trong giang hồ2', '', 'Người trong giang hồ', '', 1, '2017-05-31 03:09:35', '2017-05-31 03:09:35', 1, 4),
-(23, 'Danchi Majo2', '', 'Danchi Majo', '', 1, '2017-05-31 03:12:01', '2017-05-31 03:12:01', 1, 0),
-(24, 'Danh Sách Yêu Quái2', '', 'Danh Sách Yêu Quái', '', 2, '2017-05-31 03:13:02', '2017-05-31 03:13:02', 1, 0),
-(25, 'Lady Justice2', '', 'Lady Justice', '', 2, '2017-05-31 03:13:52', '2017-05-31 03:13:52', 1, 4),
-(26, 'Legend 22', '', 'Legend 2', '', 1, '2017-05-31 03:14:49', '2017-05-31 03:14:49', 1, 5),
-(27, 'Hajimete No Gal2', '', 'Hajimete No Gal', '', 4, '2017-05-31 03:15:35', '2017-05-31 03:15:35', 1, 3),
-(28, 'Bokura No Fushidara2', '', 'Bokura No Fushidara', '', 5, '2017-05-31 03:16:45', '2017-05-31 03:16:45', 1, 10),
-(30, 'Trở Về Địa Cầu Làm Thần Côn', 'tro-ve-djia-cau-lam-than-con', 'Trở Về Địa Cầu Làm Thần Côn', 'anime-blazblue-1149.jpg', 5, '2020-07-14 12:35:52', '2020-07-15 06:43:50', 1, 0);
+INSERT INTO `stories` (`id`, `name`, `slug`, `description`, `image_link`, `category_id`, `created`, `updated`, `status`, `view`, `author`) VALUES
+(1, 'One Pice', '', 'truyenej nha', '', 3, '2017-04-18 04:04:03', '2017-05-31 11:37:50', 1, 6, ''),
+(4, 'Hiệp Khách Giang Hồ', '', 'Hiệp Khách Giang Hồ', '', 4, '2017-04-18 04:16:24', '2017-05-31 03:05:08', 1, 19, ''),
+(5, 'Hôn Trộm 55 Lần', '', '', '', 5, '2017-04-18 04:17:00', '2017-05-31 03:04:29', 1, 1, ''),
+(7, 'Attack On Titan', '', 'Attack On Titan', '', 6, '2017-05-31 03:07:35', '2017-05-31 03:07:35', 1, 0, ''),
+(8, 'Fairy Tail', '', 'Fairy Tail', '', 3, '2017-05-31 03:09:01', '2017-05-31 03:09:01', 1, 3, ''),
+(9, 'Người trong giang hồ', '', 'Người trong giang hồ', '', 1, '2017-05-31 03:09:35', '2017-05-31 03:09:35', 1, 4, ''),
+(10, 'Danchi Majo', '', 'Danchi Majo', '', 1, '2017-05-31 03:12:01', '2017-05-31 03:12:01', 1, 0, ''),
+(11, 'Danh Sách Yêu Quái', '', 'Danh Sách Yêu Quái', '', 2, '2017-05-31 03:13:02', '2017-05-31 03:13:02', 1, 0, ''),
+(12, 'Lady Justice', '', 'Lady Justice', '', 2, '2017-05-31 03:13:52', '2017-05-31 03:13:52', 1, 4, ''),
+(13, 'Legend 2', '', 'Legend 2', '', 1, '2017-05-31 03:14:49', '2017-05-31 03:14:49', 1, 5, ''),
+(14, 'Hajimete No Gal', '', 'Hajimete No Gal', '', 4, '2017-05-31 03:15:35', '2017-05-31 03:15:35', 1, 3, ''),
+(15, 'Bokura No Fushidara', '', 'Bokura No Fushidara', '', 5, '2017-05-31 03:16:45', '2017-05-31 03:16:45', 1, 10, ''),
+(16, 'One Pice2', '', 'truyenej nha', '', 3, '2017-04-18 04:04:03', '2017-05-31 11:37:50', 1, 6, ''),
+(17, 'Hiệp Khách Giang Hồ2', '', 'Hiệp Khách Giang Hồ', '', 4, '2017-04-18 04:16:24', '2017-05-31 03:05:08', 1, 19, ''),
+(18, 'Hôn Trộm 55 Lần2', '', '', '', 5, '2017-04-18 04:17:00', '2017-05-31 03:04:29', 1, 1, ''),
+(19, 'Go! Go!', '', 'Go!', '', 1, '2017-05-31 03:05:52', '2020-07-14 12:19:16', 1, 2, ''),
+(20, 'Attack On Titan2', '', 'Attack On Titan', '', 6, '2017-05-31 03:07:35', '2017-05-31 03:07:35', 1, 0, ''),
+(21, 'Fairy Tail2', '', 'Fairy Tail', '', 3, '2017-05-31 03:09:01', '2017-05-31 03:09:01', 1, 3, ''),
+(22, 'Người trong giang hồ2', '', 'Người trong giang hồ', '', 1, '2017-05-31 03:09:35', '2017-05-31 03:09:35', 1, 4, ''),
+(23, 'Danchi Majo2', '', 'Danchi Majo', '', 1, '2017-05-31 03:12:01', '2017-05-31 03:12:01', 1, 0, ''),
+(24, 'Danh Sách Yêu Quái2', '', 'Danh Sách Yêu Quái', '', 2, '2017-05-31 03:13:02', '2017-05-31 03:13:02', 1, 0, ''),
+(25, 'Lady Justice2', '', 'Lady Justice', '', 2, '2017-05-31 03:13:52', '2017-05-31 03:13:52', 1, 4, ''),
+(26, 'Legend 22', '', 'Legend 2', '', 1, '2017-05-31 03:14:49', '2017-05-31 03:14:49', 1, 5, ''),
+(27, 'Hajimete No Gal2', '', 'Hajimete No Gal', '', 4, '2017-05-31 03:15:35', '2017-05-31 03:15:35', 1, 3, ''),
+(28, 'Bokura No Fushidara2', '', 'Bokura No Fushidara', '', 5, '2017-05-31 03:16:45', '2017-05-31 03:16:45', 1, 10, ''),
+(30, 'Trở Về Địa Cầu Làm Thần Côn', 'tro-ve-djia-cau-lam-than-con-1', 'Trở Về Địa Cầu Làm Thần Côn', 'anime-blazblue-1149.jpg', 5, '2020-07-14 12:35:52', '2020-08-27 05:49:08', 1, 30, 'Duy');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `support`
+--
+
+CREATE TABLE `support` (
+  `id` int(255) NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `gmail` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `skype` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `hotline` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `site_title` text COLLATE utf8_unicode_ci NOT NULL,
+  `site_key` text COLLATE utf8_unicode_ci NOT NULL,
+  `site_desc` text COLLATE utf8_unicode_ci NOT NULL,
+  `zalo` text COLLATE utf8_unicode_ci NOT NULL,
+  `facebook` text COLLATE utf8_unicode_ci NOT NULL,
+  `logo` text COLLATE utf8_unicode_ci NOT NULL,
+  `sort_order` tinyint(4) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `support`
+--
+
+INSERT INTO `support` (`id`, `name`, `gmail`, `skype`, `phone`, `hotline`, `site_title`, `site_key`, `site_desc`, `zalo`, `facebook`, `logo`, `sort_order`) VALUES
+(1, 'VP DI', 'vpduy84@gmail.com', 'vpduy84', '123456', '123456', 'Commic', 'Commic', 'Commic', 'fanpage zalo', 'fanpage facebook', 'bong-lua-vang.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -362,12 +357,6 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `generals`
---
-ALTER TABLE `generals`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -383,6 +372,12 @@ ALTER TABLE `slides`
 -- Indexes for table `stories`
 --
 ALTER TABLE `stories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `support`
+--
+ALTER TABLE `support`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -432,12 +427,6 @@ ALTER TABLE `contact`
   MODIFY `id` int(128) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `generals`
---
-ALTER TABLE `generals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'khóa chính, tự tăng', AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
@@ -454,6 +443,12 @@ ALTER TABLE `slides`
 --
 ALTER TABLE `stories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `support`
+--
+ALTER TABLE `support`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
