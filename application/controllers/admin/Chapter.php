@@ -135,6 +135,8 @@ Class Chapter extends MY_Controller
                     'name'       => $name,
                     'image_link' => $image_link,
                     'story_id'   => $this->input->post('category_id'),
+                    'content'   => $this->input->post('content'),
+                    'author'   => $this->input->post('author'),
                     'status'     => $this->input->post('status'),
                     'created'    => date("Y-m-d H:i:s"),
                     'ordering'   => $this->input->post('ordering'),
@@ -225,6 +227,8 @@ Class Chapter extends MY_Controller
                     'name'     => $name,
                     'story_id' => $this->input->post('category_id'),
                     'status'   => $this->input->post('status'),
+                    'content'   => $this->input->post('content'),
+                    'author'   => $this->input->post('author'),
                     'created'  => date("Y-m-d H:i:s"),
                     'ordering' => $this->input->post('ordering'),
                 ); 

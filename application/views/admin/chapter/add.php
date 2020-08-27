@@ -36,6 +36,16 @@
                      <div class="clear"></div>
                   </div>
                   <div class="formRow">
+                     <label class="formLeft">Nội dung chữ:</label>
+                     <div class="formRight">
+                        <div class="left">
+                           <textarea class="editor" id="param_content" name="content"></textarea>   
+                        </div>
+                        <div class="clear error" name="image_error"></div>
+                     </div>
+                     <div class="clear"></div>
+                  </div>
+                  <div class="formRow">
                      <label for="param_cat" class="formLeft">Thể loại:</label>
                      <div class="formRight">
                         <select name="category_id" class="left">
@@ -66,6 +76,14 @@
                      <label for="param_name" class="formLeft">Vị trí:</label>
                      <div class="formRight">
                         <span class="oneTwo"><input type="text" _autocheck="true" id="param_ordering" name="ordering"></span>
+                        <span class="autocheck" name="name_autocheck"></span>
+                     </div>
+                     <div class="clear"></div>
+                  </div>
+                  <div class="formRow">
+                     <label for="param_name" class="formLeft">Tác giả:</label>
+                     <div class="formRight">
+                        <span class="oneTwo"><input type="text" _autocheck="true" id="param_ordering" name="author"></span>
                         <span class="autocheck" name="name_autocheck"></span>
                      </div>
                      <div class="clear"></div>

@@ -27,7 +27,9 @@
                   <div class="formRow">
                      <label for="param_name" class="formLeft">Mô tả ngắn:</label>
                      <div class="formRight">
-                        <span class="oneTwo"><input type="text" _autocheck="true" id="param_description" name="description"></span>
+                        <span class="oneTwo">
+                        <textarea class="editor" id="param_content" name="description">
+                            </textarea>
                         <span class="autocheck" name="name_autocheck"></span>
                         <div class="clear error" name="name_error"></div>
                      </div>

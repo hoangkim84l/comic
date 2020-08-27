@@ -1,11 +1,11 @@
 <?php
-Class Stories extends MY_Controller
+Class Chapter extends MY_Controller
 {
     function __construct()
     {
         parent::__construct();
         //load model san pham
-        $this->load->model('story_model');
+        $this->load->model('chapter_model');
     }
 
     /**
@@ -21,11 +21,11 @@ Class Stories extends MY_Controller
         $this->load->library('pagination');
         //Buoc 2:Cau hinh cho phan trang
         //lay tong so luong san pham tu trong csdl
-        $total_rows = $this->story_model->get_total();
+        $total_rows = $this->chapter_model->get_total();
         $this->data['total_rows'] = $total_rows;
         
         $config = array();
-        $config['base_url']    = base_url('stories/index');
+        $config['base_url']    = base_url('chapter/index');
         $config['total_rows']  = $total_rows;
         $config['per_page']    = 3;
         $config['uri_segment'] = 3;
@@ -42,11 +42,11 @@ Class Stories extends MY_Controller
         $input = array();
         $input['limit'] = array($config['per_page'], $segment);
         
-        $storiess = $this->story_model->get_list($input);
-        $this->data['list'] = $storiess;
+        $chapters = $this->chapter_model->get_list($input);
+        $this->data['list'] = $chapters;
     
         // Hien thi view
-        $this->data['temp'] = 'site/stories/index';
+        $this->data['temp'] = 'site/chapter/index';
         $this->load->view('site/layout', $this->data);
     }
     
@@ -63,22 +63,18 @@ Class Stories extends MY_Controller
         $id = $this->uri->rsegment(3);
         $output = explode("-",$id);
         $id =  $output[count($output)-1];
-        // var_dump($last_key);
-        $stories = $this->story_model->get_info($id);
-        if(!$stories) redirect();
+        
+        $chapter = $this->chapter_model->get_info($id);
+        if(!$chapter) redirect();
         //lấy số điểm trung bình đánh giá
-        // $stories->raty = ($stories->rate_count > 0) ? $stories->rate_total/$stories->rate_count : 0;
+        // $chapter->raty = ($chapter->rate_count > 0) ? $chapter->rate_total/$chapter->rate_count : 0;
         
-        $this->data['stories'] = $stories;
-        
-        //lấy danh sách ảnh sản phẩm kèm theo
-        $image_list = @json_decode($stories->image_list);
-        $this->data['image_list'] = $image_list;
+        $this->data['chapter'] = $chapter;
         
         //cap nhat lai luot xem cua san pham
         $data = array();
-        $data['view'] = $stories->view + 1;
-        $this->story_model->update($stories->id, $data);
+        $data['view'] = $chapter->view + 1;
+        $this->chapter_model->update($chapter->id, $data);
         
         //lay thong tin cua danh mục san pham
         $catalog = $this->catalog_model->get_list();
@@ -87,22 +83,20 @@ Class Stories extends MY_Controller
         //lay danh mục chương/chapter
         $this->load->model('chapter_model');
         $chapter = $this->chapter_model->get_info($id);
-        
         $this->data['chapter'] = $chapter;
-        $input = array();
-        $input['where'] = array('story_id' => $id);
-        $list = $this->chapter_model->get_list($input);
+        $input_chapter = array();
+        $input_chapter = array();
+        $input_chapter['where'] = array('story_id' => $chapter->story_id);
+        $list = $this->chapter_model->get_list($input_chapter);
         $this->data['list_chapters'] = $list;
 
-        //danh sách truyện mới
+        //lấy tên truyện
         $this->load->model('story_model');
-		$input_stories = array();
-        $input_stories['limit'] = array(5, 0);
-        $results = $this->story_model->get_list($input_stories);
-        $this->data['view_stories'] = $results;
+        $story = $this->story_model->get_info($chapter->story_id);
+        $this->data['story'] = $story;
 
         //hiển thị ra view
-        $this->data['temp'] = 'site/stories/view';
+        $this->data['temp'] = 'site/chapter/view';
         $this->load->view('site/layout', $this->data);
     }
     
@@ -126,7 +120,7 @@ Class Stories extends MY_Controller
         $this->data['key'] = trim($key);
         $input = array();
         $input['like'] = array('name', $key);
-        $list = $this->story_model->get_list($input);
+        $list = $this->chapter_model->get_list($input);
         $this->data['list']  = $list;
         
         if($this->uri->rsegment('3') == 1)
@@ -146,7 +140,7 @@ Class Stories extends MY_Controller
         }else{
 
             //load view
-            $this->data['temp'] = 'site/stories/search';
+            $this->data['temp'] = 'site/chapter/search';
             $this->load->view('site/layout', $this->data);
         }
     }
@@ -165,7 +159,7 @@ Class Stories extends MY_Controller
         // Lay thong tin
         $id = $this->input->post('id');//lấy id sản phẩm gửi lên từ trang ajax
         $id = (!is_numeric($id)) ? 0 : $id;
-        $info = $this->story_model->get_info($id);//lấy thông tin sản phẩm cần đánh giá
+        $info = $this->chapter_model->get_info($id);//lấy thông tin sản phẩm cần đánh giá
         if (!$info)
         {
             exit();
@@ -192,7 +186,7 @@ Class Stories extends MY_Controller
         $data['rate_total'] = $info->rate_total + $score;//tổng số điểm
         $data['rate_count'] = $info->rate_count + 1;//tổng số lượt đánh giá
         //cập nhật lại đánh gia cho sản phẩm
-        $this->story_model->update($id,$data);
+        $this->chapter_model->update($id,$data);
     
         // Khai bao du lieu tra ve
         $result['complete'] = TRUE;

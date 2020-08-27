@@ -36,6 +36,17 @@
                      <div class="clear"></div>
                   </div>
                   <div class="formRow">
+                     <label class="formLeft">Nội dung chữ:</label>
+                     <div class="formRight">
+                        <div class="left">
+                        <textarea class="editor" id="param_content" name="content">
+                                <?php echo $chapter->content?>
+                            </textarea></div>
+                        <div class="clear error" name="image_error"></div>
+                     </div>
+                     <div class="clear"></div>
+                  </div>
+                  <div class="formRow">
                      <label for="param_cat" class="formLeft">Thể loại:</label>
                      <div class="formRight">
                         <select name="category_id" class="left">
@@ -70,6 +81,15 @@
                      <div class="formRight">
                         <span class="oneTwo">
                         <input type="text" _autocheck="true" id="param_ordering" value="<?php echo $chapter->ordering?>" name="ordering">
+                     </span>
+                     </div>
+                     <div class="clear"></div>
+                  </div>
+                  <div class="formRow">
+                     <label for="param_name" class="formLeft">Tác giả:</label>
+                     <div class="formRight">
+                        <span class="oneTwo">
+                        <input type="text" _autocheck="true" id="param_ordering" value="<?php echo $chapter->author?>" name="author">
                      </span>
                      </div>
                      <div class="clear"></div>

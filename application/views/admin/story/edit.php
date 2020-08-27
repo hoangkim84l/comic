@@ -27,8 +27,10 @@
                   <div class="formRow">
                      <label for="param_name" class="formLeft">Mô tả:</label>
                      <div class="formRight">
-                        <span class="oneTwo"><input type="text" _autocheck="true" id="param_description" value="<?php echo $story->description?>" name="description"></span>
-                        <span class="autocheck" name="name_autocheck"></span>
+                        <span class="">
+                        <textarea class="editor" id="param_content" name="description">
+                                <?php echo $story->description?>
+                            </textarea><span class="autocheck" name="name_autocheck"></span>
                         <div class="clear error" name="name_error"></div>
                      </div>
                      <div class="clear"></div>

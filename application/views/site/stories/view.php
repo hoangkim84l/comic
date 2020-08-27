@@ -35,7 +35,7 @@
                 <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $stories->author ?></li>
                 <li class="list-inline-item"><?php echo $row_chapter->created?></li>
               </ul>
-              <h6><a class="text-dark" href="<?php echo site_url('xem-chuong/'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
+              <h6><a class="text-dark" href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
             </div>
           </div>
           <?php endforeach;?>
@@ -50,10 +50,10 @@
             </div>
             <div class="media-body">
               <ul class="list-inline d-flex justify-content-between mb-2">
-                <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?></li>
+                <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?> </li>
                 <li class="list-inline-item"><?php echo $row_stories->created?></li>
               </ul>
-              <h6><a class="text-dark" href="blog-single.html"><?php echo $row_stories->name?></a></h6>
+              <h6><a class="text-dark" href="blog-single.html"><?php echo $row_stories->name?></a>/ Lượt xem - <?php echo $row_stories->view?></h6>
             </div>
           </div>
           <?php endforeach;?>  

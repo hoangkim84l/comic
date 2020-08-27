@@ -5,10 +5,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['trang-chu.html'] = 'home';
 $route['lien-he.html'] = 'contact';
-//tab truyen
+
+//tab truyện
 $route['truyen.html'] = 'stories';
 $route['xem-truyen/(:any)'] = 'stories/view/$1';
 $route['xem-truyen/(:any)-(:num)'] = 'stories/view/$1/$2';
+
+//tab chuong/chapter
+$route['truyen/(:any)'] = 'chapter/view/$1';
+$route['truyen/(:any)-(:num)'] = 'chapter/view/$1/$2';
+
+//tab danh mục truyện
+$route['danh-muc/(:any)'] = 'catalog/view/$1';
+$route['danh-muc/(:any)-(:num)'] = 'catalog/view/$1/$2';
 
 $route['san-pham/chi-tiet/(:any)-(:num)'] = 'product/view/$1/$2';
 $route['san-pham/danh-muc/(:any)'] = 'product/catalog/$1';
