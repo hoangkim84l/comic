@@ -27,7 +27,7 @@ Class Stories extends MY_Controller
         $config = array();
         $config['base_url']    = base_url('stories/index');
         $config['total_rows']  = $total_rows;
-        $config['per_page']    = 3;
+        $config['per_page']    = 8;
         $config['uri_segment'] = 3;
         $config['next_link']   = "Trang kế tiếp";
         $config['prev_link']   = "Trang trước";
@@ -37,14 +37,25 @@ Class Stories extends MY_Controller
     
         //lay danh sach san pham trong csdl,moi lan lay limit 3 san pham
         //$this->uri->segment(n): lay ra phan doan thu n tren link url
-        $segment = $this->uri->segment(4);
+        $segment = $this->uri->segment(3);
         $segment = intval($segment);
         $input = array();
         $input['limit'] = array($config['per_page'], $segment);
         
-        $storiess = $this->story_model->get_list($input);
-        $this->data['list'] = $storiess;
+        $stories = $this->story_model->get_list($input);
+        $this->data['list_story'] = $stories;
     
+          //lay danh sach truyện view cao
+	    $input_story = array();
+        $input_story['limit'] = array(7, 0);
+        $input_story['order'] = array('view', 'DESC');
+	    $story_newest = $this->story_model->get_list($input_story);
+        $this->data['story_newest'] = $story_newest;
+        
+        //lay thong tin cua danh mục san pham
+        $catalogs = $this->catalog_model->get_list();
+        $this->data['catalogs'] = $catalogs;
+
         // Hien thi view
         $this->data['temp'] = 'site/stories/index';
         $this->load->view('site/layout', $this->data);
@@ -144,7 +155,7 @@ Class Stories extends MY_Controller
             //du lieu tra ve duoi dang json
             die(json_encode($result));
         }else{
-
+            //var_dump($list);die();
             //load view
             $this->data['temp'] = 'site/stories/search';
             $this->load->view('site/layout', $this->data);

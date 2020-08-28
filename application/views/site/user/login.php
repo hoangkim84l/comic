@@ -2,7 +2,7 @@
 <section class="section">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-12 login-user">
 		<h2 class="mb-4">Thành viên đăng nhập</h2>
 		<h3 style="color:red"><?php echo form_error('login')?></h3>
         <form method="post" action="<?php echo site_url('user/login')?>" enctype="multipart/form-data" class="row">

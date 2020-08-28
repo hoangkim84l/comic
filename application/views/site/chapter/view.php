@@ -37,12 +37,19 @@
             $id =  $output[count($output)-1]; 
             $array_values = array_values($list_chapters);
           ?>
-          <?php if((array_pop($array_values)->id) != ($id)){ ?>
+          <?php if(count($array_values) == 1){
+              echo "";
+          }else{ ?>
+          <?php if ((array_pop($array_values)->id) != ($id)) { ?>
             <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id-1))?>" class="previous">&laquo; Chương trước</a>
-          <?php } else{ echo "";}?>
-          <?php if((array_shift($array_values)->id) != ($id)){ ?>
+          <?php } else {
+              echo "";
+          }?>
+          <?php if ((array_shift($array_values)->id) != ($id)) { ?>
             <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id+1))?>" class="next">Chương sau &raquo;</a>
-          <?php } else{ echo "";}?>
+          <?php } else {
+              echo "";
+          }}?>
         </div>
       </div>  
       <div class="widget">

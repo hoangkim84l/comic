@@ -4,6 +4,8 @@ Class User extends MY_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->helper('form');
+        $this->load->library('form_validation');
         $this->load->model('user_model');
     }
     
@@ -34,10 +36,7 @@ Class User extends MY_Controller
         {
             redirect(site_url('user'));
         }
-        
-        $this->load->library('form_validation');
-        $this->load->helper('form');
-        
+        $this->load->model('user_model');
         //neu ma co du lieu post len thi kiem tra
         if($this->input->post())
         {
@@ -47,7 +46,7 @@ Class User extends MY_Controller
             $this->form_validation->set_rules('re_password', 'Nhập lại mật khẩu', 'matches[password]');
             $this->form_validation->set_rules('phone', 'Số điện thoại', 'required');
             $this->form_validation->set_rules('address', 'Địa chỉ', 'required');
-  
+            
             //nhập liệu chính xác
             if($this->form_validation->run())
             {
@@ -74,7 +73,6 @@ Class User extends MY_Controller
                 redirect(site_url());
             }
         }
-        
         //hiển thị ra view
         $this->data['temp'] = 'site/user/register';
         $this->load->view('site/layout', $this->data);

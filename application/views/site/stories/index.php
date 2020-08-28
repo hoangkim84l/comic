@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h4><?php echo $catalog->name?></h4>
+        <h4>TẤT CẢ TRUYỆN/MANGA</h4>
       </div>
     </div>
   </div>
@@ -36,24 +36,11 @@
             <?php endforeach;?>   
         </div> 
         <div class="row">
-          <div class="col-12">
+            <div class="col-12">
+                <div class='pagination'>
+		            <?php echo $this->pagination->create_links();?>
+		        </div>
             <nav>
-              <ul class="pagination justify-content-center align-items-center">
-                <li class="page-item">
-                  <span class="page-link">&laquo; Previous</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">01</a></li>
-                <li class="page-item active">
-                  <span class="page-link">02</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                <li class="page-item"><a class="page-link" href="#">04</a></li>
-                <li class="page-item"><a class="page-link" href="#">05</a></li>
-                <li class="page-item"><a class="page-link" href="#">06</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next &raquo;</a>
-                </li>
-              </ul>
             </nav>
           </div>
         </div>
@@ -61,7 +48,7 @@
       <!-- /blog post -->
       <div class="col-lg-4">
         <div class="widget">
-          <h6 class="mb-4">Truyện được quan tâm</h6>
+          <h6 class="mb-4">Truyện được xem nhiều nhất</h6>
             <?php foreach($story_newest as $row):?>     
               <div class="media mb-4">
                 <div class="post-thumb-sm mr-3">
@@ -72,7 +59,7 @@
                     <li class="list-inline-item"><i class="ti-user mr-2"></i>  <?php echo $row->author?></li>
                     <li class="list-inline-item"><?php echo $row->created?></li>
                   </ul>
-                  <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a></h6>
+                  <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a> -  view <?php echo $row->view?></h6>
                 </div>
               </div>
             <?php endforeach;?>  

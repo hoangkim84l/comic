@@ -22,7 +22,7 @@
 		
 		<div class="custom-contentz">
 			<?php if(isset($message)):?>
-			<h3 style="color:red"><?php echo $message?></h3>
+			<h3 class="nontification"><?php echo $message?></h3>
 			<?php endif;?>
 			<?php $this->load->view($temp , $this->data);?>
 		</div>

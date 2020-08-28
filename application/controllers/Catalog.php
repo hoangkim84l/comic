@@ -81,6 +81,16 @@ Class Catalog extends MY_Controller
         $input['where'] = array('category_id' => $id);
         $list = $this->story_model->get_list($input);
         $this->data['list_story'] = $list;
+
+        //lay danh sach truyện view cao
+	    $input_story = array();
+        $input_story['limit'] = array(7, 0);
+        $input_story['where'] = array('category_id' => $id);
+        $input_story['order'] = array('view', 'DESC');
+	    $story_newest = $this->story_model->get_list($input_story);
+	    $this->data['story_newest'] = $story_newest;
+
+
         //lay thong tin cua danh mục san pham
         $catalogs = $this->catalog_model->get_list();
         $this->data['catalogs'] = $catalogs;

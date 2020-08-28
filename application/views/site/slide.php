@@ -19,9 +19,9 @@
                                         $catalog = $this->catalog_model->get_info($data->category_id);  
                                         echo $catalog->name?></p>
               <h4 class="card-title mb-4">
-                <a class="text-white" href="<?php echo site_url('xem-truyen/'.$data->slug.'-'.$data->id.'.html')?>"><?php echo $data->name?></a>
+                <a class="text-white" href="<?php echo site_url('xem-truyen/'.$data->slug.'-'.$data->id)?>"><?php echo $data->name?></a>
               </h4>
-              <a class="btn btn-outline-light" href="<?php echo site_url('xem-truyen/'.$data->slug.'-'.$data->id.'.html')?>">Xem Hết..</a>
+              <a class="btn btn-outline-light" href="<?php echo site_url('xem-truyen/'.$data->slug.'-'.$data->id)?>">Xem Hết..</a>
             </div>
           </div>
         </article>

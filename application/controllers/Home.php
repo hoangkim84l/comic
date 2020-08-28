@@ -18,6 +18,7 @@ Class Home extends MY_Controller
 		//get  stories by dates
 		$this->load->model('story_model');
 		$input = array();
+		$input['limit'] = array(21, 0);
 		$input['order'] = array('created', 'DESC');
 		$result_home = $this->story_model->get_list($input);
 		$this->data['data_home'] = $result_home;
