@@ -43,8 +43,16 @@ class Contact extends MY_Controller
 			$data['content']		= $this->input->post('content');
 			$data['created'] 		= now();
 			$this->contact_model->create($data);
-			$this->session->set_flashdata('message', 'Liên hệ thành công');
-			redirect();//chuyen toi trang chu
+			//$this->session->set_flashdata('message', 'Liên hệ thành công');
+			echo'
+                    <script>
+                    window.onload = function() {
+                        alert("Liên hệ thành công");
+                        location.href = "";  
+                    }
+                    </script>
+                    ';
+			//redirect();//chuyen toi trang chu
    	  }
    	 
    	  // Hien thi view

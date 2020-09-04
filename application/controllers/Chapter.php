@@ -95,6 +95,13 @@ Class Chapter extends MY_Controller
         $story = $this->story_model->get_info($chapter->story_id);
         $this->data['story'] = $story;
 
+        //Lấy danh sách bình luận
+        $input_comment = array();
+        $input_comment['where'] = array('post_id'=> $chapter->id);
+        $this->load->model('comment_model');
+        $comments = $this->comment_model->get_list($input_comment);
+        $this->data['comments'] = $comments;
+
         //hiển thị ra view
         $this->data['temp'] = 'site/chapter/view';
         $this->load->view('site/layout', $this->data);

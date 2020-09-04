@@ -65,9 +65,25 @@ Class User extends MY_Controller
                 if($this->user_model->create($data))
                 {
                     //tạo ra nội dung thông báo
-                    $this->session->set_flashdata('message', 'Đăng ký thành viên thành công');
+                    //$this->session->set_flashdata('message', 'Đăng ký thành viên thành công');
+                    echo'
+                    <script>
+                    window.onload = function() {
+                        alert("Đăng ký thành viên thành công");
+                        location.href = "";  
+                    }
+                    </script>
+                    ';
                 }else{
-                    $this->session->set_flashdata('message', 'Không thêm được');
+                   // $this->session->set_flashdata('message', 'Không thêm được');
+                    echo'
+                    <script>
+                    window.onload = function() {
+                        alert("Opps có lổi xãy ra kiểm tra form nhập");
+                        location.href = "";  
+                    }
+                    </script>
+                    ';
                 }
                 //chuyen tới trang danh sách quản trị viên
                 redirect(site_url());
@@ -104,8 +120,16 @@ Class User extends MY_Controller
                 //gắn session id của thành viên đã đăng nhập
                 $this->session->set_userdata('user_id_login', $user->id);
                 
-                $this->session->set_flashdata('message', 'Đăng nhập thành công');
-                redirect();
+                //$this->session->set_flashdata('message', 'Đăng nhập thành công');
+                echo'
+                    <script>
+                    window.onload = function() {
+                        alert("Đăng nhập thành công");
+                        location.href = "";  
+                    }
+                    </script>
+                    ';
+                //redirect();
             }
         }
         
@@ -195,9 +219,25 @@ Class User extends MY_Controller
                 if($this->user_model->update($user_id, $data))
                 {
                     //tạo ra nội dung thông báo
-                    $this->session->set_flashdata('message', 'Chỉnh sửa thông tin thành công');
+                   // $this->session->set_flashdata('message', 'Chỉnh sửa thông tin thành công');
+                    echo'
+                    <script>
+                    window.onload = function() {
+                        alert("Chỉnh sửa thông tin thành công");
+                        location.href = "";  
+                    }
+                    </script>
+                    ';
                 }else{
-                    $this->session->set_flashdata('message', 'Không thành công');
+                    //$this->session->set_flashdata('message', 'Không thành công');
+                    echo'
+                    <script>
+                    window.onload = function() {
+                        alert("Không thành công");
+                        location.href = "";  
+                    }
+                    </script>
+                    ';
                 }
                 //chuyen tới trang danh sách quản trị viên
                 redirect(site_url('user'));

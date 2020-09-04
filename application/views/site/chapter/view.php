@@ -79,4 +79,82 @@
     </div>
   </div>
 </section>
-<!-- /blog single -->
+
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- /blog single -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Bình luận ở đầy nè</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Bình luận với Facebook</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Bình luận với Google</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <br/>
+            <?php if(isset($user_info)):?>
+            <form action="<?php echo site_url('comment/index');?>" class="row" method="POST">
+              <input type="hidden" class="form-control mb-4" name="user_id" id="user_id" value="<?php echo $user_info->id?>">
+              <input type="hidden" class="form-control mb-4" name="post_id" id="post_id" value="<?php echo $chapter->id?>">
+              <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="0">
+              <div class="col-lg-12">
+                <textarea name="body" id="body" class="form-control mb-4" placeholder="Lời nhắn..."></textarea>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary">Lên Lên</button>
+              </div>
+            </form>
+            <br/>
+            <h6 class="mb-4">Bình luận ở đây</h6>
+              <?php foreach($comments as $row):?>
+              <div class="media mb-4">
+                <div class="post-thumb-sm mr-3">
+                  <img class="img-fluid" src="<?php echo base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->body?>">
+                </div>
+                <div class="media-body">
+                  <ul class="list-inline d-flex justify-content-between mb-2">
+                    <li class="list-inline-item">
+                      <?php
+                        $this->load->model('user_model');
+                        $input = array();
+                        $input['where'] = array('id'=> $row->user_id);
+                        $users = $this->user_model->get_info($row->user_id);
+                        echo $users->name;
+                      ?>
+                    </li>
+                    <li class="list-inline-item"><?php echo $row->created?></li>
+                  </ul>
+                  <h6><?php echo $row->body?></h6>
+                </div>
+              </div>
+              <?php endforeach;?>
+            <?php else:?>
+              Vui lòng đăng nhập để sữ dụng tính năng này
+            <?php endif;?>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <br/>
+            <div id="fb-root"></div>
+            <script src="http://connect.facebook.net/vi_VN/all.js#appId=170796359666689&amp;xfbml=1"></script>
+            <div class="fb-comments"  data-href="<?php echo current_url() ?>"
+                                    data-num-posts="5" 
+                                    data-width="100%" 
+                                  data-colorscheme="light">
+            </div>
+          </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <br/>
+            Google + bị khai tử chúng tôi đang tìm cách thay thế...
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>
+</section>
