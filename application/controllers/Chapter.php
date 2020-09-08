@@ -85,7 +85,6 @@ Class Chapter extends MY_Controller
         $chapter = $this->chapter_model->get_info($id);
         $this->data['chapter'] = $chapter;
         $input_chapter = array();
-        $input_chapter = array();
         $input_chapter['where'] = array('story_id' => $chapter->story_id);
         $list = $this->chapter_model->get_list($input_chapter);
         $this->data['list_chapters'] = $list;
@@ -94,6 +93,12 @@ Class Chapter extends MY_Controller
         $this->load->model('story_model');
         $story = $this->story_model->get_info($chapter->story_id);
         $this->data['story'] = $story;
+
+        //lấy truyện cùng danh mục
+        $input_stories = array();
+        $input_stories['where'] = array('id' => $chapter->story_id);
+        $list_stories = $this->story_model->get_list($input_stories);
+        $this->data['list_stories'] = $list_stories;
 
         //Lấy danh sách bình luận
         $input_comment = array();

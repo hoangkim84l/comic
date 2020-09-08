@@ -28,17 +28,21 @@
       <div class="col-lg-4">
       <div class="widget">
           <h6 class="mb-4">CHƯƠNG/CHAPTER</h6>
-          <?php foreach($list_chapters as $row_chapter):?>
-          <div class="media mb-4">
-            <div class="media-body">
-              <ul class="list-inline d-flex justify-content-between mb-2">
-                <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $stories->author ?></li>
-                <li class="list-inline-item"><?php echo $row_chapter->created?></li>
-              </ul>
-              <h6><a class="text-dark" href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
+            <div class="scrollbar" id="style-1">
+              <div class="force-overflow">
+              <?php foreach($list_chapters as $row_chapter):?>
+                <div class="media mb-4">
+                  <div class="media-body">
+                    <ul class="list-inline d-flex justify-content-between mb-2">
+                      <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $stories->author ?></li>
+                      <li class="list-inline-item"><?php echo $row_chapter->created?></li>
+                    </ul>
+                    <h6><a class="text-dark" href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
+                  </div>
+                </div>
+                <?php endforeach;?>
+              </div>
             </div>
-          </div>
-          <?php endforeach;?>
         </div>
         <div class="widget">
           <h6 class="mb-4">Truyện mới</h6>

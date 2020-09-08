@@ -965,7 +965,7 @@ VERSION:	Versoin Number
     }
     
     #style-1::-webkit-scrollbar {
-        width: 6px;
+        width: 1px;
         background-color: #fdefe6;
     }
     
