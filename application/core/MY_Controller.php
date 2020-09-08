@@ -51,11 +51,11 @@ Class MY_Controller extends CI_Controller
                     }
                    
                     //load model ho tro truc tuyen
-                    // $this->load->model('support_model');
+                    $this->load->model('support_model');
                     //lay danh sach ho tro truc tuyen
-                    // $supports = $this->support_model->get_list();
+                    $support = $this->support_model->get_info(1);
                     //gui bien sang view
-                    // $this->data['supports'] = $supports;
+                    $this->data['support'] = $support;
                     
                 }
             

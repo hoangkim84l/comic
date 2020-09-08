@@ -113,28 +113,33 @@
             </form>
             <br/>
             <h6 class="mb-4">Bình luận ở đây</h6>
-              <?php foreach($comments as $row):?>
-              <div class="media mb-4">
-                <div class="post-thumb-sm mr-3">
-                  <img class="img-fluid" src="<?php echo base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->body?>">
-                </div>
-                <div class="media-body">
-                  <ul class="list-inline d-flex justify-content-between mb-2">
-                    <li class="list-inline-item">
-                      <?php
-                        $this->load->model('user_model');
-                        $input = array();
-                        $input['where'] = array('id'=> $row->user_id);
-                        $users = $this->user_model->get_info($row->user_id);
-                        echo $users->name;
-                      ?>
-                    </li>
-                    <li class="list-inline-item"><?php echo $row->created?></li>
-                  </ul>
-                  <h6><?php echo $row->body?></h6>
-                </div>
+            <div class="scrollbar" id="style-1">
+              <div class="force-overflow">
+                <?php foreach($comments as $row):?>
+                  <div class="media mb-4">
+                    <div class="post-thumb-sm mr-3">
+                      <img class="img-fluid" src="<?php echo base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->body?>">
+                    </div>
+                    <div class="media-body">
+                      <ul class="list-inline d-flex justify-content-between mb-2">
+                        <li class="list-inline-item">
+                          <?php
+                            $this->load->model('user_model');
+                            $input = array();
+                            $input['where'] = array('id'=> $row->user_id);
+                            $users = $this->user_model->get_info($row->user_id);
+                            echo $users->name;
+                          ?>
+                        </li>
+                        <li class="list-inline-item"><?php echo $row->created?></li>
+                      </ul>
+                      <h6><?php echo $row->body?></h6>
+                    </div>
+                  </div>
+                  <?php endforeach;?>
               </div>
-              <?php endforeach;?>
+                
+            </div>
             <?php else:?>
               Vui lòng đăng nhập để sữ dụng tính năng này
             <?php endif;?>

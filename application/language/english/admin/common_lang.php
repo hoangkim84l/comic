@@ -42,6 +42,7 @@ $lang['mod_video']				  	    = 'Video';
 
 $lang['group_support']					= 'Hỗ trợ và liên hệ';
 $lang['mod_support']				    = 'Hỗ trợ';
+$lang['mod_support_tag']				= 'Hỗ trợ Và SEO Tag';
 $lang['mod_support_group']			    = 'Nhóm hỗ trợ';
 $lang['mod_contact']				    = 'Liên hệ';
 $lang['mod_send_email']				    = 'Đăng ký nhận mail';

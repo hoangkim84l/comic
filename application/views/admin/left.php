@@ -67,14 +67,14 @@
         <li class="support">
 
             <a href="" class="exp inactive">
-                <span>Hỗ trợ và liên hệ</span>
+                <span>Hỗ trợ và Seo Tag</span>
                 <strong>1</strong>
             </a>
 
             <ul style="display: none;" class="sub">
                 <li>
                     <a href="<?php echo admin_url('support')?>">
-                    Hỗ trợ</a>
+                    Hỗ trợ & SEO Tag</a>
                 </li>
             </ul>
 

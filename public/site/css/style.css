@@ -941,3 +941,39 @@ VERSION:	Versoin Number
     .login-user {
         padding: 50px 0 100px 0;
     }
+    /*Chapter page*/
+    /* .h-row {
+        position: relative;
+        max-height: 100px;
+        overflow: scroll;
+    } */
+    
+    .scrollbar {
+        /* background-color: #F5F5F5; */
+        float: left;
+        height: 500px;
+        margin-bottom: 25px;
+        margin-left: 22px;
+        margin-top: 40px;
+        padding-right: 15px;
+        width: 100%;
+        overflow-y: scroll;
+    }
+    
+    .force-overflow {
+        min-height: 500px;
+    }
+    
+    #style-1::-webkit-scrollbar {
+        width: 6px;
+        background-color: #fdefe6;
+    }
+    
+    #style-1::-webkit-scrollbar-thumb {
+        background-color: #fdefe6;
+    }
+    
+    #style-1::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #F5F5F5;
+    }
