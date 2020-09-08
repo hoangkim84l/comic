@@ -62,6 +62,18 @@ Class User extends MY_Controller
                     'password' => $password,
                     'created'  => now(),
                 );
+                $this->load->library('email'); // Note: no $config param needed
+                // $this->email->from('YOUREMAILHERE@gmail.com', 'YOUREMAILHERE@gmail.com');
+                $dataEmail = 'Tên: '. $this->input->post('name') .'<br/>'.
+                        'Email: '.$this->input->post('email') .'<br/>'.
+                        'Số điện thoại: '.$this->input->post('phone') .'<br/>'.
+                        'Địa chỉ: '.$this->input->post('address');
+                        'Password: '.$password;
+                $this->email->from($this->input->post('email'));
+                $this->email->to('teamcafesua@gmail.com');
+                $this->email->subject('Người dùng đăng kí : ');
+                $this->email->message($dataEmail);
+                $this->email->send();
                 if($this->user_model->create($data))
                 {
                     //tạo ra nội dung thông báo

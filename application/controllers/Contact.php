@@ -44,6 +44,19 @@ class Contact extends MY_Controller
 			$data['created'] 		= now();
 			$this->contact_model->create($data);
 			//$this->session->set_flashdata('message', 'Liên hệ thành công');
+			$this->load->library('email'); // Note: no $config param needed
+			// $this->email->from('YOUREMAILHERE@gmail.com', 'YOUREMAILHERE@gmail.com');
+			$data = 'Tên: '. $this->input->post('name') .'<br/>'.
+					'Email: '.$this->input->post('email') .'<br/>'.
+					'Số điện thoại: '.$this->input->post('phone') .'<br/>'.
+					'Địa chỉ: '.$this->input->post('address') .'<br/>'.
+					'Tiêu đề: '.$this->input->post('title') .'<br/>'.
+					'Nội dung: '.$this->input->post('content');
+			$this->email->from($this->input->post('email'));
+			$this->email->to('teamcafesua@gmail.com');
+			$this->email->subject('Email liên hệ');
+			$this->email->message($data);
+			$this->email->send();
 			echo'
                     <script>
                     window.onload = function() {
@@ -53,6 +66,7 @@ class Contact extends MY_Controller
                     </script>
                     ';
 			//redirect();//chuyen toi trang chu
+			
    	  }
    	 
    	  // Hien thi view
