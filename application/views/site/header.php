@@ -1,5 +1,5 @@
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="<?php echo base_url()?>"><img class="img-fluid" src="<?php echo public_url()?>site/images/logo.png" alt="Web comic truyện tranh, truyện nhân gian"></a>
+        <a class="navbar-brand" href="<?php echo base_url()?>"><img class="img-fluid" src="<?php echo $support->logo != '' ? base_url('upload/logo/'.$support->logo) : base_url('upload/logo/default.jpg') ?>" alt="Web comic truyện tranh, truyện nhân gian"></a>
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navogation"
         aria-controls="navogation" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

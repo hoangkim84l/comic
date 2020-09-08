@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2020 at 07:04 AM
+-- Generation Time: Sep 08, 2020 at 08:05 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.26
 
@@ -210,7 +210,13 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `name`, `email`, `address`, `title`, `content`, `phone`, `created`) VALUES
-(17, 'Test', 'vd@embrace-it.com', 'Kildehøjvej 12, 3460 Birkerød, Denmark', 'IS THERE A WARRANTY ON THE SOLAR HOME SYSTEM?', 'Test', '0723443206', 1598584231);
+(17, 'Test', 'vd@embrace-it.com', 'Kildehøjvej 12, 3460 Birkerød, Denmark', 'IS THERE A WARRANTY ON THE SOLAR HOME SYSTEM?', 'Test', '0723443206', 1598584231),
+(18, 'Test', 'vd@embrace-it.com', 'Kildehøjvej 12, 3460 Birkerød, Denmark', 'IS THERE A WARRANTY ON THE SOLAR HOME SYSTEM?', 'Test', '0723443206', 1599543566),
+(19, 'Test', 'vd@embrace-it.com', 'Kildehøjvej 12, 3460 Birkerød, Denmark', 'Title', 'Test', '0723443206', 1599543755),
+(20, 'Test', 'vd@embrace-it.com', 'Kildehøjvej 12, 3460 Birkerød, Denmark', 'What is the lifespan of the battery?', 'Test', '0723443206', 1599543827),
+(21, 'Test', 'vd@embrace-it.com', 'Kildehøjvej 12, 3460 Birkerød, Denmark', 'IS THERE A WARRANTY ON THE SOLAR HOME SYSTEM?', 'test', '0723443206', 1599543921),
+(22, 'Test', 'vd@embrace-it.com', 'Kildehøjvej 12, 3460 Birkerød, Denmark', 'IS THERE A WARRANTY ON THE SOLAR HOME SYSTEM?', 'test', '0723443206', 1599544011),
+(23, 'Test', 'vd@embrace-it.com', 'Kildehøjvej 12, 3460 Birkerød, Denmark', 'What happens to the solar panel when it’s cloudy or raining?', 'Tester', '0723443206', 1599544239);
 
 -- --------------------------------------------------------
 
@@ -334,7 +340,7 @@ CREATE TABLE `support` (
 --
 
 INSERT INTO `support` (`id`, `name`, `gmail`, `skype`, `phone`, `hotline`, `site_title`, `site_key`, `site_desc`, `zalo`, `facebook`, `logo`, `favicon`, `sort_order`, `robots`, `author`, `copyright`, `geo_region`, `geo_placename`, `og_image`, `og_type`) VALUES
-(1, 'TeamCafe Sữa', 'teamcafesua@gmail.com', 'teamcafesua@gmail.com', '123456', '123456', 'Hội mê truyện, mê đọc manga', 'manga, truyện tranh, truyện chữ, truyện ngắn', 'một nhóm các thành viên cùng chí hướng và sản phẩm là nội dung trong site này ', 'fanpage zalo', 'fanpage facebook', 'bong-lua-vang.jpg', 'duyquyen1.png', 1, 'noodp,index,follow', 'TeamCafeSua', 'TeamCafeSua', 'VN', '123 Quận Phú Nhuận, Hồ chí Minh', 'bong-lua-vang1.jpg', 'website');
+(1, 'TeamCafe Sữa', 'teamcafesua@gmail.com', 'teamcafesua@gmail.com', '123456', '123456', 'Hội mê truyện, mê đọc manga', 'manga, truyện tranh, truyện chữ, truyện ngắn', 'một nhóm các thành viên cùng chí hướng và sản phẩm là nội dung trong site này ', 'fanpage zalo', 'fanpage facebook', 'duyquyen2.png', 'duyquyen1.png', 1, 'noodp,index,follow', 'TeamCafeSua', 'TeamCafeSua', 'VN', '123 Quận Phú Nhuận, Hồ chí Minh', 'bong-lua-vang1.jpg', 'website');
 
 -- --------------------------------------------------------
 
@@ -363,7 +369,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `address`, `username`, `pas
 (65, 'Loan', 'nqsu381@gmail.com', '', '', 'tuyetloan', '$2a$10$MEEQeiTY8ebDoINH7w.Bb.xPac8MSce.HXSWSXXiONXrlOhmyUsaa', '2013-10-31 03:24:42', '2014-12-10 21:01:28'),
 (68, 'Thành viên số 1', 'vpduy84@gmail.com', '0723443206', 'Kildehøjvej 12, 3460 Birkerød, Denmark', NULL, 'ccfe595945102260ef3554fca8a83a4b', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (69, 'Test PHP', 'vpduy87@gmail.com', '0723443206', 'Kildehøjvej 12, 3460 Birkerød, Denmark', NULL, '959c6e0ab05dbbe8e53fbb9618536ed8', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(70, 'Test tester', 'vd9@embrace-it.com', '0723443206', 'Kildehøjvej 12, 3460 Birkerød, Denmark', NULL, 'ccfe595945102260ef3554fca8a83a4b', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(70, 'Test tester', 'vd9@embrace-it.com', '0723443206', 'Kildehøjvej 12, 3460 Birkerød, Denmark', NULL, 'ccfe595945102260ef3554fca8a83a4b', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(71, 'Võ Termi', 'tester@gmail.com', '01234567', '12 Ac Quận 2', NULL, 'ceb6c970658f31504a901b89dcd3e461', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -485,7 +492,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(128) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(128) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -515,7 +522,7 @@ ALTER TABLE `support`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
