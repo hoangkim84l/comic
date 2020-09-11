@@ -221,6 +221,7 @@ class Story extends MY_Controller
                     'category_id' => $this->input->post('category_id'),
                     'description'       => $this->input->post('description'),
                     'author'       => $this->input->post('author'),
+                    'status'       => $this->input->post('status'),
                     'updated' => date("Y-m-d H:i:s"),
                 );
                 $data['slug'] = $this->slug_library->create_uri($name);

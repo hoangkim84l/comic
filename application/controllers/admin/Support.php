@@ -94,7 +94,7 @@ class Support extends MY_Controller {
         $this->form_validation->set_rules('name', 'Tên hỗ trợ', 'required');
         $this->form_validation->set_rules('phone', 'Số điện thoại', 'required|numeric');
         $this->form_validation->set_rules('gmail', 'Email', 'valid_email');
-        
+       
         if($this->form_validation->run())
         {
 			
@@ -107,7 +107,7 @@ class Support extends MY_Controller {
 			$image_link = '';
 			$og_image = '';
 			$favicon = '';
-
+			// var_dump($this->upload->do_upload());
 			if(isset($upload_data['file_name']))
 			{
 				$image_link = $upload_data['file_name'];

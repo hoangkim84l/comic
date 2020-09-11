@@ -16,24 +16,24 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="row masonry-container pt-5">
-            <?php foreach($list as $row):?>  
+            <?php foreach($list as $row): if($row->status == 0){ }else{?>  
                 <div class="col-sm-4 mb-5">
                     <article class="text-center">
                     <img class="img-fluid mb-4" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>">
                     <p class="text-uppercase mb-2">
-                        <?php 
+                        <?php
                             $this->load->model('catalog_model');
                             $catalog = $this->catalog_model->get_info($row->category_id);
                             echo $catalog->name;
                         ?>
                     </p>
                     <h4 class="title-border"><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name;?></a></h4>
-                    <p><?php echo substr($row->description,0,300).'...'?></p>
+                    <p><?php echo substr($row->description, 0, 300).'...'?></p>
                     <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>" class="btn btn-transparent">read more</a>
                     </article>
 
                 </div>
-            <?php endforeach;?>   
+            <?php } endforeach;?>   
         </div> 
         <div class="row">
             <div class="col-12">

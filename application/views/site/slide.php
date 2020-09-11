@@ -6,6 +6,7 @@
         $count = 0;
         intval($count);
         foreach($data_slides as $data):
+        if($data->status == 0){ }else{  
         $count++;
         if($count > 6 ) break;  
       ?>
@@ -26,7 +27,7 @@
           </div>
         </article>
       </div>
-      <?php endforeach ?>
+        <?php } endforeach ?>
     </div>
   </div>
 </section>
