@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse text-center" id="navogation">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link text-uppercase text-dark " href="<?php echo site_url('trang-chu.html')?>">
+                <a class="nav-link text-uppercase text-dark " href="<?php echo base_url()?>">
                     Trang chủ
                 </a>
             </li>

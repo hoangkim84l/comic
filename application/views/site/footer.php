@@ -2,7 +2,16 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-          <a href="index.html"><img src="<?php echo $support->logo != '' ? base_url('upload/logo/'.$support->logo) : base_url('upload/logo/default.jpg') ?>" alt="persa" class="img-fluid"></a>
+          <?php if($support->slogan != ''){ ?>
+            <div class="slogan">
+              <?php echo $support->slogan;?>
+            </div>
+          <?php } else{ ?>
+            <p>
+              Muốn đi nhanh thì đi một mình<br/>
+              muốn đi xa thì dùng google maps.
+            </p>
+          <?php } ?>
         </div>
         <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
           <h6>Thông tin</h6>

@@ -16,7 +16,7 @@
             <div class="tab_container">
                <div class="tab_content pd0" id="tab1" style="display: block;">
                   <div class="formRow">
-                     <label for="param_name" class="formLeft">Tên truyện<span class="req">*</span></label>
+                     <label for="param_name" class="formLeft">Tên chương<span class="req">*</span></label>
                      <div class="formRight">
                         <span class="oneTwo"><input type="text" _autocheck="true" id="param_name" value="<?php echo $chapter->name?>" name="name"></span>
                         <span class="autocheck" name="name_autocheck"></span>
@@ -47,7 +47,7 @@
                      <div class="clear"></div>
                   </div>
                   <div class="formRow">
-                     <label for="param_cat" class="formLeft">Thể loại:</label>
+                     <label for="param_cat" class="formLeft">Tên truyện:</label>
                      <div class="formRight">
                         <select name="category_id" class="left">
                            <option value=""></option>

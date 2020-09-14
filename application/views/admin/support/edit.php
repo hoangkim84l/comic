@@ -164,6 +164,14 @@
 					<div class="clear"></div>
 				</div>
 				<div class="formRow">
+					<label for="param_slogan" class="formLeft">Slogan: </label>
+					<div class="formRight">
+						<span class="oneTwo"><textarea style="height:300px;" cols="" rows="4" _autocheck="true" id="slogan" name="slogan"><?php echo $info->slogan?></textarea></span>
+						<span class="autocheck" name="slogan_autocheck"></span>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="formRow">
 					<label for="param_site_title" class="formLeft">Chat zalo:<br/>
 						<a href="https://drive.google.com/file/d/1750MozMFzqtHkg0zkP5KG6ECo308mx66/view?usp=sharing" target="_blank" style="color:red;">Tài liệu hướng dẩn Chat Zalo</a>
 					</label>

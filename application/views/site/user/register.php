@@ -3,6 +3,13 @@
     <div class="row">
       <div class="col-lg-12">
         <h2 class="mb-4">Đăng ký thành viên</h2>
+        <br/>
+        <br/>
+      </div>
+      <div class="col-lg-4 mb-12">
+        <img src="<?php echo public_url()?>site/images/dkmh.png" alt="đăng kí thành viên" title="Hội mê truyện" class="img-fluid w-100 mb-4">
+      </div>
+      <div class="col-lg-8 mb-12">
         <form method="post" action="<?php echo site_url('user/register')?>" enctype="multipart/form-data" class="row">
           <div class="col-lg-6">
           <input type="email" class="form-control mb-4" id="email" name="email" value="<?php echo set_value('email')?>" placeholder="Email" require>

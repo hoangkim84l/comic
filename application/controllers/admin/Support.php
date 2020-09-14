@@ -107,7 +107,6 @@ class Support extends MY_Controller {
 			$image_link = '';
 			$og_image = '';
 			$favicon = '';
-			// var_dump($this->upload->do_upload());
 			if(isset($upload_data['file_name']))
 			{
 				$image_link = $upload_data['file_name'];
@@ -131,12 +130,13 @@ class Support extends MY_Controller {
 			$data['site_title'] = $this->input->post('site_title');
 			$data['site_key']   = $this->input->post('site_key');
 			$data['site_desc']  = $this->input->post('site_desc');
-			$data['robots']  = $this->input->post('robots');
-			$data['author']  = $this->input->post('author');
+			$data['robots']  	= $this->input->post('robots');
+			$data['author']  	= $this->input->post('author');
+			$data['slogan']  	= $this->input->post('slogan');
 			$data['copyright']  = $this->input->post('copyright');
-			$data['geo_region']  = $this->input->post('geo_region');
+			$data['geo_region'] = $this->input->post('geo_region');
 			$data['geo_placename']  = $this->input->post('geo_placename');
-			$data['og_type']  = $this->input->post('og_type');
+			$data['og_type']  	= $this->input->post('og_type');
 			$data['zalo']       = $this->input->post('zalo');
 			$data['facebook']   = $this->input->post('facebook');			
             $data['sort_order'] = $this->input->post('sort_order');//vi tri sắp xếp

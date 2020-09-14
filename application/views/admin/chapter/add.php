@@ -46,7 +46,7 @@
                      <div class="clear"></div>
                   </div>
                   <div class="formRow">
-                     <label for="param_cat" class="formLeft">Thể loại:</label>
+                     <label for="param_cat" class="formLeft">Tên truyện:</label>
                      <div class="formRight">
                         <select name="category_id" class="left">
                            <?php foreach ($catalogs as $row):?>

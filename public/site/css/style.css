@@ -977,3 +977,98 @@ VERSION:	Versoin Number
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         background-color: #F5F5F5;
     }
+    /*adding bg header*/
+    
+    .headroom {
+        background-image: url('../images/hinh-nen.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .text-dark {
+        font-size: 20px;
+    }
+    
+    input.form-control {
+        background-color: transparent;
+    }
+    
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3,
+    h4,
+    .h4,
+    h5,
+    .h5,
+    h6,
+    .h6 {
+        font-family: "Open Sans", sans-serif !important;
+    }
+    
+    h6,
+    .h6 {
+        font-size: 22px;
+    }
+    
+    li a {
+        color: #000;
+        padding: 8px 0;
+    }
+    
+    .widget .text-dark,
+    .widget h6 {
+        font-size: 15px;
+        font-family: "Open Sans", sans-serif !important;
+    }
+    
+    .list-unstyled li.text-dark {
+        font-size: 16px;
+    }
+    
+    .section {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    
+    .section.bg-secondary {
+        background-image: url('../images/bg-2.png') !important;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    footer.bg-secondary {
+        background-image: url('../images/brg_footer_draw_city.png') !important;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    a:hover {
+        background-color: transparent;
+    }
+    
+    .pagination {
+        justify-content: center;
+    }
+    
+    img.login-page {
+        height: 300px;
+        width: auto !important;
+        display: flex;
+        margin: 0 auto;
+    }
+    
+    .btn-login-page:hover {
+        background: #ff8c33;
+        color: #fff !important;
+    }
+    
+    .slogan {
+        font-size: 16px;
+    }
+    
+    .font-secondary {
+        font-family: "Open Sans", sans-serif !important;
+    }
