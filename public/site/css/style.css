@@ -951,7 +951,7 @@ VERSION:	Versoin Number
     .scrollbar {
         /* background-color: #F5F5F5; */
         float: left;
-        height: 500px;
+        height: 300px;
         margin-bottom: 25px;
         margin-left: 22px;
         margin-top: 40px;
@@ -961,7 +961,7 @@ VERSION:	Versoin Number
     }
     
     .force-overflow {
-        min-height: 500px;
+        min-height: 300px;
     }
     
     #style-1::-webkit-scrollbar {

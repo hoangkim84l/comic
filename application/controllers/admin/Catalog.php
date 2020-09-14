@@ -40,7 +40,7 @@ Class Catalog extends MY_Controller
 		$config = array(
             'field' => 'slug',
             'name'  => 'name',
-            'table' => 'product',
+            'table' => 'catalog',
         );
         //load thư viện validate dữ liệu
         $this->load->library('form_validation');
