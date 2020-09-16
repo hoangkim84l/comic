@@ -19,7 +19,8 @@
       <div class="col-lg-8">
         <ul class="list-inline d-flex justify-content-between py-3">
           <li class="list-inline-item"><i class="ti-user mr-2"></i><?php echo $chapter->author?></li>
-          <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php echo $chapter->created?></li>
+          <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php $date = date_create($chapter->created);
+                                                                              echo date_format($date,'d-m-Y H:i:s')?></li>
         </ul>
         <?php if($chapter->image_link != ''){ ?>
           <img class="w-100 img-fluid mb-4" src="<?php echo $chapter->image_link != '' ? base_url('upload/chapter/'.$chapter->image_link) : base_url('upload/chapter/default.jpg') ?>" alt="<?php echo $chapter->name?>">
@@ -61,14 +62,16 @@
                 <div class="media mb-4">
                   <div class="media-body">
                     <ul class="list-inline d-flex justify-content-between mb-2">
-                      <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_chapter->author ?> <i class="ti-eye mr-2"></i><?php echo number_format($row_chapter->view)?></li>
-                      <li class="list-inline-item"><?php echo $row_chapter->created?></li>
+                      <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_chapter->author ?> </li>
+                      <li class="list-inline-item"><?php $date = date_create($row_chapter->created);
+                                                          echo date_format($date,'d-m-Y H:i:s')?></li>
                     </ul>
-                    <h6><a class="text-dark <?php if ($row_chapter->id == $id) {
-                    echo "current-chap";
-                } else {
-                    echo "";
-                }?>" href="<?php echo site_url('truyen/'.$story->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
+                    <h6><a class="text-dark 
+                    <?php if ($row_chapter->id == $id) {
+                              echo "current-chap";
+                          } else {
+                              echo "";
+                          }?>" href="<?php echo site_url('truyen/'.$story->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a> <i class="ti-eye mr-2"></i><?php echo number_format($row_chapter->view)?></h6> 
                   </div>
                 </div>
                 <?php } endforeach;?>
@@ -103,7 +106,8 @@
             <div class="media-body">
               <ul class="list-inline d-flex justify-content-between mb-2">
                 <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?> </li>
-                <li class="list-inline-item"><?php echo $row_stories->created?></li>
+                <li class="list-inline-item"><?php $date = date_create($row_stories->created);
+                                                          echo date_format($date,'d-m-Y H:i:s')?></li>
               </ul>
               <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a> <i class="ti-eye mr-2"></i> <?php echo number_format($row_stories->view)?></h6>
             </div>
@@ -159,17 +163,18 @@
                     <div class="media-body">
                       <ul class="list-inline d-flex justify-content-between mb-2">
                         <li class="list-inline-item">
-                          <?php
+                          <b><?php
                             $this->load->model('user_model');
                             $input = array();
                             $input['where'] = array('id'=> $row->user_id);
                             $users = $this->user_model->get_info($row->user_id);
                             echo $users->name;
-                          ?>
+                          ?></b>
                         </li>
-                        <li class="list-inline-item"><?php echo $row->created?></li>
+                        <li class="list-inline-item"><?php $date = date_create($row->created);
+                                                          echo date_format($date,'d-m-Y H:i:s')?></li>
                       </ul>
-                      <h6><?php echo $row->body?></h6>
+                      <span><?php echo $row->body?></span>
                     </div>
                   </div>
                   <?php endforeach;?>

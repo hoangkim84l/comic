@@ -60,8 +60,8 @@ $(document).ready(function() {
                               $date = date_create($stories->created);
                               echo date_format($date,'d-m-Y H:i:s')?>
             </span>
-            <span class="info-book"><i class="ti-eye mr-2"></i><?php echo number_format($stories->view)?> view</span>
-            <span class="info-book"><i class="ti-book mr-2"></i> <?php echo count($list_chapters)?> Chapters</span>
+            <span class="info-book"><i class="ti-eye mr-2"></i><?php echo number_format($stories->view)?> Lượt xem</span>
+            <span class="info-book"><i class="ti-book mr-2"></i> <?php echo count($list_chapters)?> Chương</span>
             <span class="info-book"><i class="ti-pencil mr-2"></i><?php echo $stories->continues == 0 ?  "Còn tiếp" :  "Hoàng thành";?></span>
             <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i> <?php echo $name_catalog->name?></span>
             <span class="info-book">Đánh giá: 
@@ -89,7 +89,8 @@ $(document).ready(function() {
                   <div class="media-body">
                     <ul class="list-inline d-flex justify-content-between mb-2">
                       <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $stories->author ?></li>
-                      <li class="list-inline-item"><?php echo $row_chapter->created?></li>
+                      <li class="list-inline-item"><?php $date = date_create($row_chapter->created);
+                                                          echo date_format($date,'d-m-Y H:i:s')?></li>
                     </ul>
                     <h6><a class="text-dark" href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
                   </div>
@@ -109,7 +110,8 @@ $(document).ready(function() {
             <div class="media-body">
               <ul class="list-inline d-flex justify-content-between mb-2">
                 <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?> </li>
-                <li class="list-inline-item"><?php echo $row_stories->created?></li>
+                <li class="list-inline-item"><?php $date = date_create($row_stories->created);
+                                                          echo date_format($date,'d-m-Y H:i:s')?></li>
               </ul>
               <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a>  <i class="ti-eye mr-2"></i><?php echo number_format($row_stories->view)?></h6>
             </div>
