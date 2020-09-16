@@ -93,7 +93,8 @@
                 $count++;
                 if ($count > 5) {
                     break;
-                } ?>
+                }
+                 ?>
           <div class="media mb-4">
             <div class="post-thumb-sm mr-3">
               <img class="img-fluid" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->name?>">
@@ -176,7 +177,7 @@
                 
             </div>
             <?php else:?>
-              Vui lòng <a href="<?php echo site_url('user/login')?>" target="_blank" rel="noopener noreferrer">đăng nhập</a> để sử dụng tính năng này
+              Vui lòng <a class="link-login" href="<?php echo site_url('user/login')?>" target="_blank" rel="noopener noreferrer">đăng nhập</a> để sử dụng tính năng này
             <?php endif;?>
           </div>
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

@@ -1090,3 +1090,8 @@ VERSION:	Versoin Number
         width: 100%;
         float: left;
     }
+    
+    .link-login {
+        color: #585757;
+        padding: 0px;
+    }

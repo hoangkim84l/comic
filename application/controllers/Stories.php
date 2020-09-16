@@ -47,7 +47,7 @@ Class Stories extends MY_Controller
     
           //lay danh sach truyện view cao
 	    $input_story = array();
-        $input_story['limit'] = array(7, 0);
+        $input_story['limit'] = array(10, 0);
         $input_story['order'] = array('view', 'DESC');
 	    $story_newest = $this->story_model->get_list($input_story);
         $this->data['story_newest'] = $story_newest;
@@ -179,6 +179,7 @@ Class Stories extends MY_Controller
     
         // Lay thong tin
         $id = $this->input->post('id');//lấy id sản phẩm gửi lên từ trang ajax
+        var_dump($id);
         $id = (!is_numeric($id)) ? 0 : $id;
         $info = $this->story_model->get_info($id);//lấy thông tin sản phẩm cần đánh giá
         if (!$info)

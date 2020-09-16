@@ -43,3 +43,20 @@
 <meta property="og:site_name" content="<?php echo current_url();?>" />
 <meta property="og:description" content="<?php echo $support->site_desc?>" />
 <meta property="og:type" content="<?php echo $support->og_type?>" />
+<!-- jQuery -->
+<script src="<?php echo public_url()?>site/plugins/jQuery/jquery.min.js"></script>
+<!-- raty -->
+<script src="<?php echo public_url()?>/site/raty/jquery.raty.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+    $.fn.raty.defaults.path = '<?php echo public_url()?>/site/raty/img';
+    $('.raty').raty({
+        score: function() {
+        return $(this).attr('data-score');
+        },
+        readOnly  : true,
+    });
+});
+</script>
+<style>.raty img{width:16px !important;height:16px !important;}</style>
+<!--End raty --> 

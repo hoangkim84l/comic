@@ -51,8 +51,7 @@
 		<footer class="bg-secondary">
 				<?php $this->load->view('site/footer');?>
 		</footer>
-	<!-- jQuery -->
-	<script src="<?php echo public_url()?>site/plugins/jQuery/jquery.min.js"></script>
+	
 	<!-- Bootstrap JS -->
 	<script src="<?php echo public_url()?>site/plugins/bootstrap/bootstrap.min.js"></script>
 	<!-- slick slider -->
@@ -75,6 +74,7 @@
 		jQuery('*').bind('cut copy paste contextmenu', function (e) {
 			e.preventDefault();
 		})});
-	</script>     
+	</script>
+	    
     </body>
 </html>

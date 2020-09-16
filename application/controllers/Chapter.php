@@ -95,8 +95,9 @@ Class Chapter extends MY_Controller
         $this->data['story'] = $story;
 
         //lấy truyện cùng danh mục
+        $story_catalog = $this->story_model->get_info($chapter->story_id);
         $input_stories = array();
-        $input_stories['where'] = array('id' => $chapter->story_id);
+        $input_stories['where'] = array('category_id' => $story_catalog->category_id);
         $list_stories = $this->story_model->get_list($input_stories);
         $this->data['list_stories'] = $list_stories;
 

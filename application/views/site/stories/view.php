@@ -9,7 +9,37 @@
   </div>
 </section>
 <!-- /page-title -->
-
+<!-- Raty -->
+<script type="text/javascript">
+$(document).ready(function() {
+	//raty
+	$('.raty_detailt').raty({
+    	  score: function() {
+    	    return $(this).attr('data-score');
+    	  },
+    	  half    : true,
+    	  click: function(score, evt) {
+        	  var rate_count = $('.rate_count');
+        	  var rate_count_total = rate_count.text();
+    		  $.ajax({
+	  				url: '<?php echo site_url('stories/raty')?>',
+	  				type: 'POST',
+	  				data: {'id':'<?php echo $stories->id?>','score':score},
+	  				dataType: 'json',
+	  				success: function(data)
+	  				{
+	  					if(data.complete)
+	  					{
+		  					var total = parseInt(rate_count_total)+1;
+	  						rate_count.html(parseInt(total));
+		  				}
+	  					alert(data.msg);	
+	  				} 
+    		  });
+  		  }
+      });
+});
+</script>
 <!-- blog single -->
 <section>
   <div class="container">
@@ -20,10 +50,10 @@
           <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php echo $stories->created?></li>-->
         </ul> 
         <div class="row">
-          <div class="col-lg-8 col-sm-12" style="display: flex;justify-content: center;">
+          <div class="col-lg-7 col-sm-12" style="display: flex;justify-content: center;">
               <img class=" img-fluid mb-4" src="<?php echo $stories->image_link != '' ? base_url('upload/stories/'.$stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $stories->name?>">
           </div>
-          <div class="col-lg-4 col-sm-12">
+          <div class="col-lg-5 col-sm-12">
             <h6 class="title-book"><?php echo $stories->name?></h6>
             <span class="info-book"><i class="ti-user mr-2"></i><?php echo $stories->author?></span>
             <span class="info-book"><i class="ti-calendar mr-2"></i><?php 
@@ -34,6 +64,14 @@
             <span class="info-book"><i class="ti-book mr-2"></i> <?php echo count($list_chapters)?> Chapters</span>
             <span class="info-book"><i class="ti-pencil mr-2"></i><?php echo $stories->continues == 0 ?  "Còn tiếp" :  "Hoàng thành";?></span>
             <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i> <?php echo $name_catalog->name?></span>
+            <span class="info-book">Đánh giá: 
+            <?php if(isset($user_info)):?>
+              <span class='raty_detailt' style = 'margin:5px' id='<?php echo $stories->id?>' data-score='<?php echo  ($stories->rate_count > 0) ? $stories->rate_total/$stories->rate_count : 0?>'></span> <br/>
+            <?php else: ?>
+              <br/><a href="<?php echo site_url('user/login')?>" target="_blank" rel="noopener noreferrer" class="link-login">Đăng nhập</a> để đánh giá về truyện<br/>
+            <?php endif; ?> 
+                    Tổng số: <b  class='rate_count'><?php echo $stories->rate_count?> Đánh giá</b>
+            </span>
           </div>
         </div>
           
