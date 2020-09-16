@@ -11,15 +11,15 @@ VERSION:	Versoin Number
     
     @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Playfair+Display:400,700");
     @font-face {
-        font-family: 'monospace';
-        src: url("../plugins/fonts/monospace-regular-webfont.woff") format("woff");
+        font-family: 'nunito';
+        src: url("../plugins/fonts/nunito-regular-webfont.woff") format("woff");
         font-style: normal;
         font-display: swap;
     }
     
     body {
         line-height: 1.5;
-        font-family: "Open Sans", sans-serif;
+        font-family: "Nunito", helvetica;
         -webkit-font-smoothing: antialiased;
         font-size: 15px;
         color: #585757;
@@ -30,7 +30,7 @@ VERSION:	Versoin Number
         font-weight: 400;
         font-size: 15px;
         line-height: 1.5;
-        font-family: "Open Sans", sans-serif;
+        font-family: "Nunito", helvetica;
     }
     
     h1,
@@ -40,7 +40,7 @@ VERSION:	Versoin Number
     h5,
     h6 {
         color: #000000;
-        font-family: "monospace";
+        font-family: "nunito";
         font-weight: 600;
         line-height: 1.2;
     }
@@ -92,7 +92,7 @@ VERSION:	Versoin Number
     
     .btn {
         font-size: 15px;
-        font-family: "Open Sans", sans-serif;
+        font-family: "Nunito", helvetica;
         text-transform: capitalize;
         padding: 8px 20px;
         border-radius: 0;
@@ -363,7 +363,7 @@ VERSION:	Versoin Number
     }
     
     .font-secondary {
-        font-family: "monospace" !important;
+        font-family: "nunito" !important;
     }
     
     .mb-10 {
@@ -597,7 +597,7 @@ VERSION:	Versoin Number
     }
     
     .pagination .page-item .page-link {
-        font-family: "monospace";
+        font-family: "nunito";
         font-size: 30px;
         border: 0;
         color: #585757;
@@ -894,7 +894,7 @@ VERSION:	Versoin Number
     /*phan trang*/
     
     .pagination strong {
-        font-family: "monospace";
+        font-family: "nunito";
         font-size: 20px;
         border: 0;
         color: #000000;
@@ -904,7 +904,7 @@ VERSION:	Versoin Number
     }
     
     .pagination a {
-        font-family: "monospace";
+        font-family: "nunito";
         font-size: 20px;
         border: 0;
         color: #585757;
@@ -912,13 +912,13 @@ VERSION:	Versoin Number
     
     .nontification {
         color: red;
-        font-family: monospace;
+        font-family: nunito;
         padding: 0 50px;
     }
     
     .error {
         color: red;
-        font-family: monospace;
+        font-family: nunito;
     }
     /*user page*/
     
@@ -1005,7 +1005,7 @@ VERSION:	Versoin Number
     .h5,
     h6,
     .h6 {
-        font-family: "Open Sans", sans-serif !important;
+        font-family: "Nunito", helvetica !important;
     }
     
     h6,
@@ -1021,7 +1021,7 @@ VERSION:	Versoin Number
     .widget .text-dark,
     .widget h6 {
         font-size: 15px;
-        font-family: "Open Sans", sans-serif !important;
+        font-family: 'Nunito', helvetica !important;
     }
     
     .list-unstyled li.text-dark {
@@ -1035,7 +1035,7 @@ VERSION:	Versoin Number
     
     .section.bg-secondary {
         /* background-image: url('../images/bg-2.png') !important; */
-        background-image: url('../images/banner.jpg') !important;
+        background-image: url('../images/bg_blur.png') !important;
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -1071,7 +1071,7 @@ VERSION:	Versoin Number
     }
     
     .font-secondary {
-        font-family: "Open Sans", sans-serif !important;
+        font-family: "Nunito", helvetica !important;
     }
     
     .card-img.rounded-0.img-fluid.w-100 {

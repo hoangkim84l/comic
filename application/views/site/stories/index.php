@@ -59,7 +59,7 @@
                     <li class="list-inline-item"><i class="ti-user mr-2"></i>  <?php echo $row->author?></li>
                     <li class="list-inline-item"><?php echo $row->created?></li>
                   </ul>
-                  <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a> -  view <?php echo $row->view?></h6>
+                  <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a> <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?></h6>
                 </div>
               </div>
             <?php } endforeach;?>  

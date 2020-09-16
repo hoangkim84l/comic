@@ -25,7 +25,7 @@
             <textarea name="content" id="content" class="form-control mb-4" placeholder="Lời nhắn..."></textarea>
           </div>
           <div class="col-12">
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary">Gởi Liền </button>
           </div>
         </form>
       </div>

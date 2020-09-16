@@ -18,6 +18,7 @@
 <link rel="shortcut icon" href="<?php echo $support->favicon != '' ? base_url('upload/logo/'.$support->favicon) : base_url('upload/logo/default.jpg') ?>" type="image/x-icon">
 <link rel="icon" href="<?php echo public_url()?>site/images/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nunito" />
 <!--Meta seo meta-->
 <meta name="robots" content="<?php echo $support->robots?>" />
 <meta name="author" content="<?php echo $support->author?>" />
