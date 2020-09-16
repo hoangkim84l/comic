@@ -1034,7 +1034,8 @@ VERSION:	Versoin Number
     }
     
     .section.bg-secondary {
-        background-image: url('../images/bg-2.png') !important;
+        /* background-image: url('../images/bg-2.png') !important; */
+        background-image: url('../images/banner.jpg') !important;
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -1071,4 +1072,21 @@ VERSION:	Versoin Number
     
     .font-secondary {
         font-family: "Open Sans", sans-serif !important;
+    }
+    
+    .card-img.rounded-0.img-fluid.w-100 {
+        max-height: 550px;
+        height: 550px;
+    }
+    
+    .title-book {
+        color: #ff6f00;
+    }
+    
+    .info-book {
+        position: relative;
+        font-size: 17px;
+        padding: 5px;
+        width: 100%;
+        float: left;
     }

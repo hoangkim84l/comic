@@ -61,7 +61,7 @@
                 <div class="media mb-4">
                   <div class="media-body">
                     <ul class="list-inline d-flex justify-content-between mb-2">
-                      <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_chapter->author ?> / Lượt xem - <?php echo $row_chapter->view?></li>
+                      <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_chapter->author ?> <i class="ti-eye mr-2"></i><?php echo number_format($row_chapter->view)?></li>
                       <li class="list-inline-item"><?php echo $row_chapter->created?></li>
                     </ul>
                     <h6><a class="text-dark <?php if ($row_chapter->id == $id) {
@@ -104,7 +104,7 @@
                 <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?> </li>
                 <li class="list-inline-item"><?php echo $row_stories->created?></li>
               </ul>
-              <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a>/ Lượt xem - <?php echo $row_stories->view?></h6>
+              <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a> <i class="ti-eye mr-2"></i> <?php echo number_format($row_stories->view)?></h6>
             </div>
           </div>
           <?php
@@ -176,7 +176,7 @@
                 
             </div>
             <?php else:?>
-              Vui lòng <a href="<?php echo site_url('user/register')?>" target="_blank" rel="noopener noreferrer">đăng nhập</a> để sử dụng tính năng này
+              Vui lòng <a href="<?php echo site_url('user/login')?>" target="_blank" rel="noopener noreferrer">đăng nhập</a> để sử dụng tính năng này
             <?php endif;?>
           </div>
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

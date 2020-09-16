@@ -45,6 +45,20 @@
                      <div class="clear"></div>
                   </div>
                   <div class="formRow">
+                     <label for="param_name" class="formLeft">Trạng thái:</label>
+                     <div class="formRight">
+                        <span class="oneTwo">
+                           <select name="continues" class="left">
+                              <option value="0" <?php if($story->continues == 0) echo 'selected';?>>Còn Tiếp</option>   
+                              <option value="1" <?php if($story->continues == 1) echo 'selected';?>>Hoàng Thành</option>
+                           </select>
+                        </span>
+                        <span class="autocheck" name="name_autocheck"></span>
+                        <div class="clear error" name="name_error"></div>
+                     </div>
+                     <div class="clear"></div>
+                  </div>
+                  <div class="formRow">
                      <label class="formLeft">Ảnh bìa:</label>
                      <div class="formRight">
                         <div class="left">

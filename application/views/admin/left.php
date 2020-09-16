@@ -5,7 +5,7 @@
     <div class="sideProfile">
         <a href="#" title="" class="profileFace"><img src="<?php echo public_url('admin')?>/images/user.png" width="40"></a>
         <span>B Project</span>
-        <span>Xin chào: <strong>admin!</strong></span>
+        <span>Xin chào: <?php if(isset($user_info)): ?><strong><?php echo $user_info->name;?></strong> <?php else:?> <strong>admin!</strong> <?php endif;?></span>
         <div class="clear"></div>
     </div>
     <div class="sidebarSep"></div>

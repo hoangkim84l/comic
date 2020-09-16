@@ -16,17 +16,33 @@
     <div class="row">
       <div class="col-lg-8">
         <ul class="list-inline d-flex justify-content-between py-3">
-          <li class="list-inline-item"><i class="ti-user mr-2"></i><?php echo $stories->author?></li>
-          <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php echo $stories->created?></li>
-        </ul>
-        <img class="w-100 img-fluid mb-4" src="<?php echo $stories->image_link != '' ? base_url('upload/stories/'.$stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $stories->name?>">
+        <!--   <li class="list-inline-item"><i class="ti-user mr-2"></i><?php echo $stories->author?></li>
+          <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php echo $stories->created?></li>-->
+        </ul> 
+        <div class="row">
+          <div class="col-lg-8 col-sm-12" style="display: flex;justify-content: center;">
+              <img class=" img-fluid mb-4" src="<?php echo $stories->image_link != '' ? base_url('upload/stories/'.$stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $stories->name?>">
+          </div>
+          <div class="col-lg-4 col-sm-12">
+            <h6 class="title-book"><?php echo $stories->name?></h6>
+            <span class="info-book"><i class="ti-user mr-2"></i><?php echo $stories->author?></span>
+            <span class="info-book"><i class="ti-calendar mr-2"></i><?php 
+                              $date = date_create($stories->created);
+                              echo date_format($date,'d-m-Y H:i:s')?>
+            </span>
+            <span class="info-book"><i class="ti-eye mr-2"></i><?php echo number_format($stories->view)?> view</span>
+            <span class="info-book"><i class="ti-book mr-2"></i> <?php echo count($list_chapters)?> Chapters</span>
+            <span class="info-book"><i class="ti-pencil mr-2"></i><?php echo $stories->continues == 0 ?  "Còn tiếp" :  "Hoàng thành";?></span>
+            <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i> <?php echo $name_catalog->name?></span>
+          </div>
+        </div>
           
         <div class="content">
           <p><?php echo $stories->description ?></p>
         </div>
       </div>
       <div class="col-lg-4">
-      <div class="widget">
+      <div class="widget"><br/>
           <h6 class="mb-4">CHƯƠNG/CHAPTER</h6>
             <div class="scrollbar" id="style-1">
               <div class="force-overflow">
@@ -57,7 +73,7 @@
                 <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?> </li>
                 <li class="list-inline-item"><?php echo $row_stories->created?></li>
               </ul>
-              <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a>/ Lượt xem - <?php echo $row_stories->view?></h6>
+              <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a>  <i class="ti-eye mr-2"></i><?php echo number_format($row_stories->view)?></h6>
             </div>
           </div>
           <?php } endforeach;?>  

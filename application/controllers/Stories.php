@@ -95,6 +95,10 @@ Class Stories extends MY_Controller
         $catalog = $this->catalog_model->get_list();
         $this->data['catalogs'] = $catalog;
 
+        //Lấy tên danh mục
+        $name_catalog = $this->catalog_model->get_info($stories->category_id);
+        $this->data['name_catalog'] = $name_catalog;
+
         //lay danh mục chương/chapter
         $this->load->model('chapter_model');
         $chapter = $this->chapter_model->get_info($id);

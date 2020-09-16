@@ -60,6 +60,33 @@
 					</div>
 					<div class="clear"></div>
 				</div>
+				<div class="formRow">
+					<label class="formLeft" for="param_fanpage_fb">Fanpage Facebook:</label>
+					<div class="formRight">
+						<span class="oneTwo"><input name="fanpage_fb" id="param_fanpage_fb" value="<?php echo $info->fanpage_fb?>" type="text"/></span>
+						<span name="fanpage_fb_autocheck" class="autocheck"></span>
+						<div name="fanpage_fb_error" class="clear error"><?php echo form_error('fanpage_fb')?></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="formRow">
+					<label class="formLeft" for="param_fanpage_twitter">Fanpage Twitter:</label>
+					<div class="formRight">
+						<span class="oneTwo"><input name="fanpage_twitter" id="param_fanpage_twitter" value="<?php echo $info->fanpage_twitter?>" type="text"/></span>
+						<span name="fanpage_twitter_autocheck" class="autocheck"></span>
+						<div name="fanpage_twitter_error" class="clear error"><?php echo form_error('fanpage_twitter')?></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="formRow">
+					<label class="formLeft" for="param_fanpage_linkedin">Fanpage Linkedin:</label>
+					<div class="formRight">
+						<span class="oneTwo"><input name="fanpage_linkedin" id="param_fanpage_linkedin" value="<?php echo $info->fanpage_linkedin?>" type="text"/></span>
+						<span name="fanpage_linkedin_autocheck" class="autocheck"></span>
+						<div name="fanpage_linkedin_error" class="clear error"><?php echo form_error('fanpage_linkedin')?></div>
+					</div>
+					<div class="clear"></div>
+				</div>
 				
 				<div class="formRow">
 					<label class="formLeft" for="param_site_title">Seo Title</label>

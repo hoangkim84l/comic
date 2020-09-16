@@ -127,6 +127,9 @@ class Support extends MY_Controller {
             $data['hotline']    = $this->input->post('hotline');
             $data['gmail']      = $this->input->post('gmail');
             $data['skype']      = $this->input->post('skype');
+            $data['fanpage_fb']      	= $this->input->post('fanpage_fb');
+            $data['fanpage_twitter']    = $this->input->post('fanpage_twitter');
+            $data['	fanpage_linkedin']  = $this->input->post('fanpage_linkedin');
 			$data['site_title'] = $this->input->post('site_title');
 			$data['site_key']   = $this->input->post('site_key');
 			$data['site_desc']  = $this->input->post('site_desc');

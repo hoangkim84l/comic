@@ -29,7 +29,7 @@
                     </p>
                     <h4 class="title-border"><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name;?></a></h4>
                     <p><?php echo substr($row->description, 0, 300).'...'?></p>
-                    <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>" class="btn btn-transparent">read more</a>
+                    <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>" class="btn btn-transparent">Xem Hết</a>
                     </article>
 
                 </div>

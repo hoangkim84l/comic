@@ -19,6 +19,16 @@ Class MY_Controller extends CI_Controller
                     $this->lang->load('admin/common');
                     
                     //xu ly cac du lieu khi truy cap vao trang admin
+                    //kiem tra xem có session của Login Controller gởi qua hay chưa
+                    $user_id_login = $this->session->userdata('login');
+                    $this->data['login'] = $user_id_login;
+                    //neu da dang nhap thi lay thong tin cua thanh vien
+                    if($user_id_login)
+                    {
+                        $this->load->model('admin_model');
+                        $user_info = $this->admin_model->get_info($user_id_login);
+                        $this->data['user_info'] = $user_info;
+                    }
                     $this->load->helper('admin');
                     $this->_check_login();
                     break;

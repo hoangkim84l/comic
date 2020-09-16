@@ -131,14 +131,15 @@ class Story extends MY_Controller
                 $name = $this->input->post('name');
                 //luu du lieu can them
                 $data = array(
-                    'name'       => $this->input->post('name'),
-                    'category_id' => $this->input->post('category_id'),
-                    'description' => $this->input->post('description'),
-                    'author' => $this->input->post('author'),
-                    'image_link'  => $image_link,
-                    'status' => $this->input->post('status'),
-                    'created' => date("Y-m-d H:i:s"),
-                    'updated' => date("Y-m-d H:i:s"),
+                    'name'          => $this->input->post('name'),
+                    'category_id'   => $this->input->post('category_id'),
+                    'description'   => $this->input->post('description'),
+                    'author'        => $this->input->post('author'),
+                    'image_link'    => $image_link,
+                    'status'        => $this->input->post('status'),
+                    'continues'     => $this->input->post('continues'),
+                    'created'       => date("Y-m-d H:i:s"),
+                    'updated'       => date("Y-m-d H:i:s"),
                 );
                 $data['slug'] = $this->slug_library->create_uri($name);
                 //them moi vao csdl
@@ -217,11 +218,12 @@ class Story extends MY_Controller
                 $name = $this->input->post('name');
                 //luu du lieu can them
                 $data = array(
-                    'name'       => $this->input->post('name'),
-                    'category_id' => $this->input->post('category_id'),
-                    'description'       => $this->input->post('description'),
+                    'name'         => $this->input->post('name'),
+                    'category_id'  => $this->input->post('category_id'),
+                    'description'  => $this->input->post('description'),
                     'author'       => $this->input->post('author'),
                     'status'       => $this->input->post('status'),
+                    'continues'    => $this->input->post('continues'),
                     'updated' => date("Y-m-d H:i:s"),
                 );
                 $data['slug'] = $this->slug_library->create_uri($name);

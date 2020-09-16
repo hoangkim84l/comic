@@ -8,9 +8,9 @@
         foreach($data_slides as $data):
         if($data->status == 0){ }else{  
         $count++;
-        if($count > 6 ) break;  
+        if($count > 8 ) break;  
       ?>
-      <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1 ">
+      <div class="col-lg-3 col-sm-12 mb-2 mb-lg-0 px-1 ">
         <article class="card bg-dark text-center text-white border-0 rounded-0">
           <img class="card-img rounded-0 img-fluid w-100" style="min-height: 476px;" src="<?php echo $data->image_link != '' ? base_url('upload/stories/'.$data->image_link) :  base_url('upload/stories/default.jpg')?>" alt="<?php echo $data->name?>">
           <div class="card-img-overlay">
@@ -27,7 +27,7 @@
           </div>
         </article>
       </div>
-        <?php } endforeach; ?>
+      <?php } endforeach; ?>
     </div>
   </div>
 </section>
