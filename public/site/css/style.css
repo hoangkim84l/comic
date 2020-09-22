@@ -1025,7 +1025,8 @@ VERSION:	Versoin Number
     }
     
     .list-unstyled li.text-dark {
-        font-size: 16px;
+        font-size: 17px;
+        font-weight: 600;
     }
     
     .section {
@@ -1066,7 +1067,9 @@ VERSION:	Versoin Number
     }
     
     .slogan {
-        font-size: 16px;
+        font-size: 17px;
+        color: #000;
+        font-weight: 600;
     }
     
     .font-secondary {
