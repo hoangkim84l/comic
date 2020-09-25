@@ -29,7 +29,7 @@
                     </p>
                     <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
                     <h4 class="title-border"><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name;?></a></h4>
-                    <p><?php echo substr($row->description, 0, 300).'...'?></p>
+                    <div style="height: 80px;overflow: hidden;"><?php echo $row->description?></div>
                     <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>" class="btn btn-transparent">Xem Hết</a>
                     </article>
 
