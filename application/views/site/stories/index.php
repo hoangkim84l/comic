@@ -17,7 +17,7 @@
       <div class="col-lg-8">
         <div class="row masonry-container pt-5">
             <?php foreach($list_story as $row): if($row->status == 0){ }else{?>  
-                <div class="col-sm-6 mb-5">
+                <div class="col-sm-4 mb-5">
                     <article class="text-center">
                     <img class="img-fluid mb-4" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>">
                     <p class="text-uppercase mb-2">
