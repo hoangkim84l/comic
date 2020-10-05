@@ -112,7 +112,33 @@ Class Chapter extends MY_Controller
         $this->data['temp'] = 'site/chapter/view';
         $this->load->view('site/layout', $this->data);
     }
-    
+    /**
+     * Description: Lấy danh sách chapter
+     * Function: list()
+     * @author: Di
+     * @params: id
+     * @return: Danh sách chap theo từ id
+     */
+    function list(){
+        $id = $this->uri->rsegment(4);
+        $output = explode("-",$id);
+        $id =  $output[count($output)-1];
+        //lay danh mục chương/chapter
+        $this->load->model('chapter_model');
+        $input_chapter = array();
+        $input_chapter['where'] = array('story_id' => $id);
+        $list = $this->chapter_model->get_list($input_chapter);
+        $this->data['list_chapters'] = $list;
+
+        //lấy tên truyện
+        $this->load->model('story_model');
+        $story = $this->story_model->get_info($id);
+        $this->data['story'] = $story;
+
+        //hiển thị ra view
+        $this->data['temp'] = 'site/chapter/list';
+        $this->load->view('site/layout', $this->data);
+    }
     /**
      * Description: tìm kiếm tên truyện
      * Function: search()

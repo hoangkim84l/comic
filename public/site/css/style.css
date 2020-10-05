@@ -712,6 +712,19 @@ VERSION:	Versoin Number
         }
     }
     
+    @media only screen and (max-width: 768px) {
+        .scrollbar-style-2.scrollbar {
+            min-height: 500px;
+            height: 500px !important;
+        }
+        .list-chapters {
+            max-width: unset !important;
+        }
+        .scrollbar.scrollbar-type-3 {
+            height: 200px !important;
+        }
+    }
+    
     .article-full-width .post-image {
         margin-right: 20px;
     }
@@ -953,7 +966,7 @@ VERSION:	Versoin Number
         float: left;
         height: 300px;
         margin-bottom: 25px;
-        margin-left: 22px;
+        margin-left: 0px;
         margin-top: 40px;
         padding-right: 15px;
         width: 100%;
@@ -966,16 +979,16 @@ VERSION:	Versoin Number
     
     #style-1::-webkit-scrollbar {
         width: 1px;
-        background-color: #fdefe6;
+        background-color: #fff;
     }
     
     #style-1::-webkit-scrollbar-thumb {
-        background-color: #fdefe6;
+        background-color: #fff;
     }
     
     #style-1::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        background-color: #F5F5F5;
+        background-color: #fdefe6;
     }
     /*adding bg header*/
     
@@ -1096,4 +1109,34 @@ VERSION:	Versoin Number
     .link-login {
         color: #585757;
         padding: 0px;
+    }
+    
+    .list-chapters {
+        background-color: #f5f5f5;
+        margin: 2px;
+        max-width: 32%;
+    }
+    
+    .list-chapters a {
+        color: #000;
+    }
+    
+    .scrollbar-style-2.scrollbar {
+        min-height: 500px;
+        height: 1250px;
+    }
+    
+    .scrollbar.scrollbar-type-3 {
+        min-height: 200px;
+        height: 550px;
+        margin-left: 0px !important;
+    }
+    
+    .f-s-tab {
+        font-size: 17px;
+    }
+    
+    .tab-pane.fade.active.show {
+        width: 100%;
+        overflow: hidden;
     }

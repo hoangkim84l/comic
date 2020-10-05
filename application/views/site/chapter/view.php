@@ -3,9 +3,9 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h4><?php
-          echo $story->name;?></h4>
-        <h5><?php echo $chapter->name?></h5>
+        <a href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>"><h4><?php
+          echo $story->name;?></h4></a>
+        <h5>&nbsp;&nbsp;&nbsp;<?php echo $chapter->name?></h5>
       </div>
     </div>
   </div>
@@ -22,12 +22,16 @@
           <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php $date = date_create($chapter->created);
                                                                               echo date_format($date,'d-m-Y H:i:s')?></li>
         </ul>
-        <?php if($chapter->image_link != ''){ ?>
-          <img class="w-100 img-fluid mb-4" src="<?php echo $chapter->image_link != '' ? base_url('upload/chapter/'.$chapter->image_link) : base_url('upload/chapter/default.jpg') ?>" alt="<?php echo $chapter->name?>">
-        <?php } else{ echo "";}?>  
-        <div class="content">
-          <p><?php echo $chapter->content ?></p>
-        </div>
+        <div class="scrollbar scrollbar-style-2" id="style-1">
+          <div class="force-overflow">
+            <?php if($chapter->image_link != '' && $chapter->show_img == 1){ ?>
+              <img class="w-100 img-fluid mb-4" src="<?php echo $chapter->image_link != '' ? base_url('upload/chapter/'.$chapter->image_link) : base_url('upload/chapter/default.jpg') ?>" alt="<?php echo $chapter->name?>">
+            <?php } else{ echo "";}?>  
+            <div class="content">
+              <p><?php echo $chapter->content ?></p>
+            </div>
+          </div>
+        </div>  
       </div>
       <div class="col-lg-4">
       <div class="widget">
@@ -54,7 +58,7 @@
         </div>
       </div>  
       <div class="widget">
-          <h6 class="mb-4">CHƯƠNG/CHAPTER</h6>
+          <a href="<?php echo site_url('danh-sach-chuong/'.$story->slug.'-'.$story->id)?>"><h6 class="mb-4">CHƯƠNG/CHAPTER</h6></a>
           <div class="scrollbar" id="style-1">
               <div class="force-overflow">
               <?php 

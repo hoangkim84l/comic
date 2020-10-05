@@ -36,6 +36,16 @@
                      <div class="clear"></div>
                   </div>
                   <div class="formRow">
+                     <label for="param_name" class="formLeft">Hiển thị nội dung bằng hình ảnh:</label>
+                     <div class="formRight">
+                        <span class="oneTwo">
+                        <input type="radio" id="param_show_img" value="0" <?php if($chapter->status==0){echo "checked";}?> name="show_img"> Ẩn <br/> 
+                        <input type="radio" id="param_show_img" value="1" <?php if($chapter->status==1){echo "checked";}?> name="show_img"> Hiện
+                        </span>
+                     </div>
+                     <div class="clear"></div>
+                  </div>
+                  <div class="formRow">
                      <label class="formLeft">Nội dung chữ:</label>
                      <div class="formRight">
                         <div class="left">

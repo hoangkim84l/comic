@@ -61,7 +61,7 @@ $(document).ready(function() {
                               echo date_format($date,'d-m-Y H:i:s')?>
             </span>
             <span class="info-book"><i class="ti-eye mr-2"></i><?php echo number_format($stories->view)?> Lượt xem</span>
-            <span class="info-book"><i class="ti-book mr-2"></i> <?php echo count($list_chapters)?> Chương</span>
+            <span class="info-book"><i class="ti-book mr-2"></i> <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'-'.$stories->id)?>" style="color: #000;padding-left:0px;"><?php echo count($list_chapters)?> Chương </a></span>
             <span class="info-book"><i class="ti-pencil mr-2"></i><?php echo $stories->continues == 0 ?  "Còn tiếp" :  "Hoàng thành";?></span>
             <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i> <?php echo $name_catalog->name?></span>
             <span class="info-book">Đánh giá: 
@@ -74,14 +74,51 @@ $(document).ready(function() {
             </span>
           </div>
         </div>
-          
-        <div class="content">
-          <p><?php echo $stories->description ?></p>
-        </div>
+
+        <!--view list chapter-->
+        <section class="section">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <!-- /blog single -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active f-s-tab" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Cốt truyện</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-s-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Danh sách chương</a>
+                  </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="content">
+                        <p><?php echo $stories->description ?></p>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <br/>
+                    <h6>Danh sách Chương/Chapter</h6>
+                    <div class="container-fluid">
+                      <div class="scrollbar scrollbar-type-3" id="style-1">
+                        <div class="force-overflow">
+                          <div class="row">
+                              <?php foreach($list_chapters as $row):?>
+                              <div class="col-xs-12 col-sm-4 list-chapters"><a href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row->slug.'-'.$row->id)?>"> <?php echo $row->name?></a></div>
+                              <?php endforeach;?>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>        
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
       <div class="col-lg-4">
       <div class="widget"><br/>
-          <h6 class="mb-4">CHƯƠNG/CHAPTER</h6>
+          <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'-'.$stories->id)?>"><h6 class="mb-4">CHƯƠNG/CHAPTER</h6></a>
             <div class="scrollbar" id="style-1">
               <div class="force-overflow">
               <?php foreach($list_chapters as $row_chapter): if($row_chapter->status == 0){ }else{?>
@@ -130,4 +167,4 @@ $(document).ready(function() {
     </div>
   </div>
 </section>
-<!-- /blog single -->
+<!-- /story single -->

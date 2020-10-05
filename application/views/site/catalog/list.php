@@ -29,13 +29,13 @@
                     </p>
                     <h4 class="title-border"><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name;?></a></h4>
                     <div style="height: 80px;overflow: hidden;"><?php echo $row->description?></div>
-                    <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>" class="btn btn-transparent">read more</a>
+                    <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>" class="btn btn-transparent">Xem thêm</a>
                     </article>
 
                 </div>
             <?php endforeach;?>   
         </div> 
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-12">
             <nav>
               <ul class="pagination justify-content-center align-items-center">
@@ -56,7 +56,7 @@
               </ul>
             </nav>
           </div>
-        </div>
+        </div> -->
       </div>
       <!-- /blog post -->
       <div class="col-lg-4">
