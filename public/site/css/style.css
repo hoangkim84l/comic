@@ -359,7 +359,7 @@ VERSION:	Versoin Number
     }
     
     .text-dark {
-        color: #000000 !important;
+        color: #000000;
     }
     
     .font-secondary {
@@ -993,7 +993,8 @@ VERSION:	Versoin Number
     /*adding bg header*/
     
     .headroom {
-        background-image: url('../images/hinh-nen.jpg');
+        /* background-image: url('../images/hinh-nen.jpg'); */
+        background-color: #648c74;
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -1139,4 +1140,10 @@ VERSION:	Versoin Number
     .tab-pane.fade.active.show {
         width: 100%;
         overflow: hidden;
+    }
+    
+    .navbar-collapse .nav-item .nav-link.text-dark,
+     ::placeholder,
+    .ti-search:before {
+        color: #fff !important;
     }
