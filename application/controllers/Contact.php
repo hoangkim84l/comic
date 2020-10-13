@@ -35,23 +35,23 @@ class Contact extends MY_Controller
    	  {
    	       // Luu vao bảng contact
 			$data = array();
-			$data['email']			= $this->input->post('email');
-			$data['name']			= $this->input->post('name');
-			$data['phone']			= $this->input->post('phone');
-			$data['address']		= $this->input->post('address');
-			$data['title']		    = $this->input->post('title');
-			$data['content']		= $this->input->post('content');
+			$data['email']			= strip_tags($this->input->post('email'));
+			$data['name']			= strip_tags($this->input->post('name'));
+			$data['phone']			= strip_tags($this->input->post('phone'));
+			$data['address']		= strip_tags($this->input->post('address'));
+			$data['title']		    = strip_tags($this->input->post('title'));
+			$data['content']		= strip_tags($this->input->post('content'));
 			$data['created'] 		= now();
 			$this->contact_model->create($data);
 			//$this->session->set_flashdata('message', 'Liên hệ thành công');
 			$this->load->library('email'); // Note: no $config param needed
 			// $this->email->from('YOUREMAILHERE@gmail.com', 'YOUREMAILHERE@gmail.com');
-			$data = 'Tên: '. $this->input->post('name') .'<br/>'.
-					'Email: '.$this->input->post('email') .'<br/>'.
-					'Số điện thoại: '.$this->input->post('phone') .'<br/>'.
-					'Địa chỉ: '.$this->input->post('address') .'<br/>'.
-					'Tiêu đề: '.$this->input->post('title') .'<br/>'.
-					'Nội dung: '.$this->input->post('content');
+			$data = 'Tên: '. strip_tags($this->input->post('name')) .'<br/>'.
+					'Email: '.strip_tags($this->input->post('email')) .'<br/>'.
+					'Số điện thoại: '.strip_tags($this->input->post('phone')) .'<br/>'.
+					'Địa chỉ: '.strip_tags($this->input->post('address')) .'<br/>'.
+					'Tiêu đề: '.strip_tags($this->input->post('title')) .'<br/>'.
+					'Nội dung: '.strip_tags($this->input->post('content'));
 			$this->email->from($this->input->post('email'));
 			$this->email->to('teamcafesua@gmail.com');
 			$this->email->subject('Email liên hệ');

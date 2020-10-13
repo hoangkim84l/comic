@@ -30,10 +30,10 @@ class Comment extends MY_Controller
    	  {
    	       // Luu vao bảng comment
 			$data = array();
-			$data['user_id'] = $this->input->post('user_id');
-			$data['post_id'] = $this->input->post('post_id');
-			$data['parent_id'] = $this->input->post('parent_id');
-			$data['body']	 = $this->input->post('body');
+			$data['user_id'] = strip_tags($this->input->post('user_id'));
+			$data['post_id'] = strip_tags($this->input->post('post_id'));
+			$data['parent_id'] = strip_tags($this->input->post('parent_id'));
+			$data['body']	 = strip_tags($this->input->post('body'));
 			$data['created']  = date("Y-m-d");
 			$this->comment_model->create($data);
 			//$this->session->set_flashdata('message', 'Liên hệ thành công');

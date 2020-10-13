@@ -14,7 +14,7 @@ Class User extends MY_Controller
      */
     function check_email()
     {
-        $email = $this->input->post('email');
+        $email = strip_tags($this->input->post('email'));
         $where = array('email' => $email);
         //kiêm tra xem email đã tồn tại chưa
         if($this->user_model->check_exists($where))
@@ -51,23 +51,23 @@ Class User extends MY_Controller
             if($this->form_validation->run())
             {
                 //them vao csdl
-                $password = $this->input->post('password');
+                $password = strip_tags($this->input->post('password'));
                 $password = md5($password);
                 
                 $data = array(
-                    'name'     => $this->input->post('name'),
-                    'email'    => $this->input->post('email'),
-                    'phone'    => $this->input->post('phone'),
-                    'address'  => $this->input->post('address'),
+                    'name'     => strip_tags($this->input->post('name')),
+                    'email'    => strip_tags($this->input->post('email')),
+                    'phone'    => strip_tags($this->input->post('phone')),
+                    'address'  => strip_tags($this->input->post('address')),
                     'password' => $password,
                     'created'  => now(),
                 );
                 $this->load->library('email'); // Note: no $config param needed
                 // $this->email->from('YOUREMAILHERE@gmail.com', 'YOUREMAILHERE@gmail.com');
-                $dataEmail = 'Tên: '. $this->input->post('name') .'<br/>'.
-                        'Email: '.$this->input->post('email') .'<br/>'.
-                        'Số điện thoại: '.$this->input->post('phone') .'<br/>'.
-                        'Địa chỉ: '.$this->input->post('address');
+                $dataEmail = 'Tên: '. strip_tags($this->input->post('name')) .'<br/>'.
+                        'Email: '. strip_tags($this->input->post('email')) .'<br/>'.
+                        'Số điện thoại: '. strip_tags($this->input->post('phone') ).'<br/>'.
+                        'Địa chỉ: '. strip_tags($this->input->post('address'));
                         'Password: '.$password;
                 $this->email->from($this->input->post('email'));
                 $this->email->to('teamcafesua@gmail.com');
@@ -98,7 +98,7 @@ Class User extends MY_Controller
                     ';
                 }
                 //chuyen tới trang danh sách quản trị viên
-                redirect(site_url());
+               // redirect(site_url());
             }
         }
         //hiển thị ra view
@@ -169,8 +169,8 @@ Class User extends MY_Controller
      */
     private function _get_user_info()
     {
-        $email = $this->input->post('email');
-        $password = $this->input->post('password');
+        $email = strip_tags($this->input->post('email'));
+        $password = strip_tags($this->input->post('password'));
         $password = md5($password);
         
         $where = array('email' => $email , 'password' => $password);
@@ -203,7 +203,7 @@ Class User extends MY_Controller
         //neu ma co du lieu post len thi kiem tra
         if($this->input->post())
         {
-            $password = $this->input->post('password');
+            $password = strip_tags($this->input->post('password'));
             
             $this->form_validation->set_rules('name', 'Tên', 'required|min_length[8]');
             if($password)
@@ -220,9 +220,9 @@ Class User extends MY_Controller
             {
                 //them vao csdl
                 $data = array(
-                    'name'     => $this->input->post('name'), 
-                    'phone'    => $this->input->post('phone'),
-                    'address'  => $this->input->post('address'),
+                    'name'     => strip_tags($this->input->post('name')), 
+                    'phone'    => strip_tags($this->input->post('phone')),
+                    'address'  => strip_tags($this->input->post('address')),
                 );
                 if($password)
                 {

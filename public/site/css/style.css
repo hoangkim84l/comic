@@ -1143,7 +1143,7 @@ VERSION:	Versoin Number
     }
     
     .navbar-collapse .nav-item .nav-link.text-dark,
-     ::placeholder,
+    #text-search::placeholder,
     .ti-search:before {
         color: #fff !important;
     }

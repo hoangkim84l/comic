@@ -24,8 +24,8 @@ Class Login extends MY_controller{
      */
     function check_login()
     {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
+        $username = strip_tags($this->input->post('username'));
+        $password = strip_tags($this->input->post('password'));
         $password = md5($password);
         
         $this->load->model('admin_model');
