@@ -35,6 +35,7 @@
           </div>
           <div class="col-lg-6">
             <textarea name="address" id="address" class="form-control mb-4" placeholder="Địa chỉ..."><?php echo set_value('address')?></textarea>
+            <div class="error" id="address_error"><?php echo form_error('address')?></div>
           </div>
           <div class="col-12">
             <button class="btn btn-primary">Đăng kí</button>

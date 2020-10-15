@@ -21,6 +21,7 @@ Class MY_Controller extends CI_Controller
                     //xu ly cac du lieu khi truy cap vao trang admin
                     //kiem tra xem có session của Login Controller gởi qua hay chưa
                     $user_id_login = $this->session->userdata('login');
+                   // var_dump($user_id_login);exit();
                     $this->data['login'] = $user_id_login;
                     //neu da dang nhap thi lay thong tin cua thanh vien
                     if($user_id_login)

@@ -441,7 +441,7 @@ VERSION:	Versoin Number
         left: 0;
         right: 0;
         transition: all .4s ease-in-out;
-        padding: 10px 40px;
+        padding: 0px 40px;
         background-color: #fff;
     }
     
@@ -722,6 +722,11 @@ VERSION:	Versoin Number
         }
         .scrollbar.scrollbar-type-3 {
             height: 200px !important;
+        }
+        .card-img.rounded-0.img-fluid.w-100 {
+            max-height: 450px;
+            height: 400px !important;
+            min-height: 400px !important;
         }
     }
     

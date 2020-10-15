@@ -40,12 +40,18 @@ Class User extends MY_Controller
         //neu ma co du lieu post len thi kiem tra
         if($this->input->post())
         {
-            $this->form_validation->set_rules('name', 'Tên', 'required|min_length[8]');
-            $this->form_validation->set_rules('email', 'Email đăng nhập', 'required|valid_email|callback_check_email');
-            $this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[6]');
-            $this->form_validation->set_rules('re_password', 'Nhập lại mật khẩu', 'matches[password]');
-            $this->form_validation->set_rules('phone', 'Số điện thoại', 'required');
-            $this->form_validation->set_rules('address', 'Địa chỉ', 'required');
+            $this->form_validation->set_rules('name', 'Tên', 'required|min_length[8]',
+            array('required' => 'Huynh đài nhập tên mình đi', 'min_length[8]' => 'Tên huynh đài phải 8 kí tự nha'));
+            $this->form_validation->set_rules('email', 'Email đăng nhập', 'required|valid_email|callback_check_email',
+            array('required' => 'Huynh đài nhập địa chỉ email đi', 'valid_email' => 'Huynh đài nhập sai định dạng rồi'));
+            $this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[6]',
+            array('required' => 'Huynh đài nhập mật khẩu đi', 'min_length[6]' => 'Ngắn quá phải từ 6 kí tự trở lên nha'));
+            $this->form_validation->set_rules('re_password', 'Nhập lại mật khẩu', 'matches[password]',
+            array('matches[password]' => 'Huynh đài nhập lại mật khẩu 1 lần nữa'));
+            $this->form_validation->set_rules('phone', 'Số điện thoại', 'required',
+            array('required' => 'Huynh đài nhập số điện thoại đi'));
+            $this->form_validation->set_rules('address', 'Địa chỉ', 'required',
+            array('required' => 'Huynh đài nhập địa chỉ đi'));
             
             //nhập liệu chính xác
             if($this->form_validation->run())
@@ -122,8 +128,10 @@ Class User extends MY_Controller
         
         if($this->input->post())
         {
-            $this->form_validation->set_rules('email', 'Email đăng nhập', 'required|valid_email');
-            $this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[6]');
+            $this->form_validation->set_rules('email', 'Email đăng nhập', 'required|valid_email',
+            array('required' => 'Huynh đài nhập email đi', 'valid_email' => 'Tên huynh đài sai định dạng email rồi kìa'));
+            $this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[6]',
+            array('required' => 'Huynh đài nhập mật khẩu đi', 'min_length[6]' => 'Mật khẩu huynh đài nhập ngắn quá'));
             $this->form_validation->set_rules('login' ,'login', 'callback_check_login');
             if($this->form_validation->run())
             {
