@@ -1,5 +1,5 @@
 <!-- page-title -->
-<section class="section bg-secondary">
+<section class="section bg-secondary section-detail">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -16,114 +16,156 @@
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-12">
         <ul class="list-inline d-flex justify-content-between py-3">
           <li class="list-inline-item"><i class="ti-user mr-2"></i><?php echo $chapter->author?></li>
           <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php $date = date_create($chapter->created);
                                                                               echo date_format($date,'d-m-Y H:i:s')?></li>
         </ul>
+        <div class="row">
+          <div class="col-lg-12 cus-text-right">
+            <div class="btn-click row">
+                <?php
+                  $id = $this->uri->rsegment(3);
+                  $output = explode("-",$id);
+                  $id =  $output[count($output)-1]; 
+                  $array_values = array_values($list_chapters);
+                ?>
+                <?php if(count($array_values) == 1){
+                    echo "";
+                }else{ ?>
+                <?php if ((array_pop($array_values)->id) != ($id)) { ?>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id-1))?>" class="previous">&laquo; Chương trước</a>
+                <?php } else {
+                    echo "";
+                }?>
+                <div class="dropdown ">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Chương
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu list-chapter">
+                    <?php foreach($list_chapters as $row_chapter): if($row_chapter->status == 0){ }else{?>
+                      <li><a class="<?php if ($row_chapter->id == $id) {
+                                    echo "current-chap";
+                                } else {
+                                    echo "";
+                                }?> custom-border"  href="<?php echo site_url('truyen/'.$story->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></li>
+                      <?php } endforeach;?>
+                  </ul>
+                </div>
+                <?php if ((array_shift($array_values)->id) != ($id)) { ?>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id+1))?>" class="next">Chương sau &raquo;</a>
+                <?php } else {
+                    echo "";
+                }}?>
+              </div>
+          </div>
+        </div>
         <div class="scrollbar scrollbar-style-2" id="style-1">
           <div class="force-overflow">
             <?php if($chapter->image_link != '' && $chapter->show_img == 1){ ?>
-              <img class="w-100 img-fluid mb-4" src="<?php echo $chapter->image_link != '' ? base_url('upload/chapter/'.$chapter->image_link) : base_url('upload/chapter/default.jpg') ?>" alt="<?php echo $chapter->name?>">
-            <?php } else{ echo "";}?>  
+              <img id="custom-setid-zoom-image" class="w-100 img-fluid mb-4" src="<?php echo $chapter->image_link != '' ? base_url('upload/chapter/'.$chapter->image_link) : base_url('upload/chapter/default.jpg') ?>" alt="<?php echo $chapter->name?>">
+              <!-- <img  src="https://media.geeksforgeeks.org/wp-content/uploads/20190912174307/qwe1.png" alt="Snow" style="width:100%;max-width:300px"> -->
+              <!-- The Modal -->
+              <div id="custom-model-zoom-image" class="modal">
+                  <span class="close">&times;</span>
+                  <img class="modal-content" id="custom-zoom-image">
+              </div>
+              <?php } else{ echo "";}?>  
             <div class="content">
               <p><?php echo $chapter->content ?></p>
             </div>
           </div>
-        </div>  
-      </div>
-      <div class="col-lg-4">
-      <div class="widget">
-        <div class="btn-click">
-          <?php
-            $id = $this->uri->rsegment(3);
-            $output = explode("-",$id);
-            $id =  $output[count($output)-1]; 
-            $array_values = array_values($list_chapters);
-          ?>
-          <?php if(count($array_values) == 1){
-              echo "";
-          }else{ ?>
-          <?php if ((array_pop($array_values)->id) != ($id)) { ?>
-            <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id-1))?>" class="previous">&laquo; Chương trước</a>
-          <?php } else {
-              echo "";
-          }?>
-          <?php if ((array_shift($array_values)->id) != ($id)) { ?>
-            <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id+1))?>" class="next">Chương sau &raquo;</a>
-          <?php } else {
-              echo "";
-          }}?>
-        </div>
-      </div>  
-      <div class="widget">
-          <a href="<?php echo site_url('danh-sach-chuong/'.$story->slug.'-'.$story->id)?>"><h6 class="mb-4">CHƯƠNG/CHAPTER</h6></a>
-          <div class="scrollbar" id="style-1">
-              <div class="force-overflow">
-              <?php 
-                foreach($list_chapters as $row_chapter): if($row_chapter->status == 0){ }else{?>
-                <div class="media mb-4">
-                  <div class="media-body">
-                    <ul class="list-inline d-flex justify-content-between mb-2">
-                      <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_chapter->author ?> </li>
-                      <li class="list-inline-item"><?php $date = date_create($row_chapter->created);
-                                                          echo date_format($date,'d-m-Y H:i:s')?></li>
-                    </ul>
-                    <h6><a class="text-dark 
-                    <?php if ($row_chapter->id == $id) {
-                              echo "current-chap";
-                          } else {
-                              echo "";
-                          }?>" href="<?php echo site_url('truyen/'.$story->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a> <i class="ti-eye mr-2"></i><?php echo number_format($row_chapter->view)?></h6> 
-                  </div>
+        </div> 
+        <div class="row">
+          <div class="col-lg-12 cus-text-right">
+            <div class="btn-click row">
+                <?php
+                  $id = $this->uri->rsegment(3);
+                  $output = explode("-",$id);
+                  $id =  $output[count($output)-1]; 
+                  $array_values = array_values($list_chapters);
+                ?>
+                <?php if(count($array_values) == 1){
+                    echo "";
+                }else{ ?>
+                <?php if ((array_pop($array_values)->id) != ($id)) { ?>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id-1))?>" class="previous">&laquo; Chương trước</a>
+                <?php } else {
+                    echo "";
+                }?>
+                <div class="dropdown ">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Chương
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu list-chapter">
+                    <?php foreach($list_chapters as $row_chapter): if($row_chapter->status == 0){ }else{?>
+                      <li><a class="<?php if ($row_chapter->id == $id) {
+                                    echo "current-chap";
+                                } else {
+                                    echo "";
+                                }?> custom-border"  href="<?php echo site_url('truyen/'.$story->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></li>
+                      <?php } endforeach;?>
+                  </ul>
                 </div>
-                <?php } endforeach;?>
+                <?php if ((array_shift($array_values)->id) != ($id)) { ?>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id+1))?>" class="next">Chương sau &raquo;</a>
+                <?php } else {
+                    echo "";
+                }}?>
               </div>
-          </div>
-        </div>  
-        <div class="widget">
-          <h6 class="mb-4">Thể loại</h6>
-          <ul class="list-inline tag-list">
-              <?php foreach($catalogs as $row_catalog):?>
-                <li class="list-inline-item m-1"><a href="<?php echo site_url('danh-muc/'.$row_catalog->slug.'-'.$row_catalog->id)?>"><?php echo $row_catalog->name?></a></li>
-              <?php endforeach;?>
-          </ul>
-        </div>
-        <div class="widget">
-          <h6 class="mb-4">Truyện cùng danh mục</h6>
+          </div> 
+      </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h6 class="mb-4">Truyện cùng danh mục</h6>
           <?php 
             $count = 0;
             intval($count);
             foreach($list_stories as $row_stories):
             if($row_stories->status == 0){ }else{
                 $count++;
-                if ($count > 5) {
+                if ($count > 6) {
                     break;
                 }
                  ?>
-          <div class="media mb-4">
-            <div class="post-thumb-sm mr-3">
-              <img class="img-fluid" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->name?>">
-         
-            </div>
-            <div class="media-body">
-              <ul class="list-inline d-flex justify-content-between mb-2">
-                <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?> </li>
-                <li class="list-inline-item"><?php $date = date_create($row_stories->created);
-                                                          echo date_format($date,'d-m-Y H:i:s')?></li>
-              </ul>
-              <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a> <i class="ti-eye mr-2"></i> <?php echo number_format($row_stories->view)?></h6>
-            </div>
-          </div>
+              <div class="col-lg-6 media mb-4 ">
+                <div class="post-thumb-sm mr-3">
+                <a href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>">
+                  <img class="img-fluid" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->name?>">
+                </a>    
+                </div>
+                <div class="media-body">
+                  <ul class="list-inline d-flex justify-content-between mb-2">
+                    <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?> | <?php $date = date_create($row_stories->created);
+                                                              echo date_format($date,'d-m-Y H:i:s')?></li>
+                    <li class="list-inline-item"></li>
+                  </ul>
+                  <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a> <i class="ti-eye mr-2"></i> <?php echo number_format($row_stories->view)?></h6>
+                </div>
+              </div>
           <?php
-            } endforeach;?>  
-        </div>
+            } endforeach;?> 
       </div>
     </div>
   </div>
 </section>
-
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+      <h6 class="mb-4">Thể loại</h6>
+          <ul class="list-inline tag-list">
+              <?php foreach($catalogs as $row_catalog):?>
+                <li class="list-inline-item m-1"><a href="<?php echo site_url('danh-muc/'.$row_catalog->slug.'-'.$row_catalog->id)?>"><?php echo $row_catalog->name?></a></li>
+              <?php endforeach;?>
+          </ul>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="section">
   <div class="container">
     <div class="row">
@@ -135,9 +177,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Bình luận với Facebook</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Bình luận với Google</a>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -199,12 +238,36 @@
                                   data-colorscheme="light">
             </div>
           </div>
-          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-            <br/>
-            Google + bị khai tử chúng tôi đang tìm cách thay thế...
-          </div>
+         
         </div>        
       </div>
     </div>
   </div>
 </section>
+<script>
+    // Get the modal
+    var modal = document.getElementById("custom-model-zoom-image");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById("custom-setid-zoom-image");
+    var modalImg = document.getElementById("custom-zoom-image");
+    var captionText = document.getElementById("caption");
+    img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    $(document).click(function() { 
+        if($(modalImg).is(':visible')) {
+            popups_close();
+        }
+    });
+</script>

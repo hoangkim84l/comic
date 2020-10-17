@@ -1,5 +1,5 @@
 <!-- page-title -->
-<section class="section bg-secondary">
+<section class="section bg-secondary section-detail">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -62,7 +62,7 @@ $(document).ready(function() {
             </span>
             <span class="info-book"><i class="ti-eye mr-2"></i><?php echo number_format($stories->view)?> Lượt xem</span>
             <span class="info-book"><i class="ti-book mr-2"></i> <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'-'.$stories->id)?>" style="color: #000;padding-left:0px;"><?php echo count($list_chapters)?> Chương </a></span>
-            <span class="info-book"><i class="ti-pencil mr-2"></i><?php echo $stories->continues == 0 ?  "Còn tiếp" :  "Hoàng thành";?></span>
+            <span class="info-book"><i class="ti-pencil mr-2"></i><?php echo $stories->continues == 0 ?  "Còn tiếp" :  "Hoàn thành";?></span>
             <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i> <?php echo $name_catalog->name?></span>
             <span class="info-book">Đánh giá: 
             <?php if(isset($user_info)):?>
@@ -83,10 +83,16 @@ $(document).ready(function() {
                 <!-- /blog single -->
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active f-s-tab" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Cốt truyện</a>
+                    <a class="nav-link active f-s-tab" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+                    <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;">  
+                      Cốt truyện
+                    </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link f-s-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Danh sách chương</a>
+                    <a class="nav-link f-s-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+                      <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;">
+                      Danh sách chương
+                    </a>
                   </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -103,7 +109,10 @@ $(document).ready(function() {
                         <div class="force-overflow">
                           <div class="row">
                               <?php foreach($list_chapters as $row):?>
-                              <div class="col-xs-12 col-sm-4 list-chapters"><a href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row->slug.'-'.$row->id)?>"> <?php echo $row->name?></a></div>
+                                <a href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row->slug.'-'.$row->id)?>" class="cus-class-12">
+                                  <div class="cus-class-6"><?php echo $row->name?></div>
+                                  <div class="cus-class-6"><?php echo $row->created?></div>
+                                </a>
                               <?php endforeach;?>
                           </div>
                         </div>
@@ -141,8 +150,9 @@ $(document).ready(function() {
           <?php foreach($view_stories as $row_stories): if($row_stories->status == 0){ }else{?>
           <div class="media mb-4">
             <div class="post-thumb-sm mr-3">
-              <img class="img-fluid" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->name?>">
-         
+              <a href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>">
+                <img class="img-fluid" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->name?>">
+              </a>
             </div>
             <div class="media-body">
               <ul class="list-inline d-flex justify-content-between mb-2">

@@ -56,7 +56,7 @@ class Story extends MY_Controller
             $input['where']['category_id'] = $category_id;
         }
         
-        //lay danh sach san pha
+        //lay danh sach truyen
         $list = $this->story_model->get_list($input);
         $this->data['list'] = $list;
        
@@ -315,13 +315,13 @@ class Story extends MY_Controller
 
         $this->load->library('crawler');
        
-        for($i = 1; $i <= 999 ; $i++){
-            $html = file_get_html('https://webtruyen.com/truyen-full/'.$i);
-            foreach ($html->find('img') as $link) {
-                    echo  $link->src.'<br>';
-                    echo  $link->alt.'<br>';
-                    echo  $link.'<br>';
-                }
-        }
+        // for($i = 1; $i <= 999 ; $i++){
+        //     $html = file_get_html('https://webtruyen.com/truyen-full/'.$i);
+        //     foreach ($html->find('img') as $link) {
+        //             echo  $link->src.'<br>';
+        //             echo  $link->alt.'<br>';
+        //             echo  $link.'<br>';
+        //         }
+        // }
     }
 }

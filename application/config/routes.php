@@ -11,6 +11,7 @@ $route['truyen.html'] = 'stories';
 $route['xem-truyen/(:any)'] = 'stories/view/$1';
 $route['xem-truyen/(:any)-(:num)'] = 'stories/view/$1/$2';
 $route['truyen/tim-kiem-truyen'] = 'stories/search';
+$route['truyen/tim-nang-cao'] = 'stories/search_adv';
 
 //tab chuong/chapter
 $route['truyen/(:any)'] = 'chapter/view/$1';

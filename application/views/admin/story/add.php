@@ -50,7 +50,7 @@
                         <span class="oneTwo">
                            <select name="continues" class="left">
                               <option value="0">Còn Tiếp</option>   
-                              <option value="1">Hoàng Thành</option>
+                              <option value="1">Hoàn Thành</option>
                            </select>   
                         </span>
                         <span class="autocheck" name="author_autocheck"></span>

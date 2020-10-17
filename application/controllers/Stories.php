@@ -6,6 +6,7 @@ Class Stories extends MY_Controller
         parent::__construct();
         //load model san pham
         $this->load->model('story_model');
+        $this->load->database();
     }
 
     /**
@@ -27,7 +28,7 @@ Class Stories extends MY_Controller
         $config = array();
         $config['base_url']    = base_url('stories/index');
         $config['total_rows']  = $total_rows;
-        $config['per_page']    = 8;
+        $config['per_page']    = 9;
         $config['uri_segment'] = 3;
         $config['next_link']   = "Trang kế tiếp";
         $config['prev_link']   = "Trang trước";
@@ -159,13 +160,78 @@ Class Stories extends MY_Controller
             //du lieu tra ve duoi dang json
             die(json_encode($result));
         }else{
-            //var_dump($list);die();
             //load view
             $this->data['temp'] = 'site/stories/search';
             $this->load->view('site/layout', $this->data);
         }
     }
     
+    /**
+     * Description: tìm kiếm nâng cao
+     * Function: search_adv()
+     * @author: Di
+     * @params: id, tên truyện
+     * @return: Danh sách truyện theo từ khóa
+     */
+    function search_adv()
+    {
+        $input = array();
+        //kiem tra co thuc hien loc du lieu hay khong
+        $name = $this->input->get('name');
+        $chapter = $this->input->get('chapter');
+        if ($name) {
+            $input['like'] = array('name', $name);
+        }
+        $category_ids = $this->input->get('category_id');
+        
+        if ($category_ids) {
+            foreach ($category_ids as $id) {
+                $input['orwhere']['category_id'] = $id;
+            }  
+        }
+         
+        var_dump($input);
+
+        //lay danh sach truyen
+        $list = $this->story_model->get_list($input);
+        $this->data['list'] = $list;
+       
+        //lay danh sach danh muc san pham
+        $this->load->model('catalog_model');
+        $input = array();
+        $input['where'] = array('parent_id' => 0);
+        $catalogs = $this->catalog_model->get_list($input);
+        foreach ($catalogs as $row) {
+            $input['where'] = array('parent_id' => $row->id);
+            $subs = $this->catalog_model->get_list($input);
+            $row->subs = $subs;
+        }
+        $this->data['catalogs'] = $catalogs;
+
+        //load view
+        $this->data['temp'] = 'site/stories/search_adv';
+        $this->load->view('site/layout', $this->data);
+        
+    }
+
+    /**
+     * Description: tìm kiếm tên truyện autocomplete
+     * Function: fetch()
+     * @author: Di
+     * @params: tên truyện
+     * @return: Danh sách truyện theo từ khóa
+     */
+    function fetch(){
+        $query = $this->input->get('query');
+        $this->db->like('name', $query);
+
+
+        $data = $this->db->get("stories")->result();
+
+
+        echo json_encode( $data);
+    }
+
     /**
      * Description: Đánh giá truyện
      * Function: raty()

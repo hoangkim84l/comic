@@ -38,7 +38,7 @@
             <div class="error" id="address_error"><?php echo form_error('address')?></div>
           </div>
           <div class="col-12">
-            <button class="btn btn-primary">Đăng kí</button>
+            <button class="btn btn-primary">Đăng ký</button>
           </div>
         </form>
       </div>

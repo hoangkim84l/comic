@@ -41,7 +41,7 @@
       </div>
     </div>
   </div>
-  <div class="text-center pb-3">
+  <div class="text-center pb-3 color-text">
     <p class="mb-0">Copyright ©<script>var CurrentYear = new Date().getFullYear()  
     document.write(CurrentYear)</script>   <?php echo $support->copyright?></p>
   </div>

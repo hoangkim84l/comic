@@ -13,12 +13,13 @@
 
 <!-- Main Stylesheet -->
 <link href="<?php echo public_url()?>site/css/style.css" rel="stylesheet">
+<link href="<?php echo public_url()?>site/css/style_v2.css" rel="stylesheet">
 
 <!--Favicon-->
 <link rel="shortcut icon" href="<?php echo $support->favicon != '' ? base_url('upload/logo/'.$support->favicon) : base_url('upload/logo/default.jpg') ?>" type="image/x-icon">
 <link rel="icon" href="<?php echo public_url()?>site/images/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nunito" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito" />
 <!--Meta seo meta-->
 <meta name="robots" content="<?php echo $support->robots?>" />
 <meta name="author" content="<?php echo $support->author?>" />
@@ -45,6 +46,11 @@
 <meta property="og:type" content="<?php echo $support->og_type?>" />
 <!-- jQuery -->
 <script src="<?php echo public_url()?>site/plugins/jQuery/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script> 
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+<!-- Autocomplete  Search -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>  
+
 <!-- raty -->
 <script src="<?php echo public_url()?>/site/raty/jquery.raty.min.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -72,3 +78,20 @@ $(function() {
 </script>
 <!--Google ads-->
 <script data-ad-client="ca-pub-9323279727270807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<script>
+  jQuery(document).ready(function() {
+    $('#text-search').typeahead({
+      source: function(query, process){
+        return $.get('/stories/fetch', {query: query}, function (data){
+          data = $.parseJSON(data);
+                return process(data);
+        });
+       
+      }
+    });
+    $('.typeahead-input').on('typeahead:beforeopen', function() {
+    return false;
+});
+});
+</script>

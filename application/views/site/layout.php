@@ -61,7 +61,7 @@
 	<!-- instafeed -->
 	<script src="<?php echo public_url()?>site/plugins/instafeed/instafeed.min.js"></script>
 	<!-- smooth scroll -->
-	<script src="<?php echo public_url()?>site/plugins/smooth-scroll/smooth-scroll.js"></script>
+	<!-- <script src="<?php echo public_url()?>site/plugins/smooth-scroll/smooth-scroll.js"></script> -->
 	<!-- headroom -->
 	<script src="<?php echo public_url()?>site/plugins/headroom/headroom.js"></script>
 	<!-- reading time -->
@@ -69,12 +69,12 @@
 
 	<!-- Main Script -->
 	<script src="<?php echo public_url()?>site/js/script.js"></script>	  
+	<script src="<?php echo public_url()?>site/js/autocomplete.js"></script>	  
 	<!-- <script type="text/javascript">
 		jQuery(document).ready(function(){
 		jQuery('*').bind('cut copy paste contextmenu', function (e) {
 			e.preventDefault();
 		})});
 	</script> -->
-	    
     </body>
 </html>
