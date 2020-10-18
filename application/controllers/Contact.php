@@ -11,7 +11,7 @@ class Contact extends MY_Controller
        //load các file để validation form
        $this->load->helper('form');
        $this->load->library('form_validation');
-       
+       $this->load->library('email');
        //load file model
    	  $this->load->model('contact_model');
    	  
@@ -64,6 +64,7 @@ class Contact extends MY_Controller
 			$this->email->subject('Email liên hệ');
 			$this->email->message($data);
 			$this->email->send();
+			// var_dump($this->email->send());die();
 			echo'
                     <script>
                     window.onload = function() {

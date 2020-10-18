@@ -46,7 +46,7 @@
                 <?php else:?>
                   <div class="form-group col-md-4">
                     <div class="form-check col-md-12">
-                      <input <?php if(in_array($row->id,$this->input->get('category_id'))) echo 'checked'; ?> type="checkbox" class="form-check-input" name="category_id[]" id="category_id" value="<?php echo $row->id?>">
+                      <input <?php if(!empty($this->input->get('category_id')) && in_array($row->id,$this->input->get('category_id'))) echo 'checked'; ?> type="checkbox" class="form-check-input" name="category_id[]" id="category_id" value="<?php echo $row->id?>">
                       <label class="form-check-label" for="exampleCheck1"><?php echo $row->name?></label>
                     </div>
                   </div>
