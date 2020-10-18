@@ -63,6 +63,7 @@
         <div class="scrollbar scrollbar-style-2" id="style-1">
           <div class="force-overflow">
             <?php if($chapter->image_link != '' && $chapter->show_img == 1){ ?>
+              <h6>Bằng hữu có thể click vào ảnh để zoom đó</h6><br/>
               <img id="custom-setid-zoom-image" class="w-100 img-fluid mb-4" src="<?php echo $chapter->image_link != '' ? base_url('upload/chapter/'.$chapter->image_link) : base_url('upload/chapter/default.jpg') ?>" alt="<?php echo $chapter->name?>">
               <!-- <img  src="https://media.geeksforgeeks.org/wp-content/uploads/20190912174307/qwe1.png" alt="Snow" style="width:100%;max-width:300px"> -->
               <!-- The Modal -->

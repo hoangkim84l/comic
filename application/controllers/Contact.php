@@ -25,18 +25,18 @@ class Contact extends MY_Controller
    	 
    	  //set cac tap luat cho cac the input
 		 $this->form_validation->set_rules('email', 'Địa chỉ email', 'required|valid_email',
-		 array('required' => 'Huynh đài nhập địa chỉ email đi', 'valid_email' => 'Huynh đài nhập sai định dạng email rồi')	
+		 array('required' => 'Bằng hữu nhập địa chỉ email đi', 'valid_email' => 'Bằng hữu nhập sai định dạng email rồi')	
 		);
 		 $this->form_validation->set_rules('name', 'Họ tên', 'required',
-		 array('required' => 'Huynh đài nhập họ tên đi'));
+		 array('required' => 'Bằng hữu nhập họ tên đi'));
 		 $this->form_validation->set_rules('phone', 'Số điện thoại', 'required|numeric',
-		 array('required' => 'Huynh đài nhập số điện thoại đi', 'numeric' => 'Nhập số huynh đài ơi'));
+		 array('required' => 'Bằng hữu nhập số điện thoại đi', 'numeric' => 'Nhập số huynh đài ơi'));
 		 $this->form_validation->set_rules('address', 'Địa chỉ', 'required',
-		 array('required' => 'Huynh đài cho em địa chỉ với'));
+		 array('required' => 'Bằng hữu cho em địa chỉ với'));
 		 $this->form_validation->set_rules('title', 'Tiêu đề', 'required',
-		 array('required' => 'Huynh đài đặt tựa đề đi'));
+		 array('required' => 'Bằng hữu đặt tựa đề đi'));
 		 $this->form_validation->set_rules('content', 'Nội dung', 'required',
-		 array('required' => 'Huynh đài liên hệ có việc gì?'));
+		 array('required' => 'Bằng hữu liên hệ có việc gì?'));
    	
    	  if($this->form_validation->run())
    	  {
