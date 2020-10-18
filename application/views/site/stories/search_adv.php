@@ -20,13 +20,10 @@
         </div>
         <div class="form-group col-md-6">
         <div class="form-group col-md-6">
-          <label for="inputState">Số lượng chap</label>
-            <select id="chapter" name="chapter" class="form-control">
-              <option value="0">Chọn...</option>
-              <option value="1" >Trên 1 chap</option>
-              <option value="2">Từ 10 đến 20 chap</option>
-              <option value="3">Từ 20 đến 50 chap</option>
-              <option value="4">Trên 50 chap</option>
+          <label for="inputState">Trạng thái</label>
+            <select id="status" name="status" class="form-control">
+              <option <?php if($this->input->get('status') == 0){echo "selected";}?> value="0">Còn tiếp...</option>
+              <option <?php if($this->input->get('status') == 1){echo "selected";}?> value="1" >Hoàn thành</option>
             </select>
           </div>
         </div>
@@ -35,7 +32,8 @@
         <div class="form-group col-md-12">
           <label for="inputState">Thể loại huynh đài muốn tìm</label>
         </div>
-            <?php foreach ($catalogs as $row):?>
+          <?php 
+            foreach ($catalogs as $row):?>
               <?php if(count($row->subs) > 1):?>
                 <optgroup label="<?php echo $row->name?>">
                   <?php foreach ($row->subs as $sub):?>
@@ -48,7 +46,7 @@
                 <?php else:?>
                   <div class="form-group col-md-4">
                     <div class="form-check col-md-12">
-                      <input <?php if( $this->input->get('category_id[]') == $row->id) echo 'checked'; ?> type="checkbox" class="form-check-input" name="category_id[]" id="category_id" value="<?php echo $row->id?>">
+                      <input <?php if(in_array($row->id,$this->input->get('category_id'))) echo 'checked'; ?> type="checkbox" class="form-check-input" name="category_id[]" id="category_id" value="<?php echo $row->id?>">
                       <label class="form-check-label" for="exampleCheck1"><?php echo $row->name?></label>
                     </div>
                   </div>
@@ -65,7 +63,20 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="row masonry-container pt-5">
-            <?php foreach($list as $row): if($row->status == 0){ }else{?>  
+            <?php
+            if(count($list) === 0){
+              echo '<div class="col-lg-12 col-sm-6 mb-5">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <h4 style="color:#FF8C33">Điều kiện huynh đài đưa ra hiện không có thử cái khác nha</h4>
+                          </div>
+                        </div>
+                      </div>';
+            }
+            foreach($list as $row): if($row->status == 0){ 
+
+            }else{
+              ?>  
               <div class="col-lg-3 col-sm-6 mb-5">
                 <article class="text-center">
                 <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">

@@ -176,22 +176,21 @@ Class Stories extends MY_Controller
     function search_adv()
     {
         $input = array();
+        $input['limit'] = array(12,0);
         //kiem tra co thuc hien loc du lieu hay khong
         $name = $this->input->get('name');
-        $chapter = $this->input->get('chapter');
         if ($name) {
             $input['like'] = array('name', $name);
         }
+        $status = $this->input->get('status');
+        if ($status) {
+            $input['where'] = array('continues' => $status);
+        }
         $category_ids = $this->input->get('category_id');
-        
         if ($category_ids) {
-            foreach ($category_ids as $id) {
-                $input['orwhere']['category_id'] = $id;
-            }  
+            $this->db->where_in('category_id', $category_ids); 
         }
          
-        var_dump($input);
-
         //lay danh sach truyen
         $list = $this->story_model->get_list($input);
         $this->data['list'] = $list;

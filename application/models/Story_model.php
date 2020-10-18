@@ -15,4 +15,15 @@ Class Story_model extends MY_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+    /**
+     * Get data with multi fields
+     * function name get_custom_items
+     * Author Di
+    */
+    public function get_custom_items($table, $where)
+    {
+        $this->db->select('*');
+        $this->db->where_in('id', $where); // Must be id
+        return $this->db->get($table);
+    }
 }

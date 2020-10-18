@@ -70,11 +70,11 @@
 	<!-- Main Script -->
 	<script src="<?php echo public_url()?>site/js/script.js"></script>	  
 	<script src="<?php echo public_url()?>site/js/autocomplete.js"></script>	  
-	<!-- <script type="text/javascript">
+	<script type="text/javascript">
 		jQuery(document).ready(function(){
 		jQuery('*').bind('cut copy paste contextmenu', function (e) {
 			e.preventDefault();
 		})});
-	</script> -->
+	</script>
     </body>
 </html>
