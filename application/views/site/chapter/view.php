@@ -19,8 +19,7 @@
       <div class="col-lg-12">
         <ul class="list-inline d-flex justify-content-between py-3">
           <li class="list-inline-item"><i class="ti-user mr-2"></i><?php echo $chapter->author?></li>
-          <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php $date = date_create($chapter->created);
-                                                                              echo date_format($date,'d-m-Y H:i:s')?></li>
+          <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php $date = date_create($chapter->created);  echo date_format($date,'d-m-Y H:i:s')?></li>
         </ul>
         <div class="row">
           <div class="col-lg-12 cus-text-right">
@@ -30,12 +29,34 @@
                   $output = explode("-",$id);
                   $id =  $output[count($output)-1]; 
                   $array_values = array_values($list_chapters);
+                  $chapnext = '';
+                  $chapprev = '';
+                  foreach($list_chapters as $k => $val){
+                    if($val->slug === $chapter->slug){
+
+                      // echo  $val->slug;
+                    }
+                  }
+                  foreach ($list_chapters as $key => $cv ) {
+                    $previous = array_key_exists($key - 1, $list_chapters) ? $list_chapters[$key -1] : false;
+                    $next = array_key_exists($key + 1, $list_chapters) ? $list_chapters[$key +1] : false;
+                    if($cv->slug === $chapter->slug){
+                        if($previous){
+                          $chapnext = $previous->id;
+                        }
+                        if($next){
+                          $chapprev = $next->id;
+                        }
+                    }
+                    
+                }
                 ?>
                 <?php if(count($array_values) == 1){
                     echo "";
                 }else{ ?>
                 <?php if ((array_pop($array_values)->id) != ($id)) { ?>
-                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id-1))?>" class="previous">&laquo; Chương trước</a>
+                  <!-- <a href="<?php echo base_url('truyen/'.$story->slug.'-'. $chapter->slug.'-'.($id-1))?>" class="previous">&laquo; Chương trước</a> -->
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'. $chapprev)?>" class="previous">&laquo; Chương trước</a>
                 <?php } else {
                     echo "";
                 }?>
@@ -53,7 +74,8 @@
                   </ul>
                 </div>
                 <?php if ((array_shift($array_values)->id) != ($id)) { ?>
-                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id+1))?>" class="next">Chương sau &raquo;</a>
+                  <!-- <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id+1))?>" class="next">Chương sau &raquo;</a> -->
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.$chapnext)?>" class="next">Chương sau &raquo;</a>
                 <?php } else {
                     echo "";
                 }}?>
@@ -90,7 +112,7 @@
                     echo "";
                 }else{ ?>
                 <?php if ((array_pop($array_values)->id) != ($id)) { ?>
-                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id-1))?>" class="previous">&laquo; Chương trước</a>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.$chapprev)?>" class="previous">&laquo; Chương trước</a>
                 <?php } else {
                     echo "";
                 }?>
@@ -108,7 +130,7 @@
                   </ul>
                 </div>
                 <?php if ((array_shift($array_values)->id) != ($id)) { ?>
-                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id+1))?>" class="next">Chương sau &raquo;</a>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.$chapnext)?>" class="next">Chương sau &raquo;</a>
                 <?php } else {
                     echo "";
                 }}?>

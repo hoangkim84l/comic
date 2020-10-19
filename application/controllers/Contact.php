@@ -53,17 +53,25 @@ class Contact extends MY_Controller
 			//$this->session->set_flashdata('message', 'Liên hệ thành công');
 			$this->load->library('email'); // Note: no $config param needed
 			// $this->email->from('YOUREMAILHERE@gmail.com', 'YOUREMAILHERE@gmail.com');
-			$data = 'Tên: '. strip_tags($this->input->post('name')) .'<br/>'.
-					'Email: '.strip_tags($this->input->post('email')) .'<br/>'.
-					'Số điện thoại: '.strip_tags($this->input->post('phone')) .'<br/>'.
-					'Địa chỉ: '.strip_tags($this->input->post('address')) .'<br/>'.
-					'Tiêu đề: '.strip_tags($this->input->post('title')) .'<br/>'.
-					'Nội dung: '.strip_tags($this->input->post('content'));
+			$datas = 'Tên: '. $this->input->post('name') .' ' .PHP_EOL.
+					'Email: '.$this->input->post('email') .' '.PHP_EOL.
+					'Số điện thoại: '.$this->input->post('phone') .' '.PHP_EOL.
+					'Địa chỉ: '.$this->input->post('address') .' '.PHP_EOL.
+					'Tiêu đề: '.$this->input->post('title') .' '.PHP_EOL.
+					'Nội dung: '.$this->input->post('content');
+					$from = $this->input->post('email');
+					$to = "teamcafesua@gmail.com";
+					$subject = "Email liên hệ";
+					$message = $datas;
+					$headers = "From:" . $from;
+					mail($to,$subject,$message, $headers);
+			// 2 ways
 			$this->email->from($this->input->post('email'));
 			$this->email->to('teamcafesua@gmail.com');
 			$this->email->subject('Email liên hệ');
-			$this->email->message($data);
+			$this->email->message($datas);
 			$this->email->send();
+			
 			// var_dump($this->email->send());die();
 			echo'
                     <script>
