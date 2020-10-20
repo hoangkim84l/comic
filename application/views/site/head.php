@@ -78,7 +78,6 @@ $(function() {
 </script>
 <!--Google ads-->
 <script data-ad-client="ca-pub-9323279727270807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
 <script>
   jQuery(document).ready(function() {
     $('#text-search').typeahead({
