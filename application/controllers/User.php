@@ -70,11 +70,18 @@ Class User extends MY_Controller
                 );
                 $this->load->library('email'); // Note: no $config param needed
                 // $this->email->from('YOUREMAILHERE@gmail.com', 'YOUREMAILHERE@gmail.com');
-                $dataEmail = 'Tên: '. strip_tags($this->input->post('name')) .'<br/>'.
-                        'Email: '. strip_tags($this->input->post('email')) .'<br/>'.
-                        'Số điện thoại: '. strip_tags($this->input->post('phone') ).'<br/>'.
-                        'Địa chỉ: '. strip_tags($this->input->post('address'));
-                        'Password: '.$password;
+                $dataEmail = 'Tên: '. strip_tags($this->input->post('name')) .' '.PHP_EOL.
+                        'Email: '. strip_tags($this->input->post('email')) .' '.PHP_EOL.
+                        'Số điện thoại: '. strip_tags($this->input->post('phone') ).' '.PHP_EOL.
+                        'Địa chỉ: '. strip_tags($this->input->post('address')).' ' .PHP_EOL.
+                        'Password: '. $this->input->post('password');
+                        $from = $this->input->post('email');
+                        $to = "teamcafesua@gmail.com";
+                        $subject = "Người dùng đăng kí:";
+                        $message = $dataEmail;
+                        $headers = "From:" . $from;
+                        mail($to,$subject,$message, $headers);
+                //2 ways
                 $this->email->from($this->input->post('email'));
                 $this->email->to('teamcafesua@gmail.com');
                 $this->email->subject('Người dùng đăng kí : ');
