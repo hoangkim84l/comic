@@ -7,6 +7,8 @@ Class User extends MY_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('user_model');
+        $this->load->model('lovelists_model');
+        $this->load->model('story_model');
     }
     
     /*
@@ -292,12 +294,35 @@ Class User extends MY_Controller
             redirect();
         }
         $this->data['user']  = $user;
+
+        $input = array();
+        $input['where'] = array('user_id', $user_id);
+        $love_lists = $this->lovelists_model->get_list();
+        $this->data['lovelists'] = $love_lists;
+        
         
         //hiển thị ra view
         $this->data['temp'] = 'site/user/index';
         $this->load->view('site/layout', $this->data);
     }
 
+    /**
+     * REMOVE RECORD from lovelists
+    */
+    function remove_lovelists(){
+        $id = $this->uri->rsegment('3');
+        $data = array(
+            'status'      => 0
+        );
+        //them moi vao csdl
+        if($this->lovelists_model->delete($id))
+        {
+            $this->session->set_flashdata('message', 'Bằng hữu đã xóa thành công.');
+        }else{
+            $this->session->set_flashdata('message', 'Có lổi thử lại.');
+        }
+        redirect('/user');
+    }
     /*
      * Thuc hien dang xuat
      */

@@ -66,8 +66,7 @@ Class MY_Controller extends CI_Controller
                     //lay danh sach ho tro truc tuyen
                     $support = $this->support_model->get_info(1);
                     //gui bien sang view
-                    $this->data['support'] = $support;
-                    
+                    $this->data['support'] = $support;                    
                 }
             
         }

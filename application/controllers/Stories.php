@@ -6,6 +6,9 @@ Class Stories extends MY_Controller
         parent::__construct();
         //load model san pham
         $this->load->model('story_model');
+        $this->load->model('lovelists_model');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
         $this->load->database();
     }
 
@@ -213,6 +216,39 @@ Class Stories extends MY_Controller
         
     }
 
+    /**
+     * Description: Thêm danh sách yêu thích
+     * Function: love_lists()
+     * @author: Di
+     * @params: user_id, story_id
+     * @return: lưu vô datbase
+     */
+    function love_lists(){
+        
+        $this->form_validation->set_rules('user_id', 'Bạn chưa đăng nhập nè', 'required');
+        $this->form_validation->set_rules('story_id', 'Không thấy id truyện', 'required');
+        if ($this->form_validation->run()) {
+            //them vao csdl
+            $user_id     = $this->input->post('user_id');
+            $story_id    = $this->input->post('story_id');
+            $user_email    = $this->input->post('user_email');
+        
+            $data = array(
+                'user_email' => $user_email,
+                'user_id'   => $user_id,
+                'story_id'  =>$story_id,
+                'status'    => 1,
+                'created'   => date("Y-m-d H:i:s"),
+            );
+            if ($this->lovelists_model->create($data)) {
+                
+                    $this->session->set_flashdata('message', 'Bằng hữu đã thêm vào danh sách yêu thích thành công.');             
+            } else {
+                $this->session->set_flashdata('message', 'Opps không thêm được, liên hệ quản trị viên về lổi này.');
+            }
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
     /**
      * Description: tìm kiếm tên truyện autocomplete
      * Function: fetch()

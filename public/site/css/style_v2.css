@@ -296,6 +296,17 @@ a.current-chap {
     margin: 0 auto !important;
 }
 
+.text-dark {
+    font-size: 17px;
+}
+
+.box-content-centers.product,
+.box-content-center.product {
+    padding: 50px 0 50px 0;
+    display: flex;
+    justify-content: center;
+}
+
 
 /*Footer************************************/
 

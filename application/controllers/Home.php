@@ -3,24 +3,22 @@ Class Home extends MY_Controller
 {
 	function index()
 	{
-	    //lay danh sach slide
-	    $this->load->model('slide_model');
-	    $slide_list = $this->slide_model->get_list();
-		$this->data['slide_list'] = $slide_list;
-		
-		//get  stories by views
+		//get lay danh sach slide
 		$this->load->model('story_model');
 		$input = array();
-		$input['order'] = array('view', 'DESC');
+		$input['order'] = array('created', 'DESC');
 		$results = $this->story_model->get_list($input);
 		$this->data['data_slides'] = $results;
 
-		//get  stories by dates mới cập nhật
+		//get chapter by dates mới cập nhật
+		$this->load->model('chapter_model');
 		$input = array();
 		$input['limit'] = array(8, 0);
 		$input['order'] = array('created', 'DESC');
-		$result_home = $this->story_model->get_list($input);
+		$result_home = $this->chapter_model->get_list($input);
 		$this->data['data_home'] = $result_home;
+
+		
 		
 		//lấy truyện hot (view cao)
 		$input_hot = array();

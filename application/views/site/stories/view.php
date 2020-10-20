@@ -72,6 +72,33 @@ $(document).ready(function() {
             <?php endif; ?> 
                     Tổng số: <b  class='rate_count'><?php echo $stories->rate_count?> Đánh giá</b>
             </span>
+            <span class="info-book" title="Submit Yêu Thích để nhận mail khi có chap mới nha.">
+              <form action="<?php echo site_url('stories/love_lists')?>" method="post">
+                <?php if(isset($user_info)): 
+                  $this->load->model('lovelists_model');
+                  $inputArr = array();
+                  $iinputArrnput['where'] = array('user_id', $user_info->id);
+                  $get_lists = $this->lovelists_model->get_list($inputArr);
+                  $btnCheck = '';
+                  foreach($get_lists as $val){
+                    if($val->story_id == $stories->id){
+                      $btnCheck .= 'apper';
+                    }
+                  }
+                  ?>
+                  <?php $message = $this->session->flashdata('message'); if(isset($message)):?>
+                    <label for="" style="color: #FF8C33;"><?php echo $message;?></label>
+                  <?php endif;?>
+                  <input type="hidden" name="user_id" value="<?php echo $user_info->id?>">
+                  <input type="hidden" name="story_id" value="<?php echo $stories->id?>">
+                  <input type="hidden" name="user_email" value="<?php echo  $user_info->email?>">
+                  <button type="submit" class="btn btn-primary" <?php if($btnCheck=="apper")echo "disabled"?>>Yêu thích</button>
+                <?php else: ?>
+                  <label for=""><a href="<?php echo site_url('user/login')?>" target="_blank" rel="noopener noreferrer" class="link-login">Đăng nhập</a> để sữ dụng chức năng này</label>
+                  <button type="" class="btn btn-primary" disabled>Yêu thích</button>
+                <?php endif;?>  
+              </form>
+            </span>
           </div>
         </div>
 
