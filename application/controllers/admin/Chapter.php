@@ -122,6 +122,7 @@ Class Chapter extends MY_Controller
             {
                 //lay ten file anh minh hoa duoc update len
                 $this->load->library('email'); // Note: no $config param needed
+                $this->load->model('lovelists_model');
                 $this->load->library('upload_library');
                 $upload_path = './upload/chapter';
                 $upload_data = $this->upload_library->upload($upload_path, 'image');  
@@ -145,35 +146,36 @@ Class Chapter extends MY_Controller
                     'ordering'   => $this->input->post('ordering'),
                 ); 
                 $data['slug'] = $this->slug_library->create_uri($name);
-                //tạo link chap
-                $this->db->insert('chapters',$data);
-                $storyID = $this->db->insert_id();
-                $storyName = $this->story_model->get_info($this->input->post('category_id'));
-                $custom_link = base_url()."truyen/".$storyName->slug.'-'.$data['slug'].'-'.$storyID;
-                $linkSend = '<a href="'.$custom_link.'"> Truy cập vào link này để chuyển hướng.</a>';
+               
                 //lấy danh sách user cần gởi mail
                 $input = array();
-                $input['where'] = array('story_id',$this->input->post('category_id'));
+                $input['where']['story_id'] =$this->input->post('category_id');
                 $loveLists = $this->lovelists_model->get_list($input);
                 $listUsers = '';
                 foreach($loveLists as $row){
                     $listUsers .= $row->user_email.", ";
                 }
-                $from = 'teamcafesua@gmail.com';
-                $to = $listUsers;
-                $subject = "Truyện bạn yêu thích đã có chap mới:";
-                $message = $linkSend;
-                $headers = "From:" . $from;
-                mail($to,$subject,$message, $headers);
-                //2 ways
-                $this->email->from('teamcafesua@gmail.com');
-                $this->email->to($listUsers);
-                $this->email->subject('Truyện bạn yêu thích đã có chap mới:');
-                $this->email->message($linkSend);
-                $this->email->send();    
                 //them moi vao csdl
                 if($this->chapter_model->create($data))
                 {
+                    //tạo link chap
+                    $storyID = $this->db->insert_id();
+                    $storyName = $this->story_model->get_info($this->input->post('category_id'));
+                    $custom_link = base_url()."truyen/".$storyName->slug.'-'.$data['slug'].'-'.$storyID;
+                    $linkSend = '<a href="'.$custom_link.'"> Truy cập vào link này để chuyển hướng.</a>';
+                    //send mail
+                    $from = 'teamcafesua@gmail.com';
+                    $to = $listUsers;
+                    $subject = "Truyện bạn yêu thích đã có chap mới:";
+                    $message = $linkSend;
+                    $headers = "From:" . $from;
+                    mail($to,$subject,$message, $headers);
+                    //2 ways
+                    $this->email->from('teamcafesua@gmail.com');
+                    $this->email->to($listUsers);
+                    $this->email->subject('Truyện bạn yêu thích đã có chap mới:');
+                    $this->email->message($linkSend);
+                    $this->email->send(); 
                     //tạo ra nội dung thông báo
                     $this->session->set_flashdata('message', 'Thêm mới dữ liệu thành công');
                 }else{

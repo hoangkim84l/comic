@@ -119,7 +119,22 @@ Class Stories extends MY_Controller
         $input_stories['limit'] = array(5, 0);
         $results = $this->story_model->get_list($input_stories);
         $this->data['view_stories'] = $results;
-
+        // //san pham vua xem
+        // $recentlyViewed = $this->session->userdata('recentlyViewed');
+        // if(!is_array($recentlyViewed)){
+        //     $recentlyViewed = array();  
+        // }
+        // //change this to 10
+        // if(sizeof($recentlyViewed)>5){
+        //     array_shift($recentlyViewed);
+        // }
+        // //here set your id or page or whatever
+        // if(!in_array($product->id,$recentlyViewed[1])){           
+        //     array_push($recentlyViewed,$product);          
+        //  }
+        // $this->session->set_userdata('recentlyViewed', $recentlyViewed);    
+        // $recentlyViewed = array_reverse($recentlyViewed);
+        // $this->data['recentlyViewed'] = $recentlyViewed;
         //hiển thị ra view
         $this->data['temp'] = 'site/stories/view';
         $this->load->view('site/layout', $this->data);
@@ -191,9 +206,10 @@ Class Stories extends MY_Controller
         }
         $category_ids = $this->input->get('category_id');
         if ($category_ids) {
-            $this->db->where_in('category_id', $category_ids); 
-        }
-         
+            foreach($category_ids as $row){
+                    $this->db->or_like('category_id', $row);
+                }
+            }
         //lay danh sach truyen
         $list = $this->story_model->get_list($input);
         $this->data['list'] = $list;

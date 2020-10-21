@@ -72,9 +72,10 @@
                   <div class="formRow">
                      <label for="param_cat" class="formLeft">Thể loại:<span class="req">*</span></label>
                      <div class="formRight">
-                        <select name="category_id" class="left">
-                           <option value=""></option>
+                        <!-- <select name="category_id" class="left"> -->
+                           <!-- <option value=""></option> -->
                            <!-- kiem tra danh muc co danh muc con hay khong -->
+                           <?php $cata = json_decode($story->category_id);?>
                            <?php foreach ($catalogs as $row):?>
                            <?php if(count($row->subs) > 1):?>
                            <optgroup label="<?php echo $row->name?>">
@@ -85,12 +86,14 @@
                               <?php endforeach;?>
                            </optgroup>
                            <?php else:?>
-                           <option value="<?php echo $row->id?>" <?php if($row->id == $story->category_id) echo 'selected';?>>
+                           <!-- <option value="<?php echo $row->id?>" <?php if($row->id == $story->category_id) echo 'selected';?>>
                               <?php echo $row->name?>
-                           </option>
+                           </option> -->
+                              <input <?php if(in_array($row->id,$cata)) echo 'checked'; ?> type="checkbox" class="form-check-input" name="category_id[]" id="category_id" value="<?php echo $row->id?>">
+                              <label class="form-check-label" for="exampleCheck1"><?php echo $row->name?></label>
                            <?php endif;?>
                            <?php endforeach;?>
-                        </select>
+                        <!-- </select> -->
                         <span class="autocheck" name="cat_autocheck"></span>
                         <div class="clear error" name="cat_error"></div>
                      </div>

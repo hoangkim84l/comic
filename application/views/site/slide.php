@@ -17,8 +17,14 @@
             <div class="card-content">
               <p class="text-uppercase"><?php 
                                         $this->load->model('catalog_model');
-                                        $catalog = $this->catalog_model->get_info($data->category_id);  
-                                        echo $catalog->name?></p>
+                                        $catalog = $this->catalog_model->get_list();
+                                        $cata = json_decode($data->category_id);
+                                        foreach ($catalog as $data){
+                                            if (in_array($data->id, $cata)) { ?>
+                                          <a class="new-links" style='color:#fff' href='/danh-muc/<?php echo $data->id;
+                                            ?>'><?php echo $data->name.",";?></a>
+                                        <?php }
+                                        }?></p>
               <h4 class="card-title mb-4">
                 <a class="text-white" href="<?php echo site_url('xem-truyen/'.$data->slug.'-'.$data->id)?>"><?php echo $data->name?></a>
               </h4>

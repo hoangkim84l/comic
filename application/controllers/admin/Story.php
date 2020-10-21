@@ -129,10 +129,12 @@ class Story extends MY_Controller
                 }
 
                 $name = $this->input->post('name');
+                $catalogs = $this->input->post('category_id');
+                $catalogs = json_encode($catalogs);
                 //luu du lieu can them
                 $data = array(
                     'name'          => $this->input->post('name'),
-                    'category_id'   => $this->input->post('category_id'),
+                    'category_id'   => $catalogs,
                     'description'   => $this->input->post('description'),
                     'author'        => $this->input->post('author'),
                     'image_link'    => $image_link,
@@ -216,10 +218,12 @@ class Story extends MY_Controller
                 }
 
                 $name = $this->input->post('name');
+                $catalogs = $this->input->post('category_id');
+                $catalogs = json_encode($catalogs);
                 //luu du lieu can them
                 $data = array(
                     'name'         => $this->input->post('name'),
-                    'category_id'  => $this->input->post('category_id'),
+                    'category_id'  => $catalogs,
                     'description'  => $this->input->post('description'),
                     'author'       => $this->input->post('author'),
                     'status'       => $this->input->post('status'),

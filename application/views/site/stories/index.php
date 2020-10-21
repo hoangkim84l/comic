@@ -25,8 +25,14 @@
                       <p class="text-uppercase mb-2 catalog">
                         <?php
                           $this->load->model('catalog_model');
-                          $catalog = $this->catalog_model->get_info($row->category_id);
-                          echo "<a style='color:#585757' href='/danh-muc/".$catalog->id."'>".$catalog->name."</a>";
+                          $catalog = $this->catalog_model->get_list();
+                          $cata = json_decode($row->category_id);
+                          foreach ($catalog as $data){
+                              if (in_array($data->id, $cata)) { ?>
+                            <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
+                              ?>'><?php echo $data->name.",";?></a>
+                          <?php }
+                          }
                         ?>
                       </p>
                       <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>

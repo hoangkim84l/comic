@@ -71,7 +71,7 @@
                   <div class="formRow">
                      <label for="param_cat" class="formLeft">Thể loại:<span class="req">*</span></label>
                      <div class="formRight">
-                        <select name="category_id" class="left">
+                        <!-- <select name="category_id" class="left"> -->
                            <option value=""></option>
                            <!-- kiem tra danh muc co danh muc con hay khong -->
                            <?php foreach ($catalogs as $row):?>
@@ -84,12 +84,14 @@
                               <?php endforeach;?>
                            </optgroup>
                            <?php else:?>
-                           <option value="<?php echo $row->id?>">
+                           <!-- <option value="<?php echo $row->id?>">
                               <?php echo $row->name?>
-                           </option>
+                           </option> -->
+                              <input <?php if(!empty($this->input->get('category_id')) && in_array($row->id,$this->input->get('category_id'))) echo 'checked'; ?> type="checkbox" class="form-check-input" name="category_id[]" id="category_id" value="<?php echo $row->id?>">
+                              <label class="form-check-label" for="exampleCheck1"><?php echo $row->name?></label>
                            <?php endif;?>
                            <?php endforeach;?>
-                        </select>
+                        <!-- </select> -->
                         <span class="autocheck" name="cat_autocheck"></span>
                         <div class="clear error" name="cat_error"></div>
                      </div>

@@ -101,9 +101,10 @@
 						<td align="center"><img height="150" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg')?>"></td>
 						<td>
 							<?php
-								$this->load->model('catalog_model');
-								$catalog = $this->catalog_model->get_info($row->category_id);	
-								echo $catalog->name;
+								$cata = json_decode($row->category_id);
+								foreach ($catalogs as $data){?>
+									<label class="form-check-label" for="catalog_name"><?php if(in_array($data->id,$cata)){  echo $data->name .", "; }?></label>
+								<?php }
 							?>
 						</td>
 						<td><?php echo $row->created ?></td>

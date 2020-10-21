@@ -63,7 +63,20 @@ $(document).ready(function() {
             <span class="info-book"><i class="ti-eye mr-2"></i><?php echo number_format($stories->view)?> Lượt xem</span>
             <span class="info-book"><i class="ti-book mr-2"></i> <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'-'.$stories->id)?>" style="color: #000;padding-left:0px;"><?php echo count($list_chapters)?> Chương </a></span>
             <span class="info-book"><i class="ti-pencil mr-2"></i><?php echo $stories->continues == 0 ?  "Còn tiếp" :  "Hoàn thành";?></span>
-            <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i> <?php echo $name_catalog->name?></span>
+            <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i> 
+              <?php 
+                 $this->load->model('catalog_model');
+                 $catalog = $this->catalog_model->get_list();
+                 $cata = json_decode($stories->category_id);
+                 foreach ($catalog as $data){
+                     if (in_array($data->id, $cata)) { ?>
+                   <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
+                     ?>'><?php echo $data->name.",";?></a>
+                 <?php }
+                 }
+              ?>
+            <!-- <?php echo $name_catalog->name?> -->
+            </span>
             <span class="info-book">Đánh giá: 
             <?php if(isset($user_info)):?>
               <span class='raty_detailt' style = 'margin:5px' id='<?php echo $stories->id?>' data-score='<?php echo  ($stories->rate_count > 0) ? $stories->rate_total/$stories->rate_count : 0?>'></span> <br/>

@@ -17,8 +17,6 @@ Class Home extends MY_Controller
 		$input['order'] = array('created', 'DESC');
 		$result_home = $this->chapter_model->get_list($input);
 		$this->data['data_home'] = $result_home;
-
-		
 		
 		//lấy truyện hot (view cao)
 		$input_hot = array();
@@ -30,16 +28,16 @@ Class Home extends MY_Controller
 		//lấy truyện Comic
 		$input_comic = array();
 		$input_comic['limit'] = array(4, 0);
-        $input_comic['where'] = array('category_id' => '5');
+        $input_comic['like'] = array('category_id', '5');
         $list_comic = $this->story_model->get_list($input_comic);
 		$this->data['list_comic'] = $list_comic;
 		
-		//lấy truyện đam mẽo
-		$input_dammeo = array();
-		$input_dammeo['limit'] = array(4, 0);
-        $input_dammeo['where'] = array('category_id' => '11');
-        $list_dammeo = $this->story_model->get_list($input_dammeo);
-        $this->data['list_dammeo'] = $list_dammeo;
+		//lấy truyện hành động
+		$input_action = array();
+		$input_action['limit'] = array(4, 0);
+        $input_action['like'] = array('category_id', '6');
+        $action = $this->story_model->get_list($input_action);
+		$this->data['list_novel'] = $action;
 
 		//lay nội dung của biến message
 		$message = $this->session->flashdata('message');

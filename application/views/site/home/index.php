@@ -1,6 +1,6 @@
 <?php $this->load->model('chapter_model'); $this->load->view('site/slide', $this->data);?>
 
-<!-- blog post truyện mới -->
+<!-- blog post chap mới -->
 <section class="section section-top-page">
   <div class="container">
     <div class="row masonry-container">
@@ -16,7 +16,6 @@
         $this->load->model('catalog_model');
         $this->load->model('story_model');
         $story = $this->story_model->get_info($row->story_id);
-        $catalog = $this->catalog_model->get_info($story->category_id);
         ?>
         <div class="col-lg-3 col-sm-6 mb-5">
           <article class="text-center">
@@ -25,7 +24,14 @@
           </a>
             <p class="text-uppercase mb-2 catalog">
               <?php
-                echo "<a style='color:#585757' href='/danh-muc/".$catalog->id."'>".$catalog->name."</a>";
+               $catalog = $this->catalog_model->get_list();
+               $cata = json_decode($story->category_id);
+               foreach ($catalog as $data){
+                   if (in_array($data->id, $cata)) { ?>
+                 <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
+                   ?>'><?php echo $data->name.",";?></a>
+               <?php }
+               }
               ?>
             </p>
             <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
@@ -65,8 +71,14 @@
             <p class="text-uppercase mb-2 catalog">
               <?php
                 $this->load->model('catalog_model');
-                $catalog = $this->catalog_model->get_info($row->category_id);
-                echo "<a style='color:#585757' href='/danh-muc/".$catalog->id."'>".$catalog->name."</a>";
+                $catalog = $this->catalog_model->get_list();
+                $cata = json_decode($row->category_id);
+                foreach ($catalog as $data){
+                    if (in_array($data->id, $cata)) { ?>
+                  <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
+                    ?>'><?php echo $data->name.",";?></a>
+                <?php }
+                }
               ?>
             </p>
             <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
@@ -106,8 +118,14 @@
             <p class="text-uppercase mb-2 catalog">
               <?php
                 $this->load->model('catalog_model');
-                $catalog = $this->catalog_model->get_info($row->category_id);
-                echo "<a style='color:#585757' href='/danh-muc/".$catalog->id."'>".$catalog->name."</a>";
+                $catalog = $this->catalog_model->get_list();
+                $cata = json_decode($row->category_id);
+                foreach ($catalog as $data){
+                    if (in_array($data->id, $cata)) { ?>
+                  <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
+                    ?>'><?php echo $data->name.",";?></a>
+                <?php }
+                }
               ?>
             </p>
             <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
@@ -127,14 +145,14 @@
   <div class="container">
     <div class="row masonry-container">
       <div class="col-lg-6 col-8">
-      <h5><a href="javascript:void(0)"> <img src="<?php echo public_url('') ?>site/images/icon-stars.png" alt="cafe sữa novel"> &nbsp; Truyện Đam mẽo</a></h5><br/>
+      <h5><a href="javascript:void(0)"> <img src="<?php echo public_url('') ?>site/images/icon-stars.png" alt="cafe sữa novel"> &nbsp; Truyện Novel</a></h5><br/>
       </div>
       <div class="col-lg-6 col-4">
         <a href="/danh-muc/djam-meo-11" class="btn btn-transparent text-right" style="width: 100%;">Xem Thêm...</a>
       </div>
     </div>
     <div class="row masonry-container">
-      <?php foreach($list_dammeo as $row) : if($row->status == 0){ }else{?>
+      <?php foreach($list_novel as $row) : if($row->status == 0){ }else{?>
 
         <div class="col-lg-3 col-sm-6 mb-5">
           <article class="text-center">
@@ -143,9 +161,15 @@
           </a>
             <p class="text-uppercase mb-2 catalog">
               <?php
-                $this->load->model('catalog_model');
-                $catalog = $this->catalog_model->get_info($row->category_id);
-                echo "<a style='color:#585757' href='/danh-muc/".$catalog->id."'>".$catalog->name."</a>";
+               $this->load->model('catalog_model');
+               $catalog = $this->catalog_model->get_list();
+               $cata = json_decode($row->category_id);
+               foreach ($catalog as $data){
+                   if (in_array($data->id, $cata)) { ?>
+                 <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
+                   ?>'><?php echo $data->name.",";?></a>
+               <?php }
+               }
               ?>
             </p>
             <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
