@@ -311,6 +311,35 @@ a.current-chap {
     padding: 8px 2px;
 }
 
+.text-left.fix-title-1-line-homepage {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #585757;
+}
+
+.text-left.fix-title-1-line-homepage a {
+    width: 65%;
+    position: relative;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #585757;
+}
+
+.text-left.fix-title-1-line-homepage span {
+    width: 35%;
+    position: relative;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #585757;
+    padding: 8px 0px;
+}
+
 
 /*Footer************************************/
 

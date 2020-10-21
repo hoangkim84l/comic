@@ -11,13 +11,14 @@
         <a href="truyen.html" class="btn btn-transparent text-right" style="width: 100%;">Xem Thêm...</a>
       </div>
     </div>
-    <div class="row masonry-container">
-      <?php foreach($data_home as $row) : if($row->status == 0){ }else{
+    <div class="row masonry-container" id="data-homes">
+      <?php
+        foreach($data_home as $row) : if($row->status == 0){ }else{
         $this->load->model('catalog_model');
         $this->load->model('story_model');
         $story = $this->story_model->get_info($row->story_id);
         ?>
-        <div class="col-lg-3 col-sm-6 mb-5">
+        <div class="col-lg-3 col-sm-6 mb-5 data-dup" data-id="<?php echo $row->story_id?>">
           <article class="text-center">
           <a href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>">
             <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $story->image_link != '' ? base_url('upload/stories/'.$story->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>"title="<?php echo $story->name?>">
@@ -38,13 +39,25 @@
             <h4 class="title-border">
               <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>"><?php echo $story->name?></a>
             </h4>
-            <div class="text-left fix-title-1-line">
-              <a href="<?php echo site_url('truyen/'.$story->slug.'-'.$row->slug.'-'.$row->id)?>"> <?php echo $row->name ?></a>
-            </div>
+            <?php
+              $input_chap = array();
+              $input_chap['limit'] = array(3, 0);
+              $input_chap['where'] = array('story_id' => $row->story_id);
+              $input_chap['order'] = array('created', 'DESC');
+              $get3_chap_last = $this->chapter_model->get_list($input_chap);
+              foreach($get3_chap_last as $val){
+                ?>
+                  <div class="text-left fix-title-1-line-homepage">
+                    <a href="<?php echo site_url('truyen/'.$story->slug.'-'.$val->slug.'-'.$val->id)?>"> <?php echo $val->name ?></a>  
+                    <span><?php $date=date_create($val->created); echo date_format($date,"d-m-Y");?></span>
+                  </div>
+                <?php
+              }
+            ?>
            </article>
         </div>
 
-      <?php }  endforeach; ?>
+      <?php } endforeach; ?>
     </div>
   </div>
 </section>
@@ -184,3 +197,15 @@
   </div>
 </section>
 <!-- /blog post -->
+<script>
+  var found = {};
+$('[data-id]').each(function(){
+    var $this = $(this);
+    if(found[$this.data('id')]){
+         $this.remove();   
+    }
+    else{
+         found[$this.data('id')] = true;   
+    }
+});
+</script>

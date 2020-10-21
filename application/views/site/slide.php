@@ -19,10 +19,10 @@
                                         $this->load->model('catalog_model');
                                         $catalog = $this->catalog_model->get_list();
                                         $cata = json_decode($data->category_id);
-                                        foreach ($catalog as $data){
-                                            if (in_array($data->id, $cata)) { ?>
-                                          <a class="new-links" style='color:#fff' href='/danh-muc/<?php echo $data->id;
-                                            ?>'><?php echo $data->name.",";?></a>
+                                        foreach ($catalog as $row){
+                                            if (in_array($row->id, $cata)) { ?>
+                                          <a class="new-links" style='color:#fff' href='/danh-muc/<?php echo $row->id;
+                                            ?>'><?php echo $row->name.",";?></a>
                                         <?php }
                                         }?></p>
               <h4 class="card-title mb-4">
