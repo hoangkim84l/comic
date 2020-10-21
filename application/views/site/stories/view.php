@@ -50,7 +50,7 @@ $(document).ready(function() {
           <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php echo $stories->created?></li>-->
         </ul> 
         <div class="row">
-          <div class="col-lg-7 col-sm-12" style="display: flex;justify-content: center;">
+          <div class="col-lg-7 col-sm-12" style="width:100%; text-align: center; max-height: 345px;">
               <img class=" img-fluid mb-4" src="<?php echo $stories->image_link != '' ? base_url('upload/stories/'.$stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $stories->name?>">
           </div>
           <div class="col-lg-5 col-sm-12">
