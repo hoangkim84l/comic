@@ -25,24 +25,24 @@
 <meta name="author" content="<?php echo $support->author?>" />
 <meta name="copyright" content="<?php echo $support->copyright?>" />
 <!--Meta seo web-->
-<title><?php echo $support->site_title?></title>
+<title><?php if(isset($stories) && ($stories->site_title != "")){ echo $stories->site_title;}elseif(isset($chapter) && ($chapter->site_title != "")){ echo $chapter->site_title;}else{echo $support->site_title;}?></title>
 <link rel="canonical" href="<?php echo current_url();?>" />
-<meta name="keywords" content="<?php echo $support->site_key?>" />
-<meta name="description" content="<?php echo $support->site_desc?>" />
+<meta name="keywords" content="<?php if(isset($stories) && ($stories->meta_key != "")){ echo $stories->meta_key;}elseif(isset($chapter) && ($chapter->meta_key != "")){ echo $chapter->meta_key;}else{echo $support->site_key;}?>" />
+<meta name="description" content="<?php if(isset($stories) && ($stories->meta_desc != "")){ echo $stories->meta_desc;}elseif(isset($chapter) && ($chapter->meta_desc != "")){ echo $chapter->meta_desc;}else{echo $support->site_desc;}?>" />
 <!--Meta seo web-->
 
 <!--Meta Geo-->
-<meta name="DC.title" content="<?php echo $support->site_title?>" />
+<meta name="DC.title" content="<?php if(isset($stories) && ($stories->site_title != "")){ echo $stories->site_title;}elseif(isset($chapter) && ($chapter->site_title != "")){ echo $chapter->site_title;}else{echo $support->site_title;}?>" />
 <meta name="geo.region" content="<?php echo $support->geo_region?>" />
 <meta name="geo.placename" content="<?php echo $support->geo_placename?>" />
 <meta name="DC.identifier" content="<?php echo current_url();?>" />
 <!--Meta Geo-->
 <!--Meta facebook-->
 <meta property="og:image" content="<?php echo $support->og_image != '' ? base_url('upload/logo/'.$support->og_image) : base_url('upload/logo/default.jpg') ?>" />
-<meta property="og:title" content="<?php echo $support->site_key?>" />
+<meta property="og:title" content="<?php if(isset($stories) && ($stories->meta_key != "")){ echo $stories->meta_key;}elseif(isset($chapter) && ($chapter->meta_key != "")){ echo $chapter->meta_key;}else{echo $support->site_key;}?>" />
 <meta property="og:url" content="<?php echo current_url();?>" />
 <meta property="og:site_name" content="<?php echo current_url();?>" />
-<meta property="og:description" content="<?php echo $support->site_desc?>" />
+<meta property="og:description" content="<?php if(isset($stories) && ($stories->meta_desc != "")){ echo $stories->meta_desc;}elseif(isset($chapter) && ($chapter->meta_desc != "")){ echo $chapter->meta_desc;}else{echo $support->site_desc;}?>" />
 <meta property="og:type" content="<?php echo $support->og_type?>" />
 <!-- jQuery -->
 <script src="<?php echo public_url()?>site/plugins/jQuery/jquery.min.js"></script>

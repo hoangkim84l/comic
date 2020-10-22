@@ -2,7 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h2 class="mb-4">Chỉnh sửa thông tin thành viên</h2>
+		<h2 class="mb-4">Chỉnh sửa thông tin thành viên</h2>
+		<ul class="list-inline ">
+            <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / Thông tin thành viên</li>
+         </ul>
         <form class="t-form form_action" method="post" action="<?php echo site_url('user/edit')?>" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-lg-6">

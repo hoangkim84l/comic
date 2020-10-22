@@ -9,6 +9,13 @@
   </div>
 </section>
 <!-- /page-title -->
+<div class="container">
+    <div class="row">
+    <ul class="list-inline d-flex justify-content-between py-3">
+          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / Tìm truyện nâng cao</li>
+        </ul>
+  </div>
+</div>
 <!--Main seach-->
 <section class="section-search">
   <div class="container">

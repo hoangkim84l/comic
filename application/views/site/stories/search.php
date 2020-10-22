@@ -9,9 +9,15 @@
   </div>
 </section>
 <!-- /page-title -->
-
+<div class="container">
+    <div class="row">
+    <ul class="list-inline d-flex justify-content-between py-3">
+          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / Tìm truyện : <?php echo $key?></li>
+        </ul>
+  </div>
+</div>
 <!-- category post -->
-<section>
+<section style="margin-top:-50px">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">

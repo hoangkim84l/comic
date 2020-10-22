@@ -135,15 +135,18 @@ Class Chapter extends MY_Controller
                 $name = $this->input->post('name');
                 //luu du lieu can them
                 $data = array(
-                    'name'       => $name,
-                    'image_link' => $image_link,
-                    'story_id'   => $this->input->post('category_id'),
-                    'show_img'   => $this->input->post('show_img'),
-                    'content'   => $this->input->post('content'),
-                    'author'   => $this->input->post('author'),
-                    'status'     => $this->input->post('status'),
-                    'created'    => date("Y-m-d H:i:s"),
-                    'ordering'   => $this->input->post('ordering'),
+                    'name'          => $name,
+                    'image_link'    => $image_link,
+                    'story_id'      => $this->input->post('category_id'),
+                    'show_img'      => $this->input->post('show_img'),
+                    'content'       => $this->input->post('content'),
+                    'site_title'    => $this->input->post('site_title'),
+                    'meta_desc'     => $this->input->post('meta_desc'),
+                    'meta_key'      => $this->input->post('meta_key'),
+                    'author'        => $this->input->post('author'),
+                    'status'        => $this->input->post('status'),
+                    'created'       => date("Y-m-d H:i:s"),
+                    'ordering'      => $this->input->post('ordering'),
                 ); 
                 $data['slug'] = $this->slug_library->create_uri($name);
                
@@ -255,14 +258,17 @@ Class Chapter extends MY_Controller
                 $name = $this->input->post('name');
                 //luu du lieu can them
                 $data = array(
-                    'name'     => $name,
-                    'story_id' => $this->input->post('category_id'),
-                    'show_img'   => $this->input->post('show_img'),
-                    'status'   => $this->input->post('status'),
-                    'content'   => $this->input->post('content'),
-                    'author'   => $this->input->post('author'),
-                    'created'  => date("Y-m-d H:i:s"),
-                    'ordering' => $this->input->post('ordering'),
+                    'name'          => $name,
+                    'story_id'      => $this->input->post('category_id'),
+                    'show_img'      => $this->input->post('show_img'),
+                    'status'        => $this->input->post('status'),
+                    'content'       => $this->input->post('content'),
+                    'site_title'    => $this->input->post('site_title'),
+                    'meta_desc'     => $this->input->post('meta_desc'),
+                    'meta_key'      => $this->input->post('meta_key'),
+                    'author'        => $this->input->post('author'),
+                    'created'       => date("Y-m-d H:i:s"),
+                    'ordering'      => $this->input->post('ordering'),
                 ); 
                 if($image_link != '')
                 {

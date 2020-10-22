@@ -46,8 +46,7 @@ $(document).ready(function() {
     <div class="row">
       <div class="col-lg-8">
         <ul class="list-inline d-flex justify-content-between py-3">
-        <!--   <li class="list-inline-item"><i class="ti-user mr-2"></i><?php echo $stories->author?></li>
-          <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php echo $stories->created?></li>-->
+          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / <a href="<?php echo site_url('xem-truyen/'.$stories->slug.'-'.$stories->id)?>"><?php echo $stories->name?></a></li>
         </ul> 
         <div class="row">
           <div class="col-lg-7 col-sm-12" style="width:100%; text-align: center; ">

@@ -18,8 +18,7 @@
     <div class="row">
       <div class="col-lg-12">
         <ul class="list-inline d-flex justify-content-between py-3">
-          <li class="list-inline-item"><i class="ti-user mr-2"></i><?php echo $chapter->author?></li>
-          <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php $date = date_create($chapter->created);  echo date_format($date,'d-m-Y H:i:s')?></li>
+          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / <a href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>"><?php echo $story->name?></a> / <?php echo $chapter->name; ?></li>
         </ul>
         <div class="row">
           <div class="col-lg-12 cus-text-right">

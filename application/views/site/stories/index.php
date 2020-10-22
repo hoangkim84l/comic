@@ -4,6 +4,9 @@
     <div class="row">
       <div class="col-lg-12">
         <h4>TẤT CẢ TRUYỆN/MANGA</h4>
+        <ul class="list-inline ">
+            <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / Danh sách truyện / Manga</li>
+         </ul>
       </div>
     </div>
   </div>

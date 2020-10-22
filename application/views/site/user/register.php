@@ -3,7 +3,9 @@
     <div class="row">
       <div class="col-lg-12">
         <h2 class="mb-4">Đăng ký thành viên</h2>
-        <br/>
+        <ul class="list-inline ">
+          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / Đăng ký thành viên</li>
+        </ul>
         <br/>
       </div>
       <div class="col-lg-4 mb-12">

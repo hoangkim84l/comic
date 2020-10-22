@@ -4,6 +4,9 @@
     <div class="row">
       <div class="col-lg-12">
         <h4><?php echo $catalog->name?></h4>
+        <ul class="list-inline ">
+          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / <?php echo $catalog->name?></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -15,6 +18,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
+        
         <div class="row masonry-container pt-5">
             <?php foreach($list_story as $row):?>  
                 <div class="col-sm-4 mb-5">
