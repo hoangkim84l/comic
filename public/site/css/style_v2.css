@@ -64,7 +64,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     padding: 0px 16px;
-    min-height: 45px;
+    min-height: 40px;
 }
 
 .login-user {

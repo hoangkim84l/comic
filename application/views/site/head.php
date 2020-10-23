@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="<?php echo public_url()?>site/plugins/themify-icons/themify-icons.css">
 
 <!-- Main Stylesheet -->
-<link href="<?php echo public_url()?>site/css/style.css" rel="stylesheet">
-<link href="<?php echo public_url()?>site/css/style_v2.css" rel="stylesheet">
+<link href="<?php echo public_url()?>site/css/style.css?ver=1" rel="stylesheet">
+<link href="<?php echo public_url()?>site/css/style_v2.css?ver=1" rel="stylesheet">
 
 <!--Favicon-->
 <link rel="shortcut icon" href="<?php echo $support->favicon != '' ? base_url('upload/logo/'.$support->favicon) : base_url('upload/logo/default.jpg') ?>" type="image/x-icon">
