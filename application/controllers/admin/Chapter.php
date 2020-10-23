@@ -165,7 +165,8 @@ Class Chapter extends MY_Controller
                     $storyID = $this->db->insert_id();
                     $storyName = $this->story_model->get_info($this->input->post('category_id'));
                     $custom_link = base_url()."truyen/".$storyName->slug.'-'.$data['slug'].'-'.$storyID;
-                    $linkSend = '<a href="'.$custom_link.'"> Truy cập vào link này để chuyển hướng.</a>';
+                    $linkSend = 'Truyện bạn theo dõi đã có chap mới click vào link bên dưới để xem ngay nha'.PHP_EOL.
+                                    $custom_link;
                     //send mail
                     $from = 'teamcafesua@gmail.com';
                     $to = $listUsers;
