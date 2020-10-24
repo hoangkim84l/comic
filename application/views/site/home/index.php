@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row masonry-container">
       <div class="col-lg-6 col-8">
-        <h5><a href="javascript:void(0)"> <img src="<?php echo public_url('') ?>site/images/icon-stars.png" alt="cafe sữa novel"> &nbsp; Truyện mới cập nhật</a></h5><br/>
+        <h5><a href="javascript:void(0)"> <img src="<?php echo public_url('') ?>site/images/icon-stars.png" alt="<?php echo $support->site_title; ?>" title="<?php echo $support->site_desc;?>"> &nbsp; Truyện mới cập nhật</a></h5><br/>
       </div>
       <div class="col-lg-6 col-4">
         <a href="truyen.html" class="btn btn-transparent text-right" style="width: 100%;">Xem Thêm...</a>
@@ -21,7 +21,7 @@
         <div class="col-lg-3 col-sm-6 mb-5 data-dup" data-id="<?php echo $row->story_id?>">
           <article class="text-center">
           <a href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>">
-            <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $story->image_link != '' ? base_url('upload/stories/'.$story->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>"title="<?php echo $story->name?>">
+            <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $story->image_link != '' ? base_url('upload/stories/'.$story->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $story->site_title?>">
           </a>
             <p class="text-uppercase mb-2 catalog">
               <?php
@@ -30,7 +30,7 @@
                foreach ($catalog as $data){
                    if (in_array($data->id, $cata)) { ?>
                  <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
-                   ?>'><?php echo $data->name.",";?></a>
+                   ?>'><?php echo $data->name.".";?></a>
                <?php }
                }
               ?>
@@ -79,7 +79,7 @@
         <div class="col-lg-3 col-sm-6 mb-5">
           <article class="text-center">
           <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
-            <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>"title="<?php echo $row->name?>">
+            <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $row->site_title?>">
           </a>
             <p class="text-uppercase mb-2 catalog">
               <?php
@@ -89,7 +89,7 @@
                 foreach ($catalog as $data){
                     if (in_array($data->id, $cata)) { ?>
                   <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
-                    ?>'><?php echo $data->name.",";?></a>
+                    ?>'><?php echo $data->name.".";?></a>
                 <?php }
                 }
               ?>
@@ -126,7 +126,7 @@
         <div class="col-lg-3 col-sm-6 mb-5">
           <article class="text-center">
           <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
-            <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>"title="<?php echo $row->name?>">
+            <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?> "title="<?php echo $row->site_title?>">
           </a>
             <p class="text-uppercase mb-2 catalog">
               <?php
@@ -136,7 +136,7 @@
                 foreach ($catalog as $data){
                     if (in_array($data->id, $cata)) { ?>
                   <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
-                    ?>'><?php echo $data->name.",";?></a>
+                    ?>'><?php echo $data->name.".";?></a>
                 <?php }
                 }
               ?>
@@ -170,7 +170,7 @@
         <div class="col-lg-3 col-sm-6 mb-5">
           <article class="text-center">
           <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
-            <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>"title="<?php echo $row->name?>">
+            <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $row->site_title?>">
           </a>
             <p class="text-uppercase mb-2 catalog">
               <?php
@@ -180,7 +180,7 @@
                foreach ($catalog as $data){
                    if (in_array($data->id, $cata)) { ?>
                  <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
-                   ?>'><?php echo $data->name.",";?></a>
+                   ?>'><?php echo $data->name.".";?></a>
                <?php }
                }
               ?>
@@ -199,13 +199,16 @@
 <!-- /blog post -->
 <script>
   var found = {};
-$('[data-id]').each(function(){
-    var $this = $(this);
-    if(found[$this.data('id')]){
-         $this.remove();   
-    }
-    else{
-         found[$this.data('id')] = true;   
-    }
-});
+  $('[data-id]').each(function(){
+      var $this = $(this);
+      if(found[$this.data('id')]){
+          $this.remove();   
+      }
+      else{
+          found[$this.data('id')] = true;   
+      }
+  });
+  if($('[data-id]').length > 8){
+   $('[data-id]:gt(7)').remove();
+}
 </script>

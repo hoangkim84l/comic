@@ -13,7 +13,7 @@ Class Home extends MY_Controller
 		//get chapter by dates mới cập nhật
 		$this->load->model('chapter_model');
 		$input = array();
-		$input['limit'] = array(8, 0);
+		$input['limit'] = array(40, 0);
 		$input['order'] = array('created', 'DESC');
 		$result_home = $this->chapter_model->get_list($input);
 		$this->data['data_home'] = $result_home;

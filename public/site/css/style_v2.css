@@ -57,7 +57,8 @@
     color: #585757;
 }
 
-.text-dark.fix-title-2-line {
+.text-dark.fix-title-2-line,
+.text-white.fix-title-2-line {
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 2;

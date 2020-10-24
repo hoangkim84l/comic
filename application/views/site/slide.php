@@ -15,18 +15,18 @@
           <img class="card-img rounded-0 img-fluid w-100" style="min-height: 476px;" src="<?php echo $data->image_link != '' ? base_url('upload/stories/'.$data->image_link) :  base_url('upload/stories/default.jpg')?>" alt="<?php echo $data->name?>">
           <div class="card-img-overlay">
             <div class="card-content">
-              <p class="text-uppercase"><?php 
+              <p class="text-uppercase mb-2 catalog"><?php 
                                         $this->load->model('catalog_model');
                                         $catalog = $this->catalog_model->get_list();
                                         $cata = json_decode($data->category_id);
                                         foreach ($catalog as $row){
                                             if (in_array($row->id, $cata)) { ?>
                                           <a class="new-links" style='color:#fff' href='/danh-muc/<?php echo $row->id;
-                                            ?>'><?php echo $row->name.",";?></a>
+                                            ?>'><?php echo $row->name.".";?></a>
                                         <?php }
                                         }?></p>
               <h4 class="card-title mb-4">
-                <a class="text-white" href="<?php echo site_url('xem-truyen/'.$data->slug.'-'.$data->id)?>"><?php echo $data->name?></a>
+                <a class="text-white fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$data->slug.'-'.$data->id)?>"><?php echo $data->name?></a>
               </h4>
               <a class="btn btn-outline-light" href="<?php echo site_url('xem-truyen/'.$data->slug.'-'.$data->id)?>">Xem Hết..</a>
             </div>

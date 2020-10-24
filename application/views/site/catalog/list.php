@@ -24,7 +24,7 @@
                 <div class="col-sm-4 mb-5">
                 <article class="text-center">
                     <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
-                      <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>"title="<?php echo $row->name?>">
+                      <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $row->site_title?>">
                     </a>
                       <p class="text-uppercase mb-2 catalog">
                         <?php
@@ -56,7 +56,7 @@
               <div class="media mb-4">
                 <div class="post-thumb-sm mr-3">
                   <a  href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
-                    <img class="img-fluid mb-4" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>">
+                    <img class="img-fluid mb-4" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $row->site_title?>">
                   </a>
                 </div>
                 <div class="media-body">

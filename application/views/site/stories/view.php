@@ -50,7 +50,7 @@ $(document).ready(function() {
         </ul> 
         <div class="row">
           <div class="col-lg-7 col-sm-12" style="width:100%; text-align: center; ">
-              <img class=" img-fluid mb-4" src="<?php echo $stories->image_link != '' ? base_url('upload/stories/'.$stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $stories->name?>">
+              <img class=" img-fluid mb-4" src="<?php echo $stories->image_link != '' ? base_url('upload/stories/'.$stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $stories->meta_desc;?>" title="<?php echo $stories->site_title;?>">
           </div>
           <div class="col-lg-5 col-sm-12">
             <h6 class="title-book"><?php echo $stories->name?></h6>
@@ -70,7 +70,7 @@ $(document).ready(function() {
                  foreach ($catalog as $data){
                      if (in_array($data->id, $cata)) { ?>
                    <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
-                     ?>'><?php echo $data->name.",";?></a>
+                     ?>'><?php echo $data->name.".";?></a>
                  <?php }
                  }
               ?>
@@ -190,7 +190,7 @@ $(document).ready(function() {
           <div class="media mb-4">
             <div class="post-thumb-sm mr-3">
               <a href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>">
-                <img class="img-fluid" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->name?>">
+                <img class="img-fluid" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->meta_desc?>" title="<?php echo $row_stories->site_title;?>">
               </a>
             </div>
             <div class="media-body">
