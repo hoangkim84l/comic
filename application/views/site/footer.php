@@ -36,6 +36,7 @@
             <li class="list-inline-item"><a href="<?php echo $support->fanpage_twitter?>" class="text-dark"><i class="ti-twitter-alt"></i></a></li>
             <li class="list-inline-item"><a href="<?php echo $support->fanpage_linkedin?>" class="text-dark"><i class="ti-linkedin"></i></a></li>
             <li class="list-inline-item"><a href="mailto:<?php echo $support->skype?>" class="text-dark"><i class="ti-skype"></i></a></li>
+            <li class="list-inline-item"><a href="https://www.pinterest.com/CafeSuaTeam/_saved/" class="text-dark"><i class="ti-pinterest"></i></a></li>
           </ul>
           <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcafesuateam&tabs=timeline&width=340&height=150&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=720902514969277" width="340" height="150" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
         </div>

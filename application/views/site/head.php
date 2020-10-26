@@ -38,12 +38,12 @@
 <meta name="DC.identifier" content="<?php echo current_url();?>" />
 <!--Meta Geo-->
 <!--Meta facebook-->
-<meta property="og:image" content="<?php echo $support->og_image != '' ? base_url('upload/logo/'.$support->og_image) : base_url('upload/logo/default.jpg') ?>" />
-<meta property="og:title" content="<?php if(isset($stories) && ($stories->meta_key != "")){ echo $stories->meta_key;}elseif(isset($chapter) && ($chapter->meta_key != "")){ echo $chapter->meta_key;}else{echo $support->site_key;}?>" />
-<meta property="og:url" content="<?php echo current_url();?>" />
-<meta property="og:site_name" content="<?php echo current_url();?>" />
-<meta property="og:description" content="<?php if(isset($stories) && ($stories->meta_desc != "")){ echo $stories->meta_desc;}elseif(isset($chapter) && ($chapter->meta_desc != "")){ echo $chapter->meta_desc;}else{echo $support->site_desc;}?>" />
-<meta property="og:type" content="<?php echo $support->og_type?>" />
+<meta property="og:image" typeof="WebPage" content="<?php echo $support->og_image != '' ? base_url('upload/logo/'.$support->og_image) : base_url('upload/logo/default.jpg') ?>" />
+<meta property="og:title" typeof="WebPage" content="<?php if(isset($stories) && ($stories->meta_key != "")){ echo $stories->meta_key;}elseif(isset($chapter) && ($chapter->meta_key != "")){ echo $chapter->meta_key;}else{echo $support->site_key;}?>" />
+<meta property="og:url" typeof="WebPage" content="<?php echo current_url();?>" />
+<meta property="og:site_name" typeof="WebPage" content="<?php echo current_url();?>" />
+<meta property="og:description" typeof="WebPage" content="<?php if(isset($stories) && ($stories->meta_desc != "")){ echo $stories->meta_desc;}elseif(isset($chapter) && ($chapter->meta_desc != "")){ echo $chapter->meta_desc;}else{echo $support->site_desc;}?>" />
+<meta property="og:type" typeof="WebPage" content="<?php echo $support->og_type?>" />
 <!-- jQuery -->
 <script src="<?php echo public_url()?>site/plugins/jQuery/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script> 
@@ -52,7 +52,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>  
 
 <!-- raty -->
-<script src="<?php echo public_url()?>/site/raty/jquery.raty.min.js" type="text/javascript"></script>
+<script src="<?php echo public_url()?>site/raty/jquery.raty.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function() {
     $.fn.raty.defaults.path = '<?php echo public_url()?>/site/raty/img';
@@ -77,7 +77,7 @@ $(function() {
   gtag('config', 'UA-178674513-1');
 </script>
 <!--Google ads-->
-<script data-ad-client="ca-pub-9323279727270807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- <script data-ad-client="ca-pub-9323279727270807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 <script>
   jQuery(document).ready(function() {
     $('#text-search').typeahead({
@@ -94,3 +94,5 @@ $(function() {
 });
 });
 </script>
+<!--pinterest-->
+<meta name="p:domain_verify" content="81dc13c314d680b28e35d312ad22f50b"/>

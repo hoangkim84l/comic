@@ -7,9 +7,22 @@ table td{
 <div class="container"><!-- The box-center product-->
      <div><br/><br/>
           <h2>Thông tin thành viên</h2>
-          <ul class="list-inline ">
-            <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / Thông tin thành viên</li>
-         </ul>
+          <div class="row">
+          <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="1" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url()?>">
+                    <span itemprop="title" property="name">Trang chủ / </span>
+                </a>
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="2" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('user')?>">
+                    <span itemprop="title" property="name"> Thông tin thành viên</span>
+                </a>
+            </li>
+        </ul>
+          </div>
      </div>
       <div class="product"><!-- The box-content-center -->
           <table>

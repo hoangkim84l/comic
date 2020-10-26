@@ -11,13 +11,25 @@
 <!-- /page-title -->
 <div class="container">
     <div class="row">
-    <ul class="list-inline d-flex justify-content-between py-3">
-          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / Tìm truyện : <?php echo $key?></li>
-        </ul>
+      <br>
+    <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
+      <li property="itemListElement" typeof="ListItem">
+          <meta property="position" content="1" />
+          <a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url()?>">
+              <span itemprop="title" property="name">Trang chủ / </span>
+          </a>
+      </li>
+      <li property="itemListElement" typeof="ListItem">
+          <meta property="position" content="2" />
+          <a property="item" itemprop="url" typeof="WebPage" href="/truyen/tim-kiem-truyen?key-search=">
+              <span itemprop="title" property="name"> Tìm truyện : <?php echo $key?></span>
+          </a>
+      </li>
+  </ul>
   </div>
 </div>
 <!-- category post -->
-<section style="margin-top:-50px">
+<section >
   <div class="container">
     <div class="row">
       <div class="col-lg-12">

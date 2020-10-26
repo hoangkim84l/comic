@@ -16,11 +16,31 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <ul class="list-inline d-flex justify-content-between py-3">
-        <ul class="list-inline d-flex justify-content-between py-3">
-          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / <a href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>"><?php echo $story->name?></a> / Danh sách chapter</li>
+      <div class="container-fluid">
+            <div class="row">
+            <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="1" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url()?>">
+                    <span itemprop="title" property="name">Trang chủ / </span>
+                </a>
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="2" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>">
+                    <span itemprop="title" property="name"> <?php echo  $story->name;?> / </span>
+                </a>
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="3" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('danh-sach-chuong/'.$story->slug.'-'.$story->id)?>">
+                    <span itemprop="title" property="name"> Danh sách chương - chapter</span>
+                </a>
+            </li>
         </ul>
-        </ul>
+            </div>
+      </div>
+        <br/>
         <h6>Danh sách Chương/Chapter</h6>
         <br/>
         <div class="container-fluid" style="min-height: 300px;">

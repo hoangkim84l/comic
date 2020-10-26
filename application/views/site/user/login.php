@@ -4,8 +4,19 @@
     <div class="row">
       <div class="col-lg-6 col-sm-12 login-user">
         <h2 class="mb-4">Thành viên đăng nhập</h2>
-        <ul class="list-inline ">
-          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / Đăng nhập</li>
+        <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="1" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url()?>">
+                    <span itemprop="title" property="name">Trang chủ / </span>
+                </a>
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="2" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('user/login')?>">
+                    <span itemprop="title" property="name"> Đăng nhập</span>
+                </a>
+            </li>
         </ul>
         <img src="<?php echo public_url()?>site/images/logo.jpg" alt="Thành viên đăng nhập" title="Hội mê truyện" class="img-fluid w-100 mb-4 login-page" height="300px">
       </div>

@@ -4,9 +4,20 @@
     <div class="row">
       <div class="col-lg-12">
         <h4>TẤT CẢ TRUYỆN/MANGA</h4>
-        <ul class="list-inline ">
-            <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / Danh sách truyện / Manga</li>
-         </ul>
+        <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="1" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url()?>">
+                    <span itemprop="title" property="name">Trang chủ / </span>
+                </a>
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="2" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('truyen.html')?>">
+                    <span itemprop="title" property="name"> Danh sách truyện - Manga</span>
+                </a>
+            </li>
+        </ul>
       </div>
     </div>
   </div>

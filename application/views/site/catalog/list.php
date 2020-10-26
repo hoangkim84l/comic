@@ -4,8 +4,19 @@
     <div class="row">
       <div class="col-lg-12">
         <h4><?php echo $catalog->name?></h4>
-        <ul class="list-inline ">
-          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / <?php echo $catalog->name?></li>
+        <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="1" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url()?>">
+                    <span itemprop="title" property="name">Trang chủ / </span>
+                </a>
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="2" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url()?>danh-muc/<?php echo $catalog->id?>">
+                    <span itemprop="title" property="name"><?php echo $catalog->name?></span>
+                </a>
+            </li>
         </ul>
       </div>
     </div>

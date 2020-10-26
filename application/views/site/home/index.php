@@ -1,5 +1,12 @@
 <?php $this->load->model('chapter_model'); $this->load->view('site/slide', $this->data);?>
-
+<ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList" style="display: none;">
+  <li property="itemListElement" typeof="ListItem">
+      <meta property="position" content="1" />
+      <a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url()?>">
+          <span itemprop="title" property="name">Trang chủ</span>
+      </a>
+  </li>
+</ul>
 <!-- blog post chap mới -->
 <section class="section section-top-page">
   <div class="container">

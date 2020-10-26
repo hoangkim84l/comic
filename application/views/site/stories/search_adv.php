@@ -11,13 +11,25 @@
 <!-- /page-title -->
 <div class="container">
     <div class="row">
-    <ul class="list-inline d-flex justify-content-between py-3">
-          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / Tìm truyện nâng cao</li>
-        </ul>
+    <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
+        <li property="itemListElement" typeof="ListItem">
+            <meta property="position" content="1" />
+            <a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url()?>">
+                <span itemprop="title" property="name">Trang chủ / </span>
+            </a>
+        </li>
+        <li property="itemListElement" typeof="ListItem">
+            <meta property="position" content="2" />
+            <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('truyen/tim-nang-cao')?>">
+                <span itemprop="title" property="name"> Tìm truyện nâng cao</span>
+            </a>
+        </li>
+    </ul>
   </div>
 </div>
 <!--Main seach-->
 <section class="section-search">
+  <br/>
   <div class="container">
   <form method="get" action="<?php echo site_url('stories/search_adv')?>" class="list_filter form">
       <div class="form-row">

@@ -17,9 +17,28 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <ul class="list-inline d-flex justify-content-between py-3">
-          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / <a href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>"><?php echo $story->name?></a> / <?php echo $chapter->name; ?></li>
+      <div class="row">
+        <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="1" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url()?>">
+                    <span itemprop="title" property="name">Trang chủ / </span>
+                </a>
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="2" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>">
+                    <span itemprop="title" property="name"> <?php echo $story->name?> / </span>
+                </a>
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="2" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('truyen/'.$story->slug.'-'.$chapter->slug.'-'.$chapter->id)?>">
+                    <span itemprop="title" property="name"> <?php echo $chapter->name; ?> / </span>
+                </a>
+            </li>
         </ul>
+      </div>
         <div class="row">
           <div class="col-lg-12 cus-text-right">
             <div class="btn-click row">

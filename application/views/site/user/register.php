@@ -3,8 +3,19 @@
     <div class="row">
       <div class="col-lg-12">
         <h2 class="mb-4">Đăng ký thành viên</h2>
-        <ul class="list-inline ">
-          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / Đăng ký thành viên</li>
+        <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="1" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url()?>">
+                    <span itemprop="title" property="name">Trang chủ / </span>
+                </a>
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="2" />
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('user/register')?>">
+                    <span itemprop="title" property="name"> Đăng ký</span>
+                </a>
+            </li>
         </ul>
         <br/>
       </div>

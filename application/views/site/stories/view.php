@@ -45,9 +45,22 @@ $(document).ready(function() {
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
-        <ul class="list-inline d-flex justify-content-between py-3">
-          <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / <a href="<?php echo site_url('xem-truyen/'.$stories->slug.'-'.$stories->id)?>"><?php echo $stories->name?></a></li>
-        </ul> 
+        <div class="row">
+        <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="1" />
+                <a property="item" itemprop="url" typeof="website" href="<?php echo base_url()?>">
+                    <span itemprop="title" property="name">Trang chủ / </span>
+                </a>
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                <meta property="position" content="2" />
+                <a property="item" itemprop="url" typeof="website" href="<?php echo site_url('xem-truyen/'.$stories->slug.'-'.$stories->id)?>">
+                    <span itemprop="title" property="name"> <?php echo $stories->name?> </span>
+                </a>
+            </li>
+        </ul>
+        </div>
         <div class="row">
           <div class="col-lg-7 col-sm-12" style="width:100%; text-align: center; ">
               <img class=" img-fluid mb-4" src="<?php echo $stories->image_link != '' ? base_url('upload/stories/'.$stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $stories->meta_desc;?>" title="<?php echo $stories->site_title;?>">
@@ -177,7 +190,7 @@ $(document).ready(function() {
                       <li class="list-inline-item"><?php $date = date_create($row_chapter->created);
                                                           echo date_format($date,'d-m-Y H:i:s')?></li>
                     </ul>
-                    <h6><a class="text-dark" href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
+                    <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
                   </div>
                 </div>
                 <?php } endforeach;?>
@@ -199,7 +212,7 @@ $(document).ready(function() {
                 <li class="list-inline-item"><?php $date = date_create($row_stories->created);
                                                           echo date_format($date,'d-m-Y H:i:s')?></li>
               </ul>
-              <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a>  <i class="ti-eye mr-2"></i><?php echo number_format($row_stories->view)?></h6>
+              <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a>  <i class="ti-eye mr-2"></i><?php echo number_format($row_stories->view)?></h6>
             </div>
           </div>
           <?php } endforeach;?>  

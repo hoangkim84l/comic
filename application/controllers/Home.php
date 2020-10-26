@@ -28,14 +28,14 @@ Class Home extends MY_Controller
 		//lấy truyện Comic
 		$input_comic = array();
 		$input_comic['limit'] = array(4, 0);
-        $input_comic['like'] = array('category_id', '5');
+        $input_comic['like'] = array('category_id', '%5%');
         $list_comic = $this->story_model->get_list($input_comic);
 		$this->data['list_comic'] = $list_comic;
 		
 		//lấy truyện hành động
 		$input_action = array();
 		$input_action['limit'] = array(4, 0);
-        $input_action['like'] = array('category_id', '6');
+        $input_action['like'] = array('category_id', '23');
         $action = $this->story_model->get_list($input_action);
 		$this->data['list_novel'] = $action;
 

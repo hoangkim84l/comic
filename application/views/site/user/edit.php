@@ -3,9 +3,22 @@
     <div class="row">
       <div class="col-lg-12">
 		<h2 class="mb-4">Chỉnh sửa thông tin thành viên</h2>
-		<ul class="list-inline ">
-            <li class="list-inline-item breadcrumb"><a href="<?php echo base_url()?>">Trang chủ</a> / Thông tin thành viên</li>
-         </ul>
+		<div class="row">
+			<ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
+				<li property="itemListElement" typeof="ListItem">
+					<meta property="position" content="1" />
+					<a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url()?>">
+						<span itemprop="title" property="name">Trang chủ / </span>
+					</a>
+				</li>
+				<li property="itemListElement" typeof="ListItem">
+					<meta property="position" content="2" />
+					<a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('user/edit')?>">
+						<span itemprop="title" property="name"> Thông tin thành viên</span>
+					</a>
+				</li>
+			</ul>
+		</div>
         <form class="t-form form_action" method="post" action="<?php echo site_url('user/edit')?>" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-lg-6">

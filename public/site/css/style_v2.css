@@ -65,7 +65,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     padding: 0px 16px;
-    min-height: 40px;
+    min-height: 39px;
 }
 
 .login-user {
@@ -344,6 +344,16 @@ a.current-chap {
     flex-wrap: wrap;
     padding: 0 1rem;
     background-color: transparent
+}
+
+.force-overflow-new .content {
+    text-align: left;
+}
+
+.list-inline li {
+    position: relative;
+    float: left;
+    padding: 10px;
 }
 
 
