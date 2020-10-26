@@ -280,7 +280,7 @@ Class Chapter extends MY_Controller
                     'meta_desc'     => $this->input->post('meta_desc'),
                     'meta_key'      => $this->input->post('meta_key'),
                     'author'        => $this->input->post('author'),
-                    'created'       => date("Y-m-d H:i:s"),
+                    // 'created'       => date("Y-m-d H:i:s"),
                     'ordering'      => $this->input->post('ordering'),
                 ); 
                 if($image_link != '')
