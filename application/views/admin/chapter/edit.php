@@ -97,6 +97,19 @@
                      <div class="clear"></div>
                   </div>
                   <div class="formRow">
+                     <label class="formLeft">File âm thanh:</label>
+                     <div class="formRight">
+                        <div class="left">
+                           <input type="file" name="audio" id="audio" size="25"><br/><br/>
+                           <audio controls>
+                              <source src="<?php echo base_url('upload/chapter/'.$chapter->audio_link)?>" type="audio/mpeg">
+                           </audio>   
+                        </div>
+                        <div class="clear error" name="image_error"></div>
+                     </div>
+                     <div class="clear"></div>
+                  </div>
+                  <div class="formRow">
                      <label for="param_name" class="formLeft">Tác giả:</label>
                      <div class="formRight">
                         <span class="oneTwo">

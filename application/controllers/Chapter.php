@@ -107,7 +107,22 @@ Class Chapter extends MY_Controller
         $this->load->model('comment_model');
         $comments = $this->comment_model->get_list($input_comment);
         $this->data['comments'] = $comments;
-
+        // Chap-Truyện vừa xem
+        $recentlyChapViewed = $this->session->userdata('recentlyChapViewed');
+        if(!is_array($recentlyChapViewed)){
+            $recentlyChapViewed = array();  
+        }
+        //change this to 10
+        if(sizeof($recentlyChapViewed)>5){
+            array_shift($recentlyChapViewed);
+        }
+        //here set your id or page or whatever
+        if(!in_array($id,$recentlyChapViewed)){           
+            array_push($recentlyChapViewed,$id);          
+         }
+        $this->session->set_userdata('recentlyChapViewed', $recentlyChapViewed);    
+        $recentlyChapViewed = array_reverse($recentlyChapViewed);
+        $this->data['recentlyChapViewed'] = $recentlyChapViewed;
         //hiển thị ra view
         $this->data['temp'] = 'site/chapter/view';
         $this->load->view('site/layout', $this->data);

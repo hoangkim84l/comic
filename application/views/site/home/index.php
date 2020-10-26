@@ -124,7 +124,7 @@
         <h5><a href="javascript:void(0)"> <img src="<?php echo public_url('') ?>site/images/icon-stars.png" alt="cafe sữa novel"> &nbsp; Truyện Manga/Comic</a></h5><br/>
       </div>
       <div class="col-lg-6 col-4">
-        <a href="/danh-muc/mangacomic-5" class="btn btn-transparent text-right" style="width: 100%;">Xem Thêm...</a>
+        <a href="/danh-muc/mangacomic-95" class="btn btn-transparent text-right" style="width: 100%;">Xem Thêm...</a>
       </div>
     </div>
     <div class="row masonry-container">
@@ -160,7 +160,7 @@
   </div>
 </section>
 <!-- /blog post -->
-<!-- blog post truyện đam mẽo-->
+<!-- blog post truyện Novel-->
 <section class="section section-content">
   <div class="container">
     <div class="row masonry-container">
@@ -168,7 +168,7 @@
       <h5><a href="javascript:void(0)"> <img src="<?php echo public_url('') ?>site/images/icon-stars.png" alt="cafe sữa novel"> &nbsp; Truyện Novel</a></h5><br/>
       </div>
       <div class="col-lg-6 col-4">
-        <a href="/danh-muc/djam-meo-11" class="btn btn-transparent text-right" style="width: 100%;">Xem Thêm...</a>
+        <a href="/danh-muc/noveltieu-thuyet-23" class="btn btn-transparent text-right" style="width: 100%;">Xem Thêm...</a>
       </div>
     </div>
     <div class="row masonry-container">

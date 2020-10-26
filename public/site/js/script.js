@@ -61,4 +61,6 @@
     //         remoteTarget: _this.attr('data-target')
     //     });
     // });
+    //Get the button
+
 })(jQuery);

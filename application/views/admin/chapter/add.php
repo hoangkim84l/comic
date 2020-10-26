@@ -92,6 +92,16 @@
                      <div class="clear"></div>
                   </div>
                   <div class="formRow">
+                     <label for="param_name" class="formLeft">Upload file âm thanh</label>
+                     <div class="formRight">
+                        <div class="left">
+                           <input type="file" name="audio" id="audio" size="25">
+                        </div>
+                        <div class="clear error" name="audio_error"></div>
+                     </div>
+                     <div class="clear"></div>
+                  </div>
+                  <div class="formRow">
                      <label for="param_name" class="formLeft">Tác giả:</label>
                      <div class="formRight">
                         <span class="oneTwo"><input type="text" _autocheck="true" id="param_ordering" name="author"></span>

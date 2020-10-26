@@ -100,8 +100,15 @@
               </div>
           </div>
         </div>
-
-
+        <?php if($chapter->audio_link != ''){?>
+        <div class="row">
+          <div class="col-lg-12 cus-text-right">        
+            <audio controls>
+              <source src="<?php echo base_url('upload/chapter/'.$chapter->audio_link)?>" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+        <?php }?>
         <?php if($chapter->image_link != '' && $chapter->show_img == 1){ ?>
         <div class="scrollbar scrollbar-style-2" id="style-1">
           <div class="force-overflow">
@@ -167,30 +174,27 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h6 class="mb-4">Truyện cùng danh mục</h6>
+        <h6 class="mb-4">Chap/Chương bạn vừa xem</h6>
           <?php 
-            $count = 0;
-            intval($count);
-            foreach($list_stories as $row_stories):
-            if($row_stories->status == 0){ }else{
-                $count++;
-                if ($count > 6) {
-                    break;
-                }
-                 ?>
+            $list_chap = array_unique($recentlyChapViewed);
+            $list_chap_new = array();
+            $this->load->model('story_model');
+            $this->load->model('chapter_model');
+            foreach($list_chap as $val){
+              $chapter = $this->chapter_model->get_info($val);
+              array_push($list_chap_new,$chapter);
+            }    
+            foreach($list_chap_new as $row_chap):
+            if($row_chap->status == 0){ }else{
+              $story = $this->story_model->get_info($row_chap->story_id);
+            ?>
               <div class="col-lg-6 media mb-4 ">
-                <div class="post-thumb-sm mr-3">
-                <a href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>">
-                  <img class="img-fluid" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->name?>">
-                </a>    
-                </div>
                 <div class="media-body">
                   <ul class="list-inline d-flex justify-content-between mb-2">
-                    <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?> | <?php $date = date_create($row_stories->created);
-                                                              echo date_format($date,'d-m-Y H:i:s')?></li>
+                    <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $story->author;?> | <?php $date = date_create($row_chap->created); echo date_format($date,'d-m-Y')?></li>
                     <li class="list-inline-item"></li>
                   </ul>
-                  <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a> <i class="ti-eye mr-2"></i> <?php echo number_format($row_stories->view)?></h6>
+                  <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('truyen/'.$story->slug.'-'.$row_chap->slug.'-'.$row_chap->id)?>"><?php echo $row_chap->name?></a></h6>
                 </div>
               </div>
           <?php

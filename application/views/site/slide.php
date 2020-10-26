@@ -1,40 +1,87 @@
-<!-- featured post -->
-<section>
-  <div class="container-fluid p-sm-0">
-    <div class="row featured-post-slider">
-      <?php 
-        $count = 0;
-        intval($count);
-        foreach($data_slides as $data):
-        if($data->status == 0){ }else{  
-        $count++;
-        if($count > 8 ) break;  
-      ?>
-      <div class="col-lg-3 col-sm-12 mb-2 mb-lg-0 px-1 ">
-        <article class="card bg-dark text-center text-white border-0 rounded-0">
-          <img class="card-img rounded-0 img-fluid w-100" style="min-height: 476px;" src="<?php echo $data->image_link != '' ? base_url('upload/stories/'.$data->image_link) :  base_url('upload/stories/default.jpg')?>" alt="<?php echo $data->name?>">
-          <div class="card-img-overlay">
-            <div class="card-content">
-              <p class="text-uppercase mb-2 catalog"><?php 
-                                        $this->load->model('catalog_model');
-                                        $catalog = $this->catalog_model->get_list();
-                                        $cata = json_decode($data->category_id);
-                                        foreach ($catalog as $row){
-                                            if (in_array($row->id, $cata)) { ?>
-                                          <a class="new-links" style='color:#fff' href='/danh-muc/<?php echo $row->id;
-                                            ?>'><?php echo $row->name.".";?></a>
-                                        <?php }
-                                        }?></p>
-              <h4 class="card-title mb-4">
-                <a class="text-white fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$data->slug.'-'.$data->id)?>"><?php echo $data->name?></a>
-              </h4>
-              <a class="btn btn-outline-light" href="<?php echo site_url('xem-truyen/'.$data->slug.'-'.$data->id)?>">Xem Hết..</a>
-            </div>
-          </div>
-        </article>
-      </div>
-      <?php } endforeach; ?>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" rel="stylesheet" type="text/css">
+<script src="<?php echo public_url()?>site/js/jquery.acarousel.min.js"></script>
+<script>
+$(function () {
+	var len = $("#carousel").children().length;
+	var acarousel = $("#carousel").acarousel({
+		moveStep: function (elem, index, pos_index, t) {
+			if (pos_index >= 3 && pos_index < len - 3 || pos_index == len - 3 && t == 0) {
+				elem.hide();
+			}
+		}
+	});
+
+	changeActive();
+
+	// $("#carousel li a").click(function() {
+	// 	var move = acarousel.moveByElem($(this).parent());
+	// 	changeActive(move);
+	// 	return false;
+	// });
+
+	$("#move_back").click(function () {
+		var move = acarousel.move(1);
+		changeActive(move);
+		return false;
+	});
+
+	$("#move_next").click(function () {
+		var move = acarousel.move(-1);
+		changeActive(move);
+		return false;
+	});
+
+	$(".move").click(function () {
+
+		var pos = acarousel.getPos();
+		pos = pos.index % 5 + pos.point;
+		pos = parseInt($(".move").index(this)) - pos;
+
+		var diff1 = Math.abs(pos) % 5 * (pos < 0 ? 1 : -1);
+		var diff2 = (10 - (Math.abs(pos) + 5)) % 5 * (pos < 0 ? -1 : 1);
+
+		move = acarousel.move(Math.abs(diff1) < Math.abs(diff2) ? diff1 : diff2);
+		changeActive(move);
+		return false;
+	});
+
+	function changeActive(move) {
+		var index = acarousel.getPos(move).index % 5;
+		$(".move").removeClass("active").eq(index).addClass("active");
+	}
+
+	$(window).resize(function () {
+		var parent = $("#carousel_container");
+		var self = $("#carousel");
+		self.css({
+			left: parent.width() / 2 - self.width() / 2
+			, top: parent.height() / 2 - self.height() / 2
+		});
+	}).trigger("resize");
+
+});
+</script>
+<div id="content">
+        <div id="carousel_container">
+            <ul id="carousel">
+            <?php 
+              $count = 0;
+              intval($count);
+              foreach($data_slides as $data):
+              if($data->status == 0){ }else{  
+              $count++;
+              if($count > 6 ) break;  
+            ?>
+                <li id="c<?php echo $count;?>">
+                    <a href="<?php echo site_url('xem-truyen/'.$data->slug.'-'.$data->id)?>"><img class="img-fluid w-100" src="<?php echo $data->image_link != '' ? base_url('upload/stories/'.$data->image_link) :  base_url('upload/stories/default.jpg')?>" alt="<?php echo $data->name?>">
+                    </a>
+                </li>
+                <?php } endforeach; ?>
+            </ul>
+        </div>
+        <div id="move_mark">
+            <div id="move_back"><a href="#">←</a></div>
+            <div id="move_next"><a href="#">→</a></div>
+        </div>
     </div>
-  </div>
-</section>
-<!-- /featured post -->

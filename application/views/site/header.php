@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row" style="width: 100%;">
         <div class="col-lg-2">
-        <a class="navbar-brand" href="<?php echo base_url()?>"><img class="img-fluid" src="<?php echo $support->logo != '' ? base_url('upload/logo/'.$support->logo) : base_url('upload/logo/default.jpg') ?>" alt="Web comic truyện tranh, truyện nhân gian"></a>
+        <a class="navbar-brand" href="<?php echo base_url()?>"><img class="img-fluid" src="<?php echo $support->logo != '' ? base_url('upload/logo/'.$support->logo) : base_url('upload/logo/default.jpg') ?>" alt="cafe sữa novel, Web comic truyện tranh, truyện nhân gian"></a>
         </div>
         <div class="col-lg-10">
         <button class="navbar-toggler border-0 custom-position" type="button" data-toggle="collapse" data-target="#navogation"

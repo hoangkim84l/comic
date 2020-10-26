@@ -44,6 +44,7 @@
 			
 			<?php endif;?>
 			<?php $this->load->view($temp , $this->data);?>
+			<button onclick="topFunction()" id="myBtn" title="Go to top"><img width="30px" src="<?php echo $support->logo != '' ? base_url('upload/logo/'.$support->logo) : base_url('upload/logo/default.jpg') ?>" alt="cafe sữa novel, Web comic truyện tranh, truyện nhân gian"></button>
 		</div>
 		
 		<div class="clear"></div>
@@ -75,6 +76,23 @@
 		jQuery('*').bind('cut copy paste contextmenu', function (e) {
 			e.preventDefault();
 		})});
+		var mybutton = document.getElementById("myBtn");
+
+		// When the user scrolls down 20px from the top of the document, show the button
+		window.onscroll = function() { scrollFunction() };
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				mybutton.style.display = "block";
+			} else {
+				mybutton.style.display = "none";
+			}
+		}
+
+		// When the user clicks on the button, scroll to the top of the document
+		function topFunction() {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		}
 	</script>
     </body>
 </html>

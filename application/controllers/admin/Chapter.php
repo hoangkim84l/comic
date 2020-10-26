@@ -126,17 +126,23 @@ Class Chapter extends MY_Controller
                 $this->load->library('upload_library');
                 $upload_path = './upload/chapter';
                 $upload_data = $this->upload_library->upload($upload_path, 'image');  
+                $upload_audio_data = $this->upload_library->upload($upload_path, 'audio');  
                 $image_link = '';
+                $audio_link = '';
                 if(isset($upload_data['file_name']))
                 {
                     $image_link = $upload_data['file_name'];
                 }
-               
+                if(isset($upload_audio_data['file_name']))
+                {
+                    $audio_link = $upload_audio_data['file_name'];
+                }
                 $name = $this->input->post('name');
                 //luu du lieu can them
                 $data = array(
                     'name'          => $name,
                     'image_link'    => $image_link,
+                    'audio_link'    => $audio_link,
                     'story_id'      => $this->input->post('category_id'),
                     'show_img'      => $this->input->post('show_img'),
                     'content'       => $this->input->post('content'),
@@ -251,10 +257,16 @@ Class Chapter extends MY_Controller
                 $this->load->library('upload_library');
                 $upload_path = './upload/chapter';
                 $upload_data = $this->upload_library->upload($upload_path, 'image');
+                $upload_audio_data = $this->upload_library->upload($upload_path, 'audio');
                 $image_link = '';
+                $audio_link = '';
                 if(isset($upload_data['file_name']))
                 {
                     $image_link = $upload_data['file_name'];
+                }
+                if(isset($upload_audio_data['file_name']))
+                {
+                    $audio_link = $upload_audio_data['file_name'];
                 }
                 $name = $this->input->post('name');
                 //luu du lieu can them
@@ -275,7 +287,10 @@ Class Chapter extends MY_Controller
                 {
                     $data['image_link'] = $image_link;
                 }
-               
+                if($audio_link != '')
+                {
+                    $data['audio_link'] = $audio_link;
+                }
                 $data['slug'] = $this->slug_library->create_uri($name);
                 //them moi vao csdl
                 if($this->chapter_model->update($chapter->id, $data))
