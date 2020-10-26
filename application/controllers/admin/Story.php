@@ -53,7 +53,8 @@ class Story extends MY_Controller
         $category_id = $this->input->get('category_id');
         $category_id = intval($category_id);
         if ($category_id > 0) {
-            $input['where']['category_id'] = $category_id;
+            // $input['where']['category_id'] = $category_id;
+            $input['like'] = array('category_id', $category_id);
         }
         
         //lay danh sach truyen
