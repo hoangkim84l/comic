@@ -17,6 +17,7 @@ $route['truyen/tim-nang-cao'] = 'stories/search_adv';
 $route['truyen/(:any)'] = 'chapter/view/$1';
 $route['truyen/(:any)-(:num)'] = 'chapter/view/$1/$2';
 $route['danh-sach-chuong/(:any)-(:num)'] = 'chapter/list/$1/$2';
+
 //tab danh mục truyện
 $route['danh-muc/(:any)'] = 'catalog/view/$1';
 $route['danh-muc/(:any)-(:num)'] = 'catalog/view/$1/$2';

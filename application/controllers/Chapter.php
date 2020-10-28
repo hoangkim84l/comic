@@ -140,6 +140,7 @@ Class Chapter extends MY_Controller
         $id =  $output[count($output)-1];
         //lay danh mục chương/chapter
         $this->load->model('chapter_model');
+        
         $input_chapter = array();
         $input_chapter['where'] = array('story_id' => $id);
         $list = $this->chapter_model->get_list($input_chapter);
@@ -149,6 +150,13 @@ Class Chapter extends MY_Controller
         $this->load->model('story_model');
         $story = $this->story_model->get_info($id);
         $this->data['story'] = $story;
+
+         //lay danh sach truyện truyện mới
+	    $input_story = array();
+        $input_story['limit'] = array(10, 0);
+        $input_story['order'] = array('created', 'DESC');
+	    $story_newest = $this->story_model->get_list($input_story);
+        $this->data['story_newest'] = $story_newest;
 
         //hiển thị ra view
         $this->data['temp'] = 'site/chapter/list';

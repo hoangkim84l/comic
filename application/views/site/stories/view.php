@@ -186,24 +186,22 @@ $(document).ready(function() {
                     $list_stories_new = array();
                     $this->load->model('story_model');
                     foreach($list_stories as $val){
-                      $stories = $this->story_model->get_info($val);
-                      array_push($list_stories_new,$stories);
+                      $stories_view = $this->story_model->get_info($val);
+                      array_push($list_stories_new,$stories_view);
                     }
                     foreach($list_stories_new as $row_stories):
                     if($row_stories->status == 0){ }else{
                        
                         ?>
                       <div class="col-lg-6 media mb-4 ">
-                        <div class="post-thumb-sm mr-3">
-                        <a href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>">
+                        <div class="post-thumb-sm mr-3" style="overflow:inherit">
+                        <a href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"  style="padding: 8px 0px;">
                           <img class="img-fluid" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->name?>">
                         </a>    
                         </div>
                         <div class="media-body">
                           <ul class="list-inline d-flex justify-content-between mb-2">
-                            <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?> | <?php $date = date_create($row_stories->created);
-                                                                      echo date_format($date,'d-m-Y')?></li>
-                            <li class="list-inline-item"></li>
+                            <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?> <br/> <?php $date = date_create($row_stories->created);  echo date_format($date,'d-m-Y')?></li>
                           </ul>
                           <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a> </h6>
                         </div>
@@ -225,8 +223,7 @@ $(document).ready(function() {
                   <div class="media-body">
                     <ul class="list-inline d-flex justify-content-between mb-2">
                       <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $stories->author ?></li>
-                      <li class="list-inline-item"><?php $date = date_create($row_chapter->created);
-                                                          echo date_format($date,'d-m-Y H:i:s')?></li>
+                      <li class="list-inline-item"><?php $date = date_create($row_chapter->created); echo date_format($date,'d-m-Y')?></li>
                     </ul>
                     <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
                   </div>
@@ -248,9 +245,9 @@ $(document).ready(function() {
               <ul class="list-inline d-flex justify-content-between mb-2">
                 <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?> </li>
                 <li class="list-inline-item"><?php $date = date_create($row_stories->created);
-                                                          echo date_format($date,'d-m-Y H:i:s')?></li>
+                                                          echo date_format($date,'d-m-Y')?></li>
               </ul>
-              <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a>  <i class="ti-eye mr-2"></i><?php echo number_format($row_stories->view)?></h6>
+              <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a></h6>
             </div>
           </div>
           <?php } endforeach;?>  
