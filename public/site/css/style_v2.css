@@ -381,6 +381,10 @@ a.current-chap {
     background-color: #FFA163;
 }
 
+textarea.form-control {
+    height: 50px;
+}
+
 
 /*Footer************************************/
 

@@ -266,7 +266,7 @@
                           ?></b>
                         </li>
                         <li class="list-inline-item"><?php $date = date_create($row->created);
-                                                          echo date_format($date,'d-m-Y H:i:s')?></li>
+                                                          echo date_format($date,'d-m-Y')?></li>
                       </ul>
                       <span><?php echo $row->body?></span>
                     </div>
