@@ -207,7 +207,8 @@ Class Stories extends MY_Controller
         $category_ids = $this->input->get('category_id');
         if ($category_ids) {
             foreach($category_ids as $row){
-                    $this->db->or_like('category_id', $row);
+                $reID = '"'.$row.'"';
+                    $this->db->or_like('category_id', $reID);
                 }
             }
         //lay danh sach truyen
