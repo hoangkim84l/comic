@@ -44,7 +44,7 @@
 			
 			<?php endif;?>
 			<?php $this->load->view($temp , $this->data);?>
-			<button onclick="topFunction()" id="myBtn" title="Go to top"><img width="30px" src="<?php echo public_url()?>site/images/ot.png ?>" alt="đọc truyện cafe sữa, cafe sữa novel, Web comic truyện tranh, truyện nhân gian"></button>
+			<button onclick="topFunction()" id="myBtn" title="Go to top"><img width="30px" src="<?php echo public_url()?>site/images/ot.png" alt="đọc truyện cafe sữa, cafe sữa novel, Web comic truyện tranh, truyện nhân gian"></button>
 		</div>
 		
 		<div class="clear"></div>

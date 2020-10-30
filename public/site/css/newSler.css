@@ -140,3 +140,34 @@
         left: 300px;
     }
 }
+
+@media only screen and (max-width: 736px) {
+    #carousel {
+        left: 0px !important;
+    }
+    #c1 {
+        left: 25px;
+    }
+    #c2 {
+        left: 300px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #c1 {
+        width: 320px;
+        left: 20px;
+        top: 45px;
+    }
+}
+
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+    #c1 {
+        width: 320px;
+        left: 200px;
+        top: 45px;
+    }
+    #c2 {
+        left: 430px;
+    }
+}
