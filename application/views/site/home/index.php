@@ -42,7 +42,7 @@
                }
               ?>
             </p>
-            <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
+            <center><div class='raty' style='margin:10px 0px' id='<?php echo $story->id?>' data-score='<?php echo  ($story->rate_count > 0) ? $story->rate_total/$story->rate_count : 0?>'></div></center>
             <h4 class="title-border">
               <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>"><?php echo $story->name?></a>
             </h4>
