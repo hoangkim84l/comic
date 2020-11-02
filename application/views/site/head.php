@@ -55,7 +55,6 @@ else{
   $seo_desc_custom = $support->site_desc;
 }
 
- var_dump($url);
 ?>
 <title><?php if(isset($stories) && ($stories->site_title != "")){ echo $stories->site_title;}elseif(isset($chapter) && ($chapter->site_title != "")){ echo $chapter->site_title;}else{echo $seo_title_custom;}?></title>
 <link rel="canonical" href="<?php echo current_url();?>" />
