@@ -59,6 +59,7 @@ Class Chapter extends MY_Controller
      */
     function view()
     {
+        $this->load->model('user_model');
         //lay id san pham muon xem
         $id = $this->uri->rsegment(3);
         $output = explode("-",$id);

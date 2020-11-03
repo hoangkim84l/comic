@@ -382,7 +382,24 @@ a.current-chap {
 }
 
 textarea.form-control {
-    height: 50px;
+    height: 80px;
+    margin-top: 10px;
+}
+
+.form-control-text {
+    margin-left: 15px;
+}
+
+.custom-sticker-p {
+    width: 100%;
+    padding-left: 15px;
+}
+
+.custom-icon {
+    position: relative;
+    width: 75px;
+    float: left;
+    padding: 10px;
 }
 
 

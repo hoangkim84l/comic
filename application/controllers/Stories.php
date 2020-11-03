@@ -74,6 +74,7 @@ Class Stories extends MY_Controller
      */
     function view()
     {
+        $this->load->model('user_model');
         //lay id san pham muon xem
         $id = $this->uri->rsegment(3);
         $output = explode("-",$id);
@@ -112,6 +113,13 @@ Class Stories extends MY_Controller
         $input['where'] = array('story_id' => $id);
         $list = $this->chapter_model->get_list($input);
         $this->data['list_chapters'] = $list;
+
+        //Lấy danh sách bình luận
+        $input_comment = array();
+        $input_comment['where'] = array('story_id'=> $stories->id);
+        $this->load->model('comment_model');
+        $comments = $this->comment_model->get_list($input_comment);
+        $this->data['comments'] = $comments;
 
         //danh sách truyện mới
         $this->load->model('story_model');

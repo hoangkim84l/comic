@@ -42,6 +42,11 @@ table td{
                   <td>Địa chỉ</td>
                   <td><?php echo $user->address?></td>
                </tr>
+               <tr>
+                   <td>Avatar</td>
+                   <td><img src="<?php echo $user->image_link != '' ? base_url('upload/user/'.$user->image_link) : base_url('upload/stories/default.jpg')?>" style="height:150px">
+				</td>
+               </tr>
           </table>
           
       </div><a href="<?php echo site_url('user/edit')?>" class="button">Sửa thông tin</a>

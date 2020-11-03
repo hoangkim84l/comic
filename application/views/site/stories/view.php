@@ -40,6 +40,31 @@ $(document).ready(function() {
       });
 });
 </script>
+<script type="text/javascript">
+    var icon; //Tạo biến lưu nội dung file json được đọc
+    //Tạo hàm đọc file
+    function readTextFile(file) 
+    {
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", file, false);
+        rawFile.onreadystatechange = function ()
+        {
+            if(rawFile.readyState === 4)
+            {
+                if(rawFile.status === 200 || rawFile.status == 0)
+                {
+                    var allText = rawFile.responseText;
+                    icon = JSON.parse(allText); //đọc dữ liệu json của file và lưu vào biến icon
+                }
+            }
+        }
+        rawFile.send(null);
+    }
+
+    //Chọn file để đọc nào
+    readTextFile("<?php echo public_url()?>site/js/icon.json");
+</script>
+
 <!-- blog single -->
 <section>
   <div class="container">
@@ -266,4 +291,162 @@ $(document).ready(function() {
   </div>
 </section>
 <!-- /story single -->
-<br/>
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- /blog single -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            
+            <a class="nav-link active" id="home-tab-cafesua" data-toggle="tab" href="#home-cafesua" role="tab" aria-controls="home" aria-selected="true"><img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận ở đây nè</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="profile-tab-facebook" data-toggle="tab" href="#profile-cafesua" role="tab" aria-controls="profile" aria-selected="false"> <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận với Facebook</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home-cafesua" role="tabpanel" aria-labelledby="home-tab-cafesua">
+            <br/>
+            <?php if(isset($user_info)):?>
+            <form action="<?php echo site_url('comment/storyHaveLogin');?>" class="row" method="POST" id="postComment">
+              <input type="hidden" class="form-control " name="user_id" id="user_id" value="<?php echo $user_info->id?>">
+              <input type="hidden" class="form-control form-control-text col-lg-4" name="name"  value="">
+              <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="<?php echo $stories->id?>">
+              <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="0">
+              <input type="hidden" class="form-control mb-4" name="icon" id="icon" value="">
+              <div class="col-lg-12">
+                <textarea name="body" id="body" class="form-control mb-4" placeholder="Lời nhắn..."></textarea>
+              </div>
+              <div class="form-group custom-sticker-p">
+                  <div id="show-stiker-selected">
+                    <img src="" alt="" id="stickerSelected" width="100px">
+                    <span id="deleteStiker">Xóa sticker</span>
+                  </div>
+                  <input type='button' id='hideshow' value='Chọn sticker'>
+                  <div id='content-a' style="display:none;">
+                  <?php $listIcons = json_decode(file_get_contents(public_url('site/js/icon.json')));
+                       foreach ($listIcons as $key => $val) {
+                           ?>
+                          <div class="custom-icon">
+                            <img src="<?php echo $val;?>" width="70px" data-key="<?php echo $key;?>" data-src="<?php echo $val;?>">
+                          </div>
+                          <?php
+                          } ?>
+                  </div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary" id="clickClear">Lên Lên</button>
+              </div>
+            </form>
+            <?php else:?>
+              <form action="<?php echo site_url('comment/story');?>" class="row" method="POST" id="postComment">
+                <input type="hidden" class="col-lg-4" name="user_id" id="user_id" value="">
+                <input type="text" class="form-control form-control-text col-lg-4" name="name" id="user_id" value="" placeholder=" Tên của bạn" require>
+                <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="<?php echo $stories->id?>">
+                <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="0">
+                <input type="hidden" class="form-control mb-4" name="icon" id="icon" value="">
+                <br/>
+                <div class="col-lg-12">
+                  <textarea name="body" id="body" class="form-control mb-4" placeholder="Lời nhắn..."></textarea>
+                </div>
+                <div class="form-group custom-sticker-p">
+                  <div id="show-stiker-selected">
+                    <img src="" alt="" id="stickerSelected" width="100px">
+                    <span id="deleteStiker">Xóa sticker</span>
+                  </div>
+                  <input type='button' id='hideshow' value='Chọn sticker'>
+                  <div id='content-a' style="display:none;">
+                  <?php $listIcons = json_decode(file_get_contents(public_url('site/js/icon.json')));
+                       foreach ($listIcons as $key => $val) {
+                           ?>
+                          <div class="custom-icon">
+                            <img src="<?php echo $val;?>" width="70px" data-key="<?php echo $key;?>" data-src="<?php echo $val;?>">
+                          </div>
+                          <?php
+                          } ?>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary" id="clickClear">Lên Lên</button>
+                </div>
+              </form>
+            <?php endif;?>
+            <br/>
+            
+            <div class="scrollbar" id="style-1">
+              <div class="force-overflow">
+                <?php $i = 0 ; foreach($comments as $row):?>
+                  <div class="media mb-4">
+                    <div class="post-thumb-sm mr-3">
+                      <img class="img-fluid" src="<?php
+                               $this->load->model('user_model');
+                               $users = $this->user_model->get_info($row->user_id);
+                              echo !empty($users->image_link) ? base_url('upload/user/'.$users->image_link) : base_url('upload/stories/default.jpg')?>" alt="<?php echo $row->body?>">
+                    </div>
+                    <div class="media-body">
+                      <ul class="list-inline d-flex justify-content-between mb-2">
+                        <li class="list-inline-item">
+                          <b><?php 
+                            if($row->name == NULL){
+                              echo $users->name."<i> - Thành viên</i>";
+                            }else{
+                              echo $row->name."<i> - Khách</i>";
+                            }
+                          ?></b>
+                        </li>
+                        <li class="list-inline-item"><?php $date = date_create($row->created); echo date_format($date,'d-m-Y')?></li>
+                      </ul>
+                      <span><?php echo $row->body?></span>
+                      <p id="icon<?php echo $i;?>" style="display:none;"><?php echo $row->icon ?></p>
+                      <img id="myIcon<?php echo $i;?>" src="" width="70px">
+                      <script type="text/javascript">
+                          var key = $('#icon<?php echo $i;?>').text();
+                          $('#myIcon<?php echo $i;?>').attr('src', icon[key]);
+                      </script>
+                    </div>
+                  </div>
+                  <?php $i++; endforeach;?>
+              </div>
+                
+            </div>
+            
+          </div>
+          <div class="tab-pane fade" id="profile-cafesua" role="tabpanel" aria-labelledby="profile-tab-facebook">
+            <br/>
+            <div id="fb-root"></div>
+            <script src="http://connect.facebook.net/vi_VN/all.js#appId=170796359666689&amp;xfbml=1"></script>
+            <div class="fb-comments"  data-href="<?php echo current_url() ?>"
+                 data-num-posts="5"   data-width="100%"   data-colorscheme="light">
+            </div>
+          </div>
+         
+        </div>        
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+document.getElementById("show-stiker-selected").style.display  = "none";
+
+$('#hideshow').click(function(e){
+    e.preventDefault(); //to prevent standard click event
+    $('#content-a').toggle(500);
+});
+
+$('#content-a img').each(function(){
+  $(this).click(function() {
+    $('#icon').val(this.getAttribute("data-key"));
+    $('#stickerSelected').attr('src', this.getAttribute("data-src"));
+    document.getElementById("show-stiker-selected").style.display  = "block";
+  });
+    
+});
+
+$('#deleteStiker').click(function(e){
+    e.preventDefault(); //to prevent standard click event
+    $('#stickerSelected').attr('src', '');
+    document.getElementById("show-stiker-selected").style.display  = "none";
+});
+
+</script>

@@ -17,14 +17,18 @@ class Comment extends MY_Controller
    	  
    }
    
-   /*
-    * Trang dang ky thanh vien
-    */
+    /**
+     * Description: Lưu comment ở chap
+     * Function: index()
+     * @author: Di
+     * @params: none
+     * @return: Save database
+     */
    public function index()
    { 
    	 
    	  //set cac tap luat cho cac the input
-   	  $this->form_validation->set_rules('body', 'nội dung', 'required');
+   	  $this->form_validation->set_rules('post_id', 'nội dung', 'required');
    
    	  if($this->form_validation->run())
    	  {
@@ -34,11 +38,9 @@ class Comment extends MY_Controller
 			$data['post_id'] = strip_tags($this->input->post('post_id'));
 			$data['parent_id'] = strip_tags($this->input->post('parent_id'));
 			$data['body']	 = strip_tags($this->input->post('body'));
+			$data['icon'] = strip_tags($this->input->post('icon'));
 			$data['created']  = date("Y-m-d");
 			$this->comment_model->create($data);
-			//$this->session->set_flashdata('message', 'Liên hệ thành công');
-			//redirect();//chuyen toi trang chu
-			//echo "<script>window.location.href='javascript:history.back(-2);'</script>";
 			echo'
 			<script>
 			window.onload = function() {
@@ -49,6 +51,113 @@ class Comment extends MY_Controller
 			';
    	  }
    }
-   
+   /**
+     * Description: Lưu comment ở chap
+     * Function: ChapCommentWithoutLogin()
+     * @author: Di
+     * @params: none
+     * @return: Save database
+     */
+	public function ChapCommentWithoutLogin()
+	{ 
+        if ($this->input->post()) {
+            //set cac tap luat cho cac the input
+            $this->form_validation->set_rules(
+                'name',
+                'Tên',
+                'required',
+                array('required' => 'Bằng hữu nhập tên mình đi')
+            );
+            if ($this->form_validation->run()) {
+                // Luu vao bảng comment
+                $data = array();
+                $data['user_id'] = strip_tags($this->input->post('user_id'));
+                $data['name'] = strip_tags($this->input->post('name'));
+                $data['post_id'] = strip_tags($this->input->post('post_id'));
+                $data['parent_id'] = strip_tags($this->input->post('parent_id'));
+                $data['body']	 = strip_tags($this->input->post('body'));
+                $data['icon'] = strip_tags($this->input->post('icon'));
+                $data['created']  = date("Y-m-d");
+                $this->comment_model->create($data);
+                echo'
+			 <script>
+			 window.onload = function() {
+				 alert("Đăng thành công");
+				 location.href = "javascript:history.back(-2);";  
+			 }
+			 </script>
+			 ';
+            }
+        }
+	}
+   /**
+     * Description: Lưu comment ở story
+     * Function: story()
+     * @author: Di
+     * @params: none
+     * @return: Save database
+     */
+	public function story()
+	{ 
+		 
+		  //set cac tap luat cho cac the input
+		  $this->form_validation->set_rules('story_id', 'nội dung', 'required');
+		  if($this->form_validation->run())
+		  {
+			// Luu vao bảng comment
+			 $data = array();
+			 $data['user_id'] = strip_tags($this->input->post('user_id'));
+			 $data['name'] = strip_tags($this->input->post('name'));
+			 $data['story_id'] = strip_tags($this->input->post('story_id'));
+			 $data['parent_id'] = strip_tags($this->input->post('parent_id'));
+			 $data['icon'] = strip_tags($this->input->post('icon'));
+			 $data['body']	 = strip_tags($this->input->post('body'));
+			 $data['created']  = date("Y-m-d");
+			 $this->comment_model->create($data);
+			 echo'
+			 <script>
+			 window.onload = function() {
+				 alert("Đăng thành công");
+				 location.href = "javascript:history.back(-2);";  
+			 }
+			 </script>
+			 ';
+		  }
+	}
+	/**
+     * Description: Lưu comment ở story
+     * Function: storyHaveLogin()
+     * @author: Di
+     * @params: none
+     * @return: Save database
+     */
+	public function storyHaveLogin()
+	{ 
+		 
+		  //set cac tap luat cho cac the input
+		  $this->form_validation->set_rules('user_id', 'nội dung', 'required');
+		  if($this->form_validation->run())
+		  {
+			// Luu vao bảng comment
+			 $data = array();
+			 $data['user_id'] = strip_tags($this->input->post('user_id'));
+			 $data['name'] = strip_tags($this->input->post('name'));
+			 $data['story_id'] = strip_tags($this->input->post('story_id'));
+			 $data['parent_id'] = strip_tags($this->input->post('parent_id'));
+			 $data['icon'] = strip_tags($this->input->post('icon'));
+			 $data['body']	 = strip_tags($this->input->post('body'));
+			 $data['created']  = date("Y-m-d");
+			 $this->comment_model->create($data);
+			 echo'
+			 <script>
+			 window.onload = function() {
+				 alert("Đăng thành công");
+				 location.href = "javascript:history.back(-2);";  
+			 }
+			 document.getElementById("postComment").reset();
+			 </script>
+			 ';
+		  }
+	}
 }
 

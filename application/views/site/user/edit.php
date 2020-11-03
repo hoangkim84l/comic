@@ -47,7 +47,15 @@
 			<div class="col-lg-6">
 				<textarea name="address" id="address" class="form-control mb-4" placeholder="Địa chỉ..."><?php echo $user->address?></textarea>
 			</div>
-		</div>  
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<label for="Avatar">Avatar</label><br/>
+				<input type="file" name="image" id="image" size="25"><br/> <br/>
+				<img src="<?php echo $user->image_link != '' ? base_url('upload/user/'.$user->image_link) : base_url('upload/stories/default.jpg')?>" style="height:150px">
+				<br/>
+			</div>
+		</div>    
           <div class="col-12">
             <button class="btn btn-primary">Cập nhật</button>
           </div>
