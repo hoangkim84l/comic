@@ -393,6 +393,11 @@ textarea.form-control {
 .custom-sticker-p {
     width: 100%;
     padding-left: 15px;
+    padding-right: 15px;
+}
+
+#deleteStiker {
+    cursor: pointer;
 }
 
 .custom-icon {

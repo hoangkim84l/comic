@@ -53,12 +53,15 @@
               $input_chap['order'] = array('created', 'DESC');
               $get3_chap_last = $this->chapter_model->get_list($input_chap);
               foreach($get3_chap_last as $val){
-                ?>
+                if($val->status == 0){ }else{
+                    ?>
                   <div class="text-left fix-title-1-line-homepage">
                     <a href="<?php echo site_url('truyen/'.$story->slug.'-'.$val->slug.'-'.$val->id)?>"> <?php echo $val->name ?></a>  
-                    <span><?php $date=date_create($val->created); echo date_format($date,"d-m-Y");?></span>
+                    <span><?php $date=date_create($val->created);
+                    echo date_format($date, "d-m-Y"); ?></span>
                   </div>
                 <?php
+                }
               }
             ?>
            </article>
