@@ -38,6 +38,7 @@ $(document).ready(function() {
     		  });
   		  }
       });
+      
 });
 </script>
 <script type="text/javascript">
@@ -309,7 +310,7 @@ $(document).ready(function() {
           <div class="tab-pane fade show active" id="home-cafesua" role="tabpanel" aria-labelledby="home-tab-cafesua">
             <br/>
             <?php if(isset($user_info)):?>
-            <form action="<?php echo site_url('comment/storyHaveLogin');?>" class="row" method="POST" id="postComment">
+            <form action="<?php echo site_url('comment/storyHaveLogin');?>" class="row" method="POST" id="postComment" name="postComment">
               <input type="hidden" class="form-control " name="user_id" id="user_id" value="<?php echo $user_info->id?>">
               <input type="hidden" class="form-control form-control-text col-lg-4" name="name"  value="">
               <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="<?php echo $stories->id?>">
@@ -340,9 +341,9 @@ $(document).ready(function() {
               </div>
             </form>
             <?php else:?>
-              <form action="<?php echo site_url('comment/story');?>" class="row" method="POST" id="postComment">
+              <form action="<?php echo site_url('comment/story');?>" class="row" method="POST" id="postComment" name="postComment">
                 <input type="hidden" class="col-lg-4" name="user_id" id="user_id" value="">
-                <input type="text" class="form-control form-control-text col-lg-4" name="name" id="user_id" value="" placeholder=" Tên của bạn" require>
+                <input type="text" class="form-control form-control-text col-lg-4" name="name" id="name" value="" placeholder=" Tên của bạn" require autocomplete="off">
                 <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="<?php echo $stories->id?>">
                 <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="0">
                 <input type="hidden" class="form-control mb-4" name="icon" id="icon" value="">
@@ -368,7 +369,7 @@ $(document).ready(function() {
                   </div>
                 </div>
                 <div class="col-12">
-                  <button class="btn btn-primary" id="clickClear">Lên Lên</button>
+                  <button class="btn btn-primary" id="clickClear" >Lên Lên</button>
                 </div>
               </form>
             <?php endif;?>
@@ -439,6 +440,7 @@ $('#content-a img').each(function(){
     $('#icon').val(this.getAttribute("data-key"));
     $('#stickerSelected').attr('src', this.getAttribute("data-src"));
     document.getElementById("show-stiker-selected").style.display  = "block";
+    $('#content-a').toggle(500);
   });
     
 });
@@ -448,5 +450,4 @@ $('#deleteStiker').click(function(e){
     $('#stickerSelected').attr('src', '');
     document.getElementById("show-stiker-selected").style.display  = "none";
 });
-
 </script>

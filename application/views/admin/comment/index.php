@@ -44,6 +44,7 @@
 					<td style="width:60px;">Mã số</td>
 					<td>Tên </td>
 					<td style="width:75px;">Nội dung</td>
+					<td style="width:75px;">Truyện/ Chap-Chương</td>
 					<td style="width:75px;">ngày Tạo</td>
 					<td style="width:120px;">Hành động</td>
 				</tr>
@@ -51,7 +52,7 @@
 			
 			<tfoot class="auto_check_pages">
 				<tr>
-					<td colspan="6">
+					<td colspan="7">
 						<div class="list_action itemActions">
 							<a url="<?php echo admin_url('comment/delete_all')?>" class="button blueB" id="submit" href="#submit">
 								<span style="color:white;">Xóa hết</span>
@@ -73,10 +74,28 @@
 						<td>
 							<b><?php $this->load->model('user_model');
 							$user = $this->user_model->get_info($row->user_id);	
-							echo $user->name;?></b>
+							if($row->name == NULL){
+								echo $user->name."<i> - Thành viên</i>";
+							  }else{
+								echo $row->name."<i> - Khách</i>";
+							  }
+							?></b>
 						</td>
 						<td>
 							<?php echo $row->body;?>
+						</td>
+						<td>
+							<?php 
+							$this->load->model('story_model');
+							$this->load->model('chapter_model');
+							$story = $this->story_model->get_info($row->story_id);	
+							$chap = $this->chapter_model->get_info($row->post_id);	
+							  if($row->post_id == 0){
+								echo "Truyện: ".$story->name;
+							  }else{
+								echo "Chương/Chap: ".$chap->name;
+							  }
+							?>
 						</td>
 						<td><?php echo $row->created ?></td>
 						

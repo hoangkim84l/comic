@@ -204,8 +204,8 @@
             $this->load->model('story_model');
             $this->load->model('chapter_model');
             foreach($list_chap as $val){
-              $chapter = $this->chapter_model->get_info($val);
-              array_push($list_chap_new,$chapter);
+              $chapter_review = $this->chapter_model->get_info($val);
+              array_push($list_chap_new,$chapter_review);
             }    
             foreach($list_chap_new as $row_chap):
             if($row_chap->status == 0){ }else{
@@ -290,10 +290,10 @@
               </div>
             </form>
             <?php else:?>
-              <form action="<?php echo site_url('comment/ChapCommentWithoutLogin');?>" class="row" method="POST">
+              <form action="<?php echo site_url('comment/ChapCommentWithoutLogin');?>" class="row" method="POST" id="postComment">
                 <input type="hidden" class="col-lg-4" name="user_id" id="user_id" value="">
                 
-                <input type="text" class="form-control form-control-text col-lg-4" id="name" name="name" value="" placeholder=" Tên của bạn" required>
+                <input type="text" class="form-control form-control-text col-lg-4" id="name" name="name" value="" placeholder=" Tên của bạn" required autocomplete="off">
                 
                 <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="">
                 <input type="hidden" class="form-control mb-4" name="post_id" id="post_id" value="<?php echo $chapter->id?>">
@@ -392,6 +392,7 @@ $('#content-a img').each(function(){
     $('#icon').val(this.getAttribute("data-key"));
     $('#stickerSelected').attr('src', this.getAttribute("data-src"));
     document.getElementById("show-stiker-selected").style.display  = "block";
+    $('#content-a').toggle(500);
   });
     
 });

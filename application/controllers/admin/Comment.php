@@ -7,6 +7,7 @@ Class Comment extends MY_Controller
         //load ra file model
         $this->load->model('comment_model');
         $this->load->model('story_model');
+        $this->load->model('chapter_model');
         $this->load->model('user_model');
     }
     
