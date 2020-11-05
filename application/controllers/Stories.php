@@ -114,6 +114,13 @@ Class Stories extends MY_Controller
         $list = $this->chapter_model->get_list($input);
         $this->data['list_chapters'] = $list;
 
+        //count chap
+        $input_count = array();
+        $input_count['where'] = array('story_id' => $id);
+        $input_count['and_where'] = array('status' => '1');
+        $lists = $this->chapter_model->get_list($input_count);
+        $this->data['input_count'] = $lists;
+
         //Lấy danh sách bình luận
         $input_comment = array();
         $input_comment['where'] = array('story_id'=> $stories->id);

@@ -98,7 +98,7 @@ $(document).ready(function() {
                               echo date_format($date,'d-m-Y H:i:s')?>
             </span>
             <span class="info-book"><i class="ti-eye mr-2"></i><?php echo number_format($stories->view)?> Lượt xem</span>
-            <span class="info-book"><i class="ti-book mr-2"></i> <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'-'.$stories->id)?>" style="color: #000;padding-left:0px;"><?php echo count($list_chapters)?> Chương </a></span>
+            <span class="info-book"><i class="ti-book mr-2"></i> <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'-'.$stories->id)?>" style="color: #000;padding-left:0px;"><?php echo count($input_count)?> Chương </a></span>
             <span class="info-book"><i class="ti-pencil mr-2"></i><?php echo $stories->continues == 0 ?  "Còn tiếp" :  "Hoàn thành";?></span>
             <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i> 
               <?php 
@@ -185,12 +185,12 @@ $(document).ready(function() {
                       <div class="scrollbar scrollbar-type-3" id="style-1">
                         <div class="force-overflow">
                           <div class="row">
-                              <?php foreach($list_chapters as $row):?>
+                              <?php foreach($list_chapters as $row): if($row->status == 0){ }else{ ?>
                                 <a href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row->slug.'-'.$row->id)?>" class="cus-class-12">
                                   <div class="cus-class-6"><?php echo $row->name?></div>
                                   <div class="cus-class-6"><?php echo $row->created?></div>
                                 </a>
-                              <?php endforeach;?>
+                              <?php } endforeach;?>
                           </div>
                         </div>
                       </div>

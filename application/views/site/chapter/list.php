@@ -164,9 +164,9 @@
         <br/>
         <div class="container-fluid" style="min-height: 300px;">
             <div class="row">
-                <?php foreach($list_chapters as $row):?>
+                <?php foreach($list_chapters as $row): if($row->status == 0){ }else{?>
                   <a class="col-sm-4 list-chapters" href="<?php echo site_url('truyen/'.$story->slug.'-'.$row->slug.'-'.$row->id)?>"> <?php echo $row->name?></a>
-                <?php endforeach;?>
+                <?php } endforeach;?>
             </div>
         </div>
         </div>
