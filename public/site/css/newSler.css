@@ -139,6 +139,10 @@
     #c2 {
         left: 300px;
     }
+    #myTab .nav-tabs .nav-item {
+        width: 50%;
+        float: left;
+    }
 }
 
 @media only screen and (max-width: 736px) {
@@ -151,6 +155,10 @@
     #c2 {
         left: 300px;
     }
+    #myTab .nav-tabs .nav-item {
+        width: 50%;
+        float: left;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -158,6 +166,10 @@
         width: 320px;
         left: 20px;
         top: 45px;
+    }
+    #myTab .nav-tabs .nav-item {
+        width: 50%;
+        float: left;
     }
 }
 
