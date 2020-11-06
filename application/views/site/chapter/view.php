@@ -368,7 +368,7 @@
           <div class="tab-pane fade" id="profile-cafesua" role="tabpanel" aria-labelledby="profile-tab-facebook">
             <br/>
             <div id="fb-root"></div>
-            <script src="http://connect.facebook.net/vi_VN/all.js#appId=170796359666689&amp;xfbml=1"></script>
+            <script src="https://connect.facebook.net/vi_VN/all.js#appId=170796359666689&amp;xfbml=1"></script>
             <div class="fb-comments"  data-href="<?php echo current_url() ?>"
                  data-num-posts="5"   data-width="100%"   data-colorscheme="light">
             </div>
