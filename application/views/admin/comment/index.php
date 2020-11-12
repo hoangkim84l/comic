@@ -89,11 +89,13 @@
 							$this->load->model('story_model');
 							$this->load->model('chapter_model');
 							$story = $this->story_model->get_info($row->story_id);	
-							$chap = $this->chapter_model->get_info($row->post_id);	
+							$chap = $this->chapter_model->get_info($row->post_id);
 							  if($row->post_id == 0){
 								echo "Truyện: ".$story->name;
 							  }else{
 								echo "Chương/Chap: ".$chap->name;
+								$storyOfChap = $this->story_model->get_info($chap->story_id);	
+								echo "- Truyện: ". $storyOfChap->name;
 							  }
 							?>
 						</td>

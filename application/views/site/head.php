@@ -77,8 +77,10 @@ else{
 <meta property="og:type" typeof="WebPage" content="<?php echo $support->og_type?>" />
 <!-- jQuery -->
 <script src="<?php echo public_url()?>site/plugins/jQuery/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.9.1.js"></script> 
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+<!-- <script src="https://code.jquery.com/jquery-1.9.1.js"></script>  -->
 <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+
 <!-- Autocomplete  Search -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>  
 
