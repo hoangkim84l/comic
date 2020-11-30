@@ -22,7 +22,7 @@
           <li class="list-inline-item"><i class="ti-calendar mr-2"></i><?php echo $chapter->created?></li>
         </ul>
         <?php if($chapter->image_link != ''){ ?>
-          <img class="w-100 img-fluid mb-4" src="<?php echo $chapter->image_link != '' ? base_url('upload/chapter/'.$chapter->image_link) : base_url('upload/chapter/default.jpg') ?>" alt="<?php echo $chapter->name?>">
+          <img class="w-100 img-fluid mb-4" loading="lazy" src="<?php echo $chapter->image_link != '' ? base_url('upload/chapter/'.$chapter->image_link) : base_url('upload/chapter/default.jpg') ?>" alt="<?php echo $chapter->name?>">
         <?php } else{ echo "";}?>  
         <div class="content">
           <p><?php echo $chapter->content ?></p>

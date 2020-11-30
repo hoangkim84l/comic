@@ -8,13 +8,12 @@ Class MY_Controller extends CI_Controller
     {
         //ke thua tu CI_Controller
         parent::__construct();
-        
+ 
         $controller = $this->uri->segment(1);
         switch ($controller)
         {
             case 'admin' :
                 {
-                    
                     $this->load->helper('language');
                     $this->lang->load('admin/common');
                     
@@ -37,7 +36,6 @@ Class MY_Controller extends CI_Controller
             default:
                 {  
                     //xu ly du lieu o trang ngoai
-                    //lay danh sach danh muc san pham
                     $this->load->model('catalog_model');
                     $input = array();
                     $input['where'] = array('parent_id' => 0);
@@ -66,7 +64,17 @@ Class MY_Controller extends CI_Controller
                     //lay danh sach ho tro truc tuyen
                     $support = $this->support_model->get_info(1);
                     //gui bien sang view
-                    $this->data['support'] = $support;                    
+                    $this->data['support'] = $support;
+
+                    //remember me
+                    if(isset($_COOKIE['autologin_email']) && isset($_COOKIE['autologin_password'])){
+                        $this->load->model('user_model');
+                        
+                        $this->user_model->remember_me($_COOKIE['autologin_email'], $_COOKIE['autologin_password']);
+                        $this->session->set_userdata('user_id_login', $_COOKIE['autologin_id']);
+                        $user_id_login = $this->session->userdata($_COOKIE['autologin_id']);
+                        $this->data['user_id_login'] = $user_id_login;
+                    }
                 }
             
         }

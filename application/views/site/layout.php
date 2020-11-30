@@ -5,7 +5,7 @@
     </head>
     <body>
 		<!-- preloader -->
-		<div class="preloader">
+		<!-- <div class="preloader">
 			<div class="loader">
 			<span class="dot"></span>
 			<div class="dots">
@@ -14,7 +14,7 @@
 				<span></span>
 			</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- /preloader -->    
 		<header class="navigation">
 				<?php $this->load->view('site/header')?>
@@ -94,7 +94,8 @@
 		}
 		jQuery(function() {
 			jQuery("img.img-fluid").lazyload({
-			effect : "fadeIn"
+			effect : "fadeIn",
+			threshold : 500
 			});
 		});
 	</script>

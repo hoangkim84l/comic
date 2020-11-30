@@ -24,17 +24,23 @@
           <form method="post" action="<?php echo site_url('user/login')?>" enctype="multipart/form-data" class="row">
           <h3 style="color:red" class="col-lg-12"><?php echo form_error('login')?></h3>
             <div class="col-lg-12">
-              <input type="email" class="form-control mb-4" id="email" name="email" value="<?php echo set_value('email')?>" placeholder="Email" require>
+              <input type="email" class="form-control mb-4" id="email" name="email" autocomplete="off" value="<?php echo set_value('email')?>" placeholder="Email" require >
               <div class="error" id="email_error"><?php echo form_error('email')?></div>
             </div>
             <div class="col-lg-12">
               <input type="password" class="form-control mb-4" id="password" name="password" placeholder="Nhập mật khẩu của bạn">
               <div class="clear"></div>
               <div class="error" id="password_error"><?php echo form_error('password')?></div>
-          </div>
+            </div>
+            <div class="col-lg-12">
+              <label for="autologin"> Ghi nhớ đăng nhập</label>
+              <input type="checkbox" id="autologin" name="autologin" value="1">
+              <div class="clear"></div>
+            </div>
             <div class="col-12" style="text-align: center;">
               <button class="btn btn-primary">Đăng nhập</button>
               <a class="btn btn-primary btn-login-page" href="<?php echo site_url('user/register')?>">Đăng ký</a>
+              <a class="btn btn-default" href="<?php echo site_url('user/forgotpassword')?>">Quên mật khẩu?</a>
             </div>
           </form>
       </div>  

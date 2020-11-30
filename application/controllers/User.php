@@ -134,7 +134,9 @@ Class User extends MY_Controller
         
         $this->load->library('form_validation');
         $this->load->helper('form');
-        
+        $this->load->helper("cookie");
+        //remember me
+        $autoLogin = $this->input->post("autologin",true);
         if($this->input->post())
         {
             $this->form_validation->set_rules('email', 'Email đăng nhập', 'required|valid_email',
@@ -146,10 +148,37 @@ Class User extends MY_Controller
             {
                 //lay thong tin thanh vien
                 $user = $this->_get_user_info();
+                $email = strip_tags($this->input->post('email'));
+                $password = strip_tags($this->input->post('password'));
                 //gắn session id của thành viên đã đăng nhập
                 $this->session->set_userdata('user_id_login', $user->id);
-                
-                //$this->session->set_flashdata('message', 'Đăng nhập thành công');
+                //auto login
+                if($autoLogin == 1){
+                    $cookie_id = array(
+                        'name'      => 'autologin_id',
+                        'value'     => $user->id,
+                        'expire'    => '1209600',//2 tuần
+                        'path'      => '/'
+                    );
+                    $cookie_email = array(
+                        'name'      => 'autologin_email',
+                        'value'     => $email,
+                        'expire'    => '1209600',//2 tuần
+                        'path'      => '/'
+                    );
+                    $cookie_password = array(
+                        'name'      => 'autologin_password',
+                        'value'     => $password,
+                        'expire'    => '1209600',//2 tuần
+                        'path'      => '/'
+                    );
+                    $this->input->set_cookie($cookie_id);
+                    $this->input->set_cookie($cookie_email);
+                    $this->input->set_cookie($cookie_password);
+                }else{
+                    delete_cookie("autologin_email");
+                    delete_cookie("autologin_password");
+                }
                 echo'
                     <script>
                     window.onload = function() {
@@ -158,7 +187,6 @@ Class User extends MY_Controller
                     }
                     </script>
                     ';
-                //redirect();
             }
         }
         
@@ -196,6 +224,21 @@ Class User extends MY_Controller
     }
     
     /*
+     * login by remember me
+     */
+    function remember_me($username, $password)
+    {
+        $email = $username;
+        $password = $password;
+        $password = md5($password);
+        
+        $where = array('email' => $email , 'password' => $password);
+        $user = $this->user_model->get_info_rule($where);
+        return $user;
+    }
+    
+
+    /*
      * Chinh sua thong tin thanh vien
      */
     function edit()
@@ -220,14 +263,17 @@ Class User extends MY_Controller
         //neu ma co du lieu post len thi kiem tra
         if($this->input->post())
         {
-            $password = strip_tags($this->input->post('password'));
-            
-            $this->form_validation->set_rules('name', 'Tên', 'required|min_length[8]');
-            if($password)
-            {
-                $this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[6]');
-                $this->form_validation->set_rules('re_password', 'Nhập lại mật khẩu', 'matches[password]');
+            $password = $this->input->post('passwords');
+            if($password == ''){
+                $this->form_validation->set_rules('passwords', 'Mật khẩu', 'required',
+                array('required' => 'Bằng hữu nhập mật khẩu xác nhận đi'));
             }
+            
+            if(md5($password) != $user->password){
+                $this->form_validation->set_rules('passwords', 'Mật khẩu', 'matches[password]',
+                array('matches' => 'Bằng hữu nhập sai mật khẩu rồi'));
+            }
+            $this->form_validation->set_rules('name', 'Tên', 'required|min_length[8]');
             
             $this->form_validation->set_rules('phone', 'Số điện thoại', 'required');
             $this->form_validation->set_rules('address', 'Địa chỉ', 'required');
@@ -290,6 +336,124 @@ Class User extends MY_Controller
     }
     
     /*
+     * Cập nhật mật khẩu thanh vien
+     */
+    function changepassword()
+    {
+        if(!$this->session->userdata('user_id_login'))
+        {
+            redirect(site_url('user/login'));
+        }
+        //lay thong tin cua thanh vien
+        $user_id = $this->session->userdata('user_id_login');
+        $user = $this->user_model->get_info($user_id);
+        if(!$user)
+        {
+            redirect();
+        }
+        $this->data['user']  = $user;
+        
+
+        $this->load->library('form_validation');
+        $this->load->helper('form');
+        
+        //neu ma co du lieu post len thi kiem tra
+        if($this->input->post())
+        {
+            $password = $this->input->post('password');
+            $new_password = $this->input->post('new_password');
+            $this->form_validation->set_rules('password', 'Mật khẩu', 'required',
+                array('required' => 'Bằng hữu nhập mật khẩu cũ đi'));
+            $this->form_validation->set_rules('new_password', 'Mật khẩu', 'required|min_length[6]',
+                array('required' => 'Bằng hữu nhập mật khẩu mới đi', 'min_length' => 'Mật khẩu mới ít nhất 6 kí tự'));
+            $this->form_validation->set_rules('re_password', 'Mật khẩu', 'matches[new_password]',
+                array('matches' => 'Bằng hữu nhập không khớp với mật khẩu mới'));
+
+            if(md5($password) != $user->password){
+                $this->form_validation->set_rules('password', 'Mật khẩu', 'matches[passwords]',
+                array('matches' => 'Bằng hữu nhập mật khẩu cũ đi'));
+            }
+            //nhập liệu chính xác
+            if($this->form_validation->run())
+            {
+                //them vao csdl
+                $data = array(
+                    'password'     => md5($new_password),
+                );
+               
+                if($this->user_model->update($user_id, $data))
+                {
+                    //tạo ra nội dung thông báo
+                   $this->session->set_flashdata('message', 'Bằng hữu đã chỉnh sửa thông tin thành công.');
+                }
+                //chuyen tới trang danh sách quản trị viên
+                redirect(site_url('user'));
+            }
+        }
+        
+        //hiển thị ra view
+        $this->data['temp'] = 'site/user/changepassword';
+        $this->load->view('site/layout', $this->data);
+    }
+    /*
+     * Lấy lại mật khẩu
+     */
+    function forgotpassword()
+    {
+        $this->load->library('form_validation');
+        $this->load->helper('form');
+        $this->load->model('user_model');
+        //neu ma co du lieu post len thi kiem tra
+        if($this->input->post())
+        {
+            $email = $this->input->post('email');
+            
+            $this->form_validation->set_rules('email', 'Email', 'required',
+                array('required' => 'Bằng hữu nhập email đi'));
+
+            $str = rand(); 
+
+            $where = array('email' => $email);
+            $user = $this->user_model->get_info_rule($where);
+            if($user){
+                var_dump($user->id);
+                //nhập liệu chính xác
+                if($this->form_validation->run())
+                    {
+                    //them vao csdl
+                        $this->load->library('email'); // Note: no $config param needed
+                    // // $this->email->from('YOUREMAILHERE@gmail.com', 'YOUREMAILHERE@gmail.com');
+                    $dataEmail = 'Mật khẩu của email: '. strip_tags($this->input->post('email')) .' '.PHP_EOL.
+                            'Mật Khẩu: '. $str;
+                            // $from = "teamcafesua@gmail.com";
+                            // $to = $this->input->post('email');
+                            // $subject = "Mật khẩu của bằng hữu là:";
+                            // $message = $dataEmail;
+                            // $headers = "From:" . $from;
+                            // mail($to,$subject,$message, $headers);
+                    //2 ways
+                    $this->email->from('teamcafesua@gmail.com');
+                    $this->email->to($this->input->post('email'));
+                    $this->email->subject('Mật khẩu của bằng hữu là: ');
+                    $this->email->message($dataEmail);
+                    $this->email->send();
+                    $data = array(
+                        'password'     => md5($str),
+                    );
+                    if($this->user_model->update($user->id, $data)){
+                        $this->session->set_flashdata('message', 'Mail đã được gữi bằng hữu kiểm tra mail và đăng nhập lại đi.');
+                    }
+                }
+            }else{
+                $this->session->set_flashdata('message', 'Hình như bằng hữu nhập sai email bọn em tìm không ra thông tin email này :(.');
+            }
+        }
+        
+        //hiển thị ra view
+        $this->data['temp'] = 'site/user/forgotpassword';
+        $this->load->view('site/layout', $this->data);
+    }
+    /*
      * Thong tin cua thanh vien
      */
     function index()
@@ -339,10 +503,14 @@ Class User extends MY_Controller
      */
     function logout()
     {
+        $this->load->helper('cookie');
         if($this->session->userdata('user_id_login'))
         {
             $this->session->unset_userdata('user_id_login');
         }
+        delete_cookie("autologin_id");
+        delete_cookie("autologin_email");
+        delete_cookie("autologin_password");
         $this->session->set_flashdata('message', 'Đăng xuất thành công');
         redirect();
     }

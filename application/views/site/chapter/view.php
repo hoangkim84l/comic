@@ -137,7 +137,7 @@
           <div class="force-overflow">
             
             <h6>Bằng hữu có thể click vào ảnh để zoom đó</h6><br/>
-            <img id="custom-setid-zoom-image" class="w-100 img-fluid mb-4" src="<?php echo $chapter->image_link != '' ? base_url('upload/chapter/'.$chapter->image_link) : base_url('upload/chapter/default.jpg') ?>" alt="<?php echo $chapter->name?>">
+            <img id="custom-setid-zoom-image" loading="lazy" class="w-100 img-fluid mb-4" src="<?php echo $chapter->image_link != '' ? base_url('upload/chapter/'.$chapter->image_link) : base_url('upload/chapter/default.jpg') ?>" alt="<?php echo $chapter->name?>">
             <!-- <img  src="https://media.geeksforgeeks.org/wp-content/uploads/20190912174307/qwe1.png" alt="Snow" style="width:100%;max-width:300px"> -->
             <!-- The Modal -->
             <div id="custom-model-zoom-image" class="modal">
@@ -412,22 +412,30 @@ $('#deleteStiker').click(function(e){
     var img = document.getElementById("custom-setid-zoom-image");
     var modalImg = document.getElementById("custom-zoom-image");
     var captionText = document.getElementById("caption");
-    img.onclick = function() {
+    if(img){
+      img.onclick = function() {
         modal.style.display = "block";
         modalImg.src = this.src;
         captionText.innerHTML = this.alt;
+      }
     }
-
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on <span> (x), close the modal
+    if(span){
+      // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
     }
+    }
+    
     $(document).click(function() { 
         if($(modalImg).is(':visible')) {
             popups_close();
         }
+    });
+    $(function(){
+    $(".force-overflow-new .content p img").each(function () {
+      $(this).attr('loading', 'lazy');
+        });
     });
 </script>

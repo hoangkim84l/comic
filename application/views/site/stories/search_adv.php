@@ -99,7 +99,7 @@
               <div class="col-lg-3 col-sm-6 mb-5">
                 <article class="text-center">
                 <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
-                  <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $row->site_title?>">
+                  <img class="img-fluid mb-4 img-fluid-stories" loading="lazy" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $row->site_title?>">
                 </a>
                   <p class="text-uppercase mb-2 catalog">
                     <?php

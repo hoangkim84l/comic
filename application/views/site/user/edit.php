@@ -14,7 +14,7 @@
 				<li property="itemListElement" typeof="ListItem">
 					<meta property="position" content="2" />
 					<a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('user/edit')?>">
-						<span itemprop="title" property="name"> Thông tin thành viên</span>
+						<span itemprop="title" property="name"> Chỉnh sửa thông tin thành viên</span>
 					</a>
 				</li>
 			</ul>
@@ -28,21 +28,10 @@
 				<input type="text" class="form-control mb-4" id="name" name="name" value="<?php echo $user->name?>" placeholder="Họ và tên" require>
 			</div>
 		</div>
+		
 		<div class="row">
 			<div class="col-lg-6">
-					<input type="password" class="form-control mb-4" id="password" name="password" placeholder="Nếu thay đổi mật khẩu thì nhập trường này" require>
-					<div class="clear"></div>
-					<div class="error" id="password_error"><?php echo form_error('password')?></div>
-				</div>
-			<div class="col-lg-6">
-				<input type="password" class="form-control mb-4" id="re_password" name="re_password" placeholder="Nhập lại mật khẩu" require>
-				<div class="clear"></div>
-					<div class="error" id="re_password_error"><?php echo form_error('re_password')?></div>
-				</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-6">
-				<input type="text" class="form-control mb-4" id="phone" name="phone" value="<?php echo $user->phone?>" placeholder="Số điện thoại" require>
+				<input type="number" class="form-control mb-4" id="phone" name="phone" value="<?php echo $user->phone?>" placeholder="Số điện thoại" require>
 			</div>
 			<div class="col-lg-6">
 				<textarea name="address" id="address" class="form-control mb-4" placeholder="Địa chỉ..."><?php echo $user->address?></textarea>
@@ -55,6 +44,12 @@
 				<img src="<?php echo $user->image_link != '' ? base_url('upload/user/'.$user->image_link) : base_url('upload/stories/default.jpg')?>" style="height:150px">
 				<br/>
 			</div>
+			<div class="col-lg-6">
+					<input type="password" class="form-control mb-4" id="passwords" name="passwords" placeholder="Nhập mật khẩu xác nhận" require>
+					<input type="hidden" class="form-control mb-4" id="password" name="password" value="<?php echo $user->password?>">
+					<div class="clear"></div>
+					<div class="error" id="passwords_error"><?php echo form_error('passwords')?></div>
+				</div>
 		</div>    
           <div class="col-12">
             <button class="btn btn-primary">Cập nhật</button>

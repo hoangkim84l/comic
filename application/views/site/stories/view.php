@@ -222,7 +222,7 @@ $(document).ready(function() {
                       <div class="col-lg-6 media mb-4 ">
                         <div class="post-thumb-sm mr-3" style="overflow:inherit">
                         <a href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"  style="padding: 8px 0px;">
-                          <img class="img-fluid" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->name?>">
+                          <img class="img-fluid" loading="lazy" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->name?>">
                         </a>    
                         </div>
                         <div class="media-body">

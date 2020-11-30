@@ -40,7 +40,7 @@
       </div>
         <div class="row">
           <div class="col-lg-7 col-sm-12" style="width:100%; text-align: center; ">
-              <img class=" img-fluid mb-4" src="<?php echo $story->image_link != '' ? base_url('upload/stories/'.$story->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $story->meta_desc;?>" title="<?php echo $story->site_title;?>">
+              <img class=" img-fluid mb-4" loading="lazy" src="<?php echo $story->image_link != '' ? base_url('upload/stories/'.$story->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $story->meta_desc;?>" title="<?php echo $story->site_title;?>">
           </div>
           <div class="col-lg-5 col-sm-12">
             <h6 class="title-book"><?php echo $story->name?></h6>
@@ -137,7 +137,7 @@
           <div class="media mb-4">
             <div class="post-thumb-sm mr-3">
               <a href="<?php echo site_url('xem-truyen/'.$row_story->slug.'-'.$row_story->id)?>">
-                <img class="img-fluid" src="<?php echo $row_story->image_link != '' ? base_url('upload/stories/'.$row_story->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_story->meta_desc?>" title="<?php echo $row_story->site_title;?>">
+                <img class="img-fluid" loading="lazy" src="<?php echo $row_story->image_link != '' ? base_url('upload/stories/'.$row_story->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_story->meta_desc?>" title="<?php echo $row_story->site_title;?>">
               </a>
             </div>
             <div class="media-body">
