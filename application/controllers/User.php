@@ -42,8 +42,8 @@ Class User extends MY_Controller
         //neu ma co du lieu post len thi kiem tra
         if($this->input->post())
         {
-            $this->form_validation->set_rules('name', 'Tên', 'required|min_length[8]',
-            array('required' => 'Bằng hữu nhập tên mình đi', 'min_length[8]' => 'Tên huynh đài phải 8 kí tự nha'));
+            $this->form_validation->set_rules('name', 'Tên', 'required|min_length[8]|max_length[20]',
+            array('required' => 'Bằng hữu nhập tên mình đi', 'min_length' => 'Tên huynh đài phải 8 kí tự nha','max_length'=>'Tên huynh đài dài quá 20 kí tự thôi nha'));
             $this->form_validation->set_rules('email', 'Email đăng nhập', 'required|valid_email|callback_check_email',
             array('required' => 'Bằng hữu nhập địa chỉ email đi', 'valid_email' => 'Bằng hữu nhập sai định dạng rồi'));
             $this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[6]',
@@ -92,7 +92,6 @@ Class User extends MY_Controller
                 if($this->user_model->create($data))
                 {
                     //tạo ra nội dung thông báo
-                    //$this->session->set_flashdata('message', 'Đăng ký thành viên thành công');
                     echo'
                     <script>
                     window.onload = function() {
@@ -102,7 +101,6 @@ Class User extends MY_Controller
                     </script>
                     ';
                 }else{
-                   // $this->session->set_flashdata('message', 'Không thêm được');
                     echo'
                     <script>
                     window.onload = function() {
@@ -112,8 +110,6 @@ Class User extends MY_Controller
                     </script>
                     ';
                 }
-                //chuyen tới trang danh sách quản trị viên
-               // redirect(site_url());
             }
         }
         //hiển thị ra view
@@ -425,12 +421,12 @@ Class User extends MY_Controller
                     // // $this->email->from('YOUREMAILHERE@gmail.com', 'YOUREMAILHERE@gmail.com');
                     $dataEmail = 'Mật khẩu của email: '. strip_tags($this->input->post('email')) .' '.PHP_EOL.
                             'Mật Khẩu: '. $str;
-                            // $from = "teamcafesua@gmail.com";
-                            // $to = $this->input->post('email');
-                            // $subject = "Mật khẩu của bằng hữu là:";
-                            // $message = $dataEmail;
-                            // $headers = "From:" . $from;
-                            // mail($to,$subject,$message, $headers);
+                            $from = "teamcafesua@gmail.com";
+                            $to = $this->input->post('email');
+                            $subject = "Mật khẩu của bằng hữu là:";
+                            $message = $dataEmail;
+                            $headers = "From:" . $from;
+                            mail($to,$subject,$message, $headers);
                     //2 ways
                     $this->email->from('teamcafesua@gmail.com');
                     $this->email->to($this->input->post('email'));

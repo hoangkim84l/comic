@@ -20,7 +20,7 @@
         <br/>
       </div>
       <div class="col-lg-4 mb-12">
-        <img src="<?php echo public_url()?>site/images/dkmh.png" alt="đăng kí thành viên" title="Hội mê truyện" class="img-fluid w-100 mb-4">
+        <img src="<?php echo public_url()?>site/images/dkmh.png" loading="lazy" alt="đăng kí thành viên" title="Hội mê truyện" class="img-fluid w-100 mb-4">
       </div>
       <div class="col-lg-8 mb-12">
         <form method="post" action="<?php echo site_url('user/register')?>" enctype="multipart/form-data" class="row">
