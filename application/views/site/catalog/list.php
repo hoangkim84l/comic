@@ -23,13 +23,16 @@
   </div>
 </section>
 <!-- /page-title -->
-
 <!-- category post -->
 <section>
   <div class="container">
     <div class="row">
+      <div class="col-lg-12"><br/>
+      <p><?php echo $catalog->description?></p>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-lg-8">
-        
         <div class="row masonry-container pt-5">
             <?php foreach($list_story as $row):?>  
                 <div class="col-sm-4 mb-5">

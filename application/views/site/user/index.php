@@ -154,6 +154,35 @@
             </div>
             <a href="<?php echo site_url('user/edit')?>" class="button">Sửa thông tin</a>
             <a href="<?php echo site_url('user/changepassword')?>" class="button">Đổi mật khẩu</a>
+            <hr>
+            <!-- Display login button / Facebook profile information -->
+            <?php if(!empty($authURL)){ ?>
+            <?php }else{ ?>
+                <h2>Thông tin từ Facebook</h2>
+                <?php echo $authURL; ?>
+                <div class="ac-data">
+                    <img src="<?php echo $userData['picture']; ?>"/>
+                    <p><b>Facebook ID:</b> <?php echo $userData['oauth_uid']; ?></p>
+                    <p><b>Name:</b> <?php echo $userData['first_name'].' '.$userData['last_name']; ?></p>
+                    <p><b>Email:</b> <?php echo $userData['email']; ?></p>
+                    <p><b>Gender:</b> <?php echo $userData['gender']; ?></p>
+                    <p><b>Logged in with:</b> Facebook</p>
+                    <p><b>Profile Link:</b> <a href="<?php echo $userData['link']; ?>" target="_blank">Click to visit Facebook page</a></p>
+                    <p><b>Logout from <a href="<?php echo $logoutURL; ?>">Facebook</a></p>
+                </div>
+            <?php } ?>
+            <!-- Display Google profile information -->
+            <?php
+                if(!isset($login_button))
+                {
+                    $user_data = $this->session->userdata('user_data_google');
+                    echo '<div class="panel-heading">Thông tin từ Google</div><div class="panel-body">';
+                    echo '<img src="'.$user_data['picture'].'" class="img-responsive img-circle img-thumbnail" />';
+                    echo '<h3><b>Name : </b>'.$user_data["first_name"].' '.$user_data['last_name']. '</h3>';
+                    echo '<h3><b>Email :</b> '.$user_data['email_address'].'</h3>';
+                    echo '<h3><a href="'.base_url().'google_login/logout">Logout</h3></div>';
+                }
+            ?>
         </div>
         <div role="tabpanel" class="tab-pane" id="office">
         <?php $message = $this->session->flashdata('message'); if(isset($message)):?>

@@ -96,15 +96,15 @@ Class Facebook{
      * Login URL for web
     */
     public function login_url(){
-        // kiểm tra phải là web ko thì trả về chuổi rổng
-        if($this->config->item('facebook_login_type') != 'web'){
-            return '';
-        }
-        //get login URL
-        return $this->helper->getLoginUrl(
-            base_url() . $this->config->item('facebook_login_redirect_url'),
-            $this->config->item('facebook+permissions')
-        );
+        // Login type must be web, else return empty string 
+        if($this->config->item('facebook_login_type') != 'web'){ 
+            return ''; 
+        } 
+        // Get login url 
+        return $this->helper->getLoginUrl( 
+            base_url() . $this->config->item('facebook_login_redirect_url'), 
+            $this->config->item('facebook_permissions') 
+        ); 
     }
     /**
      * Logout URL for web
@@ -132,14 +132,58 @@ Class Facebook{
      * return array | access token | null | onject | void
     */
     private function authenticate(){
-
+        $access_token = $this->get_access_token(); 
+        if($access_token && $this->get_expire_time() > (time() + 30) || $access_token && !$this->get_expire_time()){ 
+            $this->fb->setDefaultAccessToken($access_token); 
+            return $access_token; 
+        } 
+        // If we did not have a stored access token or if it has expired, try get a new access token 
+        if(!$access_token){ 
+            try{ 
+                $access_token = $this->helper->getAccessToken(); 
+            }catch (FacebookSDKException $e){ 
+                $this->logError($e->getCode(), $e->getMessage()); 
+                return null; 
+            } 
+            // If we got a session we need to exchange it for a long lived session. 
+            if(isset($access_token)){ 
+                $access_token = $this->long_lived_token($access_token); 
+                $this->set_expire_time($access_token->getExpiresAt()); 
+                $this->set_access_token($access_token); 
+                $this->fb->setDefaultAccessToken($access_token); 
+                return $access_token; 
+            } 
+        } 
+        // Collect errors if any when using web redirect based login 
+        if($this->config->item('facebook_login_type') === 'web'){ 
+            if($this->helper->getError()){ 
+                // Collect error data 
+                $error = array( 
+                    'error'             => $this->helper->getError(), 
+                    'error_code'        => $this->helper->getErrorCode(), 
+                    'error_reason'      => $this->helper->getErrorReason(), 
+                    'error_description' => $this->helper->getErrorDescription() 
+                ); 
+                return $error; 
+            } 
+        } 
+        return $access_token; 
     }
     /**
      * Chuyển đổi nếu token có thời gian sống ngắn 
      * Đổi thành token có thời gian dài
     */
     private function long_lived_token(AccessToken $access_token){
-
+        if(!$access_token->isLongLived()){ 
+            $oauth2_client = $this->fb->getOAuth2Client(); 
+            try{ 
+                return $oauth2_client->getLongLivedAccessToken($access_token); 
+            }catch (FacebookSDKException $e){ 
+                $this->logError($e->getCode(), $e->getMessage()); 
+                return null; 
+            } 
+        } 
+        return $access_token;
     }
     /**
      * Get store access token
@@ -147,7 +191,7 @@ Class Facebook{
      * return mixed
     */
     private function get_access_token(){
-
+        return $this->session->userdata('fb_access_token');
     }
     /**
      * Save access token
@@ -155,19 +199,21 @@ Class Facebook{
      * param AccessToken $access_token
     */
     private function set_access_token(AccessToken $access_token){
-
+        $this->session->set_userdata('fb_access_token', $access_token->getValue());
     }
     /**
      * thời gian chết của session
     */
     private function get_expire_time(){
-
+        return $this->session->userdata('fb_expire'); 
     }
     /**
      * Set thời gian cho session
     */
     private function set_expire_time(DateTime $time = null){
-
+        if ($time) { 
+            $this->session->set_userdata('fb_expire', $time->getTimestamp()); 
+        } 
     }
     /**
      * param $code
@@ -176,7 +222,8 @@ Class Facebook{
      * return array lỗi :((
     */
     private function logError($code, $message){
-
+        log_message('error', '[FACEBOOK PHP SDK] code: ' . $code.' | message: '.$message); 
+        return ['error' => $code, 'message' => $message];
     }
     /**
      * bật tính năng này để CI có thể sài mà o cần xác định thêm biến

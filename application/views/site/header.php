@@ -21,13 +21,13 @@
                     <a class="nav-link text-uppercase text-dark" href="<?php echo site_url('ve-chung-toi.html')?>">về chúng tôi</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link text-uppercase text-dark" href="<?php echo site_url('truyen.html')?>">Truyện</a>
+                    <a class="nav-link text-uppercase text-dark" href="<?php echo site_url('truyen')?>">Truyện</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-uppercase text-dark" href="<?php echo site_url('truyen/tim-nang-cao')?>">Tìm truyện</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-uppercase text-dark" href="<?php echo site_url('lien-he.html')?>">Liên hệ</a>
+                    <a class="nav-link text-uppercase text-dark" href="<?php echo site_url('lien-he')?>">Liên hệ</a>
                 </li>
                 <?php if(isset($user_info)):?>
                     <li class="nav-item">

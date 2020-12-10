@@ -8,7 +8,7 @@ Class MY_Controller extends CI_Controller
     {
         //ke thua tu CI_Controller
         parent::__construct();
- 
+        $this->load->library('facebook');
         $controller = $this->uri->segment(1);
         switch ($controller)
         {
@@ -75,8 +75,102 @@ Class MY_Controller extends CI_Controller
                         $user_id_login = $this->session->userdata($_COOKIE['autologin_id']);
                         $this->data['user_id_login'] = $user_id_login;
                     }
-                }
+
+                    //login via facebook
+                    $userData = array(); 
+                    
+                    // Authenticate user with facebook 
+                    if($this->facebook->is_authenticated()){ 
+                        // Get user info from facebook 
+                        $fbUser = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,link,gender,picture'); 
             
+                        // Preparing data for database insertion 
+                        $userData['oauth_provider'] = 'facebook'; 
+                        $userData['oauth_uid']    = !empty($fbUser['id'])?$fbUser['id']:'';; 
+                        $userData['first_name']    = !empty($fbUser['first_name'])?$fbUser['first_name']:''; 
+                        $userData['last_name']    = !empty($fbUser['last_name'])?$fbUser['last_name']:''; 
+                        $userData['email']        = !empty($fbUser['email'])?$fbUser['email']:''; 
+                        $userData['gender']        = !empty($fbUser['gender'])?$fbUser['gender']:''; 
+                        $userData['picture']    = !empty($fbUser['picture']['data']['url'])?$fbUser['picture']['data']['url']:''; 
+                        $userData['link']        = !empty($fbUser['link'])?$fbUser['link']:'https://www.facebook.com/'; 
+                        
+                        // Insert or update user data to the database 
+                        $userID = $this->user->checkUser($userData); 
+                        
+                        // Check user data insert or update status 
+                        if(!empty($userID)){ 
+                            $data['userData'] = $userData; 
+                            
+                            // Store the user profile info into session 
+                            $this->session->set_userdata('userData', $userData); 
+                        }else{ 
+                        $data['userData'] = array(); 
+                        } 
+                        // Facebook logout URL 
+                        $data['logoutURL'] = $this->facebook->logout_url(); 
+                    }else{ 
+                        // Facebook authentication url 
+                        $data['authURL'] =  $this->facebook->login_url(); 
+                        $this->data['authURL'] = $data['authURL'];
+                    }
+                    //Login via Google
+                    include_once APPPATH."vendor/autoload.php";
+
+                    $google_client = new Google_Client();
+                    
+                    $google_client->setClientId('256738196364-dkede1fsdleiqejtqbhunhksspdqlajb.apps.googleusercontent.com');
+                    $google_client->setClientSecret('reAXUqXUE6X8IowFGdUZhiSv');
+                    $google_client->setRedirectUri('https://cafesuanovel.com/user/register.html');
+                    $google_client->addScope('email');
+                    $google_client->addScope('profile');
+
+                    if(isset($_GET["code"])){
+                        $token = $google_client->fetchAccessTokenWithAuthCode($_GET["code"]);
+                        
+                        if(!isset($token["error"])){
+                            $google_client->setAccessToken($token["access_token"]);
+                            $this->session->set_userdata('access_token', $token["access_token"]);
+
+                            $google_service = new Google_Service_Oauth2($google_client);
+                            $data = $google_service->userinfo->get();
+
+                            $current_datetime = date('Y-m-d H:i:s');
+
+                            if($this->user_model->is_already_register($data['id'])){
+                                //nếu có rồi thì cập nhật thôi
+                                $user_data = array(
+                                    'first_name'    => $data['given_name'],
+                                    'last_name'     => $data['family_name'],
+                                    'email'         => $data['email'],
+                                    'picture'       => $data['picture'],
+                                    'updated'       => $current_datetime
+                                );
+
+                                $this->user_model->update_user_data($user_data, $data['id']);
+                            }else{
+                                //này là nó chưa có thì mình thêm vô
+                                $user_data = array(
+                                    'oauth_uid'     => $data['id'],
+                                    'first_name'    => $data['given_name'],
+                                    'last_name'     => $data['family_name'],
+                                    'email'         => $data['email'],
+                                    'picture'       => $data['picture'],
+                                    'created'       => $current_datetime
+                                );
+
+                                $this->user_model->insert_user_data($user_data);
+                            }
+                            $this->session->set_userdata('user_data_google', $user_data);
+                        }
+                    }
+                    // tạo cái nút cho bấm login
+                    
+                    $button_login = '';
+                    if(!$this->session->userdata('access_token')){
+                        $button_login = '<a href="'.$google_client->createAuthUrl().'"><img src="'.public_url().'site/images/google-login.png"></a>';
+                        $this->data['button_login']   = $button_login;
+                    }
+                }
         }
     }
     

@@ -31,20 +31,20 @@
           <div class="col-lg-6">
         <input type="text" class="form-control mb-4" id="name" name="name" value="<?php echo set_value('name')?>" placeholder="Họ và tên" require>
         <div class="error" id="password_error"><?php echo form_error('name')?></div>
-		  </div>
-		  <div class="col-lg-6">
-				  <input type="password" class="form-control mb-4" id="password" name="password" placeholder="Nhập mật khẩu" require>
-				<div class="clear"></div>
-        		<div class="error" id="password_error"><?php echo form_error('password')?></div>
-			</div>
-		  <div class="col-lg-6">
-			  <input type="password" class="form-control mb-4" id="re_password" name="re_password" placeholder="Nhập lại mật khẩu" require>
-			  <div class="clear"></div>
-        		<div class="error" id="re_password_error"><?php echo form_error('re_password')?></div>
-			</div>
-		  <div class="col-lg-6">
-      <input type="text" class="form-control mb-4" id="phone" name="phone" value="<?php echo set_value('phone')?>" placeholder="Số điện thoại" require>
-      <div class="error" id="password_error"><?php echo form_error('phone')?></div>
+          </div>
+          <div class="col-lg-6">
+              <input type="password" class="form-control mb-4" id="password" name="password" placeholder="Nhập mật khẩu" require>
+            <div class="clear"></div>
+                <div class="error" id="password_error"><?php echo form_error('password')?></div>
+          </div>
+          <div class="col-lg-6">
+            <input type="password" class="form-control mb-4" id="re_password" name="re_password" placeholder="Nhập lại mật khẩu" require>
+            <div class="clear"></div>
+                <div class="error" id="re_password_error"><?php echo form_error('re_password')?></div>
+          </div>
+          <div class="col-lg-6">
+          <input type="text" class="form-control mb-4" id="phone" name="phone" value="<?php echo set_value('phone')?>" placeholder="Số điện thoại" require>
+          <div class="error" id="password_error"><?php echo form_error('phone')?></div>
           </div>
           <div class="col-lg-6">
             <textarea name="address" id="address" class="form-control mb-4" placeholder="Địa chỉ..."><?php echo set_value('address')?></textarea>
@@ -52,6 +52,16 @@
           </div>
           <div class="col-12">
             <button class="btn btn-primary">Đăng ký</button>
+          </div>
+          <div class="col-lg-12">
+            <?php if(!empty($authURL)){ ?>
+              <a href="<?php echo $authURL; ?>"><img src="<?php echo public_url()?>site/images/facebook-sign-in-button.png ?>" width="300" height="auto"></a>
+            <?php }?>
+            <?php if(isset($button_login)){?>
+            <?php
+              echo $button_login;
+            ?>
+            <?php }?>  
           </div>
         </form>
       </div>

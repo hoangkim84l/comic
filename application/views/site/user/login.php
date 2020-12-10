@@ -42,8 +42,21 @@
               <a class="btn btn-primary btn-login-page" href="<?php echo site_url('user/register')?>">Đăng ký</a>
               <a class="btn btn-default" href="<?php echo site_url('user/forgotpassword')?>">Quên mật khẩu?</a>
             </div>
+            
           </form>
       </div>  
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+          <?php if(!empty($authURL)){ ?>
+            <a href="<?php echo $authURL; ?>"><img src="<?php echo public_url()?>site/images/facebook-sign-in-button.png ?>" width="300" height="auto" ></a>
+          <?php }?>
+          <?php if(isset($button_login)){?>
+          <?php
+            echo $button_login;
+          ?>
+          <?php }?>
+        </div>
     </div>
   </div>
 </section>

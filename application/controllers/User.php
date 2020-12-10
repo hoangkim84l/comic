@@ -9,6 +9,7 @@ Class User extends MY_Controller
         $this->load->model('user_model');
         $this->load->model('lovelists_model');
         $this->load->model('story_model');
+        $this->load->library('facebook');
     }
     
     /*
@@ -112,6 +113,7 @@ Class User extends MY_Controller
                 }
             }
         }
+        
         //hiển thị ra view
         $this->data['temp'] = 'site/user/register';
         $this->load->view('site/layout', $this->data);
@@ -472,6 +474,7 @@ Class User extends MY_Controller
         $this->data['lovelists'] = $love_lists;
         
         
+        
         //hiển thị ra view
         $this->data['temp'] = 'site/user/index';
         $this->load->view('site/layout', $this->data);
@@ -507,6 +510,15 @@ Class User extends MY_Controller
         delete_cookie("autologin_id");
         delete_cookie("autologin_email");
         delete_cookie("autologin_password");
+
+        //remove local fb session
+        $this->facebook->destroy_session();
+        //remove user data from session
+        $this->session->unset_userdata('userData');
+        //logout luon token Google
+        $this->session->unset_userdata('access_token');
+        $this->session->unset_userdata('user_data_google');
+
         $this->session->set_flashdata('message', 'Đăng xuất thành công');
         redirect();
     }
