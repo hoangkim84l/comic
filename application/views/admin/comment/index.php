@@ -73,7 +73,12 @@
 						<td class="textC"><?php echo $row->id?></td>
 						<td>
 							<b><?php $this->load->model('user_model');
-							$user = $this->user_model->get_info($row->user_id);	
+							if($row->user_id == 0 || $row->user_id < 0){
+								$user_id_custom = 1;
+							  }else{
+							   $user_id_custom = $row->user_id;
+							  }
+							$user = $this->user_model->get_info($user_id_custom);
 							if($row->name == NULL){
 								echo $user->name."<i> - Thành viên</i>";
 							  }else{

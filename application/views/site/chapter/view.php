@@ -331,7 +331,12 @@
               <div class="force-overflow">
                 <?php $i = 0 ; foreach($comments as $row):
                      $this->load->model('user_model');
-                     $users = $this->user_model->get_info($row->user_id);
+                     if($row->user_id == 0 || $row->user_id < 0){
+                      $user_id_custom = 1;
+                      }else{
+                       $user_id_custom = $row->user_id;
+                      }
+                    $user = $this->user_model->get_info($user_id_custom);
                   ?>
                   <div class="media mb-4">
                     <div class="post-thumb-sm mr-3">
