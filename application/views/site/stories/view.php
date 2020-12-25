@@ -382,7 +382,12 @@ $(document).ready(function() {
                     <div class="post-thumb-sm mr-3">
                       <img class="img-fluid" src="<?php
                                $this->load->model('user_model');
-                               $users = $this->user_model->get_info($row->user_id);
+                               if($row->user_id == 0 || $row->user_id < 0){
+                                $user_id_custom = 1;
+                                }else{
+                                 $user_id_custom = $row->user_id;
+                                }
+                              $user = $this->user_model->get_info($user_id_custom);
                               echo !empty($users->image_link) ? base_url('upload/user/'.$users->image_link) : base_url('upload/stories/default.jpg')?>" alt="<?php echo $row->body?>">
                     </div>
                     <div class="media-body">
