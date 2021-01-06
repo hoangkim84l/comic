@@ -78,7 +78,6 @@ else{
 <!-- jQuery -->
 <script src="<?php echo public_url()?>site/plugins/jQuery/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
-<!-- <script src="https://code.jquery.com/jquery-1.9.1.js"></script>  -->
 <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
 
 <!-- Autocomplete  Search -->
@@ -112,19 +111,35 @@ $(function() {
 <!--Google ads-->
 <!-- <script data-ad-client="ca-pub-9323279727270807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 <script>
-  jQuery(document).ready(function() {
-    $('#text-search').typeahead({
-      source: function(query, process){
-        return $.get('/stories/fetch', {query: query}, function (data){
-          data = $.parseJSON(data);
-                return process(data);
-        });
-       
+jQuery(document).ready(function(){
+  jQuery(function(){
+    jQuery('#text-search').typeahead({
+      source: function(request, response){
+        jQuery.ajax({
+          url: '/stories/fetch',
+          type: 'POST',
+          dataType: 'JSON',
+          data: 'query='+request,
+          success: function(data){
+            response(jQuery.map(data, function(item){
+              return{
+                ids: item.id,
+                url:item.slug,
+                value: item.name
+              }
+            }))
+          }
+        })
+      },
+      displayText: function(item){
+        return item.value
+      },
+      updater: function( item ) {
+        console.log(item);
+        window.location.href = "xem-truyen/"+item.url+"-"+item.ids;
       }
     });
-    $('.typeahead-input').on('typeahead:beforeopen', function() {
-    return false;
-});
+  });
 });
 </script>
 <!--pinterest-->

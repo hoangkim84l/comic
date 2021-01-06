@@ -7,6 +7,8 @@ Class Stories extends MY_Controller
         //load model san pham
         $this->load->model('story_model');
         $this->load->model('lovelists_model');
+        $this->load->model('comment_model');
+        $this->load->model('user_model');
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->database();
@@ -51,7 +53,7 @@ Class Stories extends MY_Controller
     
           //lay danh sach truyện view cao
 	    $input_story = array();
-        $input_story['limit'] = array(10, 0);
+        $input_story['limit'] = array(7, 0);
         $input_story['order'] = array('view', 'DESC');
 	    $story_newest = $this->story_model->get_list($input_story);
         $this->data['story_newest'] = $story_newest;
@@ -59,6 +61,20 @@ Class Stories extends MY_Controller
         //lay thong tin cua danh mục san pham
         $catalogs = $this->catalog_model->get_list();
         $this->data['catalogs'] = $catalogs;
+
+        //lay 10 bình luận mới nhất
+        $input_comment = array();
+        $input_comment['limit'] = array(10,0);
+        $input_comment['order'] = array('id', 'DESC');
+        $list_comment = $this->comment_model->get_list($input_comment);
+        $this->data['list_comments'] = $list_comment;
+
+        //lay 10 truyện mới nhất
+        $input_stories = array();
+        $input_stories['limit'] = array(10,0);
+        $input_stories['order'] = array('id', 'DESC');
+        $list_stories_new = $this->story_model->get_list($input_stories);
+        $this->data['list_stories_new'] = $list_stories_new;
 
         // Hien thi view
         $this->data['temp'] = 'site/stories/index';

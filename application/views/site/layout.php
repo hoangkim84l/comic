@@ -71,10 +71,10 @@
 	<script src="<?php echo public_url()?>site/js/autocomplete.js"></script>	 
 	<script type="text/javascript" src="<?php echo public_url()?>site/js/jquery.lazyload.min.js"></script> 
 	<script type="text/javascript">
-		jQuery(document).ready(function(){
-		jQuery('*').bind('cut copy paste contextmenu', function (e) {
-			e.preventDefault();
-		})});
+		// jQuery(document).ready(function(){
+		// jQuery('*').bind('cut copy paste contextmenu', function (e) {
+		// 	e.preventDefault();
+		// })});
 		var mybutton = document.getElementById("myBtn");
 
 		// When the user scrolls down 20px from the top of the document, show the button

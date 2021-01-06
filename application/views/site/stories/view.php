@@ -316,14 +316,14 @@ $(document).ready(function() {
               <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="<?php echo $stories->id?>">
               <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="0">
               <input type="hidden" class="form-control mb-4" name="icon" id="icon" value="">
-              <div class="col-lg-12">
-                <textarea name="body" id="body" class="form-control mb-4" placeholder="Lời nhắn..."></textarea>
-              </div>
+              <input type="text" class="form-control form-control-text col-lg-12" name="body" id="body" value="" placeholder="Ý kiến của huynh đài" autocomplete="off">
+              
               <div class="form-group custom-sticker-p">
                   <div id="show-stiker-selected">
                     <img src="" alt="" id="stickerSelected" width="100px">
                     <span id="deleteStiker">Xóa sticker</span>
                   </div>
+                  <br/>
                   <input type='button' id='hideshow' value='Chọn sticker'>
                   <div id='content-a' style="display:none;">
                   <?php $listIcons = json_decode(file_get_contents(public_url('site/js/icon.json')));
@@ -347,15 +347,15 @@ $(document).ready(function() {
                 <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="<?php echo $stories->id?>">
                 <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="0">
                 <input type="hidden" class="form-control mb-4" name="icon" id="icon" value="">
+                <br/> <br/>
+                <input type="text" class="form-control form-control-text col-lg-12" name="body" id="body" value="" placeholder="Ý kiến của huynh đài" autocomplete="off">
                 <br/>
-                <div class="col-lg-12">
-                  <textarea name="body" id="body" class="form-control mb-4" placeholder="Lời nhắn..."></textarea>
-                </div>
                 <div class="form-group custom-sticker-p">
                   <div id="show-stiker-selected">
                     <img src="" alt="" id="stickerSelected" width="100px">
                     <span id="deleteStiker">Xóa sticker</span>
                   </div>
+                  <br/>
                   <input type='button' id='hideshow' value='Chọn sticker'>
                   <div id='content-a' style="display:none;">
                   <?php $listIcons = json_decode(file_get_contents(public_url('site/js/icon.json')));
@@ -374,30 +374,29 @@ $(document).ready(function() {
               </form>
             <?php endif;?>
             <br/>
-            
             <div class="scrollbar" id="style-1">
               <div class="force-overflow">
                 <?php $i = 0 ; foreach($comments as $row):?>
-                  <div class="media mb-4">
+                  <div class="media mb-4" id='showReplyForm'>
                     <div class="post-thumb-sm mr-3">
                       <img class="img-fluid" src="<?php
-                               $this->load->model('user_model');
-                               if($row->user_id == 0 || $row->user_id < 0){
-                                $user_id_custom = 1;
-                                }else{
-                                 $user_id_custom = $row->user_id;
-                                }
-                              $user = $this->user_model->get_info($user_id_custom);
-                              echo !empty($users->image_link) ? base_url('upload/user/'.$users->image_link) : base_url('upload/stories/default.jpg')?>" alt="<?php echo $row->body?>">
+                            $this->load->model('user_model');
+                            if($row->user_id == 0 || $row->user_id < 0){
+                            $user_id_custom = 1;
+                            }else{
+                              $user_id_custom = $row->user_id;
+                            }
+                          $user = $this->user_model->get_info($user_id_custom);
+                          echo !empty($users->image_link) ? base_url('upload/user/'.$users->image_link) : base_url('upload/stories/default.jpg')?>" alt="<?php echo $row->body?>">
                     </div>
                     <div class="media-body">
                       <ul class="list-inline d-flex justify-content-between mb-2">
                         <li class="list-inline-item">
                           <b><?php 
                             if($row->name == NULL){
-                              echo $users->name."<i> - Thành viên</i>";
+                              echo $users->name."<i> - Thành viên</i> <small><a  href='javascript:void(0)'>Trả lời</a></small>";
                             }else{
-                              echo $row->name."<i> - Khách</i>";
+                              echo $row->name."<i> - Khách</i> <small><a  href='javascript:void(0)'>Trả lời</a></small>";
                             }
                           ?></b>
                         </li>
@@ -411,7 +410,43 @@ $(document).ready(function() {
                           $('#myIcon<?php echo $i;?>').attr('src', icon[key]);
                       </script>
                     </div>
+                    <br/>
+                    <br>
+                    <?php if(isset($user_info)):?>
+                    <form action="<?php echo site_url('comment/replyComment');?>" class="row hidden" method="POST" id="postComments" name="postComments" style="padding-left: 50px;">
+                      <input type="hidden" class="col-lg-4" name="user_id" id="user_id" value="<?php echo $user_info->id?>">
+                      <input type="hidden" class="form-control form-control-text col-lg-4" name="name" id="name" value="" placeholder=" Tên của bạn"  autocomplete="off">
+                      <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="<?php echo $stories->id?>">
+                      <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="0">
+                      <input type="hidden" class="form-control mb-4" name="icon" id="icon" value="">
+                      <br/> <br/>
+                      <input type="text" class="form-control form-control-text col-lg-10" name="body" id="body" value="" placeholder="Ý kiến của huynh đài" autocomplete="off">
+                      <br/>
+                      <div class="col-12">
+                        <br/>
+                        <button class="btn btn-primary" id="clickClear" >Lên Lên</button>
+                        <br/>
+                      </div>
+                    </form>
+                  <?php else:?>
+                    <form action="<?php echo site_url('comment/replyComment');?>" class="row hidden" method="POST" id="postComments" name="postComments" style="padding-left: 50px;">
+                          <input type="hidden" class="col-lg-4" name="user_id" id="user_id" value="">
+                          <input type="text" class="form-control form-control-text col-lg-4" name="name" id="name" value="" placeholder=" Tên của bạn" required autocomplete="off">
+                          <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="<?php echo $stories->id?>">
+                          <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="0">
+                          <input type="hidden" class="form-control mb-4" name="icon" id="icon" value="">
+                          <br/> <br/>
+                          <input type="text" class="form-control form-control-text col-lg-10" name="body" id="body" value="" placeholder="Ý kiến của huynh đài" autocomplete="off">
+                          <br/>
+                          <div class="col-12">
+                            <br/>
+                            <button class="btn btn-primary" id="clickClear" >Lên Lên</button>
+                            <br/>
+                          </div>
+                        </form>
+                  <?php endif;?>
                   </div>
+                  
                   <?php $i++; endforeach;?>
               </div>
                 
@@ -454,5 +489,15 @@ $('#deleteStiker').click(function(e){
     e.preventDefault(); //to prevent standard click event
     $('#stickerSelected').attr('src', '');
     document.getElementById("show-stiker-selected").style.display  = "none";
+});
+
+$(document).ready(function(){
+   $(".force-overflow #showReplyForm").each(function(item, index){
+    $(this).click(function(){
+      console.log($(this).removeClass('hidden'));
+      $(this).find("#postComments").removeClass('hidden');
+    })
+    
+  });
 });
 </script>

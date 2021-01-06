@@ -86,6 +86,30 @@
             }
     }
 </style>
+<script type="text/javascript">
+    var icon; //Tạo biến lưu nội dung file json được đọc
+    //Tạo hàm đọc file
+    function readTextFile(file) 
+    {
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", file, false);
+        rawFile.onreadystatechange = function ()
+        {
+            if(rawFile.readyState === 4)
+            {
+                if(rawFile.status === 200 || rawFile.status == 0)
+                {
+                    var allText = rawFile.responseText;
+                    icon = JSON.parse(allText); //đọc dữ liệu json của file và lưu vào biến icon
+                }
+            }
+        }
+        rawFile.send(null);
+    }
+
+    //Chọn file để đọc nào
+    readTextFile("<?php echo public_url()?>site/js/icon.json");
+</script>
 <!-- page-title -->
 <section class="section bg-secondary section-detail">
   <div class="container">
@@ -127,9 +151,11 @@
                     <h4 class="title-border">
                       <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a>
                     </h4>
-                    <div class="box-content-child">
-                      <div class="over-flow-custom">
+                    <div class="bg">
+                      <div class="overlays">
+                      <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
                         <?php echo $row->description;?>
+                      </a>
                     </div>
                     </div> 
                   </article>
@@ -149,10 +175,10 @@
         <div class="breadcrumb">
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active displayroute">
+              <li role="presentation" class="displayroute">
                   <a href="#month" aria-controls="home" role="tab" data-toggle="tab">Top Tháng</a></li>
               <li role="presentation" class="displayroute">
-                  <a href="#week" aria-controls="profile" role="tab" data-toggle="tab">Top Tuần</a>
+                  <a href="#week" aria-controls="profile" role="tab" data-toggle="tab">Truyện Mới</a>
               </li>
               <li class="displayroute">
                 <a href="#comments" aria-controls="profile" role="tab" data-toggle="tab">Top Bình Luận</a>
@@ -173,19 +199,75 @@
                       </a>
                     </div>
                     <div class="media-body">
-                      <ul class="list-inline d-flex justify-content-between mb-2">
+                      <ul class="list-inline d-flex justify-content-between">
                         <li class="list-inline-item"><?php echo $row->author?></li>
-                        <li class="list-inline-item">Top <?php echo $count?></li>
+                        <li class="list-inline-item t<?php echo $count?>">Top <?php echo $count?></li>
                       </ul>
-                      <h6><a class="text-dark" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a> <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?></h6>
+                      <h6 class="p-stori">
+                        <a class="text-dark c-p-stories fix-title-1-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a> &nbsp;&nbsp;
+                        <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?></h6>
                     </div>
                   </div>
                 <?php } $count ++ ;endforeach;?>  
             </div> 
               </div>
-              <div role="tabpanel" class="tab-pane" id="week">   Top tuần
+              <div role="tabpanel" class="tab-pane" id="week">
+              <?php 
+                  foreach($list_stories_new as $row_s_new): if($row_s_new->status == 0){ }else{?>     
+                  <div class="media mb-4">
+                    <div class="post-thumb-sm mr-3">
+                      <a href="<?php echo site_url('xem-truyen/'.$row_s_new->slug.'-'.$row_s_new->id)?>">
+                        <img class="img-fluid mb-4" src="<?php echo $row_s_new->image_link != '' ? base_url('upload/stories/'.$row_s_new->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_s_new->name?>">
+                      </a>
+                    </div>
+                    <div class="media-body week-list">
+                      <ul class="list-inline d-flex justify-content-between">
+                        <li class="list-inline-item"><?php echo $row_s_new->author?></li>
+                      </ul>
+                      <h6 class="p-stori">
+                        <a class="text-dark c-p-stories fix-title-1-line" href="<?php echo site_url('xem-truyen/'.$row_s_new->slug.'-'.$row_s_new->id)?>"><?php echo $row_s_new->name?></a>&nbsp;&nbsp;
+                         <i class="ti-eye mr-2"></i><?php echo number_format($row_s_new->view)?></h6>
+                    </div>
+                  </div>
+                <?php } endforeach;?> 
               </div>
-              <div role="tabpanel" class="tab-pane" id="comments">   Top bình luận
+              <div role="tabpanel" class="tab-pane" id="comments">   
+                <?php $i = 0 ;  foreach($list_comments as $row_comment): ?>     
+                  <div class="media">
+                    <div class="media-body">
+                      <ul class="list-inline d-flex justify-content-between mb-2">
+                        <li class="list-inline-item">
+                          <?php 
+                            $this->load->model('user_model');
+                              if($row_comment->user_id == 0 || $row_comment->user_id < 0){
+                                $user_id_custom = 1;
+                                }else{
+                                 $user_id_custom = $row_comment->user_id;
+                                } 
+                                $this->load->model('user_model');  
+                                $user = $this->user_model->get_info($user_id_custom);
+                              
+                              if($row->name == NULL){
+                                echo "<b>". $users->name."</b><i> - Thành viên</i>";
+                              }else{
+                                echo "<b>". $row_comment->name."</b><i> - Khách</i>";
+                              }
+                          ?>
+                        </li>
+                      </ul>
+                      <span><?php echo $row_comment->body;?></span>
+                      <?php if(!empty($row_comment->icon)){?>
+                      <p id="icon<?php echo $i;?>" style="display:none;"><?php echo $row_comment->icon ?></p>
+                      <img id="myIcon<?php echo $i;?>" src="" width="70px">
+                      <script type="text/javascript">
+                          var key = $('#icon<?php echo $i;?>').text();
+                          $('#myIcon<?php echo $i;?>').attr('src', icon[key]);
+                      </script>
+                      <?php } ?>
+                      <span><hr></span>
+                    </div>
+                  </div>
+                <?php $i++; endforeach;?> 
               </div>
           </div>
         </div>    
@@ -202,3 +284,10 @@
   </div>
 </section>
 <!-- /category post -->
+<script>
+  $( document ).ready(function() {
+    $(".displayroute").click(function(){
+      this.toggleClass("active");
+    });
+  });
+</script>

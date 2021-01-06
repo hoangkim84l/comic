@@ -26,22 +26,10 @@
         $story = $this->story_model->get_info($row->story_id);
         ?>
         <div class="col-lg-3 col-sm-6 mb-5 data-dup" data-id="<?php echo $row->story_id?>">
-          <article class="text-center">
+          <article class="text-center box-content">
           <a href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>">
             <img class="img-fluid mb-4 img-fluid-stories" loading="lazy" src="<?php echo $story->image_link != '' ? base_url('upload/stories/'.$story->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $story->site_title?>">
           </a>
-            <p class="text-uppercase mb-2 catalog">
-              <?php
-               $catalog = $this->catalog_model->get_list();
-               $cata = json_decode($story->category_id);
-               foreach ($catalog as $data){
-                   if (in_array($data->id, $cata)) { ?>
-                 <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
-                   ?>'><?php echo $data->name.".";?></a>
-               <?php }
-               }
-              ?>
-            </p>
             <center><div class='raty' style='margin:10px 0px' id='<?php echo $story->id?>' data-score='<?php echo  ($story->rate_count > 0) ? $story->rate_total/$story->rate_count : 0?>'></div></center>
             <h4 class="title-border">
               <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>"><?php echo $story->name?></a>
@@ -64,6 +52,13 @@
                 }
               }
             ?>
+            <div class="bg">
+              <div class="overlays">
+                <a href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>">
+                  <?php echo $story->description;?>
+                </a>
+              </div>
+            </div> 
            </article>
         </div>
 
@@ -87,30 +82,24 @@
       <?php foreach($data_hot as $row) : if($row->status == 0){ }else{?>
 
         <div class="col-lg-3 col-sm-6 mb-5">
-          <article class="text-center">
+          <article class="text-center box-content">
           <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
             <img class="img-fluid mb-4 img-fluid-stories" loading="lazy" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $row->site_title?>">
           </a>
-            <p class="text-uppercase mb-2 catalog">
-              <?php
-                $this->load->model('catalog_model');
-                $catalog = $this->catalog_model->get_list();
-                $cata = json_decode($row->category_id);
-                foreach ($catalog as $data){
-                    if (in_array($data->id, $cata)) { ?>
-                  <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
-                    ?>'><?php echo $data->name.".";?></a>
-                <?php }
-                }
-              ?>
-            </p>
             <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
             <h4 class="title-border">
               <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a>
             </h4>
-            <div class="text-left">
+            <div class="text-center">
               <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?> Lượt xem
             </div>
+            <div class="bg">
+              <div class="overlays">
+                <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+                  <?php echo $row->description;?>
+                </a>
+              </div>
+            </div> 
            </article>
         </div>
 
@@ -134,27 +123,24 @@
       <?php foreach($list_comic as $row) : if($row->status == 0){ }else{?>
 
         <div class="col-lg-3 col-sm-6 mb-5">
-          <article class="text-center">
+          <article class="text-center box-content">
           <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
             <img class="img-fluid mb-4 img-fluid-stories" loading="lazy" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?> "title="<?php echo $row->site_title?>">
           </a>
-            <p class="text-uppercase mb-2 catalog">
-              <?php
-                $this->load->model('catalog_model');
-                $catalog = $this->catalog_model->get_list();
-                $cata = json_decode($row->category_id);
-                foreach ($catalog as $data){
-                    if (in_array($data->id, $cata)) { ?>
-                  <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
-                    ?>'><?php echo $data->name.".";?></a>
-                <?php }
-                }
-              ?>
-            </p>
             <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
             <h4 class="title-border">
               <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a>
             </h4>
+            <div class="text-center">
+              <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?> Lượt xem
+            </div>
+            <div class="bg">
+              <div class="overlays">
+                <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+                  <?php echo $row->description;?>
+                </a>
+              </div>
+            </div> 
            </article>
         </div>
 
@@ -178,27 +164,24 @@
       <?php foreach($list_novel as $row) : if($row->status == 0){ }else{?>
 
         <div class="col-lg-3 col-sm-6 mb-5">
-          <article class="text-center">
+          <article class="text-center box-content">
           <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
             <img class="img-fluid mb-4 img-fluid-stories" loading="lazy" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $row->site_title?>">
           </a>
-            <p class="text-uppercase mb-2 catalog">
-              <?php
-               $this->load->model('catalog_model');
-               $catalog = $this->catalog_model->get_list();
-               $cata = json_decode($row->category_id);
-               foreach ($catalog as $data){
-                   if (in_array($data->id, $cata)) { ?>
-                 <a class="new-links" style='color:#585757' href='/danh-muc/<?php echo $data->id;
-                   ?>'><?php echo $data->name.".";?></a>
-               <?php }
-               }
-              ?>
-            </p>
             <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
             <h4 class="title-border">
               <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a>
             </h4>
+            <div class="text-center">
+              <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?> Lượt xem
+            </div>
+            <div class="bg">
+              <div class="overlays">
+                <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+                  <?php echo $row->description;?>
+                </a>
+              </div>
+            </div> 
            </article>
         </div>
 

@@ -133,31 +133,40 @@ class Comment extends MY_Controller
      */
 	public function storyHaveLogin()
 	{ 
-		 
-		  //set cac tap luat cho cac the input
-		  $this->form_validation->set_rules('user_id', 'nội dung', 'required');
-		  if($this->form_validation->run())
-		  {
-			// Luu vao bảng comment
-			 $data = array();
-			 $data['user_id'] = strip_tags($this->input->post('user_id'));
-			 $data['name'] = strip_tags($this->input->post('name'));
-			 $data['story_id'] = strip_tags($this->input->post('story_id'));
-			 $data['parent_id'] = strip_tags($this->input->post('parent_id'));
-			 $data['icon'] = strip_tags($this->input->post('icon'));
-			 $data['body']	 = strip_tags($this->input->post('body'));
-			 $data['created']  = date("Y-m-d");
-			 $this->comment_model->create($data);
-			 echo'
-			 <script>
-			 window.onload = function() {
-				 alert("Đăng thành công");
-				 location.href = "javascript:history.back(-2);";  
-			 }
-			 document.getElementById("postComment").reset();
-			 </script>
-			 ';
-		  }
+		 //set cac tap luat cho cac the input
+		$this->form_validation->set_rules('user_id', 'nội dung', 'required');
+		if($this->form_validation->run())
+		{
+		// Luu vao bảng comment
+			$data = array();
+			$data['user_id'] = strip_tags($this->input->post('user_id'));
+			$data['name'] = strip_tags($this->input->post('name'));
+			$data['story_id'] = strip_tags($this->input->post('story_id'));
+			$data['parent_id'] = strip_tags($this->input->post('parent_id'));
+			$data['icon'] = strip_tags($this->input->post('icon'));
+			$data['body']	 = strip_tags($this->input->post('body'));
+			$data['created']  = date("Y-m-d");
+			$this->comment_model->create($data);
+			echo'
+			<script>
+			window.onload = function() {
+				alert("Đăng thành công");
+				location.href = "javascript:history.back(-2);";  
+			}
+			document.getElementById("postComment").reset();
+			</script>
+			';
+		}
+	}
+	/**
+     * Description: Trả lời bình luận
+     * Function: replyComment()
+     * @author: Di
+     * @params: parent_id
+     * @return: Save database
+     */
+	public function replyComment($parent_id){
+
 	}
 }
 
