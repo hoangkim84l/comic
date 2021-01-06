@@ -376,15 +376,15 @@ $(document).ready(function() {
             <br/>
             <div class="scrollbar" id="style-1">
               <div class="force-overflow">
-                <?php $i = 0 ; foreach($comments as $row):?>
+                <?php $i = 0 ; foreach($comments as $row): if($row->parent_id > 0){ echo "";}else{?>
                   <div class="media mb-4" id='showReplyForm'>
                     <div class="post-thumb-sm mr-3">
                       <img class="img-fluid" src="<?php
                             $this->load->model('user_model');
-                            if($row->user_id == 0 || $row->user_id < 0){
-                            $user_id_custom = 1;
-                            }else{
-                              $user_id_custom = $row->user_id;
+                            if ($row->user_id == 0 || $row->user_id < 0) {
+                                $user_id_custom = 1;
+                            } else {
+                                $user_id_custom = $row->user_id;
                             }
                           $user = $this->user_model->get_info($user_id_custom);
                           echo !empty($users->image_link) ? base_url('upload/user/'.$users->image_link) : base_url('upload/stories/default.jpg')?>" alt="<?php echo $row->body?>">
@@ -392,32 +392,58 @@ $(document).ready(function() {
                     <div class="media-body">
                       <ul class="list-inline d-flex justify-content-between mb-2">
                         <li class="list-inline-item">
-                          <b><?php 
-                            if($row->name == NULL){
-                              echo $users->name."<i> - Thành viên</i> <small><a  href='javascript:void(0)'>Trả lời</a></small>";
-                            }else{
-                              echo $row->name."<i> - Khách</i> <small><a  href='javascript:void(0)'>Trả lời</a></small>";
+                          <b><?php
+                            if ($row->name == null) {
+                                echo $users->name."<i> - Thành viên</i> <small><a  href='javascript:void(0)'>Trả lời</a></small>";
+                            } else {
+                                echo $row->name."<i> - Khách</i> <small><a  href='javascript:void(0)'>Trả lời</a></small>";
                             }
                           ?></b>
                         </li>
-                        <li class="list-inline-item"><?php $date = date_create($row->created); echo date_format($date,'d-m-Y')?></li>
+                        <li class="list-inline-item"><?php $date = date_create($row->created); echo date_format($date, 'd-m-Y')?></li>
                       </ul>
-                      <span><?php echo $row->body?></span>
+                      <span><?php echo $row->body;?></span>
                       <p id="icon<?php echo $i;?>" style="display:none;"><?php echo $row->icon ?></p>
                       <img id="myIcon<?php echo $i;?>" src="" width="70px">
                       <script type="text/javascript">
                           var key = $('#icon<?php echo $i;?>').text();
                           $('#myIcon<?php echo $i;?>').attr('src', icon[key]);
                       </script>
+                      <br/><br/>
+                      <?php if (!empty($row->subs)):?>
+                        <?php foreach ($row->subs as $sub): ?>
+                          <div class="row">
+                            <div class="col-lg-1">
+
+                            </div>
+                            <div class="col-lg-11">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <b><?php
+                                  if ($sub->name == null) {
+                                      echo $users->name."<i> - Thành viên</i>";
+                                  } else {
+                                      echo $sub->name."<i> - Khách</i>";
+                                  }
+                                ?></b>
+                                </div>
+                                <div class="col-lg-12">
+                                <span><?php echo $sub->body?></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <?php endforeach;?>
+                      <?php endif;?>
                     </div>
                     <br/>
                     <br>
-                    <?php if(isset($user_info)):?>
+                    <?php if (isset($user_info)):?>
                     <form action="<?php echo site_url('comment/replyComment');?>" class="row hidden" method="POST" id="postComments" name="postComments" style="padding-left: 50px;">
                       <input type="hidden" class="col-lg-4" name="user_id" id="user_id" value="<?php echo $user_info->id?>">
                       <input type="hidden" class="form-control form-control-text col-lg-4" name="name" id="name" value="" placeholder=" Tên của bạn"  autocomplete="off">
                       <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="<?php echo $stories->id?>">
-                      <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="0">
+                      <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="<?php echo $row->id ?>">
                       <input type="hidden" class="form-control mb-4" name="icon" id="icon" value="">
                       <br/> <br/>
                       <input type="text" class="form-control form-control-text col-lg-10" name="body" id="body" value="" placeholder="Ý kiến của huynh đài" autocomplete="off">
@@ -433,7 +459,7 @@ $(document).ready(function() {
                           <input type="hidden" class="col-lg-4" name="user_id" id="user_id" value="">
                           <input type="text" class="form-control form-control-text col-lg-4" name="name" id="name" value="" placeholder=" Tên của bạn" required autocomplete="off">
                           <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="<?php echo $stories->id?>">
-                          <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="0">
+                          <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="<?php echo $row->id ?>">
                           <input type="hidden" class="form-control mb-4" name="icon" id="icon" value="">
                           <br/> <br/>
                           <input type="text" class="form-control form-control-text col-lg-10" name="body" id="body" value="" placeholder="Ý kiến của huynh đài" autocomplete="off">
@@ -447,7 +473,7 @@ $(document).ready(function() {
                   <?php endif;?>
                   </div>
                   
-                  <?php $i++; endforeach;?>
+                  <?php $i++; } endforeach;?>
               </div>
                 
             </div>

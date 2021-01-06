@@ -142,7 +142,12 @@ Class Stories extends MY_Controller
         $input_comment['where'] = array('story_id'=> $stories->id);
         $this->load->model('comment_model');
         $comments = $this->comment_model->get_list($input_comment);
-        $this->data['comments'] = $comments;
+        foreach($comments as $row){
+            $input_comment['where'] =  array('parent_id'=> $row->id);
+            $subs = $this->comment_model->get_list($input_comment);
+            $row->subs = $subs;
+        }
+        $this->data['comments'] = $comments;        
 
         //danh sách truyện mới
         $this->load->model('story_model');

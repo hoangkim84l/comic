@@ -165,8 +165,25 @@ class Comment extends MY_Controller
      * @params: parent_id
      * @return: Save database
      */
-	public function replyComment($parent_id){
-
+	public function replyComment(){
+		// Luu vao bảng comment
+		$data = array();
+		$data['user_id'] = strip_tags($this->input->post('user_id'));
+		$data['name'] = strip_tags($this->input->post('name'));
+		$data['story_id'] = strip_tags($this->input->post('story_id'));
+		$data['parent_id'] = strip_tags($this->input->post('parent_id'));
+		$data['icon'] = strip_tags($this->input->post('icon'));
+		$data['body']	 = strip_tags($this->input->post('body'));
+		$data['created']  = date("Y-m-d");
+		$this->comment_model->create($data);
+		echo'
+		<script>
+		window.onload = function() {
+			alert("Đăng thành công");
+			location.href = "javascript:history.back(-2);";  
+		}
+		</script>
+		';
 	}
 }
 

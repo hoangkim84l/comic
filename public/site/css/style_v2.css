@@ -12,6 +12,11 @@
     border: none;
     background-color: transparent !important;
     color: #fff;
+    text-align: center;
+}
+
+.search-icon {
+    right: 38%;
 }
 
 .typeahead.dropdown-menu {
