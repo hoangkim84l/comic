@@ -5,6 +5,8 @@
           <?php if($support->slogan != ''){ ?>
             <div class="slogan">
               <?php echo $support->slogan;?>
+              <br/>
+              <a href="//www.dmca.com/Protection/Status.aspx?ID=1801925b-c9d0-4154-9fcb-82e956b5bd00" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120ad.png?ID=1801925b-c9d0-4154-9fcb-82e956b5bd00"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
             </div>
           <?php } else{ ?>
             <p>

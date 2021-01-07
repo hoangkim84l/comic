@@ -49,7 +49,8 @@
     <div class="row">
         <div class="col-lg-12">
           <?php if(!empty($authURL)){ ?>
-            <a href="<?php echo $authURL; ?>"><img src="<?php echo public_url()?>site/images/facebook-sign-in-button.png ?>" width="300" height="auto" ></a>
+            <span>Hoặc huynh đài có thể đăng nhập bằng những cách dưới đây.</span>
+            <a href="<?php echo $authURL; ?>"><img src="<?php echo public_url()?>site/images/facebook-sign-in-button.png" width="auto" height="auto" ></a>
           <?php }?>
           <?php if(isset($button_login)){?>
           <?php

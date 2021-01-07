@@ -107,7 +107,14 @@ Class Chapter extends MY_Controller
         $input_comment['where'] = array('post_id'=> $chapter->id);
         $this->load->model('comment_model');
         $comments = $this->comment_model->get_list($input_comment);
+        foreach($comments as $row){
+            $input_comment['where'] =  array('parent_id'=> $row->id);
+            $input_comment['order'] = array('created', 'ASC');
+            $subs = $this->comment_model->get_list($input_comment);
+            $row->subs = $subs;
+        }
         $this->data['comments'] = $comments;
+
         // Chap-Truyện vừa xem
         $recentlyChapViewed = $this->session->userdata('recentlyChapViewed');
         if(!is_array($recentlyChapViewed)){

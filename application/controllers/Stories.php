@@ -144,6 +144,7 @@ Class Stories extends MY_Controller
         $comments = $this->comment_model->get_list($input_comment);
         foreach($comments as $row){
             $input_comment['where'] =  array('parent_id'=> $row->id);
+            $input_comment['order'] = array('created', 'ASC');
             $subs = $this->comment_model->get_list($input_comment);
             $row->subs = $subs;
         }

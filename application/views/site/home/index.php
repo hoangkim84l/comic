@@ -172,6 +172,7 @@
             <h4 class="title-border">
               <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a>
             </h4>
+            <br/>
             <div class="text-center">
               <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?> Lượt xem
             </div>

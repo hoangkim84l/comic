@@ -205,7 +205,8 @@
                       </ul>
                       <h6 class="p-stori">
                         <a class="text-dark c-p-stories fix-title-1-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a> &nbsp;&nbsp;
-                        <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?></h6>
+                        <span style="right: 30px;position: absolute;"> <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?></span> 
+                      </h6>
                     </div>
                   </div>
                 <?php } $count ++ ;endforeach;?>  
@@ -226,7 +227,8 @@
                       </ul>
                       <h6 class="p-stori">
                         <a class="text-dark c-p-stories fix-title-1-line" href="<?php echo site_url('xem-truyen/'.$row_s_new->slug.'-'.$row_s_new->id)?>"><?php echo $row_s_new->name?></a>&nbsp;&nbsp;
-                         <i class="ti-eye mr-2"></i><?php echo number_format($row_s_new->view)?></h6>
+                        <span style="right: 30px;position: absolute;"> <i class="ti-eye mr-2"></i><?php echo number_format($row_s_new->view)?></span>
+                      </h6>
                     </div>
                   </div>
                 <?php } endforeach;?> 

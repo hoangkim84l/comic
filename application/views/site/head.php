@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='dmca-site-verification' content='VkEwZHJoN2RTbmt2dXdmYlQ5NzdTT000SkFEWUpRUFlnZ1JtTzRKQnkvQT01' />
 <!-- ** Plugins Needed for the Project ** -->
 <!-- Bootstrap -->
 <link rel="stylesheet" href="<?php echo public_url()?>site/plugins/bootstrap/bootstrap.min.css">
@@ -77,9 +78,8 @@ else{
 <meta property="og:type" typeof="WebPage" content="<?php echo $support->og_type?>" />
 <!-- jQuery -->
 <script src="<?php echo public_url()?>site/plugins/jQuery/jquery.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script> 
 <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
-
 <!-- Autocomplete  Search -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>  
 
@@ -109,7 +109,7 @@ $(function() {
   gtag('config', 'UA-178674513-1');
 </script>
 <!--Google ads-->
-<!-- <script data-ad-client="ca-pub-9323279727270807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+<script data-ad-client="ca-pub-9387330072577151" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
 jQuery(document).ready(function(){
   jQuery(function(){

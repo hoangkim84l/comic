@@ -52,10 +52,12 @@
           </div>
           <div class="col-12">
             <button class="btn btn-primary">Đăng ký</button>
+            <a class="btn btn-primary btn-login-page" href="<?php echo site_url('user/login')?>">Đăng Nhập</a>
           </div>
           <div class="col-lg-12">
             <?php if(!empty($authURL)){ ?>
-              <a href="<?php echo $authURL; ?>"><img src="<?php echo public_url()?>site/images/facebook-sign-in-button.png ?>" width="300" height="auto"></a>
+            <span>Hoặc huynh đài có thể đăng kí bằng những cách dưới đây.</span>
+              <a href="<?php echo $authURL; ?>"><img src="<?php echo public_url()?>site/images/facebook-sign-in-button.png" width="auto" height="auto"></a>
             <?php }?>
             <?php if(isset($button_login)){?>
             <?php

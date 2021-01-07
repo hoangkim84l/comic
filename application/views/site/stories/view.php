@@ -386,7 +386,7 @@ $(document).ready(function() {
                             } else {
                                 $user_id_custom = $row->user_id;
                             }
-                          $user = $this->user_model->get_info($user_id_custom);
+                          $users = $this->user_model->get_info($user_id_custom);
                           echo !empty($users->image_link) ? base_url('upload/user/'.$users->image_link) : base_url('upload/stories/default.jpg')?>" alt="<?php echo $row->body?>">
                     </div>
                     <div class="media-body">
@@ -394,9 +394,9 @@ $(document).ready(function() {
                         <li class="list-inline-item">
                           <b><?php
                             if ($row->name == null) {
-                                echo $users->name."<i> - Thành viên</i> <small><a  href='javascript:void(0)'>Trả lời</a></small>";
+                                echo $users->name."<small><i> - Thành viên</i> <a  href='javascript:void(0)'>Trả lời</a></small>";
                             } else {
-                                echo $row->name."<i> - Khách</i> <small><a  href='javascript:void(0)'>Trả lời</a></small>";
+                                echo $row->name."<small><i> - Khách</i> <a  href='javascript:void(0)'>Trả lời</a></small>";
                             }
                           ?></b>
                         </li>
@@ -414,16 +414,25 @@ $(document).ready(function() {
                         <?php foreach ($row->subs as $sub): ?>
                           <div class="row">
                             <div class="col-lg-1">
-
+                            <img class="img-fluid" src="<?php
+                                $this->load->model('user_model');
+                                if ($sub->user_id == 0 || $sub->user_id < 0) {
+                                    $user_id_customs = 1;
+                                } else {
+                                    $user_id_customs = $sub->user_id;
+                                }
+                              $user_r = $this->user_model->get_info($user_id_customs);
+                              echo !empty($user_r->image_link) ? base_url('upload/user/'.$user_r->image_link) : base_url('upload/stories/default.jpg')?>" alt="<?php echo $sub->body?>">
+                        
                             </div>
                             <div class="col-lg-11">
-                              <div class="row">
+                              <div class="row"> 
                                 <div class="col-lg-12">
                                   <b><?php
                                   if ($sub->name == null) {
-                                      echo $users->name."<i> - Thành viên</i>";
+                                      echo $users->name."<i> - Thành viên</i> &nbsp;&nbsp;&nbsp; ";
                                   } else {
-                                      echo $sub->name."<i> - Khách</i>";
+                                      echo $sub->name."<i> - Khách</i> &nbsp;&nbsp;&nbsp; ";
                                   }
                                 ?></b>
                                 </div>
