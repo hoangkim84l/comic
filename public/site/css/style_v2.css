@@ -510,10 +510,16 @@ h6.p-stori {
     -webkit-line-clamp: 7;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    padding: 0px 16px;
+    padding: 0px;
     min-height: 35px;
     font-size: 14px;
-    margin: 5px;
+    margin: 1px;
+    text-align: left;
+    max-width: 180px;
+}
+
+.overlays a p {
+    max-width: 150px;
 }
 
 .row.hidden {
