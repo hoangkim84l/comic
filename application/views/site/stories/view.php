@@ -451,6 +451,7 @@ $(document).ready(function() {
                     <form action="<?php echo site_url('comment/replyComment');?>" class="row hidden" method="POST" id="postComments" name="postComments" style="padding-left: 50px;">
                       <input type="hidden" class="col-lg-4" name="user_id" id="user_id" value="<?php echo $user_info->id?>">
                       <input type="hidden" class="form-control form-control-text col-lg-4" name="name" id="name" value="" placeholder=" Tên của bạn"  autocomplete="off">
+                      <input type="hidden" class="form-control mb-4" name="post_id" id="post_id" value="0">
                       <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="<?php echo $stories->id?>">
                       <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="<?php echo $row->id ?>">
                       <input type="hidden" class="form-control mb-4" name="icon" id="icon" value="">
@@ -467,6 +468,7 @@ $(document).ready(function() {
                     <form action="<?php echo site_url('comment/replyComment');?>" class="row hidden" method="POST" id="postComments" name="postComments" style="padding-left: 50px;">
                           <input type="hidden" class="col-lg-4" name="user_id" id="user_id" value="">
                           <input type="text" class="form-control form-control-text col-lg-4" name="name" id="name" value="" placeholder=" Tên của bạn" required autocomplete="off">
+                          <input type="hidden" class="form-control mb-4" name="post_id" id="post_id" value="0">
                           <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="<?php echo $stories->id?>">
                           <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="<?php echo $row->id ?>">
                           <input type="hidden" class="form-control mb-4" name="icon" id="icon" value="">

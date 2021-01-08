@@ -170,7 +170,8 @@ class Comment extends MY_Controller
 		$data = array();
 		$data['user_id'] = strip_tags($this->input->post('user_id'));
 		$data['name'] = strip_tags($this->input->post('name'));
-		$data['story_id'] = strip_tags($this->input->post('story_id'));
+		$data['post_id'] = strip_tags($this->input->post('post_id'));
+		$data['story_id'] = strip_tags($this->input->post('story_id'));		
 		$data['parent_id'] = strip_tags($this->input->post('parent_id'));
 		$data['icon'] = strip_tags($this->input->post('icon'));
 		$data['body']	 = strip_tags($this->input->post('body'));

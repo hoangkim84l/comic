@@ -526,6 +526,10 @@ h6.p-stori {
     display: none;
 }
 
+.post-thumb-sm.mr-3 {
+    min-width: 75px !important;
+}
+
 
 /*Footer************************************/
 
