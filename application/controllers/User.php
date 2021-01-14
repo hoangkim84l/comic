@@ -72,7 +72,6 @@ Class User extends MY_Controller
                     'created'  => now(),
                 );
                 $this->load->library('email'); // Note: no $config param needed
-                // $this->email->from('YOUREMAILHERE@gmail.com', 'YOUREMAILHERE@gmail.com');
                 $dataEmail = 'Tên: '. strip_tags($this->input->post('name')) .' '.PHP_EOL.
                         'Email: '. strip_tags($this->input->post('email')) .' '.PHP_EOL.
                         'Số điện thoại: '. strip_tags($this->input->post('phone') ).' '.PHP_EOL.
@@ -80,15 +79,37 @@ Class User extends MY_Controller
                         'Password: '. $this->input->post('password');
                         $from = $this->input->post('email');
                         $to = "teamcafesua@gmail.com";
-                        $subject = "Người dùng đăng kí:";
+                        $subject = "[Đăng Ký] Đăng ký thành công tài khoản tại website Cafesuanovel.com";
                         $message = $dataEmail;
                         $headers = "From:" . $from;
                         mail($to,$subject,$message, $headers);
                 //2 ways
                 $this->email->from($this->input->post('email'));
                 $this->email->to('teamcafesua@gmail.com');
-                $this->email->subject('Người dùng đăng kí : ');
+                $this->email->subject('[Đăng Ký] Đăng ký thành công tài khoản tại website Cafesuanovel.com');
                 $this->email->message($dataEmail);
+                $this->email->send();
+
+                //send to user
+                $dataEmailUser = 'Xin chào: '. strip_tags($this->input->post('name')) .' '.PHP_EOL.
+                        'Cảm ơn bạn đã đăng ký thành viên tại website '.PHP_EOL.
+                        'Cafesuanovel.com' .PHP_EOL.
+                        'Tài Khoản: '. strip_tags($this->input->post('email')).' '.PHP_EOL.
+                        'Mật khẩu: '. $this->input->post('password') .' '.PHP_EOL.
+                        'Chúc bạn có khoảng thời gian đọc truyện vui vẻ tại website.'.PHP_EOL.
+                        'Click vào link bên dưới để đăng nhập và trải nghiệm thế giới của truyện nhé!'.PHP_EOL.
+                        'https://cafesuanovel.com/';
+                        $from = "teamcafesua@gmail.com";
+                        $to = $this->input->post('email');
+                        $subject = "[Đăng Ký] Đăng ký thành công tài khoản tại website Cafesuanovel.com";
+                        $message = $dataEmailUser;
+                        $headers = "From:" . $from;
+                        mail($to,$subject,$message, $headers);
+                //2 ways
+                $this->email->from('teamcafesua@gmail.com');
+                $this->email->to($this->input->post('email'));
+                $this->email->subject('[Đăng Ký] Đăng ký thành công tài khoản tại website Cafesuanovel.com');
+                $this->email->message($dataEmailUser);
                 $this->email->send();
                 if($this->user_model->create($data))
                 {
@@ -414,25 +435,27 @@ Class User extends MY_Controller
             $where = array('email' => $email);
             $user = $this->user_model->get_info_rule($where);
             if($user){
-                var_dump($user->id);
                 //nhập liệu chính xác
                 if($this->form_validation->run())
                     {
                     //them vao csdl
                         $this->load->library('email'); // Note: no $config param needed
                     // // $this->email->from('YOUREMAILHERE@gmail.com', 'YOUREMAILHERE@gmail.com');
-                    $dataEmail = 'Mật khẩu của email: '. strip_tags($this->input->post('email')) .' '.PHP_EOL.
-                            'Mật Khẩu: '. $str;
+                    $dataEmail = 'Xin chào: '. strip_tags($this->input->post('email')) .' '.PHP_EOL.
+                            'Yêu cầu cấp lại mật khẩu cho tài khoản '. strip_tags($this->input->post('email')) .' của bạn đã được xác nhận.'.PHP_EOL.
+                            'Tài khoản: '. strip_tags($this->input->post('email')) .' '.PHP_EOL.
+                            'Mật khẩu của bạn là: '. $str .''.PHP_EOL.
+                            'Chúc bạn có khoảng thời gian đọc truyện vui vẻ tại website.';
                             $from = "teamcafesua@gmail.com";
                             $to = $this->input->post('email');
-                            $subject = "Mật khẩu của bằng hữu là:";
+                            $subject = "[Quên Mật Khẩu] Cấp lại mật khẩu cho tài khoản ". strip_tags($this->input->post('email'));
                             $message = $dataEmail;
                             $headers = "From:" . $from;
                             mail($to,$subject,$message, $headers);
                     //2 ways
                     $this->email->from('teamcafesua@gmail.com');
                     $this->email->to($this->input->post('email'));
-                    $this->email->subject('Mật khẩu của bằng hữu là: ');
+                    $this->email->subject('[Quên Mật Khẩu] Cấp lại mật khẩu cho tài khoản '. strip_tags($this->input->post('email')));
                     $this->email->message($dataEmail);
                     $this->email->send();
                     $data = array(
@@ -511,14 +534,21 @@ Class User extends MY_Controller
         delete_cookie("autologin_email");
         delete_cookie("autologin_password");
 
-        //remove local fb session
-        $this->facebook->destroy_session();
-        //remove user data from session
-        $this->session->unset_userdata('userData');
-        //logout luon token Google
-        $this->session->unset_userdata('access_token');
-        $this->session->unset_userdata('user_data_google');
-
+        // if(exists($this->session->userdata('userData')))
+        // {
+        //     //remove local fb session
+        //     $this->facebook->destroy_session();
+        //     //remove user data from session
+        //     $this->session->unset_userdata('userData');
+        // }
+        
+        if($this->session->userdata('user_data_google'))
+        {
+            //logout luon token Google
+            $this->session->unset_userdata('access_token');
+            $this->session->unset_userdata('user_data_google');
+        }
+        
         $this->session->set_flashdata('message', 'Đăng xuất thành công');
         redirect();
     }

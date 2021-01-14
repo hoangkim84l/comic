@@ -173,15 +173,14 @@
             <?php } ?>
             <!-- Display Google profile information -->
             <?php
-                if(!isset($login_button))
-                {
-                    $user_data = $this->session->userdata('user_data_google');
-                    echo '<div class="panel-heading">Thông tin từ Google</div><div class="panel-body">';
-                    echo '<img src="'.$user_data['picture'].'" class="img-responsive img-circle img-thumbnail" />';
-                    echo '<h3><b>Name : </b>'.$user_data["first_name"].' '.$user_data['last_name']. '</h3>';
-                    echo '<h3><b>Email :</b> '.$user_data['email_address'].'</h3>';
-                    echo '<h3><a href="'.base_url().'google_login/logout">Logout</h3></div>';
-                }
+                $user_data = $this->session->userdata('user_data_google');
+                if( $user_data != null){
+                echo '<div class="panel-heading">Thông tin từ Google</div><div class="panel-body">';
+                echo '<img src="'.$user_data['picture'].'" class="img-responsive img-circle img-thumbnail" />';
+                echo '<h3><b>Name : </b>'.$user_data["first_name"].' '.$user_data['last_name']. '</h3>';
+                echo '<h3><b>Email :</b> '.$user_data['email_address'].'</h3>';
+                echo '<h3><a href="'.base_url().'google_login/logout">Logout</h3></div>';                
+            }
             ?>
         </div>
         <div role="tabpanel" class="tab-pane" id="office">

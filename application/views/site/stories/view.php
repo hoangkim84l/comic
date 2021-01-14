@@ -116,7 +116,7 @@ $(document).ready(function() {
             <!-- <?php echo $name_catalog->name?> -->
             </span>
             <span class="info-book">Đánh giá: 
-            <?php if(isset($user_info)):?>
+            <?php if(isset($user_info) || isset($user_data_google)):?>
               <span class='raty_detailt' style = 'margin:5px' id='<?php echo $stories->id?>' data-score='<?php echo  ($stories->rate_count > 0) ? $stories->rate_total/$stories->rate_count : 0?>'></span> <br/>
             <?php else: ?>
               <br/><a href="<?php echo site_url('user/login')?>" target="_blank" rel="noopener noreferrer" class="link-login">Đăng nhập</a> để đánh giá về truyện<br/>

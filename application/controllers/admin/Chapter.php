@@ -183,14 +183,14 @@ Class Chapter extends MY_Controller
                     //send mail
                     $from = 'teamcafesua@gmail.com';
                     $to = $listUsers;
-                    $subject = "Truyện bạn yêu thích đã có chap mới:";
+                    $subject = "[Chap/Chương Mới] Truyện bạn đang theo dõi vừa được cập nhật";
                     $message = $linkSend;
                     $headers = "From:" . $from;
                     mail($to,$subject,$message, $headers);
                     //2 ways
                     $this->email->from('teamcafesua@gmail.com');
                     $this->email->to($listUsers);
-                    $this->email->subject('Truyện bạn yêu thích đã có chap mới:');
+                    $this->email->subject('[Chap/Chương Mới] Truyện bạn đang theo dõi vừa được cập nhật');
                     $this->email->message($linkSend);
                     $this->email->send(); 
                     //tạo ra nội dung thông báo

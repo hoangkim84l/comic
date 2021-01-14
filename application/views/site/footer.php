@@ -21,6 +21,7 @@
             <li class="font-secondary text-dark">Địa chỉ : <?php echo $support->geo_placename?></li>
             <li class="font-secondary text-dark">Gmail : <a href="mailto:<?php echo $support->gmail?>"><?php echo $support->gmail?></a> </li>
             <li class="font-secondary text-dark">Skype : <?php echo $support->skype?></li>
+            <li class="font-secondary text-dark"><a href="https://cafesuanovel.com/privacy-policy">Điều khoản, Dịch vụ</a> </li>
           </ul>
         </div>
         <div class="col-md-3 col-sm-6 mb-4 mb-md-0">

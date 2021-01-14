@@ -29,9 +29,14 @@
                             <li class="nav-item">
                                 <a class="nav-link text-uppercase text-dark" href="<?php echo site_url('lien-he')?>">Liên hệ</a>
                             </li>
-                            <?php if(isset($user_info)):?>
+                            <?php if(isset($user_info) || isset($user_data_google)):?>
                                 <li class="nav-item">
-                                    <a class="nav-link text-uppercase text-dark" href="<?php echo site_url('user')?>">Xin chào: <?php echo $user_info->name?></a></li>
+                                    <a class="nav-link text-uppercase text-dark" href="<?php echo site_url('user')?>">Xin chào: 
+                                    <?php if(isset($user_info)){
+                                        echo $user_info->name;
+                                    } if(isset($user_data_google)){
+                                        echo $user_data_google->first_name;
+                                    }?></a></li>
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase text-dark" href="<?php echo site_url('user/logout')?>">Thoát</a></li>
                             <?php else:?>
