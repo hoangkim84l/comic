@@ -178,7 +178,15 @@ Class Chapter extends MY_Controller
                     $storyID = $this->db->insert_id();
                     $storyName = $this->story_model->get_info($this->input->post('category_id'));
                     $custom_link = base_url()."truyen/".$storyName->slug.'-'.$data['slug'].'-'.$storyID;
-                    $linkSend = 'Truyện bạn theo dõi đã có chap mới click vào link bên dưới để xem ngay nha'.PHP_EOL.
+                    $linkSend = '<p>Truyện bạn theo dõi đã có chap mới click vào link bên dưới để xem ngay nha</p>'.PHP_EOL.
+                                '<p>----</p>' .PHP_EOL.
+                                '<p>Cafe Sữa Team.</p>'.PHP_EOL.
+                                '<p>Lướt cà phê sữa, muốn đọc nữa, không muốn dừng.</p>'.PHP_EOL.
+                                '<p>Đội ngũ quản trị viên Cafe Sữa Team</p>'.PHP_EOL.
+                                '<p> </p>'.PHP_EOL.
+                                '<p>Ho Chi Minh City, VietNam</p>'.PHP_EOL.
+                                '<p>Tel: (035) 6 000 439</p>'.PHP_EOL.
+                                '<p>Email: teamcafesua@gmail.com</p>'.PHP_EOL.
                                     $custom_link;
                     //send mail
                     $from = 'teamcafesua@gmail.com';
@@ -378,7 +386,30 @@ Class Chapter extends MY_Controller
         }
         
     }
+
+    /**
+     * Description: Upto public chap
+     * Function: auto_edit()
+     * @author: Di
+     * @params: list.
+     * @return: update data to database
+     */
+    function auto_edit()
+    {
+        $input = array();
+        $input['where'] = array('status' => 0);
+        $input['order'] = array('id',  'asc');    
+        $data_auto_update = $this->chapter_model->get_list($input);
+        $i = 0;
+        foreach($data_auto_update as $id_auto){
+            $data = array(
+                'status' => '1',
+            );
+            $this->chapter_model->update($id_auto->id, $data);
+            if($i == 1 ){
+                break;
+            }
+            $i++;
+        }
+    }
 }
-
-
-

@@ -78,7 +78,7 @@
 							  }else{
 							   $user_id_custom = $row->user_id;
 							  }
-							$user = $this->user_model->get_info($user_id_custom);
+							$user = $this->user_model->get_info($user_id_custom);	
 							if($row->name == NULL){
 								echo $user->name."<i> - Thành viên</i>";
 							  }else{

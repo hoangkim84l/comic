@@ -337,7 +337,7 @@
                     } else {
                         $user_id_custom = $row->user_id;
                     }
-                    $user = $this->user_model->get_info($user_id_custom); ?>
+                    $users = $this->user_model->get_info($user_id_custom); ?>
                   <div class="media mb-4" id='showReplyForm'>
                     <div class="post-thumb-sm mr-3">
                       <img class="img-fluid" src="<?php echo !empty($users->image_link) ? base_url('upload/user/'.$users->image_link) : base_url('upload/stories/default.jpg'); ?>" alt="<?php echo $row->body?>">

@@ -72,11 +72,19 @@ Class User extends MY_Controller
                     'created'  => now(),
                 );
                 $this->load->library('email'); // Note: no $config param needed
-                $dataEmail = 'Tên: '. strip_tags($this->input->post('name')) .' '.PHP_EOL.
-                        'Email: '. strip_tags($this->input->post('email')) .' '.PHP_EOL.
-                        'Số điện thoại: '. strip_tags($this->input->post('phone') ).' '.PHP_EOL.
-                        'Địa chỉ: '. strip_tags($this->input->post('address')).' ' .PHP_EOL.
-                        'Password: '. $this->input->post('password');
+                $dataEmail = '<p>Tên: '. strip_tags($this->input->post('name')) .' </p>'.PHP_EOL.
+                        '<p>Email: '. strip_tags($this->input->post('email')) .' </p>'.PHP_EOL.
+                        '<p>Số điện thoại: '. strip_tags($this->input->post('phone') ).' </p>'.PHP_EOL.
+                        '<p>Địa chỉ: '. strip_tags($this->input->post('address')).' </p>' .PHP_EOL.
+                        '<p>Password: '. $this->input->post('password').' </p>' .PHP_EOL.
+                        '<p>----</p>' .PHP_EOL.
+                        '<p>Cafe Sữa Team.</p>'.PHP_EOL.
+                        '<p>Lướt cà phê sữa, muốn đọc nữa, không muốn dừng.</p>'.PHP_EOL.
+                        '<p>Đội ngũ quản trị viên Cafe Sữa Team</p>'.PHP_EOL.
+                        '<p> </p>'.PHP_EOL.
+                        '<p>Ho Chi Minh City, VietNam</p>'.PHP_EOL.
+                        '<p>Tel: (035) 6 000 439</p>'.PHP_EOL.
+                        '<p>Email: teamcafesua@gmail.com</p>';
                         $from = $this->input->post('email');
                         $to = "teamcafesua@gmail.com";
                         $subject = "[Đăng Ký] Đăng ký thành công tài khoản tại website Cafesuanovel.com";
@@ -91,14 +99,21 @@ Class User extends MY_Controller
                 $this->email->send();
 
                 //send to user
-                $dataEmailUser = 'Xin chào: '. strip_tags($this->input->post('name')) .' '.PHP_EOL.
-                        'Cảm ơn bạn đã đăng ký thành viên tại website '.PHP_EOL.
-                        'Cafesuanovel.com' .PHP_EOL.
-                        'Tài Khoản: '. strip_tags($this->input->post('email')).' '.PHP_EOL.
-                        'Mật khẩu: '. $this->input->post('password') .' '.PHP_EOL.
-                        'Chúc bạn có khoảng thời gian đọc truyện vui vẻ tại website.'.PHP_EOL.
-                        'Click vào link bên dưới để đăng nhập và trải nghiệm thế giới của truyện nhé!'.PHP_EOL.
-                        'https://cafesuanovel.com/';
+                $dataEmailUser = '<p>Xin chào: '. strip_tags($this->input->post('name')) .'</p> '.PHP_EOL.
+                        '<p>Cảm ơn bạn đã đăng ký thành viên tại website </p>'.PHP_EOL.
+                        '<p>Cafesuanovel.com</p>' .PHP_EOL.
+                        '<p>Tài Khoản: '. strip_tags($this->input->post('email')).' </p>'.PHP_EOL.
+                        '<p>Mật khẩu: '. $this->input->post('password') .' </p>'.PHP_EOL.
+                        '<p>Chúc bạn có khoảng thời gian đọc truyện vui vẻ tại website.</p>'.PHP_EOL.
+                        '<p>Click vào link bên dưới để đăng nhập và trải nghiệm thế giới của truyện nhé!</p>'.PHP_EOL.
+                        '<p>----</p>'.PHP_EOL.
+                        '<p>Cafe Sữa Team.</p>'.PHP_EOL.
+                        '<p>Lướt cà phê sữa, muốn đọc nữa, không muốn dừng.</p>'.PHP_EOL.
+                        '<p>Đội ngũ quản trị viên Cafe Sữa Team</p>'.PHP_EOL.
+                        '<p> </p>'.PHP_EOL.
+                        '<p>Ho Chi Minh City, VietNam</p>'.PHP_EOL.
+                        '<p>Tel: (035) 6 000 439</p>'.PHP_EOL.
+                        '<p>Email: teamcafesua@gmail.com</p>';
                         $from = "teamcafesua@gmail.com";
                         $to = $this->input->post('email');
                         $subject = "[Đăng Ký] Đăng ký thành công tài khoản tại website Cafesuanovel.com";
@@ -441,11 +456,19 @@ Class User extends MY_Controller
                     //them vao csdl
                         $this->load->library('email'); // Note: no $config param needed
                     // // $this->email->from('YOUREMAILHERE@gmail.com', 'YOUREMAILHERE@gmail.com');
-                    $dataEmail = 'Xin chào: '. strip_tags($this->input->post('email')) .' '.PHP_EOL.
-                            'Yêu cầu cấp lại mật khẩu cho tài khoản '. strip_tags($this->input->post('email')) .' của bạn đã được xác nhận.'.PHP_EOL.
-                            'Tài khoản: '. strip_tags($this->input->post('email')) .' '.PHP_EOL.
-                            'Mật khẩu của bạn là: '. $str .''.PHP_EOL.
-                            'Chúc bạn có khoảng thời gian đọc truyện vui vẻ tại website.';
+                    $dataEmail = '<p>Xin chào: '. strip_tags($this->input->post('email')) .' </p>'.PHP_EOL.
+                            '<p>Yêu cầu cấp lại mật khẩu cho tài khoản '. strip_tags($this->input->post('email')) .' của bạn đã được xác nhận.</p>'.PHP_EOL.
+                            '<p>Tài khoản: '. strip_tags($this->input->post('email')) .' </p>'.PHP_EOL.
+                            '<p>Mật khẩu của bạn là: '. $str .'</p>'.PHP_EOL.
+                            '<p>Chúc bạn có khoảng thời gian đọc truyện vui vẻ tại website.</p>'.PHP_EOL.
+                            '<p>----</p>' .PHP_EOL.
+                            '<p>Cafe Sữa Team.</p>'.PHP_EOL.
+                            '<p>Lướt cà phê sữa, muốn đọc nữa, không muốn dừng.</p>'.PHP_EOL.
+                            '<p>Đội ngũ quản trị viên Cafe Sữa Team</p>'.PHP_EOL.
+                            '<p> </p>'.PHP_EOL.
+                            '<p>Ho Chi Minh City, VietNam</p>'.PHP_EOL.
+                            '<p>Tel: (035) 6 000 439</p>'.PHP_EOL.
+                            '<p>Email: teamcafesua@gmail.com</p>';
                             $from = "teamcafesua@gmail.com";
                             $to = $this->input->post('email');
                             $subject = "[Quên Mật Khẩu] Cấp lại mật khẩu cho tài khoản ". strip_tags($this->input->post('email'));

@@ -195,7 +195,7 @@
                   <div class="media mb-4">
                     <div class="post-thumb-sm mr-3">
                       <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
-                        <img class="img-fluid mb-4" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>"style=" min-width: 43px; min-height: 55px; " >
+                        <img class="img-fluid mb-4" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>" style=" min-width: 43px; min-height: 55px; ">
                       </a>
                     </div>
                     <div class="media-body">
