@@ -13,9 +13,9 @@
 <link rel="stylesheet" href="<?php echo public_url()?>site/plugins/themify-icons/themify-icons.css">
 
 <!-- Main Stylesheet -->
-<link href="<?php echo public_url()?>site/css/style.css?ver=2" rel="stylesheet">
-<link href="<?php echo public_url()?>site/css/style_v2.css?ver=3" rel="stylesheet">
-<link href="<?php echo public_url()?>site/css/newSler.css?ver=1" rel="stylesheet">
+<link href="<?php echo public_url()?>site/css/style.css?ver=3" rel="stylesheet">
+<link href="<?php echo public_url()?>site/css/style_v2.css?ver=5" rel="stylesheet">
+<link href="<?php echo public_url()?>site/css/newSler.css?ver=2" rel="stylesheet">
 
 <!--Favicon-->
 <link rel="shortcut icon" href="<?php echo $support->favicon != '' ? base_url('upload/logo/'.$support->favicon) : base_url('upload/logo/default.jpg') ?>" type="image/x-icon">
@@ -81,8 +81,7 @@ else{
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script> 
 <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
 <!-- Autocomplete  Search -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>  
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 <!-- raty -->
 <script src="<?php echo public_url()?>site/raty/jquery.raty.min.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -144,3 +143,10 @@ jQuery(document).ready(function(){
 </script>
 <!--pinterest-->
 <meta name="p:domain_verify" content="81dc13c314d680b28e35d312ad22f50b"/>
+<!--Infinite scroll-->   
+<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
+<!--Auto show popup-->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+    

@@ -526,4 +526,10 @@ $('#deleteStiker').click(function(e){
         
       });
     });
+    $('.content').infiniteScroll({
+    // options
+    path: '.pagination__next',
+    append: 'img',
+    history: false,
+  });
 </script>

@@ -1,6 +1,12 @@
-<IfModule mod_php4.c>
-  php_value engine off
+<IfModule mod_rewrite.c>
+Options -Indexes
+RewriteEngine on
+RewriteBase /cafesuanovel.com/
+RewriteCond $1 !^(index\.php|public|images|css|js|robots\.txt|favicon\.ico)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ./index.php/$1 [L,QSA]
 </IfModule>
-<IfModule mod_php5.c>
-  php_value engine off
-</IfModule>
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^https://(www\.)?cafesuanovel.com.*$ [NC] 
+RewriteRule ^.*\.(gif|jpg|png)$ https://www.cafesuanovel.com [F]

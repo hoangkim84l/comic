@@ -48,7 +48,25 @@
 		</div>
 		
 		<div class="clear"></div>
-		
+		<!-- Modal -->
+		<!-- <div class="modal fade zoom-in" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+					</div>
+					<div class="modal-body">
+						Vì miếng cơm mah áo, vì để nhóm admin có tiền mua áo mới huynh đài click một quảng cáo là đã góp phần giúp admin có áo mới :)))
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+					</div>
+				</div>
+			</div>
+		</div> -->
 		<footer class="bg-secondary">
 				<?php $this->load->view('site/footer');?>
 		</footer>
@@ -72,9 +90,20 @@
 	<script type="text/javascript" src="<?php echo public_url()?>site/js/jquery.lazyload.min.js"></script> 
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
-		jQuery('*').bind('cut copy paste contextmenu', function (e) {
-			e.preventDefault();
-		})});
+			jQuery('*').bind('cut copy paste contextmenu', function (e) {
+				e.preventDefault();
+			})
+			$("#exampleModal").modal('show');
+		});
+
+		//block f12 key
+		$(document).keydown(function (event) {
+			if (event.keyCode == 123) { // Prevent F12
+				return false;
+			} else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I        
+				return false;
+			}
+		});
 		var mybutton = document.getElementById("myBtn");
 
 		// When the user scrolls down 20px from the top of the document, show the button

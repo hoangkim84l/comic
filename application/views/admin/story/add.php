@@ -52,6 +52,7 @@
                            <select name="continues" class="left">
                               <option value="0">Còn Tiếp</option>   
                               <option value="1">Hoàn Thành</option>
+                              <option value="2">Tạm Dừng</option>
                            </select>   
                         </span>
                         <span class="autocheck" name="author_autocheck"></span>

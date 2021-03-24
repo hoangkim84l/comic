@@ -52,6 +52,7 @@
                            <select name="continues" class="left">
                               <option value="0" <?php if($story->continues == 0) echo 'selected';?>>Còn Tiếp</option>   
                               <option value="1" <?php if($story->continues == 1) echo 'selected';?>>Hoàn Thành</option>
+                              <option value="2" <?php if($story->continues == 2) echo 'selected';?>>Tạm Dừng</option>
                            </select>
                         </span>
                         <span class="autocheck" name="name_autocheck"></span>

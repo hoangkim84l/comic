@@ -145,7 +145,7 @@ $(document).ready(function() {
                   <input type="hidden" name="user_email" value="<?php echo  $user_info->email?>">
                   <button type="submit" class="btn btn-primary" <?php if($btnCheck=="apper")echo "disabled"?>><img width="30px" style=" padding-right: 3px; margin-right: 5px; " src="<?php echo public_url()?>site/images/fv.png" alt="đọc truyện cafe sữa, cafe sữa novel, Web comic truyện tranh, truyện nhân gian"> Yêu thích</button>
                 <?php else: ?>
-                  <label for=""><a href="<?php echo site_url('user/login')?>" target="_blank" rel="noopener noreferrer" class="link-login">Đăng nhập</a> để sữ dụng chức năng này</label>
+                  <label for=""><a href="<?php echo site_url('user/login')?>" target="_blank" rel="noopener noreferrer" class="link-login">Đăng nhập</a> để sử dụng chức năng này</label>
                   <button type="" class="btn btn-primary" disabled> <img width="30px" style=" padding-right: 3px; margin-right: 5px; " src="<?php echo public_url()?>site/images/fv.png" alt="đọc truyện cafe sữa, cafe sữa novel, Web comic truyện tranh, truyện nhân gian">Yêu thích</button>
                 <?php endif;?>  
               </form>

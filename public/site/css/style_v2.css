@@ -530,9 +530,17 @@ h6.p-stori {
     min-width: 75px !important;
 }
 
+.content {
+    pointer-events: none;
+}
+
 
 /*Footer************************************/
 
 .text-center.pb-3.color-text {
     color: #fff;
+}
+
+.navbar .google-auto-placed {
+    display: none;
 }
