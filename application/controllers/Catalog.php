@@ -60,7 +60,7 @@ Class Catalog extends MY_Controller
     function view()
     {
         //lay id san pham muon xem
-        $id = $this->uri->rsegment(3);
+        $id = $this->uri->rsegment(4);
         $output = explode("-",$id);
         $id =  $output[count($output)-1];
         

@@ -74,7 +74,7 @@ $(function () {
               if($count > 6 ) break;  
             ?>
                 <li id="c<?php echo $count;?>">
-                    <a href="<?php echo site_url('xem-truyen/'.$data->slug.'-'.$data->id)?>"><img class="img-fluid w-100" loading="lazy" src="<?php echo $data->image_link != '' ? base_url('upload/stories/'.$data->image_link) :  base_url('upload/stories/default.jpg')?>" title="<?php echo $data->site_title;?>" alt="<?php echo $data->meta_desc?>">
+                    <a href="<?php echo site_url('xem-truyen/'.$data->slug.'/'.$data->id)?>"><img class="img-fluid w-100" loading="lazy" src="<?php echo $data->image_link != '' ? base_url('upload/stories/'.$data->image_link) :  base_url('upload/stories/default.jpg')?>" title="<?php echo $data->site_title;?>" alt="<?php echo $data->meta_desc?>">
                     </a>
                 </li>
                 <?php } endforeach; ?>

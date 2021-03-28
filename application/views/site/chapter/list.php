@@ -25,13 +25,13 @@
                   </li>
                   <li property="itemListElement" typeof="ListItem">
                       <meta property="position" content="2" />
-                      <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>">
+                      <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('xem-truyen/'.$story->slug.'/'.$story->id)?>">
                           <span itemprop="title" property="name"> <?php echo  $story->name;?> / </span>
                       </a>
                   </li>
                   <li property="itemListElement" typeof="ListItem">
                       <meta property="position" content="3" />
-                      <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('danh-sach-chuong/'.$story->slug.'-'.$story->id)?>">
+                      <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('danh-sach-chuong/'.$story->slug.'/'.$story->id)?>">
                           <span itemprop="title" property="name"> Danh sách chương - chapter</span>
                       </a>
                   </li>
@@ -50,7 +50,7 @@
                               echo date_format($date,'d-m-Y H:i:s')?>
             </span>
             <span class="info-book"><i class="ti-eye mr-2"></i><?php echo number_format($story->view)?> Lượt xem</span>
-            <span class="info-book"><i class="ti-book mr-2"></i> <a href="<?php echo site_url('danh-sach-chuong/'.$story->slug.'-'.$story->id)?>" style="color: #000;padding-left:0px;"><?php echo count($list_chapters)?> Chương </a></span>
+            <span class="info-book"><i class="ti-book mr-2"></i> <a href="<?php echo site_url('danh-sach-chuong/'.$story->slug.'/'.$story->id)?>" style="color: #000;padding-left:0px;"><?php echo count($list_chapters)?> Chương </a></span>
             <span class="info-book"><i class="ti-pencil mr-2"></i><?php echo $story->continues == 0 ?  "Còn tiếp" :  "Hoàn thành";?></span>
             <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i> 
               <?php 
@@ -145,7 +145,7 @@
                 <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_story->author?> </li>
                 <li class="list-inline-item"><?php $date = date_create($row_story->created);  echo date_format($date,'d-m-Y')?></li>
               </ul>
-              <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row_story->slug.'-'.$row_story->id)?>"><?php echo $row_story->name?></a></h6>
+              <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row_story->slug.'/'.$row_story->id)?>"><?php echo $row_story->name?></a></h6>
             </div>
           </div>
           <?php } endforeach;?>  
@@ -165,7 +165,7 @@
         <div class="container-fluid" style="min-height: 300px;">
             <div class="row">
                 <?php foreach($list_chapters as $row): if($row->status == 0){ }else{?>
-                  <a class="col-sm-4 list-chapters" href="<?php echo site_url('truyen/'.$story->slug.'-'.$row->slug.'-'.$row->id)?>"> <?php echo $row->name?></a>
+                  <a class="col-sm-4 list-chapters" href="<?php echo site_url('truyen/'.$story->slug.'/'.$row->slug.'/'.$row->id)?>"> <?php echo $row->name?></a>
                 <?php } endforeach;?>
             </div>
         </div>

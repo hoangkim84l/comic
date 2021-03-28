@@ -81,7 +81,7 @@ $(document).ready(function() {
             </li>
             <li property="itemListElement" typeof="ListItem">
                 <meta property="position" content="2" />
-                <a property="item" itemprop="url" typeof="website" href="<?php echo site_url('xem-truyen/'.$stories->slug.'-'.$stories->id)?>">
+                <a property="item" itemprop="url" typeof="website" href="<?php echo site_url('xem-truyen/'.$stories->slug.'/'.$stories->id)?>">
                     <span itemprop="title" property="name"> <?php echo $stories->name?> </span>
                 </a>
             </li>
@@ -99,7 +99,7 @@ $(document).ready(function() {
                               echo date_format($date,'d-m-Y H:i:s')?>
             </span>
             <span class="info-book"><i class="ti-eye mr-2"></i><?php echo number_format($stories->view)?> Lượt xem</span>
-            <span class="info-book"><i class="ti-book mr-2"></i> <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'-'.$stories->id)?>" style="color: #000;padding-left:0px;"><?php echo count($input_count)?> Chương </a></span>
+            <span class="info-book"><i class="ti-book mr-2"></i> <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'/'.$stories->id)?>" style="color: #000;padding-left:0px;"><?php echo count($input_count)?> Chương </a></span>
             <span class="info-book"><i class="ti-pencil mr-2"></i><?php echo $stories->continues == 0 ?  "Còn tiếp" :  "Hoàn thành";?></span>
             <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i> 
               <?php 
@@ -187,7 +187,7 @@ $(document).ready(function() {
                         <div class="force-overflow">
                           <div class="row">
                               <?php foreach($list_chapters as $row): if($row->status == 0){ }else{ ?>
-                                <a href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row->slug.'-'.$row->id)?>" class="cus-class-12">
+                                <a href="<?php echo site_url('truyen/'.$stories->slug.'/'.$row->slug.'/'.$row->id)?>" class="cus-class-12">
                                   <div class="cus-class-6"><?php echo $row->name?></div>
                                   <div class="cus-class-6"><?php echo $row->created?></div>
                                 </a>
@@ -221,7 +221,7 @@ $(document).ready(function() {
                         ?>
                       <div class="col-lg-6 media mb-4 ">
                         <div class="post-thumb-sm mr-3" style="overflow:inherit">
-                        <a href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"  style="padding: 8px 0px;">
+                        <a href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'/'.$row_stories->id)?>"  style="padding: 8px 0px;">
                           <img class="img-fluid" loading="lazy" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->name?>">
                         </a>    
                         </div>
@@ -229,7 +229,7 @@ $(document).ready(function() {
                           <ul class="list-inline d-flex justify-content-between mb-2">
                             <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_stories->author?> <br/> <?php $date = date_create($row_stories->created);  echo date_format($date,'d-m-Y')?></li>
                           </ul>
-                          <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a> </h6>
+                          <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'/'.$row_stories->id)?>"><?php echo $row_stories->name?></a> </h6>
                         </div>
                       </div>
                   <?php
@@ -241,7 +241,7 @@ $(document).ready(function() {
       </div>
       <div class="col-lg-4">
       <div class="widget"><br/>
-          <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'-'.$stories->id)?>"><h6 class="mb-4">CHƯƠNG/CHAPTER</h6></a>
+          <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'/'.$stories->id)?>"><h6 class="mb-4">CHƯƠNG/CHAPTER</h6></a>
             <div class="scrollbar" id="style-1">
               <div class="force-overflow">
               <?php foreach($list_chapters as $row_chapter): if($row_chapter->status == 0){ }else{?>
@@ -251,7 +251,7 @@ $(document).ready(function() {
                       <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $stories->author ?></li>
                       <li class="list-inline-item"><?php $date = date_create($row_chapter->created); echo date_format($date,'d-m-Y')?></li>
                     </ul>
-                    <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('truyen/'.$stories->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
+                    <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('truyen/'.$stories->slug.'/'.$row_chapter->slug.'/'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
                   </div>
                 </div>
                 <?php } endforeach;?>
@@ -263,7 +263,7 @@ $(document).ready(function() {
           <?php foreach($view_stories as $row_stories): if($row_stories->status == 0){ }else{?>
           <div class="media mb-4">
             <div class="post-thumb-sm mr-3">
-              <a href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>">
+              <a href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'/'.$row_stories->id)?>">
                 <img class="img-fluid" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->meta_desc?>" title="<?php echo $row_stories->site_title;?>">
               </a>
             </div>
@@ -273,7 +273,7 @@ $(document).ready(function() {
                 <li class="list-inline-item"><?php $date = date_create($row_stories->created);
                                                           echo date_format($date,'d-m-Y')?></li>
               </ul>
-              <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'-'.$row_stories->id)?>"><?php echo $row_stories->name?></a></h6>
+              <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'/'.$row_stories->id)?>"><?php echo $row_stories->name?></a></h6>
             </div>
           </div>
           <?php } endforeach;?>  
@@ -282,7 +282,7 @@ $(document).ready(function() {
           <h6 class="mb-4">Thể loại</h6>
           <ul class="list-inline tag-list">
               <?php foreach($catalogs as $row_catalog):?>
-                <li class="list-inline-item m-1"><a href="<?php echo site_url('danh-muc/'.$row_catalog->slug.'-'.$row_catalog->id)?>"><?php echo $row_catalog->name?></a></li>
+                <li class="list-inline-item m-1"><a href="<?php echo site_url('danh-muc/'.$row_catalog->slug.'/'.$row_catalog->id)?>"><?php echo $row_catalog->name?></a></li>
               <?php endforeach;?>
           </ul>
           

@@ -61,7 +61,7 @@ Class Chapter extends MY_Controller
     {
         $this->load->model('user_model');
         //lay id san pham muon xem
-        $id = $this->uri->rsegment(3);
+        $id = $this->uri->rsegment(5);
         $output = explode("-",$id);
         $id =  $output[count($output)-1];
         

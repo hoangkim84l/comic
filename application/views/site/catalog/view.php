@@ -38,10 +38,10 @@
             $array_values = array_values($list_chapters);
           ?>
           <?php if((array_pop($array_values)->id) != ($id)){ ?>
-            <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id-1))?>" class="previous">&laquo; Chương trước</a>
+            <a href="<?php echo base_url('truyen/'.$story->slug.'/'.($id-1))?>" class="previous">&laquo; Chương trước</a>
           <?php } else{ echo "";}?>
           <?php if((array_shift($array_values)->id) != ($id)){ ?>
-            <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id+1))?>" class="next">Chương sau &raquo;</a>
+            <a href="<?php echo base_url('truyen/'.$story->slug.'/'.($id+1))?>" class="next">Chương sau &raquo;</a>
           <?php } else{ echo "";}?>
         </div>
       </div>  
@@ -55,7 +55,7 @@
                 <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $row_chapter->author ?> / Lượt xem - <?php echo $row_chapter->view?></li>
                 <li class="list-inline-item"><?php echo $row_chapter->created?></li>
               </ul>
-              <h6><a class="text-dark <?php if($row_chapter->id == $id){echo "current-chap";}else{ echo "";}?>" href="<?php echo site_url('truyen/'.$story->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
+              <h6><a class="text-dark <?php if($row_chapter->id == $id){echo "current-chap";}else{ echo "";}?>" href="<?php echo site_url('truyen/'.$story->slug.'/'.$row_chapter->slug.'/'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></h6>
             </div>
           </div>
           <?php endforeach;?>
@@ -64,7 +64,7 @@
           <h6 class="mb-4">Thể loại</h6>
           <ul class="list-inline tag-list">
               <?php foreach($catalogs as $row_catalog):?>
-                <li class="list-inline-item m-1"><a href="<?php echo site_url('danh-muc/'.$row_catalog->slug.'-'.$row_catalog->id)?>"><?php echo $row_catalog->name?></a></li>
+                <li class="list-inline-item m-1"><a href="<?php echo site_url('danh-muc/'.$row_catalog->slug.'/'.$row_catalog->id)?>"><?php echo $row_catalog->name?></a></li>
               <?php endforeach;?>
           </ul>
         </div>

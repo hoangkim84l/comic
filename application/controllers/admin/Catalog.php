@@ -46,7 +46,7 @@ Class Catalog extends MY_Controller
         $this->load->library('form_validation');
         $this->load->helper('form');
 		$this->load->library('slug_library',$config);
-        
+        $this->load->helper('text');
         //neu ma co du lieu post len thi kiem tra
         if($this->input->post())
         {
@@ -67,7 +67,15 @@ Class Catalog extends MY_Controller
                     'date_created' => date("Y-m-d H:i:s"),
                     'date_updated' => date("Y-m-d H:i:s"),
                 );
-				$data['slug'] = $this->slug_library->create_uri($name);
+				$name = str_replace("'", '-', $name);
+                $name = str_replace(" ", '-', $name);
+                $name = str_replace(",", '', $name);
+                $name = str_replace("!", '', $name);
+                $name = str_replace("(", '', $name);
+                $name = str_replace(")", '', $name);
+                $name = str_replace("[", '', $name);
+                $name = str_replace("]", '', $name);
+                $data['slug'] = convert_accented_characters($name);
                 //them moi vao csdl
                 if($this->catalog_model->create($data))
                 {
@@ -109,7 +117,7 @@ Class Catalog extends MY_Controller
         $this->load->library('form_validation');
         $this->load->helper('form');
 		$this->load->library('slug_library',$config);
-    
+        $this->load->helper('text');
         //lay id danh mục
         $id = $this->uri->rsegment(3);
         $info = $this->catalog_model->get_info($id);
@@ -140,7 +148,15 @@ Class Catalog extends MY_Controller
                     'description' => $this->input->post('description'),
                     'date_updated' => date("Y-m-d H:i:s"),
                 );
-				$data['slug'] = $this->slug_library->create_uri($name);
+                $name = str_replace("'", '-', $name);
+                $name = str_replace(" ", '-', $name);
+                $name = str_replace(",", '', $name);
+                $name = str_replace("!", '', $name);
+                $name = str_replace("(", '', $name);
+                $name = str_replace(")", '', $name);
+                $name = str_replace("[", '', $name);
+                $name = str_replace("]", '', $name);
+                $data['slug'] = convert_accented_characters($name);
                 //them moi vao csdl
                 if($this->catalog_model->update($id, $data))
                 {

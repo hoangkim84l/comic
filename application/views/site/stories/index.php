@@ -144,16 +144,16 @@
             <?php foreach($list_story as $row): if($row->status == 0){ }else{?>  
                 <div class="col-sm-4 mb-5">
                   <article class="text-center box-content">
-                    <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+                    <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
                       <img class="img-fluid mb-4 img-fluid-stories" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" loading="lazy" alt="<?php echo $row->meta_desc?>" title="<?php echo $row->site_title?>">
                     </a>
                     <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
                     <h4 class="title-border">
-                      <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a>
+                      <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>"><?php echo $row->name?></a>
                     </h4>
                     <div class="bg">
                       <div class="overlays">
-                      <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+                      <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
                         <?php echo $row->description;?>
                       </a>
                     </div>
@@ -194,7 +194,7 @@
                   foreach($story_newest as $row): if($row->status == 0){ }else{?>     
                   <div class="media mb-4">
                     <div class="post-thumb-sm mr-3">
-                      <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+                      <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
                         <img class="img-fluid mb-4" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->name?>" style=" min-width: 43px; min-height: 55px; ">
                       </a>
                     </div>
@@ -204,7 +204,7 @@
                         <li class="list-inline-item t<?php echo $count?>">Top <?php echo $count?></li>
                       </ul>
                       <h6 class="p-stori">
-                        <a class="text-dark c-p-stories fix-title-1-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a> &nbsp;&nbsp;
+                        <a class="text-dark c-p-stories fix-title-1-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>"><?php echo $row->name?></a> &nbsp;&nbsp;
                         <span style="right: 30px;position: absolute;"> <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?></span> 
                       </h6>
                     </div>
@@ -217,7 +217,7 @@
                   foreach($list_stories_new as $row_s_new): if($row_s_new->status == 0){ }else{?>     
                   <div class="media mb-4">
                     <div class="post-thumb-sm mr-3">
-                      <a href="<?php echo site_url('xem-truyen/'.$row_s_new->slug.'-'.$row_s_new->id)?>">
+                      <a href="<?php echo site_url('xem-truyen/'.$row_s_new->slug.'/'.$row_s_new->id)?>">
                         <img class="img-fluid mb-4" src="<?php echo $row_s_new->image_link != '' ? base_url('upload/stories/'.$row_s_new->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_s_new->name?>" style=" min-width: 43px; min-height: 55px; ">
                       </a>
                     </div>
@@ -226,7 +226,7 @@
                         <li class="list-inline-item"><?php echo $row_s_new->author?></li>
                       </ul>
                       <h6 class="p-stori">
-                        <a class="text-dark c-p-stories fix-title-1-line" href="<?php echo site_url('xem-truyen/'.$row_s_new->slug.'-'.$row_s_new->id)?>"><?php echo $row_s_new->name?></a>&nbsp;&nbsp;
+                        <a class="text-dark c-p-stories fix-title-1-line" href="<?php echo site_url('xem-truyen/'.$row_s_new->slug.'/'.$row_s_new->id)?>"><?php echo $row_s_new->name?></a>&nbsp;&nbsp;
                         <span style="right: 30px;position: absolute;"> <i class="ti-eye mr-2"></i><?php echo number_format($row_s_new->view)?></span>
                       </h6>
                     </div>
@@ -277,7 +277,7 @@
           <h6 class="mb-4">Thể loại</h6>
           <ul class="list-inline tag-list">
               <?php foreach($catalogs as $row_catalog):?>
-                <li class="list-inline-item m-1"><a href="<?php echo site_url('danh-muc/'.$row_catalog->slug.'-'.$row_catalog->id)?>"><?php echo $row_catalog->name?></a></li>
+                <li class="list-inline-item m-1"><a href="<?php echo site_url('danh-muc/'.$row_catalog->slug.'/'.$row_catalog->id)?>"><?php echo $row_catalog->name?></a></li>
               <?php endforeach;?>
           </ul>
         </div>

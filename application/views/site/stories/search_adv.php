@@ -43,6 +43,7 @@
             <select id="status" name="status" class="form-control">
               <option <?php if($this->input->get('status') == 0){echo "selected";}?> value="0">Còn tiếp...</option>
               <option <?php if($this->input->get('status') == 1){echo "selected";}?> value="1" >Hoàn thành</option>
+              <option <?php if($this->input->get('status') == 2){echo "selected";}?> value="2" >Tạm dừng</option>
             </select>
           </div>
         </div>
@@ -98,19 +99,19 @@
               ?>  
               <div class="col-lg-3 col-sm-6 mb-5">
                 <article class="text-center box-content">
-                <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+                <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
                   <img class="img-fluid mb-4 img-fluid-stories" loading="lazy" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $row->site_title?>">
                 </a>
                   <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
                   <h4 class="title-border">
-                    <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a>
+                    <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>"><?php echo $row->name?></a>
                   </h4>
                   <div class="text-center">
                     <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?> Lượt xem
                   </div>
                   <div class="bg">
                     <div class="overlays">
-                      <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+                      <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
                         <?php echo $row->description;?>
                       </a>
                     </div>

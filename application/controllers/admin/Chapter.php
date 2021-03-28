@@ -107,6 +107,7 @@ Class Chapter extends MY_Controller
         $this->load->library('form_validation');
         $this->load->helper('form');
         $this->load->library('slug_library',$config);
+        $this->load->helper('text');
 
         //lay danh sach danh muc truyện
         $this->load->model('story_model');
@@ -161,7 +162,16 @@ Class Chapter extends MY_Controller
                     'created'       => date("Y-m-d H:i:s"),
                     'ordering'      => $this->input->post('ordering'),
                 ); 
-                $data['slug'] = $this->slug_library->create_uri($name);
+                // Replace unsupported characters (add your owns if necessary)
+                $name = str_replace("'", '-', $name);
+                $name = str_replace(" ", '-', $name);
+                $name = str_replace(",", '', $name);
+                $name = str_replace("!", '', $name);
+                $name = str_replace("(", '', $name);
+                $name = str_replace(")", '', $name);
+                $name = str_replace("[", '', $name);
+                $name = str_replace("]", '', $name);
+                $data['slug'] = convert_accented_characters($name);
                
                 //lấy danh sách user cần gởi mail
                 $input = array();
@@ -231,7 +241,7 @@ Class Chapter extends MY_Controller
             'name'  => 'name',
             'table' => 'chapters',
         );
-
+        
         $id = $this->uri->rsegment('3');
         $chapter = $this->chapter_model->get_info($id);
         if(!$chapter)
@@ -257,7 +267,9 @@ Class Chapter extends MY_Controller
         $this->load->library('form_validation');
         $this->load->helper('form');
         $this->load->library('slug_library',$config);
+        $this->load->helper('text');
 
+        // $this->load->library('my_slug_library');
         //neu ma co du lieu post len thi kiem tra
         if($this->input->post())
         {
@@ -306,7 +318,17 @@ Class Chapter extends MY_Controller
                 {
                     $data['audio_link'] = $audio_link;
                 }
-                $data['slug'] = $this->slug_library->create_uri($name);
+
+                // Replace unsupported characters (add your owns if necessary)
+                $name = str_replace("'", '-', $name);
+                $name = str_replace(" ", '-', $name);
+                $name = str_replace(",", '', $name);
+                $name = str_replace("!", '', $name);
+                $name = str_replace("(", '', $name);
+                $name = str_replace(")", '', $name);
+                $name = str_replace("[", '', $name);
+                $name = str_replace("]", '', $name);
+                $data['slug'] = convert_accented_characters($name);
                 //them moi vao csdl
                 if($this->chapter_model->update($chapter->id, $data))
                 {
@@ -412,6 +434,23 @@ Class Chapter extends MY_Controller
             $i++;
         }
     }
+
+    function slugify2($string)
+        {
+            // Get an instance of $this
+            $CI =& get_instance(); 
+
+            $CI->load->helper('text');
+            $CI->load->helper('url');
+
+            // Replace unsupported characters (add your owns if necessary)
+            $string = str_replace("'", '-', $string);
+            $string = str_replace(".", '.', $string);
+            $string = str_replace("²", '2', $string);
+
+            // Slugify and return the string
+            return url_title(convert_accented_characters($string), 'dash', true);
+        }
 }
 
 

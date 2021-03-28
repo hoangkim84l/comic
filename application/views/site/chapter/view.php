@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <a href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>"><h4><?php
+        <a href="<?php echo site_url('xem-truyen/'.$story->slug.'/'.$story->id)?>"><h4><?php
           echo $story->name;?></h4></a>
         <h5>&nbsp;&nbsp;&nbsp;<?php echo $chapter->name?></h5>
       </div>
@@ -50,13 +50,13 @@
             </li>
             <li property="itemListElement" typeof="ListItem">
                 <meta property="position" content="2" />
-                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>">
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('xem-truyen/'.$story->slug.'/'.$story->id)?>">
                     <span itemprop="title" property="name"> <?php echo $story->name?> / </span>
                 </a>
             </li>
             <li property="itemListElement" typeof="ListItem">
                 <meta property="position" content="2" />
-                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('truyen/'.$story->slug.'-'.$chapter->slug.'-'.$chapter->id)?>">
+                <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('truyen/'.$story->slug.'/'.$chapter->slug.'/'.$chapter->id)?>">
                     <span itemprop="title" property="name"> <?php echo $chapter->name; ?> / </span>
                 </a>
             </li>
@@ -66,8 +66,8 @@
           <div class="col-lg-12 cus-text-right">
             <div class="btn-click row">
                 <?php
-                  $id = $this->uri->rsegment(3);
-                  $output = explode("-",$id);
+                  $id = $this->uri->rsegment(5);
+                  $output = explode("/",$id);
                   $id =  $output[count($output)-1]; 
                   $array_values = array_values($list_chapters);
                   $chapnext = '';
@@ -83,10 +83,10 @@
                     $next = array_key_exists($key + 1, $list_chapters) ? $list_chapters[$key +1] : false;
                     if($cv->slug === $chapter->slug){
                         if($previous){
-                          $chapnext = $previous->id;
+                          $chapnext = $cv->slug.'/'.$previous->id;
                         }
                         if($next){
-                          $chapprev = $next->id;
+                          $chapprev = $cv->slug.'/'.$next->id;
                         }
                     }
                     
@@ -97,7 +97,7 @@
                 }else{ ?>
                 <?php if ((array_pop($array_values)->id) != ($id)) { ?>
                   <!-- <a href="<?php echo base_url('truyen/'.$story->slug.'-'. $chapter->slug.'-'.($id-1))?>" class="previous">&laquo; Chương trước</a> -->
-                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'. $chapprev)?>" class="previous">&laquo; Chương trước</a>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'/'. $chapprev)?>" class="previous">&laquo; Chương trước</a>
                 <?php } else {
                     echo "";
                 }?>
@@ -110,13 +110,13 @@
                                     echo "current-chap";
                                 } else {
                                     echo "";
-                                }?> custom-border"  href="<?php echo site_url('truyen/'.$story->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></li>
+                                }?> custom-border"  href="<?php echo site_url('truyen/'.$story->slug.'/'.$row_chapter->slug.'/'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></li>
                       <?php } endforeach;?>
                   </ul>
                 </div>
                 <?php if ((array_shift($array_values)->id) != ($id)) { ?>
                   <!-- <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id+1))?>" class="next">Chương sau &raquo;</a> -->
-                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.$chapnext)?>" class="next">Chương sau &raquo;</a>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'/'.$chapnext)?>" class="next">Chương sau &raquo;</a>
                 <?php } else {
                     echo "";
                 }}?>
@@ -157,7 +157,7 @@
           <div class="col-lg-12 cus-text-right">
             <div class="btn-click row">
                 <?php
-                  $id = $this->uri->rsegment(3);
+                  $id = $this->uri->rsegment(5);
                   $output = explode("-",$id);
                   $id =  $output[count($output)-1]; 
                   $array_values = array_values($list_chapters);
@@ -166,7 +166,7 @@
                     echo "";
                 }else{ ?>
                 <?php if ((array_pop($array_values)->id) != ($id)) { ?>
-                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.$chapprev)?>" class="previous">&laquo; Chương trước</a>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'/'.$chapprev)?>" class="previous">&laquo; Chương trước</a>
                 <?php } else {
                     echo "";
                 }?>
@@ -179,12 +179,12 @@
                                     echo "current-chap";
                                 } else {
                                     echo "";
-                                }?> custom-border"  href="<?php echo site_url('truyen/'.$story->slug.'-'.$row_chapter->slug.'-'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></li>
+                                }?> custom-border"  href="<?php echo site_url('truyen/'.$story->slug.'/'.$row_chapter->slug.'/'.$row_chapter->id)?>"><?php echo $row_chapter->name?></a></li>
                       <?php } endforeach;?>
                   </ul>
                 </div>
                 <?php if ((array_shift($array_values)->id) != ($id)) { ?>
-                  <a href="<?php echo base_url('truyen/'.$story->slug.'-'.$chapnext)?>" class="next">Chương sau &raquo;</a>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'/'.$chapnext)?>" class="next">Chương sau &raquo;</a>
                 <?php } else {
                     echo "";
                 }}?>
@@ -217,7 +217,7 @@
                     <li class="list-inline-item"><i class="ti-user mr-2"></i> <?php echo $story->author;?> | <?php $date = date_create($row_chap->created); echo date_format($date,'d-m-Y')?></li>
                     <li class="list-inline-item"></li>
                   </ul>
-                  <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('truyen/'.$story->slug.'-'.$row_chap->slug.'-'.$row_chap->id)?>"><?php echo $row_chap->name?></a></h6>
+                  <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('truyen/'.$story->slug.'/'.$row_chap->slug.'/'.$row_chap->id)?>"><?php echo $row_chap->name?></a></h6>
                 </div>
               </div>
           <?php
@@ -233,7 +233,7 @@
       <h6 class="mb-4">Thể loại</h6>
           <ul class="list-inline tag-list">
               <?php foreach($catalogs as $row_catalog):?>
-                <li class="list-inline-item m-1"><a href="<?php echo site_url('danh-muc/'.$row_catalog->slug.'-'.$row_catalog->id)?>"><?php echo $row_catalog->name?></a></li>
+                <li class="list-inline-item m-1"><a href="<?php echo site_url('danh-muc/'.$row_catalog->slug.'/'.$row_catalog->id)?>"><?php echo $row_catalog->name?></a></li>
               <?php endforeach;?>
           </ul>
       </div>

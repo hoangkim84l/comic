@@ -27,12 +27,12 @@
         ?>
         <div class="col-lg-3 col-sm-6 mb-5 data-dup" data-id="<?php echo $row->story_id?>">
           <article class="text-center box-content">
-          <a href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>">
+          <a href="<?php echo site_url('xem-truyen/'.$story->slug.'/'.$story->id)?>">
             <img class="img-fluid mb-4 img-fluid-stories" loading="lazy" src="<?php echo $story->image_link != '' ? base_url('upload/stories/'.$story->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $story->site_title?>">
           </a>
             <center><div class='raty' style='margin:10px 0px' id='<?php echo $story->id?>' data-score='<?php echo  ($story->rate_count > 0) ? $story->rate_total/$story->rate_count : 0?>'></div></center>
             <h4 class="title-border">
-              <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>"><?php echo $story->name?></a>
+              <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$story->slug.'/'.$story->id)?>"><?php echo $story->name?></a>
             </h4>
             <?php
               $input_chap = array();
@@ -44,7 +44,7 @@
                 if($val->status == 0){ }else{
                     ?>
                   <div class="text-left fix-title-1-line-homepage">
-                    <a href="<?php echo site_url('truyen/'.$story->slug.'-'.$val->slug.'-'.$val->id)?>"> <?php echo $val->name ?></a>  
+                    <a href="<?php echo site_url('truyen/'.$story->slug.'/'.$val->slug.'/'.$val->id)?>"> <?php echo $val->name ?></a>  
                     <span><?php $date=date_create($val->created);
                     echo date_format($date, "d-m-Y"); ?></span>
                   </div>
@@ -54,7 +54,7 @@
             ?>
             <div class="bg">
               <div class="overlays">
-                <a href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>">
+                <a href="<?php echo site_url('xem-truyen/'.$story->slug.'/'.$story->id)?>">
                   <?php echo $story->description;?>
                 </a>
               </div>
@@ -83,19 +83,19 @@
 
         <div class="col-lg-3 col-sm-6 mb-5">
           <article class="text-center box-content">
-          <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+          <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
             <img class="img-fluid mb-4 img-fluid-stories" loading="lazy" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $row->site_title?>">
           </a>
             <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
             <h4 class="title-border">
-              <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a>
+              <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>"><?php echo $row->name?></a>
             </h4>
             <div class="text-center">
               <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?> Lượt xem
             </div>
             <div class="bg">
               <div class="overlays">
-                <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+                <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
                   <?php echo $row->description;?>
                 </a>
               </div>
@@ -124,19 +124,19 @@
 
         <div class="col-lg-3 col-sm-6 mb-5">
           <article class="text-center box-content">
-          <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+          <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
             <img class="img-fluid mb-4 img-fluid-stories" loading="lazy" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?> "title="<?php echo $row->site_title?>">
           </a>
             <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
             <h4 class="title-border">
-              <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a>
+              <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>"><?php echo $row->name?></a>
             </h4>
             <div class="text-center">
               <i class="ti-eye mr-2"></i><?php echo number_format($row->view)?> Lượt xem
             </div>
             <div class="bg">
               <div class="overlays">
-                <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+                <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
                   <?php echo $row->description;?>
                 </a>
               </div>
@@ -165,12 +165,12 @@
 
         <div class="col-lg-3 col-sm-6 mb-5">
           <article class="text-center box-content">
-          <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+          <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
             <img class="img-fluid mb-4 img-fluid-stories" loading="lazy" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row->meta_desc?>" title="<?php echo $row->site_title?>">
           </a>
             <center><div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div></center>
             <h4 class="title-border">
-              <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>"><?php echo $row->name?></a>
+              <a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>"><?php echo $row->name?></a>
             </h4>
             <br/>
             <div class="text-center">
@@ -178,7 +178,7 @@
             </div>
             <div class="bg">
               <div class="overlays">
-                <a href="<?php echo site_url('xem-truyen/'.$row->slug.'-'.$row->id)?>">
+                <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
                   <?php echo $row->description;?>
                 </a>
               </div>

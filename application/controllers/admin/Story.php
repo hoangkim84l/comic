@@ -102,7 +102,7 @@ class Story extends MY_Controller
         $this->load->library('form_validation');
         $this->load->helper('form');
         $this->load->library('slug_library', $config);
-
+        $this->load->helper('text');
         //lay danh sach danh muc san pham
         $this->load->model('catalog_model');
         $input = array();
@@ -148,7 +148,15 @@ class Story extends MY_Controller
                     'created'       => date("Y-m-d H:i:s"),
                     'updated'       => date("Y-m-d H:i:s"),
                 );
-                $data['slug'] = $this->slug_library->create_uri($name);
+                $name = str_replace("'", '-', $name);
+                $name = str_replace(" ", '-', $name);
+                $name = str_replace(",", '', $name);
+                $name = str_replace("!", '', $name);
+                $name = str_replace("(", '', $name);
+                $name = str_replace(")", '', $name);
+                $name = str_replace("[", '', $name);
+                $name = str_replace("]", '', $name);
+                $data['slug'] = convert_accented_characters($name);
                 //them moi vao csdl
                 if ($this->story_model->create($data)) {
                     //tạo ra nội dung thông báo
@@ -206,7 +214,7 @@ class Story extends MY_Controller
         $this->load->library('form_validation');
         $this->load->helper('form');
         $this->load->library('slug_library', $config);
-
+        $this->load->helper('text');
         //neu ma co du lieu post len thi kiem tra
         if ($this->input->post()) {
             $this->form_validation->set_rules('name', 'Tên story', 'required');
@@ -238,7 +246,15 @@ class Story extends MY_Controller
                     'continues'    => $this->input->post('continues'),
                     'updated' => date("Y-m-d H:i:s"),
                 );
-                $data['slug'] = $this->slug_library->create_uri($name);
+                $name = str_replace("'", '-', $name);
+                $name = str_replace(" ", '-', $name);
+                $name = str_replace(",", '', $name);
+                $name = str_replace("!", '', $name);
+                $name = str_replace("(", '', $name);
+                $name = str_replace(")", '', $name);
+                $name = str_replace("[", '', $name);
+                $name = str_replace("]", '', $name);
+                $data['slug'] = convert_accented_characters($name);
                 if ($image_link != '') {
                     $data['image_link'] = $image_link;
                 }
