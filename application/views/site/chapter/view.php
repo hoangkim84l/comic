@@ -97,7 +97,7 @@
                 }else{ ?>
                 <?php if ((array_pop($array_values)->id) != ($id)) { ?>
                   <!-- <a href="<?php echo base_url('truyen/'.$story->slug.'-'. $chapter->slug.'-'.($id-1))?>" class="previous">&laquo; Chương trước</a> -->
-                  <a href="<?php echo base_url('truyen/'.$story->slug.'/'. $chapprev)?>" class="previous">&laquo; Chương trước</a>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'/'. $chapprev.'.html')?>" class="previous">&laquo; Chương trước</a>
                 <?php } else {
                     echo "";
                 }?>
@@ -116,7 +116,7 @@
                 </div>
                 <?php if ((array_shift($array_values)->id) != ($id)) { ?>
                   <!-- <a href="<?php echo base_url('truyen/'.$story->slug.'-'.($id+1))?>" class="next">Chương sau &raquo;</a> -->
-                  <a href="<?php echo base_url('truyen/'.$story->slug.'/'.$chapnext)?>" class="next">Chương sau &raquo;</a>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'/'.$chapnext.'.html')?>" class="next">Chương sau &raquo;</a>
                 <?php } else {
                     echo "";
                 }}?>
@@ -166,7 +166,7 @@
                     echo "";
                 }else{ ?>
                 <?php if ((array_pop($array_values)->id) != ($id)) { ?>
-                  <a href="<?php echo base_url('truyen/'.$story->slug.'/'.$chapprev)?>" class="previous">&laquo; Chương trước</a>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'/'.$chapprev.'.html')?>" class="previous">&laquo; Chương trước</a>
                 <?php } else {
                     echo "";
                 }?>
@@ -184,7 +184,7 @@
                   </ul>
                 </div>
                 <?php if ((array_shift($array_values)->id) != ($id)) { ?>
-                  <a href="<?php echo base_url('truyen/'.$story->slug.'/'.$chapnext)?>" class="next">Chương sau &raquo;</a>
+                  <a href="<?php echo base_url('truyen/'.$story->slug.'/'.$chapnext.'.html')?>" class="next">Chương sau &raquo;</a>
                 <?php } else {
                     echo "";
                 }}?>
