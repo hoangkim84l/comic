@@ -1,6 +1,6 @@
 <!-- page-title -->
 <section class="section bg-secondary">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
         <h4>Tìm truyện nâng cao</h4>
@@ -9,7 +9,7 @@
   </div>
 </section>
 <!-- /page-title -->
-<div class="container">
+<div class="container-fluid">
     <div class="row">
     <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
         <li property="itemListElement" typeof="ListItem">
@@ -52,7 +52,7 @@
         <div class="form-group col-md-12">
           <label for="inputState">Thể loại huynh đài muốn tìm</label>
         </div>
-          <?php 
+          <?php
             foreach ($catalogs as $row):?>
               <?php if(count($row->subs) > 1):?>
                 <optgroup label="<?php echo $row->name?>">
@@ -76,10 +76,10 @@
       <button type="submit" class="btn btn-primary">Kiếm nào</button>
     </form>
   </div>
-</section>      
+</section>
 <!-- category post -->
 <section>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
         <div class="row masonry-container pt-5">
@@ -93,10 +93,10 @@
                         </div>
                       </div>';
             }
-            foreach($list as $row): if($row->status == 0){ 
+            foreach($list as $row): if($row->status == 0){
 
             }else{
-              ?>  
+              ?>
               <div class="col-lg-3 col-sm-6 mb-5">
                 <article class="text-center box-content">
                 <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
@@ -115,15 +115,15 @@
                         <?php echo $row->description;?>
                       </a>
                     </div>
-                  </div> 
+                  </div>
                 </article>
               </div>
-            <?php } endforeach;?>   
-        </div> 
+            <?php } endforeach;?>
+        </div>
         <div class="row">
             <div class="col-12">
                 <div class='pagination'>
-		            
+
 		        </div>
             <nav>
             </nav>

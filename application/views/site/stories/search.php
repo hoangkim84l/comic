@@ -1,6 +1,6 @@
 <!-- page-title -->
 <section class="section bg-secondary">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
         <h4>Kết quả tìm kiếm với từ khóa "<?php echo $key?>"</h4>
@@ -9,7 +9,7 @@
   </div>
 </section>
 <!-- /page-title -->
-<div class="container">
+<div class="container-fluid">
     <div class="row">
       <br>
     <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
@@ -30,11 +30,11 @@
 </div>
 <!-- category post -->
 <section >
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
         <div class="row masonry-container pt-5">
-            <?php foreach($list as $row): if($row->status == 0){ }else{?>  
+            <?php foreach($list as $row): if($row->status == 0){ }else{?>
               <div class="col-lg-3 col-sm-6 mb-5">
                 <article class="text-center box-content">
                 <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
@@ -53,15 +53,15 @@
                         <?php echo $row->description;?>
                       </a>
                     </div>
-                  </div> 
+                  </div>
                 </article>
               </div>
-            <?php } endforeach;?>   
-        </div> 
+            <?php } endforeach;?>
+        </div>
         <div class="row">
             <div class="col-12">
                 <div class='pagination'>
-		            
+
 		        </div>
             <nav>
             </nav>

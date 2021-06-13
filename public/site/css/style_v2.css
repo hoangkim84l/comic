@@ -8,10 +8,11 @@
 
 #text-search,
 #text-search:active,
-#text-search:hover {
+#text-search:hover,
+::placeholder {
     border: none;
     background-color: transparent !important;
-    color: #fff;
+    color: #648C74 !important;
     text-align: center;
 }
 
@@ -44,7 +45,7 @@
 /*Content************************************/
 
 .search-form-normal {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #648C74;
 }
 
 .img-fluid.img-fluid-stories {
@@ -79,6 +80,7 @@
     padding: 0px 16px;
     min-height: 39px;
     text-transform: uppercase;
+    line-height: 25px;
 }
 
 .login-user {
@@ -272,7 +274,7 @@ a.current-chap {
 }
 
 .pagination strong {
-    font-family: "nunito";
+    font-family: "pacifico";
     font-size: 20px;
     color: #fff;
     background-color: orange;
@@ -283,7 +285,7 @@ a.current-chap {
 }
 
 .pagination a {
-    font-family: "nunito";
+    font-family: "pacifico";
     font-size: 20px;
     border: 0;
     color: #585757;

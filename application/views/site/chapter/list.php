@@ -1,6 +1,6 @@
 <!-- page-title -->
 <section class="section bg-secondary">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
         <a href="<?php echo site_url('xem-truyen/'.$story->slug.'-'.$story->id)?>"><h4><?php
@@ -11,7 +11,7 @@
 </section>
 <!-- /page-title -->
 <section>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-lg-8">
       <div class="container-fluid">
@@ -45,15 +45,15 @@
           <div class="col-lg-5 col-sm-12">
             <h6 class="title-book"><?php echo $story->name?></h6>
             <span class="info-book"><i class="ti-user mr-2"></i><?php echo $story->author?></span>
-            <span class="info-book"><i class="ti-calendar mr-2"></i><?php 
+            <span class="info-book"><i class="ti-calendar mr-2"></i><?php
                               $date = date_create($story->created);
                               echo date_format($date,'d-m-Y H:i:s')?>
             </span>
             <span class="info-book"><i class="ti-eye mr-2"></i><?php echo number_format($story->view)?> Lượt xem</span>
             <span class="info-book"><i class="ti-book mr-2"></i> <a href="<?php echo site_url('danh-sach-chuong/'.$story->slug.'/'.$story->id)?>" style="color: #000;padding-left:0px;"><?php echo count($list_chapters)?> Chương </a></span>
             <span class="info-book"><i class="ti-pencil mr-2"></i><?php echo $story->continues == 0 ?  "Còn tiếp" :  "Hoàn thành";?></span>
-            <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i> 
-              <?php 
+            <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i>
+              <?php
                  $this->load->model('catalog_model');
                  $catalog = $this->catalog_model->get_list();
                  $cata = json_decode($story->category_id);
@@ -66,17 +66,17 @@
               ?>
             <!-- <?php echo $name_catalog->name?> -->
             </span>
-            <span class="info-book">Đánh giá: 
+            <span class="info-book">Đánh giá:
             <?php if(isset($user_info)):?>
               <span class='raty_detailt' style = 'margin:5px' id='<?php echo $story->id?>' data-score='<?php echo  ($story->rate_count > 0) ? $story->rate_total/$story->rate_count : 0?>'></span> <br/>
             <?php else: ?>
               <br/><a href="<?php echo site_url('user/login')?>" target="_blank" rel="noopener noreferrer" class="link-login">Đăng nhập</a> để đánh giá về truyện<br/>
-            <?php endif; ?> 
+            <?php endif; ?>
                     Tổng số: <b  class='rate_count'><?php echo $story->rate_count?> Đánh giá</b>
             </span>
             <span class="info-book" title="Submit Yêu Thích để nhận mail khi có chap mới nha.">
               <form action="<?php echo site_url('story/love_lists')?>" method="post">
-                <?php if(isset($user_info)): 
+                <?php if(isset($user_info)):
                   $this->load->model('lovelists_model');
                   $inputArr = array();
                   $iinputArrnput['where'] = array('user_id', $user_info->id);
@@ -98,7 +98,7 @@
                 <?php else: ?>
                   <label for=""><a href="<?php echo site_url('user/login')?>" target="_blank" rel="noopener noreferrer" class="link-login">Đăng nhập</a> để sữ dụng chức năng này</label>
                   <button type="" class="btn btn-primary" disabled>Yêu thích</button>
-                <?php endif;?>  
+                <?php endif;?>
               </form>
             </span>
           </div>
@@ -106,14 +106,14 @@
 
         <!--view list chapter-->
         <section class="section">
-          <div class="container">
+          <div class="container-fluid">
             <div class="row">
               <div class="col-lg-12">
                 <!-- /blog single -->
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link active f-s-tab" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-                    <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;">  
+                    <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;">
                       Cốt truyện
                     </a>
                   </li>
@@ -124,7 +124,7 @@
                         <p><?php echo $story->description ?></p>
                     </div>
                   </div>
-                </div>        
+                </div>
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@
               <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row_story->slug.'/'.$row_story->id)?>"><?php echo $row_story->name?></a></h6>
             </div>
           </div>
-          <?php } endforeach;?>  
+          <?php } endforeach;?>
         </div>
       </div>
     </div>
@@ -170,7 +170,7 @@
             </div>
         </div>
         </div>
-      </div> 
+      </div>
   </div>
 </section>
 <br/>

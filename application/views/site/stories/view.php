@@ -33,18 +33,18 @@ $(document).ready(function() {
 		  					var total = parseInt(rate_count_total)+1;
 	  						rate_count.html(parseInt(total));
 		  				}
-	  					alert(data.msg);	
-	  				} 
+	  					alert(data.msg);
+	  				}
     		  });
   		  }
       });
-      
+
 });
 </script>
 <script type="text/javascript">
     var icon; //Tạo biến lưu nội dung file json được đọc
     //Tạo hàm đọc file
-    function readTextFile(file) 
+    function readTextFile(file)
     {
         var rawFile = new XMLHttpRequest();
         rawFile.open("GET", file, false);
@@ -68,7 +68,7 @@ $(document).ready(function() {
 
 <!-- blog single -->
 <section>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-lg-8">
         <div class="row">
@@ -94,15 +94,15 @@ $(document).ready(function() {
           <div class="col-lg-5 col-sm-12">
             <h6 class="title-book"><?php echo $stories->name?></h6>
             <span class="info-book"><i class="ti-user mr-2"></i><?php echo $stories->author?></span>
-            <span class="info-book"><i class="ti-calendar mr-2"></i><?php 
+            <span class="info-book"><i class="ti-calendar mr-2"></i><?php
                               $date = date_create($stories->created);
                               echo date_format($date,'d-m-Y H:i:s')?>
             </span>
             <span class="info-book"><i class="ti-eye mr-2"></i><?php echo number_format($stories->view)?> Lượt xem</span>
             <span class="info-book"><i class="ti-book mr-2"></i> <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'/'.$stories->id)?>" style="color: #000;padding-left:0px;"><?php echo count($input_count)?> Chương </a></span>
             <span class="info-book"><i class="ti-pencil mr-2"></i><?php echo $stories->continues == 0 ?  "Còn tiếp" :  "Hoàn thành";?></span>
-            <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i> 
-              <?php 
+            <span class="info-book"><i class="ti-flag-alt-2 mr-2"></i>
+              <?php
                  $this->load->model('catalog_model');
                  $catalog = $this->catalog_model->get_list();
                  $cata = json_decode($stories->category_id);
@@ -115,17 +115,17 @@ $(document).ready(function() {
               ?>
             <!-- <?php echo $name_catalog->name?> -->
             </span>
-            <span class="info-book">Đánh giá: 
+            <span class="info-book">Đánh giá:
             <?php if(isset($user_info) || isset($user_data_google)):?>
               <span class='raty_detailt' style = 'margin:5px' id='<?php echo $stories->id?>' data-score='<?php echo  ($stories->rate_count > 0) ? $stories->rate_total/$stories->rate_count : 0?>'></span> <br/>
             <?php else: ?>
               <br/><a href="<?php echo site_url('user/login')?>" target="_blank" rel="noopener noreferrer" class="link-login">Đăng nhập</a> để đánh giá về truyện<br/>
-            <?php endif; ?> 
+            <?php endif; ?>
                     Tổng số: <b  class='rate_count'><?php echo $stories->rate_count?> Đánh giá</b>
             </span>
             <span class="info-book" title="Submit Yêu Thích để nhận mail khi có chap mới nha.">
               <form action="<?php echo site_url('stories/love_lists')?>" method="post">
-                <?php if(isset($user_info)): 
+                <?php if(isset($user_info)):
                   $this->load->model('lovelists_model');
                   $inputArr = array();
                   $iinputArrnput['where'] = array('user_id', $user_info->id);
@@ -147,7 +147,7 @@ $(document).ready(function() {
                 <?php else: ?>
                   <label for=""><a href="<?php echo site_url('user/login')?>" target="_blank" rel="noopener noreferrer" class="link-login">Đăng nhập</a> để sử dụng chức năng này</label>
                   <button type="" class="btn btn-primary" disabled> <img width="30px" style=" padding-right: 3px; margin-right: 5px; " src="<?php echo public_url()?>site/images/fv.png" alt="đọc truyện cafe sữa, cafe sữa novel, Web comic truyện tranh, truyện nhân gian">Yêu thích</button>
-                <?php endif;?>  
+                <?php endif;?>
               </form>
             </span>
           </div>
@@ -162,7 +162,7 @@ $(document).ready(function() {
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link active f-s-tab" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-                    <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;">  
+                    <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;">
                       Cốt truyện
                     </a>
                   </li>
@@ -197,7 +197,7 @@ $(document).ready(function() {
                       </div>
                     </div>
                   </div>
-                </div>        
+                </div>
               </div>
             </div>
           </div>
@@ -207,7 +207,7 @@ $(document).ready(function() {
             <div class="row">
               <div class="col-lg-12">
                 <h6 class="mb-4">Truyện vừa xem</h6>
-                  <?php 
+                  <?php
                     $list_stories = array_unique($recentlyViewed);
                     $list_stories_new = array();
                     $this->load->model('story_model');
@@ -217,13 +217,13 @@ $(document).ready(function() {
                     }
                     foreach($list_stories_new as $row_stories):
                     if($row_stories->status == 0){ }else{
-                       
+
                         ?>
                       <div class="col-lg-6 media mb-4 ">
                         <div class="post-thumb-sm mr-3" style="overflow:inherit">
                         <a href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'/'.$row_stories->id)?>"  style="padding: 8px 0px;">
                           <img class="img-fluid" loading="lazy" src="<?php echo $row_stories->image_link != '' ? base_url('upload/stories/'.$row_stories->image_link) : base_url('upload/stories/default.jpg') ?>" alt="<?php echo $row_stories->name?>">
-                        </a>    
+                        </a>
                         </div>
                         <div class="media-body">
                           <ul class="list-inline d-flex justify-content-between mb-2">
@@ -233,7 +233,7 @@ $(document).ready(function() {
                         </div>
                       </div>
                   <?php
-                    } endforeach;?> 
+                    } endforeach;?>
               </div>
             </div>
           </div>
@@ -276,7 +276,7 @@ $(document).ready(function() {
               <h6><a class="text-dark fix-title-2-line" href="<?php echo site_url('xem-truyen/'.$row_stories->slug.'/'.$row_stories->id)?>"><?php echo $row_stories->name?></a></h6>
             </div>
           </div>
-          <?php } endforeach;?>  
+          <?php } endforeach;?>
         </div>
         <div class="widget">
           <h6 class="mb-4">Thể loại</h6>
@@ -285,7 +285,7 @@ $(document).ready(function() {
                 <li class="list-inline-item m-1"><a href="<?php echo site_url('danh-muc/'.$row_catalog->slug.'/'.$row_catalog->id)?>"><?php echo $row_catalog->name?></a></li>
               <?php endforeach;?>
           </ul>
-          
+
         </div>
       </div>
     </div>
@@ -293,13 +293,13 @@ $(document).ready(function() {
 </section>
 <!-- /story single -->
 <section class="section">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
         <!-- /blog single -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            
+
             <a class="nav-link active" id="home-tab-cafesua" data-toggle="tab" href="#home-cafesua" role="tab" aria-controls="home" aria-selected="true"><img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận ở đây nè</a>
           </li>
           <li class="nav-item">
@@ -317,7 +317,7 @@ $(document).ready(function() {
               <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="0">
               <input type="hidden" class="form-control mb-4" name="icon" id="icon" value="">
               <input type="text" class="form-control form-control-text col-lg-12" name="body" id="body" value="" placeholder="Ý kiến của huynh đài" autocomplete="off">
-              
+
               <div class="form-group custom-sticker-p">
                   <div id="show-stiker-selected">
                     <img src="" alt="" id="stickerSelected" width="100px">
@@ -423,10 +423,10 @@ $(document).ready(function() {
                                 }
                               $user_r = $this->user_model->get_info($user_id_customs);
                               echo !empty($user_r->image_link) ? base_url('upload/user/'.$user_r->image_link) : base_url('upload/stories/default.jpg')?>" alt="<?php echo $sub->body?>">
-                        
+
                             </div>
                             <div class="col-lg-11">
-                              <div class="row"> 
+                              <div class="row">
                                 <div class="col-lg-12">
                                   <b><?php
                                   if ($sub->name == null) {
@@ -483,12 +483,12 @@ $(document).ready(function() {
                         </form>
                   <?php endif;?>
                   </div>
-                  
+
                   <?php $i++; } endforeach;?>
               </div>
-                
+
             </div>
-            
+
           </div>
           <div class="tab-pane fade" id="profile-cafesua" role="tabpanel" aria-labelledby="profile-tab-facebook">
             <br/>
@@ -498,8 +498,8 @@ $(document).ready(function() {
                  data-num-posts="5"   data-width="100%"   data-colorscheme="light">
             </div>
           </div>
-         
-        </div>        
+
+        </div>
       </div>
     </div>
   </div>
@@ -519,7 +519,7 @@ $('#content-a img').each(function(){
     document.getElementById("show-stiker-selected").style.display  = "block";
     $('#content-a').toggle(500);
   });
-    
+
 });
 
 $('#deleteStiker').click(function(e){
@@ -534,7 +534,7 @@ $(document).ready(function(){
       console.log($(this).removeClass('hidden'));
       $(this).find("#postComments").removeClass('hidden');
     })
-    
+
   });
 });
 </script>

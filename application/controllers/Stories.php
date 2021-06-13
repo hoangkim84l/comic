@@ -93,7 +93,7 @@ Class Stories extends MY_Controller
         $this->load->model('user_model');
         //lay id san pham muon xem
         $id = $this->uri->rsegment(4);
-        var_dump($id);exit();
+        // var_dump($id);exit();
         $output = explode("-",$id);
         $id =  $output[count($output)-1];
         // var_dump($last_key);

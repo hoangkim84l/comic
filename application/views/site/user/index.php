@@ -43,17 +43,17 @@
     }
 
     .nav-tabs>li>a.active.show,
-    .nav-tabs>li.active>a, 
-    .nav-tabs>li.active>a:focus, 
-    .nav-tabs>li.active>a:hover { 
+    .nav-tabs>li.active>a,
+    .nav-tabs>li.active>a:focus,
+    .nav-tabs>li.active>a:hover {
         border-bottom: 2px solid #FF8C33;
         }
 
     .breadcrumb li:first-child {
-    -webkit-clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);   
+    -webkit-clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
     clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
     }
-    
+
     @media (max-width: 408px) {
     .breadcrumb li {
         display: inline-block;
@@ -111,9 +111,9 @@
     <div class="breadcrumb">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active">
-            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Thông tin thành viên</a></li>
         <li role="presentation">
+            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Thông tin thành viên</a></li>
+        <li role="presentation" class="active">
             <a href="#office" aria-controls="profile" role="tab" data-toggle="tab">Truyện yêu thích</a>
         </li>
         <li></li>
@@ -121,7 +121,7 @@
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="home">
+        <div role="tabpanel" class="tab-pane" id="home">
             <div class="product">
                 <table>
                     <tr>
@@ -179,11 +179,11 @@
                 echo '<img src="'.$user_data['picture'].'" class="img-responsive img-circle img-thumbnail" />';
                 echo '<h3><b>Name : </b>'.$user_data["first_name"].' '.$user_data['last_name']. '</h3>';
                 echo '<h3><b>Email :</b> '.$user_data['email_address'].'</h3>';
-                echo '<h3><a href="'.base_url().'google_login/logout">Logout</h3></div>';                
+                echo '<h3><a href="'.base_url().'google_login/logout">Logout</h3></div>';
             }
             ?>
         </div>
-        <div role="tabpanel" class="tab-pane" id="office">
+        <div role="tabpanel" class="tab-pane active" id="office">
         <?php $message = $this->session->flashdata('message'); if(isset($message)):?>
                         <label for="" style="color: #FF8C33;"><?php echo $message;?></label>
                     <?php endif;?>
@@ -212,4 +212,4 @@
         </div>
 
     </div>
-</div>     
+</div>

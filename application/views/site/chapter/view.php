@@ -1,6 +1,6 @@
 <!-- page-title -->
 <section class="section bg-secondary section-detail">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
         <a href="<?php echo site_url('xem-truyen/'.$story->slug.'/'.$story->id)?>"><h4><?php
@@ -14,7 +14,7 @@
 <script type="text/javascript">
     var icon; //Tạo biến lưu nội dung file json được đọc
     //Tạo hàm đọc file
-    function readTextFile(file) 
+    function readTextFile(file)
     {
         var rawFile = new XMLHttpRequest();
         rawFile.open("GET", file, false);
@@ -37,7 +37,7 @@
 </script>
 <!-- blog single -->
 <section>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
       <div class="row">
@@ -68,7 +68,7 @@
                 <?php
                   $id = $this->uri->rsegment(5);
                   $output = explode("/",$id);
-                  $id =  $output[count($output)-1]; 
+                  $id =  $output[count($output)-1];
                   $array_values = array_values($list_chapters);
                   $chapnext = '';
                   $chapprev = '';
@@ -89,7 +89,7 @@
                           $chapprev = $cv->slug.'/'.$next->id;
                         }
                     }
-                    
+
                 }
                 ?>
                 <?php if(count($array_values) == 1){
@@ -125,7 +125,7 @@
         </div>
         <?php if($chapter->audio_link != ''){?>
         <div class="row">
-          <div class="col-lg-12 cus-text-right">        
+          <div class="col-lg-12 cus-text-right">
             <audio controls>
               <source src="<?php echo base_url('upload/chapter/'.$chapter->audio_link)?>" type="audio/mpeg">
             </audio>
@@ -135,7 +135,7 @@
         <?php if($chapter->image_link != '' && $chapter->show_img == 1){ ?>
         <div class="scrollbar scrollbar-style-2" id="style-1">
           <div class="force-overflow">
-            
+
             <h6>Bằng hữu có thể click vào ảnh để zoom đó</h6><br/>
             <img id="custom-setid-zoom-image" loading="lazy" class="w-100 img-fluid mb-4" src="<?php echo $chapter->image_link != '' ? base_url('upload/chapter/'.$chapter->image_link) : base_url('upload/chapter/default.jpg') ?>" alt="<?php echo $chapter->name?>">
             <!-- <img  src="https://media.geeksforgeeks.org/wp-content/uploads/20190912174307/qwe1.png" alt="Snow" style="width:100%;max-width:300px"> -->
@@ -145,13 +145,13 @@
                 <img class="modal-content" id="custom-zoom-image">
             </div>
           </div>
-        </div> 
-        <?php } else{ echo "";}?>  
+        </div>
+        <?php } else{ echo "";}?>
         <div class="force-overflow-new">
           <div class="content">
             <p><?php echo $chapter->content ?></p>
           </div>
-        </div>  
+        </div>
 
         <div class="row">
           <div class="col-lg-12 cus-text-right">
@@ -159,7 +159,7 @@
                 <?php
                   $id = $this->uri->rsegment(5);
                   $output = explode("-",$id);
-                  $id =  $output[count($output)-1]; 
+                  $id =  $output[count($output)-1];
                   $array_values = array_values($list_chapters);
                 ?>
                 <?php if(count($array_values) == 1){
@@ -189,7 +189,7 @@
                     echo "";
                 }}?>
               </div>
-          </div> 
+          </div>
       </div>
   </div>
 </section>
@@ -198,7 +198,7 @@
     <div class="row">
       <div class="col-lg-12">
         <h6 class="mb-4">Chap/Chương bạn vừa xem</h6>
-          <?php 
+          <?php
             $list_chap = array_unique($recentlyChapViewed);
             $list_chap_new = array();
             $this->load->model('story_model');
@@ -206,7 +206,7 @@
             foreach($list_chap as $val){
               $chapter_review = $this->chapter_model->get_info($val);
               array_push($list_chap_new,$chapter_review);
-            }    
+            }
             foreach($list_chap_new as $row_chap):
             if($row_chap->status == 0){ }else{
               $story = $this->story_model->get_info($row_chap->story_id);
@@ -221,7 +221,7 @@
                 </div>
               </div>
           <?php
-            } endforeach;?> 
+            } endforeach;?>
       </div>
     </div>
   </div>
@@ -247,7 +247,7 @@
         <!-- /blog single -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            
+
             <a class="nav-link active" id="home-tab-cafesua" data-toggle="tab" href="#home-cafesua" role="tab" aria-controls="home" aria-selected="true"><img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận ở đây nè</a>
           </li>
           <li class="nav-item">
@@ -293,9 +293,9 @@
             <?php else:?>
               <form action="<?php echo site_url('comment/ChapCommentWithoutLogin');?>" class="row" method="POST" id="postComment">
                 <input type="hidden" class="col-lg-4" name="user_id" id="user_id" value="">
-                
+
                 <input type="text" class="form-control form-control-text col-lg-4" id="name" name="name" value="" placeholder=" Tên của bạn" required autocomplete="off">
-                
+
                 <input type="hidden" class="form-control mb-4" name="story_id" id="story_id" value="">
                 <input type="hidden" class="form-control mb-4" name="post_id" id="post_id" value="<?php echo $chapter->id?>">
                 <input type="hidden" class="form-control mb-4" name="parent_id" id="parent_id" value="0">
@@ -327,7 +327,7 @@
               </form>
             <?php endif;?>
             <br/>
-            
+
             <div class="scrollbar" id="style-1">
               <div class="force-overflow">
                 <?php $i = 0 ; foreach($comments as $row): if($row->parent_id > 0){ echo "";}else{
@@ -376,10 +376,10 @@
                                 }
                               $user_r = $this->user_model->get_info($user_id_customs);
                               echo !empty($user_r->image_link) ? base_url('upload/user/'.$user_r->image_link) : base_url('upload/stories/default.jpg')?>" alt="<?php echo $sub->body?>">
-                        
+
                             </div>
                             <div class="col-lg-11">
-                              <div class="row"> 
+                              <div class="row">
                                 <div class="col-lg-12">
                                   <b><?php
                                   if ($sub->name == null) {
@@ -439,9 +439,9 @@
                   <?php $i++;
                 } endforeach;?>
               </div>
-                
+
             </div>
-            
+
           </div>
           <div class="tab-pane fade" id="profile-cafesua" role="tabpanel" aria-labelledby="profile-tab-facebook">
             <br/>
@@ -451,8 +451,8 @@
                  data-num-posts="5"   data-width="100%"   data-colorscheme="light">
             </div>
           </div>
-         
-        </div>        
+
+        </div>
       </div>
     </div>
   </div>
@@ -472,7 +472,7 @@ $('#content-a img').each(function(){
     document.getElementById("show-stiker-selected").style.display  = "block";
     $('#content-a').toggle(500);
   });
-    
+
 });
 
 $('#deleteStiker').click(function(e){
@@ -505,8 +505,8 @@ $('#deleteStiker').click(function(e){
         modal.style.display = "none";
     }
     }
-    
-    $(document).click(function() { 
+
+    $(document).click(function() {
         if($(modalImg).is(':visible')) {
             popups_close();
         }
@@ -523,7 +523,7 @@ $('#deleteStiker').click(function(e){
           console.log($(this).removeClass('hidden'));
           $(this).find("#postComments").removeClass('hidden');
         })
-        
+
       });
     });
     $('.content').infiniteScroll({
