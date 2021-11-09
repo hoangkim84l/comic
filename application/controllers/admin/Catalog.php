@@ -7,8 +7,12 @@ Class Catalog extends MY_Controller
         $this->load->model('catalog_model');
     }
     
-    /*
-     * Lay ra danh sach danh muc san pham
+    /**
+     * Description: Lấy ra danh sách danh mục của truyện
+     * Function: index()
+     * @author: Di
+     * @params: none
+     * @return: list of category
      */
     function index()
     {
@@ -24,21 +28,25 @@ Class Catalog extends MY_Controller
         $this->load->view('admin/main', $this->data);
     }
     
-    /*
-     * Them moi du lieu
+    /**
+     * Description: Thêm mới dữ liệu
+     * Function: add()
+     * @author: Di
+     * @params: 
+     * @return: Store data to database
      */
     function add()
     {
 		$config = array(
             'field' => 'slug',
             'name'  => 'name',
-            'table' => 'product',
+            'table' => 'catalog',
         );
         //load thư viện validate dữ liệu
         $this->load->library('form_validation');
         $this->load->helper('form');
 		$this->load->library('slug_library',$config);
-        
+        $this->load->helper('text');
         //neu ma co du lieu post len thi kiem tra
         if($this->input->post())
         {
@@ -59,7 +67,15 @@ Class Catalog extends MY_Controller
                     'date_created' => date("Y-m-d H:i:s"),
                     'date_updated' => date("Y-m-d H:i:s"),
                 );
-				$data['slug'] = $this->slug_library->create_uri($name);
+				$name = str_replace("'", '-', $name);
+                $name = str_replace(" ", '-', $name);
+                $name = str_replace(",", '', $name);
+                $name = str_replace("!", '', $name);
+                $name = str_replace("(", '', $name);
+                $name = str_replace(")", '', $name);
+                $name = str_replace("[", '', $name);
+                $name = str_replace("]", '', $name);
+                $data['slug'] = convert_accented_characters($name);
                 //them moi vao csdl
                 if($this->catalog_model->create($data))
                 {
@@ -83,8 +99,12 @@ Class Catalog extends MY_Controller
         $this->load->view('admin/main', $this->data);
     }
     
-    /*
-     * Cập nhật du lieu
+    /**
+     * Description: Cập nhật thông tin
+     * Function: edit()
+     * @author: Di
+     * @params: id.
+     * @return: Store new data to database
      */
     function edit()
     {
@@ -97,7 +117,7 @@ Class Catalog extends MY_Controller
         $this->load->library('form_validation');
         $this->load->helper('form');
 		$this->load->library('slug_library',$config);
-    
+        $this->load->helper('text');
         //lay id danh mục
         $id = $this->uri->rsegment(3);
         $info = $this->catalog_model->get_info($id);
@@ -128,7 +148,15 @@ Class Catalog extends MY_Controller
                     'description' => $this->input->post('description'),
                     'date_updated' => date("Y-m-d H:i:s"),
                 );
-				$data['slug'] = $this->slug_library->create_uri($name);
+                $name = str_replace("'", '-', $name);
+                $name = str_replace(" ", '-', $name);
+                $name = str_replace(",", '', $name);
+                $name = str_replace("!", '', $name);
+                $name = str_replace("(", '', $name);
+                $name = str_replace(")", '', $name);
+                $name = str_replace("[", '', $name);
+                $name = str_replace("]", '', $name);
+                $data['slug'] = convert_accented_characters($name);
                 //them moi vao csdl
                 if($this->catalog_model->update($id, $data))
                 {
@@ -152,8 +180,12 @@ Class Catalog extends MY_Controller
         $this->load->view('admin/main', $this->data);
     }
     
-    /*
-     * Xoa danh mục
+    /**
+     * Description: Xóa danh mục
+     * Function: delete()
+     * @author: Di
+     * @params: id.
+     * @return: delete record to database
      */
     function delete()
     {
@@ -166,8 +198,12 @@ Class Catalog extends MY_Controller
         redirect(admin_url('catalog'));
     }
     
-    /*
-     * Xoa nhieu danh muc san pham
+    /**
+     * Description: Xóa tất cả
+     * Function: delete_all()
+     * @author: Di
+     * @params: list of id.
+     * @return: Remove all data in database
      */
     function delete_all()
     {
@@ -178,8 +214,12 @@ Class Catalog extends MY_Controller
         }
     }
     
-    /*
-     * Thuc hien xoa
+    /**
+     * Description: Xóa danh mục vaf các bảng liên quan
+     * Function: _del()
+     * @author: Di
+     * @params: id.
+     * @return: delete record to database
      */
     private function _del($id, $rediect = true)
     {

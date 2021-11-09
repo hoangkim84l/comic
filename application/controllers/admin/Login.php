@@ -10,8 +10,6 @@ Class Login extends MY_controller{
             $this->form_validation->set_rules('login' ,'login', 'callback_check_login');
             if($this->form_validation->run())
             {
-                $this->session->set_userdata('login', true);
-                
                 redirect(admin_url('home'));
             }
         }
@@ -24,14 +22,15 @@ Class Login extends MY_controller{
      */
     function check_login()
     {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
+        $username = strip_tags($this->input->post('username'));
+        $password = strip_tags($this->input->post('password'));
         $password = md5($password);
-        
         $this->load->model('admin_model');
         $where = array('username' => $username , 'password' => $password);
+        $admin = $this->admin_model->get_info_rule($where);
         if($this->admin_model->check_exists($where))
         {
+            $this->session->set_userdata('login', $admin->id);
             return true;
         }
         $this->form_validation->set_message(__FUNCTION__, 'Không đăng nhập thành công');

@@ -23,7 +23,8 @@ Class Upload_library
             $data = $this->CI->upload->data();
         }else{
             //khong upload thanh cong
-            //$data = $this->CI->upload->display_errors()
+            $data = $this->CI->upload->display_errors();
+            // var_dump($data);die();
         }
         return $data;
     }
@@ -74,13 +75,13 @@ Class Upload_library
         //thuc mục chứa file
         $config['upload_path']   = $upload_path;
         //Định dạng file được phép tải
-        $config['allowed_types'] = 'jpg|png|gif|jpeg|PNG|JPG';
+        $config['allowed_types'] = 'jpg|png|gif|jpeg|PNG|JPG|mp3';
         //Dung lượng tối đa
-        $config['max_size']      = '99000';
+        $config['max_size']      = '999000000';
         //Chiều rộng tối đa
-        $config['max_width']     = '2468';
+        $config['max_width']     = '999000';
         //Chiều cao tối đa
-        $config['max_height']    = '2468';
+        $config['max_height']    = '999000';
         
         return $config;
     }

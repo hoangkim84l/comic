@@ -4,7 +4,7 @@
 
 <!-- Main content wrapper -->
 <div class="wrapper">
-
+<?php $this->load->view('admin/message', $this->data);?>
 	<!-- Static table -->
 	<div class="widget">
 		

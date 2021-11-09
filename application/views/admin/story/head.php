@@ -16,6 +16,11 @@
 					<img src="<?php echo public_url('admin')?>/images/icons/control/16/list.png">
 					<span>Danh sách</span>
 				</a></li>
+
+				<li><a href="<?php echo admin_url('story/craw')?>">
+					<img src="<?php echo public_url('admin')?>/images/icons/control/16/list.png">
+					<span>Lấy data</span>
+				</a></li>
 			</ul>
 		</div>
 		
