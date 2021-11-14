@@ -4,6 +4,7 @@
 
 <!-- Main content wrapper -->
 <div class="wrapper">
+<?php $this->load->view('admin/message', $this->data);?>
 	<div class="widget">
 	
 		<div class="title">

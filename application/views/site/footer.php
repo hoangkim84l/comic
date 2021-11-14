@@ -1,51 +1,52 @@
-<!-- The box-footer-->
-<html>
-	<head>
-		<meta name="generator"
-    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
-		<title/>
-	</head>
-	<body>
-		<div id="footer_text">
-			<!-- The footer_text -->
-			<strong>Học lập trình website online miễn phí.</strong>
-			<p>Hướng dẫn xây dựng website bán hàng và thanh toán trực tuyến.</p>
-			<p>Video hướng dẫn: 
-				<a target="_blank"
-			href="http://freetuts.net/video/xay-dung-website-ban-hang-thanh-toan-truc-tuyen-voi-codeigniter-3x-19.html#-H9577DrJHQ">Tại
-      đây</a> Hoặc 
-				<a href="https://www.youtube.com/watch?v=qMwvZqCKUbk&amp;list=PLShhnaMcz_Zy1ipos-PUP9UrJauBkKUza&amp;index=16"
-      target="_blank">tại đây</a>
-			</p>
-			<p>Website: 
-				<a href="http://hocphp.info">hocphp.info</a>
-			</p>
-			<p>Fanpage: 
-				<a href="https://www.facebook.com/nobitacnt/">https://www.facebook.com/nobitacnt/</a>
-			</p>
-			<p>kết bạn: 
-				<a href="https://www.facebook.com/tuyen.hoangvan.31">https://www.facebook.com/tuyen.hoangvan.31</a>
-			</p>
-			<p>Tham gia nhóm học lập trình php: 
-				<a href="https://www.facebook.com/groups/1713692865571869">https://www.facebook.com/groups/1713692865571869</a>
-			</p>
-		</div>
-		<!-- End footer_text -->
-		<div id="footer_face">
-			<!-- The footer_face -->
-			<a title="trên facebook" target="_blank" href="https://www.facebook.com/nobitacnt" rel="nofollow">
-				<img alt="trên facebook" src="%3C?php%20echo%20public_url()?%3E/site/images/facebook.png" />
-			</a> 
-			<a title="trên twitter" target="_blank" href="https://twitter.com/" rel="nofollow">
-				<img alt="trên twitter" src="%3C?php%20echo%20public_url()?%3E/site/images/twitter.png" />
-			</a> 
-			<a title="trên google" target="_blank" href="https://plus.google.com/" rel="nofollow">
-				<img alt="trên google" src="%3C?php%20echo%20public_url()?%3E/site/images/google.png" />
-			</a>
-		</div>
-		<!-- End footer_face -->
-		<div class="clear"/>
-		<!-- clear float -->
-		<!-- End box-footer -->
-	</body>
-</html>
+<div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <?php if($support->slogan != ''){ ?>
+            <div class="slogan">
+              <?php echo $support->slogan;?>
+              <br/>
+              <a href="//www.dmca.com/Protection/Status.aspx?ID=1801925b-c9d0-4154-9fcb-82e956b5bd00" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120ad.png?ID=1801925b-c9d0-4154-9fcb-82e956b5bd00"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+            </div>
+          <?php } else{ ?>
+            <p>
+              Muốn đi nhanh thì đi một mình<br/>
+              muốn đi xa thì dùng google maps.
+            </p>
+          <?php } ?>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <h6>Thông tin</h6>
+          <ul class="list-unstyled">
+            <li class="font-secondary text-dark">Địa chỉ : <?php echo $support->geo_placename?></li>
+            <li class="font-secondary text-dark">Gmail : <a href="mailto:<?php echo $support->gmail?>"><?php echo $support->gmail?></a> </li>
+            <li class="font-secondary text-dark">Skype : <?php echo $support->skype?></li>
+            <li class="font-secondary text-dark"><a href="https://cafesuanovel.com/privacy-policy">Điều khoản, Dịch vụ</a> </li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <h6>Liên hệ</h6>
+          <ul class="list-unstyled">
+            <li class="font-secondary text-dark">Phone: <a href="tel:+<?php echo $support->phone?>"><?php echo $support->phone?></a> </li>
+            <li class="font-secondary text-dark">Tác quyền: <?php echo $support->author?></li>
+            <li class="font-secondary text-dark">Hotline: <a href="tel:+<?php echo $support->hotline?>"><?php echo $support->hotline?></a> </li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <h6>Follow</h6>
+          <ul class="list-inline d-inline-block">
+            <li class="list-inline-item"><a href="<?php echo $support->fanpage_fb?>" class="text-dark"><i class="ti-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="<?php echo $support->fanpage_twitter?>" class="text-dark"><i class="ti-twitter-alt"></i></a></li>
+            <li class="list-inline-item"><a href="<?php echo $support->fanpage_linkedin?>" class="text-dark"><i class="ti-linkedin"></i></a></li>
+            <li class="list-inline-item"><a href="mailto:<?php echo $support->skype?>" class="text-dark"><i class="ti-skype"></i></a></li>
+            <li class="list-inline-item"><a href="https://www.pinterest.com/CafeSuaTeam/_saved/" class="text-dark"><i class="ti-pinterest"></i></a></li>
+          </ul>
+          <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcafesuateam&tabs=timeline&width=340&height=150&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=720902514969277" width="340" height="150" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center pb-3 color-text">
+    <p class="mb-0">Copyright ©<script>var CurrentYear = new Date().getFullYear()  
+    document.write(CurrentYear)</script>   <?php echo $support->copyright?></p>
+  </div>

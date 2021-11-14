@@ -4,7 +4,12 @@ Class User extends MY_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->helper('form');
+        $this->load->library('form_validation');
         $this->load->model('user_model');
+        $this->load->model('lovelists_model');
+        $this->load->model('story_model');
+        $this->load->library('facebook');
     }
     
     /*
@@ -12,7 +17,7 @@ Class User extends MY_Controller
      */
     function check_email()
     {
-        $email = $this->input->post('email');
+        $email = strip_tags($this->input->post('email'));
         $where = array('email' => $email);
         //kiêm tra xem email đã tồn tại chưa
         if($this->user_model->check_exists($where))
@@ -34,44 +39,114 @@ Class User extends MY_Controller
         {
             redirect(site_url('user'));
         }
-        
-        $this->load->library('form_validation');
-        $this->load->helper('form');
-        
+        $this->load->model('user_model');
         //neu ma co du lieu post len thi kiem tra
         if($this->input->post())
         {
-            $this->form_validation->set_rules('name', 'Tên', 'required|min_length[8]');
-            $this->form_validation->set_rules('email', 'Email đăng nhập', 'required|valid_email|callback_check_email');
-            $this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[6]');
-            $this->form_validation->set_rules('re_password', 'Nhập lại mật khẩu', 'matches[password]');
-            $this->form_validation->set_rules('phone', 'Số điện thoại', 'required');
-            $this->form_validation->set_rules('address', 'Địa chỉ', 'required');
-  
+            $this->form_validation->set_rules('name', 'Tên', 'required|min_length[8]|max_length[20]',
+            array('required' => 'Bằng hữu nhập tên mình đi', 'min_length' => 'Tên huynh đài phải 8 kí tự nha','max_length'=>'Tên huynh đài dài quá 20 kí tự thôi nha'));
+            $this->form_validation->set_rules('email', 'Email đăng nhập', 'required|valid_email|callback_check_email',
+            array('required' => 'Bằng hữu nhập địa chỉ email đi', 'valid_email' => 'Bằng hữu nhập sai định dạng rồi'));
+            $this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[6]',
+            array('required' => 'Bằng hữu nhập mật khẩu đi', 'min_length[6]' => 'Ngắn quá phải từ 6 kí tự trở lên nha'));
+            $this->form_validation->set_rules('re_password', 'Nhập lại mật khẩu', 'matches[password]',
+            array('matches[password]' => 'Bằng hữu nhập lại mật khẩu 1 lần nữa'));
+            $this->form_validation->set_rules('phone', 'Số điện thoại', 'required',
+            array('required' => 'Bằng hữu nhập số điện thoại đi'));
+            $this->form_validation->set_rules('address', 'Địa chỉ', 'required',
+            array('required' => 'Bằng hữu nhập địa chỉ đi'));
+            
             //nhập liệu chính xác
             if($this->form_validation->run())
             {
                 //them vao csdl
-                $password = $this->input->post('password');
+                $password = strip_tags($this->input->post('password'));
                 $password = md5($password);
                 
                 $data = array(
-                    'name'     => $this->input->post('name'),
-                    'email'    => $this->input->post('email'),
-                    'phone'    => $this->input->post('phone'),
-                    'address'  => $this->input->post('address'),
+                    'name'     => strip_tags($this->input->post('name')),
+                    'email'    => strip_tags($this->input->post('email')),
+                    'phone'    => strip_tags($this->input->post('phone')),
+                    'address'  => strip_tags($this->input->post('address')),
                     'password' => $password,
                     'created'  => now(),
                 );
+                $this->load->library('email'); // Note: no $config param needed
+                $dataEmail = '<p>Tên: '. strip_tags($this->input->post('name')) .' </p>'.PHP_EOL.
+                        '<p>Email: '. strip_tags($this->input->post('email')) .' </p>'.PHP_EOL.
+                        '<p>Số điện thoại: '. strip_tags($this->input->post('phone') ).' </p>'.PHP_EOL.
+                        '<p>Địa chỉ: '. strip_tags($this->input->post('address')).' </p>' .PHP_EOL.
+                        '<p>Password: '. $this->input->post('password').' </p>' .PHP_EOL.
+                        '<p>----</p>' .PHP_EOL.
+                        '<p>Cafe Sữa Team.</p>'.PHP_EOL.
+                        '<p>Lướt cà phê sữa, muốn đọc nữa, không muốn dừng.</p>'.PHP_EOL.
+                        '<p>Đội ngũ quản trị viên Cafe Sữa Team</p>'.PHP_EOL.
+                        '<p> </p>'.PHP_EOL.
+                        '<p>Ho Chi Minh City, VietNam</p>'.PHP_EOL.
+                        '<p>Tel: (035) 6 000 439</p>'.PHP_EOL.
+                        '<p>Email: teamcafesua@gmail.com</p>';
+                        $from = $this->input->post('email');
+                        $to = "teamcafesua@gmail.com";
+                        $subject = "[Đăng Ký] Đăng ký thành công tài khoản tại website Cafesuanovel.com";
+                        $message = $dataEmail;
+                        $headers = "From:" . $from;
+                        mail($to,$subject,$message, $headers);
+                //2 ways
+                $this->email->from($this->input->post('email'));
+                $this->email->to('teamcafesua@gmail.com');
+                $this->email->subject('[Đăng Ký] Đăng ký thành công tài khoản tại website Cafesuanovel.com');
+                $this->email->message($dataEmail);
+                $this->email->send();
+
+                //send to user
+                $dataEmailUser = '<p>Xin chào: '. strip_tags($this->input->post('name')) .'</p> '.PHP_EOL.
+                        '<p>Cảm ơn bạn đã đăng ký thành viên tại website </p>'.PHP_EOL.
+                        '<p>Cafesuanovel.com</p>' .PHP_EOL.
+                        '<p>Tài Khoản: '. strip_tags($this->input->post('email')).' </p>'.PHP_EOL.
+                        '<p>Mật khẩu: '. $this->input->post('password') .' </p>'.PHP_EOL.
+                        '<p>Chúc bạn có khoảng thời gian đọc truyện vui vẻ tại website.</p>'.PHP_EOL.
+                        '<p>Click vào link bên dưới để đăng nhập và trải nghiệm thế giới của truyện nhé!</p>'.PHP_EOL.
+                        '<p>----</p>'.PHP_EOL.
+                        '<p>Cafe Sữa Team.</p>'.PHP_EOL.
+                        '<p>Lướt cà phê sữa, muốn đọc nữa, không muốn dừng.</p>'.PHP_EOL.
+                        '<p>Đội ngũ quản trị viên Cafe Sữa Team</p>'.PHP_EOL.
+                        '<p> </p>'.PHP_EOL.
+                        '<p>Ho Chi Minh City, VietNam</p>'.PHP_EOL.
+                        '<p>Tel: (035) 6 000 439</p>'.PHP_EOL.
+                        '<p>Email: teamcafesua@gmail.com</p>';
+                        $from = "teamcafesua@gmail.com";
+                        $to = $this->input->post('email');
+                        $subject = "[Đăng Ký] Đăng ký thành công tài khoản tại website Cafesuanovel.com";
+                        $message = $dataEmailUser;
+                        $headers = "From:" . $from;
+                        mail($to,$subject,$message, $headers);
+                //2 ways
+                $this->email->from('teamcafesua@gmail.com');
+                $this->email->to($this->input->post('email'));
+                $this->email->subject('[Đăng Ký] Đăng ký thành công tài khoản tại website Cafesuanovel.com');
+                $this->email->message($dataEmailUser);
+                $this->email->send();
                 if($this->user_model->create($data))
                 {
                     //tạo ra nội dung thông báo
-                    $this->session->set_flashdata('message', 'Đăng ký thành viên thành công');
+                    echo'
+                    <script>
+                    window.onload = function() {
+                        alert("Đăng ký thành viên thành công");
+                        location.href = "";  
+                    }
+                    </script>
+                    ';
                 }else{
-                    $this->session->set_flashdata('message', 'Không thêm được');
+                    echo'
+                    <script>
+                    window.onload = function() {
+                        alert("Opps có lổi xãy ra kiểm tra form nhập");
+                        location.href = "";  
+                    }
+                    </script>
+                    ';
                 }
-                //chuyen tới trang danh sách quản trị viên
-                redirect(site_url());
             }
         }
         
@@ -93,21 +168,59 @@ Class User extends MY_Controller
         
         $this->load->library('form_validation');
         $this->load->helper('form');
-        
+        $this->load->helper("cookie");
+        //remember me
+        $autoLogin = $this->input->post("autologin",true);
         if($this->input->post())
         {
-            $this->form_validation->set_rules('email', 'Email đăng nhập', 'required|valid_email');
-            $this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[6]');
+            $this->form_validation->set_rules('email', 'Email đăng nhập', 'required|valid_email',
+            array('required' => 'Bằng hữu nhập email đi', 'valid_email' => 'Tên huynh đài sai định dạng email rồi kìa'));
+            $this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[6]',
+            array('required' => 'Bằng hữu nhập mật khẩu đi', 'min_length[6]' => 'Mật khẩu huynh đài nhập ngắn quá'));
             $this->form_validation->set_rules('login' ,'login', 'callback_check_login');
             if($this->form_validation->run())
             {
                 //lay thong tin thanh vien
                 $user = $this->_get_user_info();
+                $email = strip_tags($this->input->post('email'));
+                $password = strip_tags($this->input->post('password'));
                 //gắn session id của thành viên đã đăng nhập
                 $this->session->set_userdata('user_id_login', $user->id);
-                
-                $this->session->set_flashdata('message', 'Đăng nhập thành công');
-                redirect();
+                //auto login
+                if($autoLogin == 1){
+                    $cookie_id = array(
+                        'name'      => 'autologin_id',
+                        'value'     => $user->id,
+                        'expire'    => '1209600',//2 tuần
+                        'path'      => '/'
+                    );
+                    $cookie_email = array(
+                        'name'      => 'autologin_email',
+                        'value'     => $email,
+                        'expire'    => '1209600',//2 tuần
+                        'path'      => '/'
+                    );
+                    $cookie_password = array(
+                        'name'      => 'autologin_password',
+                        'value'     => $password,
+                        'expire'    => '1209600',//2 tuần
+                        'path'      => '/'
+                    );
+                    $this->input->set_cookie($cookie_id);
+                    $this->input->set_cookie($cookie_email);
+                    $this->input->set_cookie($cookie_password);
+                }else{
+                    delete_cookie("autologin_email");
+                    delete_cookie("autologin_password");
+                }
+                echo'
+                    <script>
+                    window.onload = function() {
+                        alert("Đăng nhập thành công");
+                        location.href = "";  
+                    }
+                    </script>
+                    ';
             }
         }
         
@@ -135,8 +248,8 @@ Class User extends MY_Controller
      */
     private function _get_user_info()
     {
-        $email = $this->input->post('email');
-        $password = $this->input->post('password');
+        $email = strip_tags($this->input->post('email'));
+        $password = strip_tags($this->input->post('password'));
         $password = md5($password);
         
         $where = array('email' => $email , 'password' => $password);
@@ -144,6 +257,21 @@ Class User extends MY_Controller
         return $user;
     }
     
+    /*
+     * login by remember me
+     */
+    function remember_me($username, $password)
+    {
+        $email = $username;
+        $password = $password;
+        $password = md5($password);
+        
+        $where = array('email' => $email , 'password' => $password);
+        $user = $this->user_model->get_info_rule($where);
+        return $user;
+    }
+    
+
     /*
      * Chinh sua thong tin thanh vien
      */
@@ -169,14 +297,17 @@ Class User extends MY_Controller
         //neu ma co du lieu post len thi kiem tra
         if($this->input->post())
         {
-            $password = $this->input->post('password');
-            
-            $this->form_validation->set_rules('name', 'Tên', 'required|min_length[8]');
-            if($password)
-            {
-                $this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[6]');
-                $this->form_validation->set_rules('re_password', 'Nhập lại mật khẩu', 'matches[password]');
+            $password = $this->input->post('passwords');
+            if($password == ''){
+                $this->form_validation->set_rules('passwords', 'Mật khẩu', 'required',
+                array('required' => 'Bằng hữu nhập mật khẩu xác nhận đi'));
             }
+            
+            if(md5($password) != $user->password){
+                $this->form_validation->set_rules('passwords', 'Mật khẩu', 'matches[password]',
+                array('matches' => 'Bằng hữu nhập sai mật khẩu rồi'));
+            }
+            $this->form_validation->set_rules('name', 'Tên', 'required|min_length[8]');
             
             $this->form_validation->set_rules('phone', 'Số điện thoại', 'required');
             $this->form_validation->set_rules('address', 'Địa chỉ', 'required');
@@ -184,22 +315,49 @@ Class User extends MY_Controller
             //nhập liệu chính xác
             if($this->form_validation->run())
             {
+                //lấy tên file ảnh avatar được user upload
+                $this->load->library('upload_library');
+                $upload_path = './upload/user';
+                $upload_data = $this->upload_library->upload($upload_path, 'image');
+                $image_link = '';
+                if (isset($upload_data['file_name'])) {
+                    $image_link = $upload_data['file_name'];
+                }
                 //them vao csdl
                 $data = array(
-                    'name'     => $this->input->post('name'), 
-                    'phone'    => $this->input->post('phone'),
-                    'address'  => $this->input->post('address'),
+                    'name'     => strip_tags($this->input->post('name')), 
+                    'phone'    => strip_tags($this->input->post('phone')),
+                    'address'  => strip_tags($this->input->post('address')),
                 );
                 if($password)
                 {
                     $data['password'] = md5($password);
                 }
+                if ($image_link != '') {
+                    $data['image_link'] = $image_link;
+                }
                 if($this->user_model->update($user_id, $data))
                 {
                     //tạo ra nội dung thông báo
-                    $this->session->set_flashdata('message', 'Chỉnh sửa thông tin thành công');
+                   // $this->session->set_flashdata('message', 'Chỉnh sửa thông tin thành công');
+                    echo'
+                    <script>
+                    window.onload = function() {
+                        alert("Chỉnh sửa thông tin thành công");
+                        location.href = "";  
+                    }
+                    </script>
+                    ';
                 }else{
-                    $this->session->set_flashdata('message', 'Không thành công');
+                    //$this->session->set_flashdata('message', 'Không thành công');
+                    echo'
+                    <script>
+                    window.onload = function() {
+                        alert("Không thành công");
+                        location.href = "";  
+                    }
+                    </script>
+                    ';
                 }
                 //chuyen tới trang danh sách quản trị viên
                 redirect(site_url('user'));
@@ -211,6 +369,134 @@ Class User extends MY_Controller
         $this->load->view('site/layout', $this->data);
     }
     
+    /*
+     * Cập nhật mật khẩu thanh vien
+     */
+    function changepassword()
+    {
+        if(!$this->session->userdata('user_id_login'))
+        {
+            redirect(site_url('user/login'));
+        }
+        //lay thong tin cua thanh vien
+        $user_id = $this->session->userdata('user_id_login');
+        $user = $this->user_model->get_info($user_id);
+        if(!$user)
+        {
+            redirect();
+        }
+        $this->data['user']  = $user;
+        
+
+        $this->load->library('form_validation');
+        $this->load->helper('form');
+        
+        //neu ma co du lieu post len thi kiem tra
+        if($this->input->post())
+        {
+            $password = $this->input->post('password');
+            $new_password = $this->input->post('new_password');
+            $this->form_validation->set_rules('password', 'Mật khẩu', 'required',
+                array('required' => 'Bằng hữu nhập mật khẩu cũ đi'));
+            $this->form_validation->set_rules('new_password', 'Mật khẩu', 'required|min_length[6]',
+                array('required' => 'Bằng hữu nhập mật khẩu mới đi', 'min_length' => 'Mật khẩu mới ít nhất 6 kí tự'));
+            $this->form_validation->set_rules('re_password', 'Mật khẩu', 'matches[new_password]',
+                array('matches' => 'Bằng hữu nhập không khớp với mật khẩu mới'));
+
+            if(md5($password) != $user->password){
+                $this->form_validation->set_rules('password', 'Mật khẩu', 'matches[passwords]',
+                array('matches' => 'Bằng hữu nhập mật khẩu cũ đi'));
+            }
+            //nhập liệu chính xác
+            if($this->form_validation->run())
+            {
+                //them vao csdl
+                $data = array(
+                    'password'     => md5($new_password),
+                );
+               
+                if($this->user_model->update($user_id, $data))
+                {
+                    //tạo ra nội dung thông báo
+                   $this->session->set_flashdata('message', 'Bằng hữu đã chỉnh sửa thông tin thành công.');
+                }
+                //chuyen tới trang danh sách quản trị viên
+                redirect(site_url('user'));
+            }
+        }
+        
+        //hiển thị ra view
+        $this->data['temp'] = 'site/user/changepassword';
+        $this->load->view('site/layout', $this->data);
+    }
+    /*
+     * Lấy lại mật khẩu
+     */
+    function forgotpassword()
+    {
+        $this->load->library('form_validation');
+        $this->load->helper('form');
+        $this->load->model('user_model');
+        //neu ma co du lieu post len thi kiem tra
+        if($this->input->post())
+        {
+            $email = $this->input->post('email');
+            
+            $this->form_validation->set_rules('email', 'Email', 'required',
+                array('required' => 'Bằng hữu nhập email đi'));
+
+            $str = rand(); 
+
+            $where = array('email' => $email);
+            $user = $this->user_model->get_info_rule($where);
+            if($user){
+                //nhập liệu chính xác
+                if($this->form_validation->run())
+                    {
+                    //them vao csdl
+                        $this->load->library('email'); // Note: no $config param needed
+                    // // $this->email->from('YOUREMAILHERE@gmail.com', 'YOUREMAILHERE@gmail.com');
+                    $dataEmail = '<p>Xin chào: '. strip_tags($this->input->post('email')) .' </p>'.PHP_EOL.
+                            '<p>Yêu cầu cấp lại mật khẩu cho tài khoản '. strip_tags($this->input->post('email')) .' của bạn đã được xác nhận.</p>'.PHP_EOL.
+                            '<p>Tài khoản: '. strip_tags($this->input->post('email')) .' </p>'.PHP_EOL.
+                            '<p>Mật khẩu của bạn là: '. $str .'</p>'.PHP_EOL.
+                            '<p>Chúc bạn có khoảng thời gian đọc truyện vui vẻ tại website.</p>'.PHP_EOL.
+                            '<p>----</p>' .PHP_EOL.
+                            '<p>Cafe Sữa Team.</p>'.PHP_EOL.
+                            '<p>Lướt cà phê sữa, muốn đọc nữa, không muốn dừng.</p>'.PHP_EOL.
+                            '<p>Đội ngũ quản trị viên Cafe Sữa Team</p>'.PHP_EOL.
+                            '<p> </p>'.PHP_EOL.
+                            '<p>Ho Chi Minh City, VietNam</p>'.PHP_EOL.
+                            '<p>Tel: (035) 6 000 439</p>'.PHP_EOL.
+                            '<p>Email: teamcafesua@gmail.com</p>';
+                            $from = "teamcafesua@gmail.com";
+                            $to = $this->input->post('email');
+                            $subject = "[Quên Mật Khẩu] Cấp lại mật khẩu cho tài khoản ". strip_tags($this->input->post('email'));
+                            $message = $dataEmail;
+                            $headers = "From:" . $from;
+                            mail($to,$subject,$message, $headers);
+                    //2 ways
+                    $this->email->from('teamcafesua@gmail.com');
+                    $this->email->to($this->input->post('email'));
+                    $this->email->subject('[Quên Mật Khẩu] Cấp lại mật khẩu cho tài khoản '. strip_tags($this->input->post('email')));
+                    $this->email->message($dataEmail);
+                    $this->email->send();
+                    $data = array(
+                        'password'     => md5($str),
+                    );
+                    if($this->user_model->update($user->id, $data)){
+                        $this->session->set_flashdata('message', 'Mail đã được gữi bằng hữu kiểm tra mail và đăng nhập lại đi.');
+                    }
+                }
+            }else{
+                $this->session->set_flashdata('message', 'Hình như bằng hữu nhập sai email bọn em tìm không ra thông tin email này :(.');
+            }
+        }
+        
+        //hiển thị ra view
+        $this->data['temp'] = 'site/user/forgotpassword';
+        $this->load->view('site/layout', $this->data);
+    }
     /*
      * Thong tin cua thanh vien
      */
@@ -227,21 +513,65 @@ Class User extends MY_Controller
             redirect();
         }
         $this->data['user']  = $user;
+
+        $input = array();
+        $input['where'] = array('user_id', $user_id);
+        $love_lists = $this->lovelists_model->get_list();
+        $this->data['lovelists'] = $love_lists;
+        
+        
         
         //hiển thị ra view
         $this->data['temp'] = 'site/user/index';
         $this->load->view('site/layout', $this->data);
     }
 
+    /**
+     * REMOVE RECORD from lovelists
+    */
+    function remove_lovelists(){
+        $id = $this->uri->rsegment('3');
+        $data = array(
+            'status'      => 0
+        );
+        //them moi vao csdl
+        if($this->lovelists_model->delete($id))
+        {
+            $this->session->set_flashdata('message', 'Bằng hữu đã xóa thành công.');
+        }else{
+            $this->session->set_flashdata('message', 'Có lổi thử lại.');
+        }
+        redirect('/user');
+    }
     /*
      * Thuc hien dang xuat
      */
     function logout()
     {
+        $this->load->helper('cookie');
         if($this->session->userdata('user_id_login'))
         {
             $this->session->unset_userdata('user_id_login');
         }
+        delete_cookie("autologin_id");
+        delete_cookie("autologin_email");
+        delete_cookie("autologin_password");
+
+        // if(exists($this->session->userdata('userData')))
+        // {
+        //     //remove local fb session
+        //     $this->facebook->destroy_session();
+        //     //remove user data from session
+        //     $this->session->unset_userdata('userData');
+        // }
+        
+        if($this->session->userdata('user_data_google'))
+        {
+            //logout luon token Google
+            $this->session->unset_userdata('access_token');
+            $this->session->unset_userdata('user_data_google');
+        }
+        
         $this->session->set_flashdata('message', 'Đăng xuất thành công');
         redirect();
     }

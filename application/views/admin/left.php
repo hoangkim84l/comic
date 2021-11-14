@@ -4,8 +4,8 @@
 
     <div class="sideProfile">
         <a href="#" title="" class="profileFace"><img src="<?php echo public_url('admin')?>/images/user.png" width="40"></a>
-        
-        <span>Xin chào: <strong>admin!</strong></span>
+        <span>B Project</span>
+        <span>Xin chào: <?php if(isset($user_info)): ?><strong><?php echo $user_info->name;?></strong> <?php else:?> <strong>admin!</strong> <?php endif;?></span>
         <div class="clear"></div>
     </div>
     <div class="sidebarSep"></div>
@@ -33,7 +33,7 @@
                 </li>
                 <li>
                     <a href="<?php echo admin_url('chapter')?>">
-                        Chapters						
+                        Chương						
                     </a>
                 </li>
                 <li>
@@ -67,14 +67,14 @@
         <li class="support">
 
             <a href="" class="exp inactive">
-                <span>Hỗ trợ và liên hệ</span>
+                <span>Hỗ trợ và Seo Tag</span>
                 <strong>1</strong>
             </a>
 
             <ul style="display: none;" class="sub">
                 <li>
                     <a href="<?php echo admin_url('support')?>">
-                    Hỗ trợ</a>
+                    Hỗ trợ & SEO Tag</a>
                 </li>
             </ul>
 
@@ -83,7 +83,7 @@
 
             <a href="" class="exp inactive">
                 <span>Nội dung</span>
-                <strong>2</strong>
+                <strong>3</strong>
             </a>
 
             <ul style="display: none;" class="sub">
@@ -95,6 +95,11 @@
                 <li>
                     <a href="<?php echo admin_url('contact')?>">
                         Liên hệ
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo admin_url('comment')?>">
+                        Bình luận
                     </a>
                 </li>
             </ul>
