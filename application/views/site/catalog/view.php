@@ -46,7 +46,7 @@
         </div>
       </div>  
       <div class="widget">
-          <h6 class="mb-4">CHƯƠNG/CHAPTER</h6>
+          <h6 class="mb-4">Chương/ Chapter</h6>
           <?php 
           foreach($list_chapters as $row_chapter):?>
           <div class="media mb-4">

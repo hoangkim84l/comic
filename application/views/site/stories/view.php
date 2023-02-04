@@ -241,7 +241,7 @@ $(document).ready(function() {
       </div>
       <div class="col-lg-4">
       <div class="widget"><br/>
-          <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'/'.$stories->id)?>"><h6 class="mb-4">CHƯƠNG/CHAPTER</h6></a>
+          <a href="<?php echo site_url('danh-sach-chuong/'.$stories->slug.'/'.$stories->id)?>"><h6 class="mb-4">Chương/ Chapter</h6></a>
             <div class="scrollbar" id="style-1">
               <div class="force-overflow">
               <?php foreach($list_chapters as $row_chapter): if($row_chapter->status == 0){ }else{?>
