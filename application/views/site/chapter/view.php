@@ -248,14 +248,14 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
 
-            <a class="nav-link active" id="home-tab-cafesua" data-toggle="tab" href="#home-cafesua" role="tab" aria-controls="home" aria-selected="true"><img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận ở đây nè</a>
+            <a class="nav-link" id="home-tab-cafesua" data-toggle="tab" href="#home-cafesua" role="tab" aria-controls="home" aria-selected="true"><img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận ở đây nè</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="profile-tab-facebook" data-toggle="tab" href="#profile-cafesua" role="tab" aria-controls="profile" aria-selected="false"> <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận với Facebook</a>
+            <a class="nav-link active" id="profile-tab-facebook" data-toggle="tab" href="#profile-cafesua" role="tab" aria-controls="profile" aria-selected="false"> <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận với Facebook</a>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home-cafesua" role="tabpanel" aria-labelledby="home-tab-cafesua">
+          <div class="tab-pane fade" id="home-cafesua" role="tabpanel" aria-labelledby="home-tab-cafesua">
             <br/>
             <?php if(isset($user_info)):?>
             <form action="<?php echo site_url('comment/index');?>" class="row" method="POST" id="postComment">
@@ -443,7 +443,7 @@
             </div>
 
           </div>
-          <div class="tab-pane fade" id="profile-cafesua" role="tabpanel" aria-labelledby="profile-tab-facebook">
+          <div class="tab-pane fade show active" id="profile-cafesua" role="tabpanel" aria-labelledby="profile-tab-facebook">
             <br/>
             <div id="fb-root"></div>
             <script src="https://connect.facebook.net/vi_VN/all.js#appId=170796359666689&amp;xfbml=1"></script>

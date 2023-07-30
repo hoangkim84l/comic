@@ -112,7 +112,15 @@
                   <div class="bg">
                     <div class="overlays">
                       <a href="<?php echo site_url('xem-truyen/'.$row->slug.'/'.$row->id)?>">
-                        <?php echo $row->description;?>
+                        <span class="info-book"><?php echo $row->author?></span>
+                        <span class="info-book"><?php
+                                          $date = date_create($row->created);
+                                          echo date_format($date,'d-m-Y H:i:s')?>
+                        </span>
+                        <span class="info-book"></i><?php echo number_format($row->view)?> Lượt xem</span>
+                        <span class="info-book"><?php echo $row->continues == 0 ?  "Còn tiếp" :  "Hoàn thành";?></span>
+                        
+                        <span class="info-book"><?php echo $row->description;?></span>
                       </a>
                     </div>
                   </div>

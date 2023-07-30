@@ -53,7 +53,7 @@ Class Stories extends MY_Controller
     
           //lay danh sach truyện view cao
 	    $input_story = array();
-        $input_story['limit'] = array(7, 0);
+        $input_story['limit'] = array(5, 0);
         $input_story['order'] = array('view', 'DESC');
 	    $story_newest = $this->story_model->get_list($input_story);
         $this->data['story_newest'] = $story_newest;

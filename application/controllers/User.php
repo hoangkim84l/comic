@@ -59,6 +59,14 @@ Class User extends MY_Controller
             //nhập liệu chính xác
             if($this->form_validation->run())
             {
+                //lấy tên file ảnh avatar được user upload
+                $this->load->library('upload_library');
+                $upload_path = './upload/user';
+                $upload_data = $this->upload_library->upload($upload_path, 'image');
+                $image_link = '';
+                if (isset($upload_data['file_name'])) {
+                    $image_link = $upload_data['file_name'];
+                }
                 //them vao csdl
                 $password = strip_tags($this->input->post('password'));
                 $password = md5($password);
@@ -71,6 +79,11 @@ Class User extends MY_Controller
                     'password' => $password,
                     'created'  => now(),
                 );
+
+                if ($image_link != '') {
+                    $data['image_link'] = $image_link;
+                }
+
                 $this->load->library('email'); // Note: no $config param needed
                 $dataEmail = '<p>Tên: '. strip_tags($this->input->post('name')) .' </p>'.PHP_EOL.
                         '<p>Email: '. strip_tags($this->input->post('email')) .' </p>'.PHP_EOL.
@@ -576,4 +589,3 @@ Class User extends MY_Controller
         redirect();
     }
 }
-

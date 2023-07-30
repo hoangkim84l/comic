@@ -4,24 +4,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name='dmca-site-verification' content='VkEwZHJoN2RTbmt2dXdmYlQ5NzdTT000SkFEWUpRUFlnZ1JtTzRKQnkvQT01' />
-<!-- ** Plugins Needed for the Project ** -->
-<!-- Bootstrap -->
-<link rel="stylesheet" href="<?php echo public_url()?>site/plugins/bootstrap/bootstrap.min.css">
-<!-- slick slider -->
-<link rel="stylesheet" href="<?php echo public_url()?>site/plugins/slick/slick.css">
-<!-- themefy-icon -->
-<link rel="stylesheet" href="<?php echo public_url()?>site/plugins/themify-icons/themify-icons.css">
 
 <!-- Main Stylesheet -->
-<link href="<?php echo public_url()?>site/css/style.css?ver=3" rel="stylesheet">
-<link href="<?php echo public_url()?>site/css/style_v2.css?ver=5" rel="stylesheet">
-<link href="<?php echo public_url()?>site/css/newSler.css?ver=2" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo public_url()?>site/css/main.css">
 
 <!--Favicon-->
 <link rel="shortcut icon" href="<?php echo $support->favicon != '' ? base_url('upload/logo/'.$support->favicon) : base_url('upload/logo/default.jpg') ?>" type="image/x-icon">
 <link rel="icon" href="<?php echo public_url()?>site/images/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito" />
+
 <!--Meta seo meta-->
 <meta name="robots" content="<?php echo $support->robots?>" />
 <meta name="author" content="<?php echo $support->author?>" />
@@ -76,77 +66,3 @@ else{
 <meta property="og:site_name" typeof="WebPage" content="<?php echo current_url();?>" />
 <meta property="og:description" typeof="WebPage" content="<?php if(isset($stories) && ($stories->meta_desc != "")){ echo $stories->meta_desc;}elseif(isset($chapter) && ($chapter->meta_desc != "")){ echo $chapter->meta_desc;}else{echo $seo_desc_custom;}?>" />
 <meta property="og:type" typeof="WebPage" content="<?php echo $support->og_type?>" />
-<!-- jQuery -->
-<script src="<?php echo public_url()?>site/plugins/jQuery/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.9.1.js"></script> 
-<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
-<!-- Autocomplete  Search -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
-<!-- raty -->
-<script src="<?php echo public_url()?>site/raty/jquery.raty.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(function() {
-    $.fn.raty.defaults.path = '<?php echo public_url()?>/site/raty/img';
-    $('.raty').raty({
-        score: function() {
-        return $(this).attr('data-score');
-        },
-        readOnly  : true,
-    });
-});
-</script>
-<style>.raty img{width:16px !important;height:16px !important;}</style>
-<!--End raty --> 
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-178674513-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-178674513-1');
-</script>
-<!--Google ads-->
-<script data-ad-client="ca-pub-9387330072577151" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-jQuery(document).ready(function(){
-  jQuery(function(){
-    jQuery('#text-search').typeahead({
-      source: function(request, response){
-        jQuery.ajax({
-          url: '/stories/fetch',
-          type: 'POST',
-          dataType: 'JSON',
-          data: 'query='+request,
-          success: function(data){
-            response(jQuery.map(data, function(item){
-              return{
-                ids: item.id,
-                url:item.slug,
-                value: item.name
-              }
-            }))
-          }
-        })
-      },
-      displayText: function(item){
-        return item.value
-      },
-      updater: function( item ) {
-        console.log(item);
-        window.location.href = "xem-truyen/"+item.url+"-"+item.ids;
-      }
-    });
-  });
-});
-</script>
-<!--pinterest-->
-<meta name="p:domain_verify" content="81dc13c314d680b28e35d312ad22f50b"/>
-<!--Infinite scroll-->   
-<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
-<!--Auto show popup-->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
-    
