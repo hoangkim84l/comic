@@ -16,95 +16,84 @@ $this->load->view('site/slide', $this->data);
 <section class="card-list container-fluid">
   <h3>Latest Releases</h3>
   <div class="row" style="align-items: flex-end;">
+    <?php foreach ($top1 as $top1) { ?>
+      <div class="col-lg">
+        <div class="card card-left">
+          <div class="card-img-container">
+            <img src="<?php echo $top1->image_link != '' ? base_url('upload/stories/' . $top1->image_link) :  base_url('upload/stories/default.jpg') ?>" title="<?php echo $top1->site_title; ?>" alt="<?php echo $top1->meta_desc ?>" height="600" width="100%">
+            <div class="card-img-gradient-overlay">
+              <div class="card-tag"><span class="badge badge-pill badge-primary">English</span> <span class="badge badge-pill badge-warning">Korean</span> <span class="badge badge-pill badge-success">Vietnamese</span> <span class="badge badge-pill badge-secondary">Japanese</span></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-first">
+              <h5 class="card-title"><?php echo $top1->name; ?> | Chap 35</h5><a href="pages/watch%26read.html" class="btn btn-secondary btn-sm">Read Avaliable</a>
+            </div>
+            <div class="card-second">
+              <p><?php echo number_format($top1->view); ?> lượt xem | <?php echo time_elapsed_string($top1->created); ?></p>
+              <div class="dot-group"><svg height="20" width="40">
+                  <circle cx="6" cy="10" r="5" class="dot-primary" />
+                  <circle cx="20" cy="10" r="5" class="dot-secondary" />
+                  <circle cx="35" cy="10" r="5" class="dot-success" />
+                </svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php } ?>
     <div class="col-lg">
-      <div class="card card-left">
-        <div class="card-img-container"><img class="card-img" src="assets/images/1.png" alt="Card image cap">
-          <div class="card-img-gradient-overlay">
-            <div class="card-tag"><span class="badge badge-pill badge-primary">English</span> <span class="badge badge-pill badge-warning">Korean</span> <span class="badge badge-pill badge-success">Vietnamese</span> <span class="badge badge-pill badge-secondary">Japanese</span></div>
+      <?php foreach ($top2 as $top2) { ?>
+        <div class="card card-middle">
+          <div class="card-img-container">
+            <img src="<?php echo $top2->image_link != '' ? base_url('upload/stories/' . $top2->image_link) :  base_url('upload/stories/default.jpg') ?>" title="<?php echo $top2->site_title; ?>" alt="<?php echo $top2->meta_desc ?>" height="250" width="100%">
+            <div class="card-img-gradient-overlay">
+              <div class="card-tag"><span class="badge badge-pill badge-primary">English</span> <span class="badge badge-pill badge-warning">Korean</span> <span class="badge badge-pill badge-success">Vietnamese</span> <span class="badge badge-pill badge-secondary">Japanese</span></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-first">
+              <h5 class="card-title"><?php echo $top2->name; ?> | Chap 35</h5>
+            </div>
+            <div class="card-second">
+              <p><?php echo number_format($top2->view); ?> lượt xem | <?php echo time_elapsed_string($top2->created); ?></p>
+              <div class="dot-group"><svg height="20" width="40">
+                  <circle cx="6" cy="10" r="5" class="dot-primary" />
+                  <circle cx="20" cy="10" r="5" class="dot-secondary" />
+                  <circle cx="35" cy="10" r="5" class="dot-success" />
+                </svg></div>
+            </div>
           </div>
         </div>
-        <div class="card-body">
-          <div class="card-first">
-            <h5 class="card-title">Thánh Võ Tinh Thần | Chap 35</h5><a href="pages/watch%26read.html" class="btn btn-secondary btn-sm">Read Avaliable</a>
-          </div>
-          <div class="card-second">
-            <p>12.374 views | 2 tháng trước</p>
-            <div class="dot-group"><svg height="20" width="40">
-                <circle cx="6" cy="10" r="5" class="dot-primary" />
-                <circle cx="20" cy="10" r="5" class="dot-secondary" />
-                <circle cx="35" cy="10" r="5" class="dot-success" />
-              </svg></div>
-          </div>
-        </div>
-      </div>
+      <?php } ?>
     </div>
-    <div class="col-lg">
-      <div class="card card-middle">
-        <div class="card-img-container"><img class="card-img" src="assets/images/4.png" alt="Card image cap">
-          <div class="card-img-gradient-overlay">
-            <div class="card-tag"><span class="badge badge-pill badge-primary">English</span> <span class="badge badge-pill badge-warning">Korean</span> <span class="badge badge-pill badge-success">Vietnamese</span> <span class="badge badge-pill badge-secondary">Japanese</span></div>
+    <?php foreach ($top4 as $top4) { ?>
+      <div class="col-lg">
+        <div class="card card-right">
+          <div class="card-img-container">
+            <img src="<?php echo $top4->image_link != '' ? base_url('upload/stories/' . $top4->image_link) :  base_url('upload/stories/default.jpg') ?>" title="<?php echo $top4->site_title; ?>" alt="<?php echo $top4->meta_desc ?>" height="600" width="100%">
+            <div class="card-img-gradient-overlay">
+              <div class="card-tag"><span class="badge badge-pill badge-primary">English</span> <span class="badge badge-pill badge-warning">Korean</span> <span class="badge badge-pill badge-success">Vietnamese</span> <span class="badge badge-pill badge-secondary">Japanese</span></div>
+            </div>
           </div>
-        </div>
-        <div class="card-body">
-          <div class="card-first">
-            <h5 class="card-title">Thánh Võ Tinh Thần | Chap 35</h5>
-          </div>
-          <div class="card-second">
-            <p>12.374 views | 2 tháng trước</p>
-            <div class="dot-group"><svg height="20" width="40">
-                <circle cx="6" cy="10" r="5" class="dot-primary" />
-                <circle cx="20" cy="10" r="5" class="dot-secondary" />
-                <circle cx="35" cy="10" r="5" class="dot-success" />
-              </svg></div>
-          </div>
-        </div>
-      </div>
-      <div class="card card-middle">
-        <div class="card-img-container"><img class="card-img" src="assets/images/hqdefault.png" alt="Card image cap">
-          <div class="card-img-gradient-overlay">
-            <div class="card-tag"><span class="badge badge-pill badge-primary">English</span> <span class="badge badge-pill badge-warning">Korean</span> <span class="badge badge-pill badge-success">Vietnamese</span> <span class="badge badge-pill badge-secondary">Japanese</span></div>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="card-first">
-            <h5 class="card-title">Thánh Võ Tinh Thần | Chap 35</h5>
-          </div>
-          <div class="card-second">
-            <p>12.374 views | 2 tháng trước</p>
-            <div class="dot-group"><svg height="20" width="40">
-                <circle cx="6" cy="10" r="5" class="dot-primary" />
-                <circle cx="20" cy="10" r="5" class="dot-secondary" />
-                <circle cx="35" cy="10" r="5" class="dot-success" />
-              </svg></div>
+          <div class="card-body">
+            <div class="card-first">
+              <h5 class="card-title"><?php echo $top4->name; ?> | Chap 35</h5><a href="pages/watch%26read.html" class="btn btn-secondary btn-sm">Read Avaliable</a>
+            </div>
+            <div class="card-second">
+              <p><?php echo number_format($top4->view); ?> lượt xem | <?php echo time_elapsed_string($top4->created); ?></p>
+              <div class="dot-group"><svg height="20" width="40">
+                  <circle cx="6" cy="10" r="5" class="dot-primary" />
+                  <circle cx="20" cy="10" r="5" class="dot-secondary" />
+                  <circle cx="35" cy="10" r="5" class="dot-success" />
+                </svg></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg">
-      <div class="card card-right">
-        <div class="card-img-container"><img src="assets/images/2.png" class="card-img" alt="Card image cap">
-          <div class="card-img-gradient-overlay">
-            <div class="card-tag"><span class="badge badge-pill badge-primary">English</span> <span class="badge badge-pill badge-warning">Korean</span> <span class="badge badge-pill badge-success">Vietnamese</span> <span class="badge badge-pill badge-secondary">Japanese</span></div>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="card-first">
-            <h5 class="card-title">Thánh Võ Tinh Thần | Chap 35</h5><a href="pages/watch%26read.html" class="btn btn-secondary btn-sm">Read Avaliable</a>
-          </div>
-          <div class="card-second">
-            <p>12.374 views | 2 tháng trước</p>
-            <div class="dot-group"><svg height="20" width="40">
-                <circle cx="6" cy="10" r="5" class="dot-primary" />
-                <circle cx="20" cy="10" r="5" class="dot-secondary" />
-                <circle cx="35" cy="10" r="5" class="dot-success" />
-              </svg></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php } ?>
   </div>
 </section>
-<div class="btn-centered"><button type="button" class="btn btn-primary btn-lg">Show more</button></div><br>
+<div class="btn-centered"><button type="button" class="btn btn-primary btn-lg">Xem thêm</button></div><br>
 <!-- blog post Latest Chapter -->
 <section class="card-list container-fluid">
   <h3>Latest Chapter</h3>

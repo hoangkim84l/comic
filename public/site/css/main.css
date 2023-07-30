@@ -4289,7 +4289,7 @@ textarea.form-control.is-invalid {
 }
 
 .sidebar-active {
-    width: 290px
+    width: 350px
 }
 
 .card-large .card-img,
@@ -5272,7 +5272,17 @@ main {
 }
 
 .main-active {
-    margin-left: 290px;
+    margin-left: 350px;
     width: auto;
     overflow: hidden;
+}
+
+
+/**CUSTOM CSS**/
+.img-avatar {
+    width: 100px;
+}
+
+.list-unstyled .img-icon {
+    width: 50px;
 }
