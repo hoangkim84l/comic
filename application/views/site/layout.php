@@ -3,62 +3,107 @@
 
 <head>
 	<?php $this->load->view('site/head'); ?>
+	<style>
+      #nprogress {
+        pointer-events: none;
+      }
+
+      #nprogress .bar {
+        background: #14b8a6;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+      }
+
+      #nprogress .peg {
+        display: block;
+        position: absolute;
+        right: 0px;
+        width: 100px;
+        height: 100%;
+        box-shadow: 0 0 10px #14b8a6, 0 0 5px #14b8a6;
+        opacity: 1;
+        -webkit-transform: rotate(3deg) translate(0px, -4px);
+        -ms-transform: rotate(3deg) translate(0px, -4px);
+        transform: rotate(3deg) translate(0px, -4px);
+      }
+
+      #nprogress .spinner {
+        display: block;
+        position: fixed;
+        z-index: 1031;
+        top: 15px;
+        right: 15px;
+      }
+
+      #nprogress .spinner-icon {
+        width: 18px;
+        height: 18px;
+        box-sizing: border-box;
+        border: solid 2px transparent;
+        border-top-color: #14b8a6;
+        border-left-color: #14b8a6;
+        border-radius: 50%;
+        -webkit-animation: nprogresss-spinner 400ms linear infinite;
+        animation: nprogress-spinner 400ms linear infinite;
+      }
+
+      .nprogress-custom-parent {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .nprogress-custom-parent #nprogress .spinner,
+      .nprogress-custom-parent #nprogress .bar {
+        position: absolute;
+      }
+
+      @-webkit-keyframes nprogress-spinner {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+
+      @keyframes nprogress-spinner {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
 </head>
 
 <body>
 	<div class="wrapper">
-		<!-- Sidebar Holder -->
-		<nav id="sidebar" class="">
-			<?php $this->load->view('site/left'); ?>
-		</nav>
-
 		<!-- Page Content Holder -->
-		<main class="main-active">
+		<div class="min-h-screen bg-gray-200 selection:bg-sky-400 selection:text-white">
+			<div class="flex flex-row scroll-smooth">
+				<?php $this->load->view('site/left'); ?>
+				<!--button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<i class="fas fa-align-justify"></i>
+					</button-->
 
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<div class="container-fluid">
-					<button id="sidebar-button" class="btn btn-primary btn-sm">
-						<img alt="list-icon" src="<?php echo public_url() ?>site/assets/list.svg"><!--  toggle menu -->
-					</button>
-					<!--button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<i class="fas fa-align-justify"></i>
-						</button-->
-
-					<!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<div class="col-lg-12 search-form-normal">
-								<form id="frm-search" class="form-inline position-relative ml-lg-4" action="<?php echo site_url('truyen/tim-kiem-truyen') ?>" method="get">
-									<input class="form-control px-0 w-100 typeahead " type="search" autocomplete="off" placeholder="Tìm kiếm truyện..." value="<?php echo isset($key) ? $key : '' ?>" name="key-search" id="text-search">
-									<button class="search-icon" type="submit"><i class="ti-search text-dark"></i></button>
-								</form>
-							</div>
-						</div> -->
-				</div>
-			</nav>
-			<?php if (isset($message)) : ?>
-				<div class="modal fade" id="myModal" role="dialog">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-
-							</div>
-							<div class="modal-body">
-								<p>
-								<h3 class="nontification"><?php echo $message ?></h3>
-								</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							</div>
+				<!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<div class="col-lg-12 search-form-normal">
+							<form id="frm-search" class="form-inline position-relative ml-lg-4" action="<?php echo site_url('truyen/tim-kiem-truyen') ?>" method="get">
+								<input class="form-control px-0 w-100 typeahead " type="search" autocomplete="off" placeholder="Tìm kiếm truyện..." value="<?php echo isset($key) ? $key : '' ?>" name="key-search" id="text-search">
+								<button class="search-icon" type="submit"><i class="ti-search text-dark"></i></button>
+							</form>
 						</div>
-
-					</div>
-				</div>
-
-			<?php endif; ?>
-			<?php $this->load->view($temp, $this->data); ?>
-
-
+					</div> -->
+				<?php $this->load->view($temp, $this->data); ?>
+			</div>
+		</div>
 	</div>
 	<!-- <button onclick="topFunction()" id="myBtn" title="Go to top"><img width="30px" src="<?php echo public_url() ?>site/images/ot.png" alt="đọc truyện cafe sữa, cafe sữa novel, Web comic truyện tranh, truyện nhân gian"></button>
 	<a class="go-to-homepage" title="Go to home page" href="https://cafesuanovel.com"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_05.png'); ?>" alt="cafe sữa novel"></a> -->
@@ -102,18 +147,8 @@
 				behavior: 'smooth'
 			});
 		}
-		jQuery(function() {
-			jQuery("img.img-fluid").lazyload({
-				effect: "fadeIn",
-				threshold: 500
-			});
-		});
 	</script>
-	<script src="<?php echo public_url() ?>site/js/jquery.min.js"
-        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-        crossorigin="anonymous"></script>
-    <script src="<?php echo public_url() ?>site/js/bootstrap.min.js"></script>
-    <script src="<?php echo public_url() ?>site/js/script.js"></script>
+   
 </body>
 
 </html>

@@ -172,3 +172,16 @@ function time_elapsed_string($datetime, $full = false)
 	if (!$full) $string = array_slice($string, 0, 1);
 	return $string ? implode(', ', $string) . ' trước' : 'vừa tức thời';
 }
+
+/**
+ * Lay ngay thang tu time
+ * @param int	 $time	Timestamp
+ * @param string $type 	Loai format ('' | 'time' | 'full')
+ * %d-%m-%Y - %H:%i:%s
+ */
+function get_year($datetime)
+{
+	$time = new DateTime($datetime);
+
+	return $time->format("Y");
+}

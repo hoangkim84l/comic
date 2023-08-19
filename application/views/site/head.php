@@ -5,9 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name='dmca-site-verification' content='VkEwZHJoN2RTbmt2dXdmYlQ5NzdTT000SkFEWUpRUFlnZ1JtTzRKQnkvQT01' />
 
-<!-- Main Stylesheet -->
-<link rel="stylesheet" href="<?php echo public_url()?>site/css/main.css">
-
 <!--Favicon-->
 <link rel="shortcut icon" href="<?php echo $support->favicon != '' ? base_url('upload/logo/'.$support->favicon) : base_url('upload/logo/default.jpg') ?>" type="image/x-icon">
 <link rel="icon" href="<?php echo public_url()?>site/images/favicon.ico" type="image/x-icon">
@@ -66,3 +63,20 @@ else{
 <meta property="og:site_name" typeof="WebPage" content="<?php echo current_url();?>" />
 <meta property="og:description" typeof="WebPage" content="<?php if(isset($stories) && ($stories->meta_desc != "")){ echo $stories->meta_desc;}elseif(isset($chapter) && ($chapter->meta_desc != "")){ echo $chapter->meta_desc;}else{echo $seo_desc_custom;}?>" />
 <meta property="og:type" typeof="WebPage" content="<?php echo $support->og_type?>" />
+
+
+<link rel="preload" href="<?php echo public_url()?>site/static/css/396f1bbc71834279.css" as="style" />
+<link rel="stylesheet" href="<?php echo public_url()?>site/static/css/style.css" as="style" />
+<link rel="stylesheet" href="<?php echo public_url()?>site/static/css/396f1bbc71834279.css" data-n-g="" /><noscript data-n-css=""></noscript>
+<script defer="" nomodule="" src="<?php echo public_url()?>site/static/chunks/polyfills-5cd94c89d3acac5f.js"></script>
+<script src="<?php echo public_url()?>site/static/chunks/webpack-cb7634a8b6194820.js" defer=""></script>
+<script src="<?php echo public_url()?>site/static/chunks/framework-91d7f78b5b4003c8.js" defer=""></script>
+<script src="<?php echo public_url()?>site/static/chunks/main-a56127814584ab09.js" defer=""></script>
+<script src="<?php echo public_url()?>site/static/chunks/pages/_app-5673a4422c8218b8.js" defer=""></script>
+<script src="<?php echo public_url()?>site/static/chunks/358-eabb164fa9dd81a8.js" defer=""></script>
+<script src="<?php echo public_url()?>site/static/chunks/370-cb4c78ac90bd0a21.js" defer=""></script>
+<script src="<?php echo public_url()?>site/static/chunks/pages/index-45e638a1978e739b.js" defer=""></script>
+<script src="<?php echo public_url()?>site/static/R0GKek0fBNjbBTvluGi_X/_buildManifest.js" defer=""></script>
+<script src="<?php echo public_url()?>site/static/R0GKek0fBNjbBTvluGi_X/_ssgManifest.js" defer=""></script>
+<script src="<?php echo public_url()?>site/static/R0GKek0fBNjbBTvluGi_X/_middlewareManifest.js" defer=""></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

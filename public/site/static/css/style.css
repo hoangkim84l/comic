@@ -1,0 +1,25 @@
+/* MENU LEFT */
+.nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-icon {
+    width: 30px;
+    margin-right: 10px;
+}
+
+/* SLIDER */
+.sub-text {
+    min-width: 115px;
+    text-align: center;
+}
+
+/* HOME */
+.th-dots {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 155px !important;
+    white-space: nowrap;
+}
