@@ -23,3 +23,13 @@
     width: 155px !important;
     white-space: nowrap;
 }
+
+/* CHAPTER */
+.custom-chapter {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: auto;
+    white-space: nowrap;
+    text-align: left !important;
+    margin-bottom: 10px;
+}

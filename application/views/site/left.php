@@ -97,7 +97,7 @@
                         <?php echo $support->copyright ?>
                     </p>
                 </div>
-                <p></p>
+                <br/>
             </div>
         </div>
     </div>
