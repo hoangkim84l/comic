@@ -15,10 +15,23 @@ Class Home extends MY_Controller
 	{
 		// lay lay danh sach slide theo view cao
 		$this->load->model('story_model');
-		$input = array();
-		$input['order'] = array('view', 'DESC');
-		$results = $this->story_model->get_list($input);
-		$this->data['data_slides'] = $results;
+		$top1 = array();
+		$top1['limit'] = array(1, 0);
+		$top1['order'] = array('view', 'DESC');
+		$top1 = $this->story_model->get_list($top1);
+		$this->data['top1'] = $top1; //SLIDE 1
+		
+		$top2 = array();
+		$top2['limit'] = array(1, 1);
+		$top2['order'] = array('view', 'DESC');
+		$top2 = $this->story_model->get_list($top2);
+		$this->data['top2'] = $top2; //SLIDE 2
+		
+		$top3 = array();
+		$top3['limit'] = array(2, 1);
+		$top3['order'] = array('view', 'DESC');
+		$top3 = $this->story_model->get_list($top3);
+		$this->data['top3'] = $top3; //SLIDE 3
 
 		//get chapter by dates mới cập nhật
 		$this->load->model('chapter_model');

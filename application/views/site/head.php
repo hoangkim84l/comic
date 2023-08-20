@@ -1,7 +1,6 @@
 <meta charset="utf-8">
 <!-- mobile responsive meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name='dmca-site-verification' content='VkEwZHJoN2RTbmt2dXdmYlQ5NzdTT000SkFEWUpRUFlnZ1JtTzRKQnkvQT01' />
 

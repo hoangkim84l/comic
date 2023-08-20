@@ -33,3 +33,26 @@
     text-align: left !important;
     margin-bottom: 10px;
 }
+
+/* PAGINATION */
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination strong {
+    margin: 0 5px;
+    background: #ccc;
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+    cursor: no-drop;
+}
+
+.pagination a {
+    margin: 0 5px;
+    background: blue;
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+}
