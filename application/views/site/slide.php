@@ -8,7 +8,7 @@
 			?>
 					<swiper-slide>
 						<a href="<?php echo site_url('xem-truyen/' . $row->slug . '/' . $row->id) ?>">
-							<img class="aspect-[16/9] w-32 cursor-pointer rounded-xl object-cover transition hover:scale-105" src="<?php echo $row->image_link != '' ? base_url('upload/stories/' . $row->image_link) :  base_url('upload/stories/default.jpg') ?>" alt="cafesua novel" />
+							<img src="<?php echo $row->image_link != '' ? base_url('upload/stories/' . $row->image_link) :  base_url('upload/stories/default.jpg') ?>" alt="cafesua novel" />
 						</a>
 					</swiper-slide>
 			<?php
