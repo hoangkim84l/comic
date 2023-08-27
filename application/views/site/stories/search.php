@@ -1,7 +1,7 @@
 <div class="w-full p-6 md:p-10">
-  <div class="flex flex-row items-center md:pr-6">
-
+  <div class="flex-row items-center md:pr-6">
     <div class="z-50 space-y-8 rounded-3xl bg-white p-8">
+    <?php $this->load->view('site/menu-mobile', $this->data); ?>
       <p class="text-3xl font-bold text-gray-700 antialiased">Kết quả tìm kiếm với từ khóa "<?php echo $key ?>"</p>
       <ul class="list-inline" vocab="http://schema.org/" typeof="BreadcrumbList">
         <li property="itemListElement" typeof="ListItem">

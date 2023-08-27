@@ -1,6 +1,7 @@
 <div class="w-full p-6 md:p-10">
-  <div class="flex flex-row items-center md:pr-6">
+  <div class="flex-row items-center md:pr-6">
     <div class="z-50 space-y-8 rounded-3xl bg-white p-8">
+    <?php $this->load->view('site/menu-mobile', $this->data); ?>
       <!-- page-title -->
       <section class="section bg-secondary">
         <div class="container-fluid">

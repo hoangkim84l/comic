@@ -2,7 +2,9 @@
     <div class="hidden flex-1 md:inline-flex md:w-48 lg:w-64"></div>
     <div class="fixed h-full pb-16">
         <div class="hidden h-full flex-1 flex-col space-y-12 overflow-y-scroll rounded-3xl bg-white p-8 scrollbar-hide md:inline-flex md:w-48 lg:w-64">
-            <img alt="cafe sữa novel, Web comic truyện tranh, truyện nhân gian" src="<?php echo $support->logo != '' ? base_url('upload/logo/' . $support->logo) : base_url('upload/logo/default.jpg') ?>" decoding="async" data-nimg="responsive" style="margin: 0 auto; width: 100%, display:'flex'" />
+            <a href="<?php echo site_url() ?>">
+                <img alt="cafe sữa novel, Web comic truyện tranh, truyện nhân gian" src="<?php echo $support->logo != '' ? base_url('upload/logo/' . $support->logo) : base_url('upload/logo/default.jpg') ?>" decoding="async" data-nimg="responsive" style="margin: 0 auto; width: 100%, display:'flex'" />
+            </a>
             </span>
             <div class="flex h-full flex-1 flex-col space-y-12">
                 <ul class="space-y-1">
@@ -87,6 +89,96 @@
                 <p>
                     <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcafesuateam&tabs=timeline&width=250&height=700&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=720902514969277" width="200" height="150" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                 </p>
+
+                <div class="flex h-full items-end">
+                    <p class="text-sm font-medium text-gray-500">
+                        ©<script>
+                            var CurrentYear = new Date().getFullYear()
+                            document.write(CurrentYear)
+                        </script>
+                        <?php echo $support->copyright ?>
+                    </p>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="mobile" class="hidden menu-mobile absolute z-10 w-56 origin-top-left divide-y divide-gray-100 rounded-xl bg-white shadow-xl focus:outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-15" role="menu" tabindex="0">
+    <div class="space-y-2 p-4" role="none">
+        <div class="h-full flex-1 flex-col space-y-12 overflow-y-scroll rounded-3xl bg-white scrollbar-hide md:inline-flex md:w-48 lg:w-64">
+            <a href="<?php echo site_url() ?>">
+                <img alt="cafe sữa novel, Web comic truyện tranh, truyện nhân gian" src="<?php echo $support->logo != '' ? base_url('upload/logo/' . $support->logo) : base_url('upload/logo/default.jpg') ?>" decoding="async" data-nimg="responsive" style="margin: 0 auto; width: 100%, display:'flex'" />
+            </a>
+            </span>
+            <div class="flex h-full flex-1 flex-col space-y-12">
+                <ul class="space-y-1">
+                    <?php if (isset($user_info) || isset($user_data_google)) : ?>
+                        <a class="navbar-brand" href="<?php echo base_url() ?>"><img class="img-avatar" src="<?php echo $user_info->image_link != '' ?  base_url('upload/user/' . $user_info->image_link) : base_url('upload/banner/avatar.jpg'); ?>" alt="cafe sữa novel, Web comic truyện tranh, truyện nhân gian"></a>
+                        <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                            <a class="nav-link" href="<?php echo site_url('user') ?>">Xin chào:
+                                <?php if (isset($user_info)) {
+                                    echo $user_info->name;
+                                }
+                                if (isset($user_data_google)) {
+                                    echo $user_data_google->first_name;
+                                } ?></a>
+                        </li>
+                        <a class="navbar-brand" href="<?php echo site_url('user/logout') ?>"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/logout.png'); ?>" alt="cafe sữa novel"> Đăng xuất</a>
+                        <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                            <a class="nav-link" href="<?php echo site_url('user') ?>"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_02.png'); ?>" alt="cafe sữa novel, Web comic truyện tranh, truyện nhân gian"> Truyện yêu thích</a>
+                        </li>
+                        <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100"">
+                            <a class=" nav-link" href="javascript:void(0)"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_03.png'); ?>" alt="cafe sữa novel, Web comic truyện tranh, truyện nhân gian"> Truyện đã bình luận</a>
+                        </li>
+                        <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                            <a class="nav-link" href="javascript:void(0)"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_06.png'); ?>" alt="cafe sữa novel, Web comic truyện tranh, truyện nhân gian"> Truyện đã đánh giá</a>
+                        </li>
+                    <?php else : ?>
+                        <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                            <a class="nav-link" href="<?php echo site_url('user/register') ?>"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_10.png'); ?>" alt="cafe sữa novel"> Đăng ký</a>
+                        </li>
+                        <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                            <a class="nav-link" href="<?php echo site_url('user/login') ?>"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_08.png'); ?>" alt="cafe sữa novel"> Đăng nhập</a>
+                        </li>
+
+                        <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                            <a class="nav-link text-diable" href="javascript:void(0)"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_02.png'); ?>" alt="cafe sữa novel, Web comic truyện tranh, truyện nhân gian"> Truyện yêu thích</a>
+                        </li>
+                        <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                            <a class="nav-link text-diable" href="javascript:void(0)"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_03.png'); ?>" alt="cafe sữa novel, Web comic truyện tranh, truyện nhân gian"> Truyện đã bình luận</a>
+                        </li>
+                        <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                            <a class="nav-link text-diable" href="javascript:void(0)"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_06.png'); ?>" alt="cafe sữa novel, Web comic truyện tranh, truyện nhân gian"> Truyện đã đánh giá</a>
+                        </li>
+
+                    <?php endif; ?>
+                    <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                        <a class="nav-link" href="<?php echo base_url() ?>">
+                            <img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_05.png'); ?>" alt="cafe sữa novel"> Trang chủ</a>
+                    </li>
+                    <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                        <a class="nav-link" href="<?php echo site_url('truyen') ?>">
+                            <img class="img-icon" src="<?php echo base_url('upload/banner/icon/truyen.png'); ?>" alt="cafe sữa novel">
+
+                            <span>Truyện</span>
+                            <span class="h-3 w-3 self-start">
+                                <span class="inline-flex h-3 w-3 animate-ping rounded-full bg-teal-400 opacity-75">
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                        <a class="nav-link" href="<?php echo site_url('truyen/tim-nang-cao') ?>"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_07.png'); ?>" alt="cafe sữa novel"> Tìm truyện</a>
+                    </li>
+                    <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                        <a class="nav-link" href="<?php echo site_url('lien-he') ?>"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_08.png'); ?>" alt="cafe sữa novel"> Liên hệ</a>
+                    </li>
+                    <li class="flex cursor-pointer flex-row items-center space-x-3 rounded-lg p-2 text-lg font-medium text-gray-600 transition ease-in-out hover:-translate-y-1 hover:bg-indigo-100">
+                        Donate cho nhóm. Momo 0916535419 (PhươngThảo)
+                    </li>
+                </ul>
 
                 <div class="flex h-full items-end">
                     <p class="text-sm font-medium text-gray-500">

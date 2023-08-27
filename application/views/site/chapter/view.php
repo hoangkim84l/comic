@@ -1,6 +1,7 @@
 <div class="w-full p-6 md:p-10">
   <div class="flex-row items-center md:pr-6">
     <div class="z-50 space-y-8 rounded-3xl bg-white p-8">
+    <?php $this->load->view('site/menu-mobile', $this->data); ?>
       <!-- page-title -->
       <section class="section bg-secondary section-detail">
         <div class="container-fluid">
@@ -45,19 +46,19 @@
                   <li property="itemListElement" typeof="ListItem">
                     <meta property="position" content="1" />
                     <a property="item" itemprop="url" typeof="WebPage" href="<?php echo base_url() ?>">
-                      <span itemprop="title" property="name">Trang chủ / </span>
+                      <span itemprop="title" property="name">Trang chủ/ </span>
                     </a>
                   </li>
                   <li property="itemListElement" typeof="ListItem">
                     <meta property="position" content="2" />
                     <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('xem-truyen/' . $story->slug . '/' . $story->id) ?>">
-                      <span itemprop="title" property="name"> <?php echo $story->name ?> / </span>
+                      <span itemprop="title" property="name"> <?php echo $story->name ?>/ </span>
                     </a>
                   </li>
                   <li property="itemListElement" typeof="ListItem">
                     <meta property="position" content="2" />
                     <a property="item" itemprop="url" typeof="WebPage" href="<?php echo site_url('truyen/' . $story->slug . '/' . $chapter->slug . '/' . $chapter->id) ?>">
-                      <span itemprop="title" property="name"> <?php echo $chapter->name; ?> / </span>
+                      <span itemprop="title" property="name"> <?php echo $chapter->name; ?>/ </span>
                     </a>
                   </li>
                 </ul>
@@ -100,10 +101,10 @@
                       <?php } else {
                         echo "";
                       } ?>
-                      <div class="dropdown ">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Chương
+                      <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle dropbtn" type="button" data-toggle="dropdown">Chương
                           <span class="caret"></span></button>
-                        <ul class="dropdown-menu list-chapter">
+                        <ul class="dropdown-menu list-chapter dropdown-content">
                           <?php foreach ($list_chapters as $row_chapter) : if ($row_chapter->status == 0) {
                             } else { ?>
                               <li><a class="<?php if ($row_chapter->id == $id) {
@@ -172,9 +173,9 @@
                         echo "";
                       } ?>
                       <div class="dropdown ">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Chương
+                        <button class="btn btn-primary dropdown-toggle dropbtn" type="button" data-toggle="dropdown">Chương
                           <span class="caret"></span></button>
-                        <ul class="dropdown-menu list-chapter">
+                        <ul class="dropdown-menu list-chapter dropdown-content">
                           <?php foreach ($list_chapters as $row_chapter) : if ($row_chapter->status == 0) {
                             } else { ?>
                               <li><a class="<?php if ($row_chapter->id == $id) {
@@ -238,9 +239,9 @@
           <div class="row">
             <div class="col-lg-12">
               <h6 class="mb-4">Thể loại</h6>
-              <ul class="list-inline tag-list">
+              <ul class="list-inlin tag-list">
                 <?php foreach ($catalogs as $row_catalog) : ?>
-                  <li class="list-inline-item m-1"><a href="<?php echo site_url('danh-muc/' . $row_catalog->slug . '/' . $row_catalog->id) ?>"><?php echo $row_catalog->name ?></a></li>
+                  <li class="sub-text mr-2 mb-10 w-min rounded-l-3xl rounded-tr-3xl bg-teal-400 px-3 py-2 text-white shadow-lg shadow-teal-200 lg:inline-flex"><a href="<?php echo site_url('danh-muc/' . $row_catalog->slug . '/' . $row_catalog->id) ?>"><?php echo $row_catalog->name ?></a></li>
                 <?php endforeach; ?>
               </ul>
             </div>

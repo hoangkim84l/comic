@@ -101,12 +101,16 @@
   </a>
 
   <script type="text/javascript">
-    //  jQuery(document).ready(function(){
-    //  	jQuery('*').bind('cut copy paste contextmenu', function (e) {
-    //  		e.preventDefault();
-    //  	})
-    //  	$("#exampleModal").modal('show');
-    //  });
+    jQuery(document).ready(function() {
+      //  	jQuery('*').bind('cut copy paste contextmenu', function (e) {
+      //  		e.preventDefault();
+      //  	})
+      //  	$("#exampleModal").modal('show');
+      jQuery('#menu-mobile').click(function() {
+        let element = document.getElementById("mobile");
+        element.classList.toggle("hidden");
+      });
+    });
 
     //block f12 key
     //  $(document).keydown(function (event) {
