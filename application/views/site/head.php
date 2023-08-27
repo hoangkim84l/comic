@@ -79,3 +79,4 @@ else{
 <script src="<?php echo public_url()?>site/static/R0GKek0fBNjbBTvluGi_X/_ssgManifest.js" defer=""></script>
 <script src="<?php echo public_url()?>site/static/R0GKek0fBNjbBTvluGi_X/_middlewareManifest.js" defer=""></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">

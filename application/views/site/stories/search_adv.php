@@ -34,13 +34,13 @@
       <section class="section-search">
         <br />
         <div class="container">
-          <form method="get" action="<?php echo site_url('stories/search_adv') ?>" class="list_filter form">
+          <form method="get" action="<?php echo site_url('stories/search_adv') ?>" class="w3-container">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="name">Truyện huynh đài muốn tìn tên gì?</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên truyện" value="<?php echo $this->input->get('name') ?>">
+                <input type="text" class="w3-input w3-animate-input" id="name" name="name" placeholder="Nhập tên truyện" value="<?php echo $this->input->get('name') ?>">
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 mt-2">
                 <div class="form-group col-md-6">
                   <label for="inputState">Trạng thái</label>
                   <select id="status" name="status" class="form-control">
@@ -58,7 +58,7 @@
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-12">
+              <div class="form-group col-md-12 mt-2">
                 <label for="inputState">Thể loại huynh đài muốn tìm</label>
               </div>
               <?php
@@ -67,7 +67,7 @@
                   <optgroup label="<?php echo $row->name ?>">
                     <?php foreach ($row->subs as $sub) : ?>
                       <div class="form-check col-md-4">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" value="<?php echo $sub->id ?>">
+                        <input type="checkbox" class="w3-check" id="exampleCheck1" value="<?php echo $sub->id ?>">
                         <label class="form-check-label" for="exampleCheck1"><?php echo $sub->name ?></label>
                       </div>
                     <?php endforeach; ?>
@@ -75,14 +75,14 @@
                 <?php else : ?>
                   <div class="form-group col-md-4">
                     <div class="form-check col-md-12">
-                      <input <?php if (!empty($this->input->get('category_id')) && in_array($row->id, $this->input->get('category_id'))) echo 'checked'; ?> type="checkbox" class="form-check-input" name="category_id[]" id="category_id" value="<?php echo $row->id ?>">
+                      <input <?php if (!empty($this->input->get('category_id')) && in_array($row->id, $this->input->get('category_id'))) echo 'checked'; ?> type="checkbox" class="w3-check" name="category_id[]" id="category_id" value="<?php echo $row->id ?>">
                       <label class="form-check-label" for="exampleCheck1"><?php echo $row->name ?></label>
                     </div>
                   </div>
                 <?php endif; ?>
               <?php endforeach; ?>
             </div>
-            <button type="submit" class="btn btn-primary">Kiếm nào</button>
+            <button type="submit" class="w3-btn w3-blue mt-2" style="width: 100%;">Kiếm nào</button>
           </form>
         </div>
       </section>

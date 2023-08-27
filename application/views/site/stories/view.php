@@ -71,23 +71,24 @@
         </div>
 
         <div class="space-y-6 rounded-xl bg-white px-4 py-6"><span class="text-2xl font-bold text-gray-700">Ý kiến của huynh đài</span>
-          <div class="flex flex-row items-stretch rounded-xl text-emerald-900">
+          <div class="flex-row items-stretch rounded-xl text-emerald-900">
             <div class="grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4">
               <div class="font-gray-700 cursor-pointer justify-center space-x-2 rounded-xl py-3 text-xs shadow-md shadow-indigo-100 transition hover:bg-indigo-200">
                 <div class="row">
                   <div class="col-lg-12">
                     <!-- /blog single -->
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
                       <li class="nav-item">
-
-                        <a class="nav-link active" id="home-tab-cafesua" data-toggle="tab" href="#home-cafesua" role="tab" aria-controls="home" aria-selected="true"><img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận ở đây nè</a>
+                        <a class="nav-link active" id="home-tab-cafesua" data-toggle="tab" href="#home-cafesua" role="tab" aria-controls="home" aria-selected="true">
+                          <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận ở đây nè</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="profile-tab-facebook" data-toggle="tab" href="#profile-cafesua" role="tab" aria-controls="profile" aria-selected="false"> <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận với Facebook</a>
+                        <a class="nav-link" id="profile-tab-facebook" data-toggle="tab" href="#profile-cafesua" role="tab" aria-controls="profile" aria-selected="false"> 
+                          <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận với Facebook</a>
                       </li>
-                    </ul>
+                    </ul> -->
                     <div class="tab-content" id="myTabContent">
-                      <div class="tab-pane fade show active" id="home-cafesua" role="tabpanel" aria-labelledby="home-tab-cafesua">
+                      <!-- <div class="tab-pane fade show active" id="home-cafesua" role="tabpanel" aria-labelledby="home-tab-cafesua">
                         <br />
                         <?php if (isset($user_info)) : ?>
                           <form action="<?php echo site_url('comment/storyHaveLogin'); ?>" class="row" method="POST" id="postComment" name="postComment">
@@ -275,7 +276,7 @@
 
                         </div>
 
-                      </div>
+                      </div> -->
                       <div class="tab-pane fade" id="profile-cafesua" role="tabpanel" aria-labelledby="profile-tab-facebook">
                         <br />
                         <div id="fb-root"></div>
@@ -283,7 +284,6 @@
                         <div class="fb-comments" data-href="<?php echo current_url() ?>" data-num-posts="5" data-width="100%" data-colorscheme="light">
                         </div>
                       </div>
-
                     </div>
                   </div>
                 </div>

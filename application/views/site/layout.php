@@ -89,25 +89,16 @@
     <div class="min-h-screen bg-gray-200 selection:bg-sky-400 selection:text-white">
       <div class="flex flex-row scroll-smooth">
         <?php $this->load->view('site/left'); ?>
-        <!--button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<i class="fas fa-align-justify"></i>
-					</button-->
-
-        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<div class="col-lg-12 search-form-normal">
-							<form id="frm-search" class="form-inline position-relative ml-lg-4" action="<?php echo site_url('truyen/tim-kiem-truyen') ?>" method="get">
-								<input class="form-control px-0 w-100 typeahead " type="search" autocomplete="off" placeholder="Tìm kiếm truyện..." value="<?php echo isset($key) ? $key : '' ?>" name="key-search" id="text-search">
-								<button class="search-icon" type="submit"><i class="ti-search text-dark"></i></button>
-							</form>
-						</div>
-					</div> -->
         <?php $this->load->view($temp, $this->data); ?>
       </div>
     </div>
   </div>
-  <!-- <button onclick="topFunction()" id="myBtn" title="Go to top"><img width="30px" src="<?php echo public_url() ?>site/images/ot.png" alt="đọc truyện cafe sữa, cafe sữa novel, Web comic truyện tranh, truyện nhân gian"></button>
-	<a class="go-to-homepage" title="Go to home page" href="https://cafesuanovel.com"><img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_05.png'); ?>" alt="cafe sữa novel"></a> -->
-  </div>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">
+    <img width="30px" src="<?php echo public_url() ?>site/images/ot.png" alt="đọc truyện cafe sữa, cafe sữa novel, Web comic truyện tranh, truyện nhân gian">
+  </button>
+  <a class="go-to-homepage" title="Go to home page" href="https://cafesuanovel.com">
+    <img class="img-icon" src="<?php echo base_url('upload/banner/icon/icon_05.png'); ?>" alt="cafe sữa novel">
+  </a>
 
   <script type="text/javascript">
     //  jQuery(document).ready(function(){

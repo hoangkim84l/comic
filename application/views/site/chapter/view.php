@@ -1,5 +1,5 @@
 <div class="w-full p-6 md:p-10">
-  <div class="flex flex-row items-center md:pr-6">
+  <div class="flex-row items-center md:pr-6">
     <div class="z-50 space-y-8 rounded-3xl bg-white p-8">
       <!-- page-title -->
       <section class="section bg-secondary section-detail">
@@ -7,8 +7,7 @@
           <div class="row">
             <div class="col-lg-12">
               <a href="<?php echo site_url('xem-truyen/' . $story->slug . '/' . $story->id) ?>">
-                <h4><?php
-                    echo $story->name; ?></h4>
+                <h4><?php echo $story->name; ?></h4>
               </a>
               <h5>&nbsp;&nbsp;&nbsp;<?php echo $chapter->name ?></h5>
             </div>
@@ -138,11 +137,8 @@
               <?php if ($chapter->image_link != '' && $chapter->show_img == 1) { ?>
                 <div class="scrollbar scrollbar-style-2" id="style-1">
                   <div class="force-overflow">
-
                     <h6>Bằng hữu có thể click vào ảnh để zoom đó</h6><br />
                     <img id="custom-setid-zoom-image" loading="lazy" class="w-100 img-fluid mb-4" src="<?php echo $chapter->image_link != '' ? base_url('upload/chapter/' . $chapter->image_link) : base_url('upload/chapter/default.jpg') ?>" alt="<?php echo $chapter->name ?>">
-                    <!-- <img  src="https://media.geeksforgeeks.org/wp-content/uploads/20190912174307/qwe1.png" alt="Snow" style="width:100%;max-width:300px"> -->
-                    <!-- The Modal -->
                     <div id="custom-model-zoom-image" class="modal">
                       <span class="close">&times;</span>
                       <img class="modal-content" id="custom-zoom-image">
@@ -153,7 +149,7 @@
                 echo "";
               } ?>
               <div class="force-overflow-new">
-                <div class="content">
+                <div class="container content-chapter-center">
                   <p><?php echo $chapter->content ?></p>
                 </div>
               </div>
@@ -256,7 +252,7 @@
           <div class="row">
             <div class="col-lg-12">
               <!-- /blog single -->
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
 
                   <a class="nav-link" id="home-tab-cafesua" data-toggle="tab" href="#home-cafesua" role="tab" aria-controls="home" aria-selected="true"><img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận ở đây nè</a>
@@ -264,9 +260,9 @@
                 <li class="nav-item">
                   <a class="nav-link active" id="profile-tab-facebook" data-toggle="tab" href="#profile-cafesua" role="tab" aria-controls="profile" aria-selected="false"> <img src="<?php echo public_url('') ?>site/images/icon-stars-2.png" alt="cafe sữa novel" style="height: 30px;"> Bình luận với Facebook</a>
                 </li>
-              </ul>
+              </ul> -->
               <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade" id="home-cafesua" role="tabpanel" aria-labelledby="home-tab-cafesua">
+                <!-- <div class="tab-pane fade" id="home-cafesua" role="tabpanel" aria-labelledby="home-tab-cafesua">
                   <br />
                   <?php if (isset($user_info)) : ?>
                     <form action="<?php echo site_url('comment/index'); ?>" class="row" method="POST" id="postComment">
@@ -457,7 +453,7 @@
 
                   </div>
 
-                </div>
+                </div> -->
                 <div class="tab-pane fade show active" id="profile-cafesua" role="tabpanel" aria-labelledby="profile-tab-facebook">
                   <br />
                   <div id="fb-root"></div>

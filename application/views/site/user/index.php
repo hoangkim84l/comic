@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                <form class="t-form form_action" method="post" action="<?php echo site_url('user/edit') ?>" enctype="multipart/form-data">
+                <form class="w3-container" method="post" action="<?php echo site_url('user/edit') ?>" enctype="multipart/form-data">
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-6">
@@ -36,24 +36,24 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="col-lg-12">
-                                    <input type="email" class="form-control mb-4" id="email" name="email" value="<?php echo $user->email ?>" placeholder="Email" require disabled>
+                                    <input type="email" class="w3-input w3-animate-input" id="email" name="email" value="<?php echo $user->email ?>" placeholder="Email" require disabled>
                                 </div>
                                 <div class="col-lg-12">
-                                    <input type="text" class="form-control mb-4" id="name" name="name" value="<?php echo $user->name ?>" placeholder="Họ và tên" require>
+                                    <input type="text" class="w3-input w3-animate-input" id="name" name="name" value="<?php echo $user->name ?>" placeholder="Họ và tên" require>
                                 </div>
                                 <div class="col-lg-12">
-                                    <input type="number" class="form-control mb-4" id="phone" name="phone" value="<?php echo $user->phone ?>" placeholder="Số điện thoại" require>
+                                    <input type="number" class="w3-input w3-animate-input" id="phone" name="phone" value="<?php echo $user->phone ?>" placeholder="Số điện thoại" require>
                                 </div>
                                 <div class="col-lg-12">
-                                    <textarea name="address" id="address" class="form-control mb-4" placeholder="Địa chỉ..."><?php echo $user->address ?></textarea>
+                                    <textarea name="address" id="address" class="w3-input w3-animate-input" placeholder="Địa chỉ..."><?php echo $user->address ?></textarea>
                                 </div>
                                 <div class="col-lg-12">
-                                    <input type="password" class="form-control mb-4" id="passwords" name="passwords" placeholder="Nhập mật khẩu xác nhận nào" require>
-                                    <input type="hidden" class="form-control mb-4" id="password" name="password" value="<?php echo $user->password ?>">
+                                    <input type="password" class="w3-input w3-animate-input" id="passwords" name="passwords" placeholder="Nhập mật khẩu xác nhận nào" require>
+                                    <input type="hidden" class="w3-input w3-animate-input" id="password" name="password" value="<?php echo $user->password ?>">
                                     <div class="clear"></div>
                                     <div class="error" id="passwords_error"><?php echo form_error('passwords') ?></div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 mt-2">
                                     <button class="btn btn-primary btn-full-width">Lưu lại nào!</button>
                                     <a href="<?php echo site_url('user/changepassword') ?>" class="button">Đổi mật khẩu</a>
                                 </div>

@@ -83,7 +83,7 @@
                         <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
                     </span>
                 </div>
-                
+
                 <p>
                     <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcafesuateam&tabs=timeline&width=250&height=700&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=720902514969277" width="200" height="150" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                 </p>
@@ -97,7 +97,7 @@
                         <?php echo $support->copyright ?>
                     </p>
                 </div>
-                <br/>
+                <br />
             </div>
         </div>
     </div>
