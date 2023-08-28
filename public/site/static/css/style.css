@@ -343,5 +343,11 @@ a.current-chap {
 
   .next, .previous {
     padding: 16px 5px;
+    margin: 1px;
+  }
+
+  .row>* {
+    padding-right: unset;
+    padding-left: unset;
   }
 }
