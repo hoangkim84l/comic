@@ -337,8 +337,8 @@ a.current-chap {
 
   .content-chapter-center img, 
   .content-chapter-center p img {
-    width: auto !important;
-    height: 100% !important;
+    width: 100% !important;
+    height: auto !important;
   }
 
   .next, .previous {
