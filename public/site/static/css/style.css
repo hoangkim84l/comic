@@ -333,5 +333,11 @@ a.current-chap {
 
   .th-dots {
     width: 110px !important;
-}
+  }
+
+  .content-chapter-center img, 
+  .content-chapter-center p img {
+    width: auto;
+    height: 100%;
+  }
 }
