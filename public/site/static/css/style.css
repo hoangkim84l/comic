@@ -340,4 +340,8 @@ a.current-chap {
     width: auto !important;
     height: 100% !important;
   }
+
+  .next .previous {
+    padding: 16px 5px;
+  }
 }
