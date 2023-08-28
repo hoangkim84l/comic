@@ -118,7 +118,7 @@ swiper-container {
     margin-bottom: 10px;
 }
 
-.content-chapter-center, 
+.content-chapter-center,
 .content-chapter-center img {
   margin: 0 auto;
 }
@@ -330,4 +330,8 @@ a.current-chap {
   .sub-text {
     float: left;
   }
+
+  .th-dots {
+    width: 110px !important;
+}
 }
