@@ -341,7 +341,7 @@ a.current-chap {
     height: 100% !important;
   }
 
-  .next .previous {
+  .next, .previous {
     padding: 16px 5px;
   }
 }
