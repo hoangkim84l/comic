@@ -102,10 +102,9 @@
 
   <script type="text/javascript">
     jQuery(document).ready(function() {
-      //  	jQuery('*').bind('cut copy paste contextmenu', function (e) {
-      //  		e.preventDefault();
-      //  	})
-      //  	$("#exampleModal").modal('show');
+       	jQuery('*').bind('cut copy paste contextmenu', function (e) {
+       		e.preventDefault();
+       	})
       jQuery('#menu-mobile').click(function() {
         let element = document.getElementById("mobile");
         element.classList.toggle("hidden");

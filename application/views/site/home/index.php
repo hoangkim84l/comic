@@ -14,16 +14,16 @@ $this->load->model('story_model');
           <p class="text-3xl font-bold text-gray-700 antialiased">Chương mới cập bến.</p>
           <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-2 md+:grid-cols-3 lgc:grid-cols-2 xlc:grid-cols-3 2xlc:grid-cols-3 3xlc:grid-cols-5">
             <?php foreach ($data_homes as $data_home) :
-              if ($data_home->status == 0) {
-              } else {
-                $story = $this->story_model->get_info($data_home->story_id);
+              // if ($data_home->status == 0) {
+              // } else {
+                $story = $this->story_model->get_info($data_home);
             ?>
-                <div data-id="<?php echo $data_home->story_id ?>" style="background:url(<?php echo $story->image_link != '' ? base_url('upload/stories/' . $story->image_link) : base_url('upload/stories/default.jpg') ?>) no-repeat center center;background-size:cover" class="flex aspect-[2/3] h-56 cursor-pointer flex-col rounded-3xl bg-cover transition hover:scale-105 hover:saturate-150 lg:h-72">
+                <div data-id="<?php echo $data_home ?>" style="background:url(<?php echo $story->image_link != '' ? base_url('upload/stories/' . $story->image_link) : base_url('upload/stories/default.jpg') ?>) no-repeat center center;background-size:cover" class="flex aspect-[2/3] h-56 cursor-pointer flex-col rounded-3xl bg-cover transition hover:scale-105 hover:saturate-150 lg:h-72">
                   <div class="grow p-4">
                     <?php
                     $input_chap = array();
                     $input_chap['limit'] = array(1, 0);
-                    $input_chap['where'] = array('story_id' => $data_home->story_id);
+                    $input_chap['where'] = array('story_id' => $data_home);
                     $input_chap['order'] = array('created', 'DESC');
                     $final_chap = $this->chapter_model->get_list($input_chap);
                     foreach ($final_chap as $row) {
@@ -41,7 +41,7 @@ $this->load->model('story_model');
                     <span class="line-clamp-2"><a href="<?php echo site_url('xem-truyen/' . $story->slug . '/' . $story->id) ?>"><?php echo $story->name; ?></a></span>
                   </div>
                 </div>
-            <?php }
+            <?php // }
             endforeach; ?>
           </div>
           <div class="flex space-x-2">

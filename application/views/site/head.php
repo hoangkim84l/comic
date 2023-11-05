@@ -80,3 +80,18 @@ else{
 <script src="<?php echo public_url()?>site/static/R0GKek0fBNjbBTvluGi_X/_middlewareManifest.js" defer=""></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-178674513-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-178674513-1');
+</script>
+<!--Google ads-->
+<script data-ad-client="ca-pub-9323279727270807" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!--pinterest-->
+<meta name="p:domain_verify" content="81dc13c314d680b28e35d312ad22f50b"/>
