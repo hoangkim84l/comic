@@ -97,7 +97,7 @@
 						<td>
 							<b><?php echo $row->name?></b>
 						</td>
-						<td><?php echo $row->description?></td>
+						<td>...</td>
 						<td align="center"><img height="150" src="<?php echo $row->image_link != '' ? base_url('upload/stories/'.$row->image_link) : base_url('upload/stories/default.jpg')?>"></td>
 						<td>
 							<?php
