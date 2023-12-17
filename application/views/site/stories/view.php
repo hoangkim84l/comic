@@ -59,8 +59,7 @@
                   $cata = json_decode($stories->category_id);
                   foreach ($catalog as $data) {
                     if (in_array($data->id, $cata)) { ?>
-                      <a class="new-links" href='/danh-muc/<?php echo $data->id;
-                                                            ?>'><?php echo $data->name . "."; ?></a>
+                      <a class="new-links" href='<?php echo site_url('danh-muc/' . $data->slug . '/' . $data->id) ?>'><?php echo $data->name . "."; ?></a>
                   <?php }
                   }
                   ?>
@@ -300,11 +299,11 @@
               foreach ($list_chapters as $row) :
                 if ($row->status == 0) {
                 } else { ?>
-                  <div class="custom-chapter cursor-pointer rounded-xl bg-teal-500 p-1 text-center font-semibold text-white transition hover:scale-105 hover:bg-teal-600">
-                    <a href="<?php echo site_url('truyen/' . $stories->slug . '/' . $row->slug . '/' . $row->id) ?>">
+                  <a href="<?php echo site_url('truyen/' . $stories->slug . '/' . $row->slug . '/' . $row->id) ?>">
+                     <div class="custom-chapter cursor-pointer rounded-xl bg-teal-500 p-1 text-center font-semibold text-white transition hover:scale-105 hover:bg-teal-600">
                       <?php echo $row->name ?>
-                    </a>
-                  </div>
+                      </div>
+                  </a>
               <?php
                 }
               endforeach;
@@ -319,13 +318,15 @@
             foreach ($view_stories as $row_stories) :
               if ($row_stories->status == 0) {
               } else { ?>
-                <div style="background:url(<?php echo $row_stories->image_link != '' ? base_url('upload/stories/' . $row_stories->image_link) : base_url('upload/stories/default.jpg') ?>) no-repeat center center;background-size:cover" class="flex aspect-[2/3] h-56 cursor-pointer flex-col rounded-3xl bg-cover transition hover:scale-105 hover:saturate-150 lg:h-72">
-                  <div class="grow p-4">
+                <a href="<?php echo site_url('xem-truyen/' . $row_stories->slug . '/' . $row_stories->id)?>">
+                  <div style="background:url(<?php echo $row_stories->image_link != '' ? base_url('upload/stories/' . $row_stories->image_link) : base_url('upload/stories/default.jpg') ?>) no-repeat center center;background-size:cover" class="flex aspect-[2/3] h-56 cursor-pointer flex-col rounded-3xl bg-cover transition hover:scale-105 hover:saturate-150 lg:h-72">
+                    <div class="grow p-4">
+                    </div>
+                    <div class="text-md w-full rounded-b-3xl bg-black/70 py-4 px-2 text-center font-medium text-white backdrop-opacity-50">
+                      <span class="line-clamp-2"><?php echo $row_stories->name; ?></span>
+                    </div>
                   </div>
-                  <div class="text-md w-full rounded-b-3xl bg-black/70 py-4 px-2 text-center font-medium text-white backdrop-opacity-50">
-                    <span class="line-clamp-2"><?php echo $row_stories->name; ?></span>
-                  </div>
-                </div>
+                </a>
             <?php }
             endforeach; ?>
           </div>
@@ -343,16 +344,16 @@
             }
             foreach ($list_stories_new as $row_stories) :
               if ($row_stories->status == 0) {
-              } else {
-
-            ?>
-                <div style="background:url(<?php echo $row_stories->image_link != '' ? base_url('upload/stories/' . $row_stories->image_link) : base_url('upload/stories/default.jpg') ?>) no-repeat center center;background-size:cover" class="flex aspect-[2/3] h-56 cursor-pointer flex-col rounded-3xl bg-cover transition hover:scale-105 hover:saturate-150 lg:h-72">
-                  <div class="grow p-4">
+              } else { ?>
+                <a href="<?php echo site_url('xem-truyen/' . $row_stories->slug . '/' . $row_stories->id)?>">
+                  <div style="background:url(<?php echo $row_stories->image_link != '' ? base_url('upload/stories/' . $row_stories->image_link) : base_url('upload/stories/default.jpg') ?>) no-repeat center center;background-size:cover" class="flex aspect-[2/3] h-56 cursor-pointer flex-col rounded-3xl bg-cover transition hover:scale-105 hover:saturate-150 lg:h-72">
+                    <div class="grow p-4">
+                    </div>
+                    <div class="text-md w-full rounded-b-3xl bg-black/70 py-4 px-2 text-center font-medium text-white backdrop-opacity-50">
+                      <span class="line-clamp-2"><?php echo $row_stories->name; ?></span>
+                    </div>
                   </div>
-                  <div class="text-md w-full rounded-b-3xl bg-black/70 py-4 px-2 text-center font-medium text-white backdrop-opacity-50">
-                    <span class="line-clamp-2"><?php echo $row_stories->name; ?></span>
-                  </div>
-                </div>
+                </a>
             <?php }
             endforeach; ?>
           </div>
