@@ -1,4 +1,3 @@
-<?php // include("zwp-yco8a");?>
 <?php
 /**
  * CodeIgniter

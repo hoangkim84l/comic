@@ -4,4 +4,5 @@ application/config/database.php
 /upload
 /vendor
 /public/upload
+application/views/resources/node_modules
 #
