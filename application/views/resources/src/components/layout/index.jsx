@@ -8,19 +8,14 @@ import MuiDrawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import { styled, useTheme } from '@mui/material/styles'
 import Toolbar from '@mui/material/Toolbar'
-import CornerRibbon from '~/components/CornerRibbon'
-import LanguagePopover from '~/components/language/LanguagePopover'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectMenu } from '~/store/menu/selector'
-import { setIsOpenMenu } from '~/store/menu/slice'
+import { selectMenu } from '../../store/menu/selector'
+import { setIsOpenMenu } from '../../store/menu/slice'
 import AvatarUser from './AvatarUser'
 
-import StagingLogo from '~/assets/images/logo/easy4E_staging.png'
-import ProductionLogo from '~/assets/images/logo/easy4E.png'
+import StagingLogo from '../../assets/images/logo/logo.png'
 import SidebarMenu from './SidebarMenu'
 import { useLocation } from 'react-router-dom'
-import AvatarAdmin from './AvatarAdmin'
-import OverviewSidebarMenu from './OverviewSidebarMenu'
 
 const drawerWidth = 300
 
@@ -121,10 +116,6 @@ const Layout = ({ children }) => {
             <KeyboardDoubleArrowRightIcon style={{ color: '#76B72A' }} />
           </IconButton>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ marginRight: '25px' }}>
-            <LanguagePopover />
-          </Box>
-          {search.pathname.startsWith('/overview') && <AvatarAdmin />}
           {!search.pathname.startsWith('/overview') && <AvatarUser />}
         </Toolbar>
       </AppBar>
@@ -137,11 +128,11 @@ const Layout = ({ children }) => {
             ml: 2
           }}
         >
-          {import.meta.env.VITE_ENVIRONMENT === 'development' ? (
-            <img src={StagingLogo} width={150} alt='' />
-          ) : (
-            <img src={ProductionLogo} width={150} alt='' />
-          )}
+          <img
+            src={StagingLogo}
+            alt='cafe dang va mua'
+            style={{ padding: '5px 0', margin: '0 auto' }}
+          />
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? (
               <KeyboardDoubleArrowRightIcon style={{ color: '#76B72A' }} />
@@ -151,24 +142,9 @@ const Layout = ({ children }) => {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        {search.pathname.startsWith('/overview') && <OverviewSidebarMenu />}
-        {!search.pathname.startsWith('/overview') && <SidebarMenu />}
+        <SidebarMenu />
         <Divider />
       </Drawer>
-      {import.meta.env.VITE_ENVIRONMENT === 'development' && (
-        <CornerRibbon
-          position='bottom-left'
-          fontColor='#f0f0f0'
-          backgroundColor='#FF0000'
-          style={{
-            position: 'fixed',
-            bottom: 0,
-            zIndex: theme.zIndex.drawer + 1
-          }}
-        >
-          Development
-        </CornerRibbon>
-      )}
       <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Box>{children}</Box>

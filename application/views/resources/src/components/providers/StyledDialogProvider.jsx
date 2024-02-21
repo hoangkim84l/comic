@@ -1,6 +1,6 @@
-import React, { createContext, useContext } from 'react'
+import { createContext, useContext } from 'react'
 import PropTypes from 'prop-types'
-import useSnackBar from '~/hooks/usePublicSnackbar'
+import useSnackBar from '../../hooks/usePublicSnackbar'
 import StyledSnackbar from '../StyledSnackbar'
 
 const StyledDialogContext = createContext({})

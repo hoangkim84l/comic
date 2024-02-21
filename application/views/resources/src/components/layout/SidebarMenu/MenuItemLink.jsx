@@ -7,7 +7,7 @@ import {
   Typography
 } from '@mui/material'
 import PropTypes from 'prop-types'
-import { useRouteMatch } from '~/hooks/useRouteMatch'
+import { useRouteMatch } from '../../../hooks/useRouteMatch'
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 

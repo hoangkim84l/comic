@@ -7,7 +7,6 @@ import {
   InputLabel,
   Menu,
   MenuItem,
-  Select,
   TextField,
   Tooltip,
   Typography
@@ -21,12 +20,10 @@ import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { KEY_AUTH_TOKEN, REGISTRATION_STATE } from '~/constants/constants'
-import { selectUser } from '~/store/auth/selector'
-import { logout } from '~/store/auth/slice'
 import AvatarImage from '../../assets/images/avatar.jpg'
-import { useUpdateActiveTenantMutation } from './query'
-import { Padding } from '@mui/icons-material'
+import { KEY_AUTH_TOKEN, REGISTRATION_STATE } from '../../constants/constants'
+import { selectUser } from '../../store/auth/selector'
+import { logout } from '../../store/auth/slice'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -61,7 +58,6 @@ const AvatarUser = () => {
   const user = useSelector(selectUser)
   const [anchorElUser, setAnchorElUser] = useState(null)
   const [activeTenant, setActiveTenant] = useState('')
-  const updateActiveTenant = useUpdateActiveTenantMutation()
 
   const handleOpenUserMenu = event => {
     setAnchorElUser(event.currentTarget)
@@ -87,7 +83,6 @@ const AvatarUser = () => {
   //PROCESS CHANGE ACTIVE TENANT
   const handleActiveTenantChange = debounce(event => {
     setActiveTenant(event.target.value['name'])
-    updateActiveTenant.mutate(event.target.value['id'])
   }, 300)
 
   return (

@@ -1,6 +1,4 @@
-import { OVERVIEW_MENU_ITEMS } from '../../OverviewSidebarMenu/MenuItems/adminMenuList'
-import { GOOGLE_MENU_ITEMS } from './googleMenuList'
-import { AZURE_MENU_ITEMS } from './azureMenuList'
+import { BOOKER_MENU } from './bookerMenu'
 
 const collectAllChildrenUrls = item => {
   if (Array.isArray(item.children) && item.children.length > 0) {
@@ -36,8 +34,6 @@ const mapSubitemUrlsToParent = (items, level = 1) => {
   })
 }
 
-const menuItems = mapSubitemUrlsToParent(OVERVIEW_MENU_ITEMS)
-const azureItems = mapSubitemUrlsToParent(AZURE_MENU_ITEMS)
-const googleItems = mapSubitemUrlsToParent(GOOGLE_MENU_ITEMS)
+const menuItems = mapSubitemUrlsToParent(BOOKER_MENU)
 
-export { menuItems, azureItems, googleItems }
+export { menuItems }

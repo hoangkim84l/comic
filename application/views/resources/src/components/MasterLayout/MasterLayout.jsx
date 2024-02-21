@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import FullPageLoading from '../FullPageLoading'
+import Navigator from '../Navigator'
 // import FullPageLoading from '~/components/FullPageLoading'
 // import Navigator from '~/components/Navigator'
 
@@ -20,7 +21,7 @@ const MasterLayout = ({ isAuthenticated, isAdminAuthenticated }) => {
   // if (isAdminLoadingProfile || isLoadingProfile) {
   //   return <FullPageLoading />
   // }
-  return <FullPageLoading />
+  // return <FullPageLoading />
   // USER AUTH
   // if (!isAuthenticated && !search.pathname.startsWith('/overview')) {
   //   return (
@@ -38,7 +39,7 @@ const MasterLayout = ({ isAuthenticated, isAdminAuthenticated }) => {
   //   )
   // }
 
-  // return <Navigator />
+  return <Navigator />
 }
 
 MasterLayout.propTypes = {

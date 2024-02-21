@@ -1,15 +1,22 @@
-import { DASHBOARD, GOOGLE_DEVICES, ORGANISATION, ORG_OVERVIEW, PRE_PROVISIONING_TOKEN } from '~/constants/Routes'
+import {
+  DASHBOARD,
+  AZURE_DEVICES,
+  GROUPTAGS,
+  ORGANISATION,
+  ORG_OVERVIEW
+} from '../../../../constants/Routes'
+import Book from '@mui/icons-material/Book'
 
-export const GOOGLE_MENU_ITEMS = [
+export const BOOKER_MENU = [
   {
-    title: 'Dashboard',
+    title: 'Trang Chu',
     url: DASHBOARD,
-    icon: 'flutter_dash',
+    icon: <Book />,
     permission: 'dashboard'
   },
   {
     title: 'Devices',
-    url: GOOGLE_DEVICES,
+    url: AZURE_DEVICES,
     icon: 'devices',
     permission: 'devices'
   },
@@ -32,8 +39,8 @@ export const GOOGLE_MENU_ITEMS = [
         permission: 'organisations-overview'
       },
       {
-        title: 'Pre Provisioning Token',
-        url: PRE_PROVISIONING_TOKEN,
+        title: 'Group Tags',
+        url: GROUPTAGS,
         icon: 'tag',
         permission: 'grouptags'
       }

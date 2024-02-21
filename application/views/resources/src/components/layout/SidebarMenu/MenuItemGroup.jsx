@@ -13,9 +13,9 @@ import PropTypes from 'prop-types'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useRouteMatch } from '~/hooks/useRouteMatch'
-import { selectMenu } from '~/store/menu/selector'
-import { setIsOpenMenu } from '~/store/menu/slice'
+import { useRouteMatch } from '../../../hooks/useRouteMatch'
+import { selectMenu } from '../../../store/menu/selector'
+import { setIsOpenMenu } from '../../../store/menu/slice'
 import MenuItem from './MenuItem'
 
 const activeRootStyle = {
