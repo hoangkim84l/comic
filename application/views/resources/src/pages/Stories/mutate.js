@@ -1,6 +1,6 @@
 import { enqueueSnackbar } from 'notistack'
 import { useMutation } from 'react-query'
-import { addLoveList, addStoryViewRecently } from '../../api'
+import { addLoveList, addStoryViewRecently, removeLoveList } from '../../api'
 import { parseApiErrorMessage } from '../../utils/helpers'
 
 export const useAddStoryViewRecentlyMutation = id => {
@@ -28,6 +28,26 @@ export const useAddStoryToLoveListMutation = data => {
     ['add-story-to-lovelist'],
     async data => {
       return await addLoveList(data)
+    },
+    {
+      onSuccess: data => {},
+      onError: error => {
+        const message = parseApiErrorMessage(error)
+        enqueueSnackbar({
+          message,
+          variant: 'error'
+        })
+      },
+      retry: false
+    }
+  )
+}
+
+export const useDeleteStoryFromLoveListMutation = data => {
+  return useMutation(
+    ['remove-story-from-lovelist'],
+    async data => {
+      return await removeLoveList(data)
     },
     {
       onSuccess: data => {},

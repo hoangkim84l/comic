@@ -31,3 +31,4 @@ export const addContact = data => axiosClient.post('api/contact/add-contact', { 
 // LOVELIST APIs
 export const addLoveList = data => axiosClient.post('api/ll/add-lovelist', { ...data })
 export const getLoveList = id => axiosClient.get(`api/ll/get-lovelist/${id}`)
+export const removeLoveList = data => axiosClient.post('api/ll/delete-lovelist', { ...data })
