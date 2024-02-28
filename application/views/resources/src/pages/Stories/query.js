@@ -1,0 +1,111 @@
+import { enqueueSnackbar } from 'notistack'
+import { useQuery } from 'react-query'
+import {
+  getStories,
+  getStory,
+  getStoryNew,
+  getStoryViewRecently,
+  getStoryViewsHigh
+} from '../../api'
+import { parseApiErrorMessage, removeEmptyValue } from '../../utils/helpers'
+
+export const useGetStoriesQuery = params => {
+  return useQuery(
+    ['list-stories-with-paginate', params],
+    async () => {
+      const p = removeEmptyValue(params)
+      const data = await getStories(p)
+      return { data: data?.data }
+    },
+    {
+      onError: e => {
+        const mess = parseApiErrorMessage(e)
+        enqueueSnackbar({
+          mess,
+          variant: 'error'
+        })
+      },
+      retry: false
+    }
+  )
+}
+
+export const useGetStoryDetailQuery = id => {
+  return useQuery(
+    ['story-detail', id],
+    async () => {
+      const data = await getStory(id)
+      return data
+    },
+    {
+      onError: e => {
+        const mess = parseApiErrorMessage(e)
+        enqueueSnackbar({
+          mess,
+          variant: 'error'
+        })
+      },
+      retry: false
+    }
+  )
+}
+
+export const useGetStoryViewsHighQuery = () => {
+  return useQuery(
+    ['story-view-high'],
+    async () => {
+      const data = await getStoryViewsHigh()
+      return data
+    },
+    {
+      onError: e => {
+        const mess = parseApiErrorMessage(e)
+        enqueueSnackbar({
+          mess,
+          variant: 'error'
+        })
+      },
+      retry: false
+    }
+  )
+}
+
+export const useGetStoryNewQuery = () => {
+  return useQuery(
+    ['story-new'],
+    async () => {
+      const data = await getStoryNew()
+      return data
+    },
+    {
+      onError: e => {
+        const mess = parseApiErrorMessage(e)
+        enqueueSnackbar({
+          mess,
+          variant: 'error'
+        })
+      },
+      retry: false
+    }
+  )
+}
+
+export const useGetStoryViewRecentlyQuery = id => {
+  return useQuery(
+    ['story-view-recently'],
+    async () => {
+      const data = await getStoryViewRecently(id)
+      return data
+    },
+    {
+      onError: e => {
+        const mess = parseApiErrorMessage(e)
+        enqueueSnackbar({
+          mess,
+          variant: 'error'
+        })
+      },
+      retry: false
+    }
+  )
+}

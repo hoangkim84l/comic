@@ -1,31 +1,21 @@
-export const DASHBOARD = "/dashboard";
+export const DASHBOARD = '/trang-chu.html'
 
-//Google routes
-export const GOOGLE_LOGIN_REDIRECT = "/google-login-redirect";
-export const GOOGLE_REGISTRATION = "/google-registration";
-export const GOOGLE_DEVICE_DETAIL = "/google/devices/:id";
-export const GOOGLE_DEVICE_NEW = "/google/devices/new";
-export const GOOGLE_DEVICES = "/google/devices";
-export const PRE_PROVISIONING_TOKEN = "/google/provisioning-tokens";
+// STORIES ROUTES
+export const STORY = '/truyen.html'
+export const STORY_DETAIL = '/truyen/:id/:slug.html'
+export const LOVELIST = '/truyen-yeu-thich.html'
 
-//Azure routes
-export const AZURE_DEVICES = "/azure/devices";
-export const AZURE_DEVICE_NEW = "/azure/devices/new";
-export const AZURE_DEVICE_DETAIL = "/azure/devices/:id";
-export const GROUPTAGS = "azure/group-tags";
-export const ORG_OVERVIEW = "azure/organisation-overview";
+// CATALOG ROUTES
+export const CATEGORIES = '/danh-muc.html'
+export const CATALOG_DETAIL = '/danh-muc/:id/:slug.html'
 
-export const ORGANISATION = "/organisations";
+// CHAPTERS ROUTES
+export const CHAPTERS = '/chuong-truyen.html'
+export const CHAPTERS_DETAIL = '/chuong/:id/:slug.html'
 
-export const HEALTH_CHECK = "/health-check";
+// ACCOUNT ROUTES
+export const REGISTER = '/toi-muon-la-thanh-vien.html'
+export const LOGIN = '/di-vao-the-gioi-cua-ban.html'
 
-export const ADMIN_LOGIN = "/overview/login";
-export const ADMIN_OVERVIEW = "/overview/tenants";
-export const OVERVIEW_TENANTS_DETAIL = "/overview/tenants/:tenantId";
-export const OVERVIEW_DEVICE_REGISTER_SESSION_DETAIL =
-  "/overview/devices-register-sessions/:sessionId";
-export const ADMIN_DEVICES = "/overview/devices";
-export const ADMIN_DEVICE_REGISTER_SESSIONS =
-  "/overview/devices-register-sessions";
-export const ADMIN_AZURE_DEVICE_DETAIL = "/overview/devices/azure/:id";
-export const ADMIN_GOOGLE_DEVICE_DETAIL = "/overview/devices/google/:id";
+// CONTACT ROUTES
+export const CONTACT = '/y-kien-cua-toi.html'

@@ -2,7 +2,6 @@ import axiosClient from './base'
 
 // ACCOUNT
 export const register = data => axiosClient.post('/api/register', { ...data })
-
 export const authenticate = data => axiosClient.post('/api/login', { ...data })
 
 // STORY APIs
@@ -29,5 +28,6 @@ export const getListStoriesByCategory = id =>
 // CONTACT APIs
 export const addContact = data => axiosClient.post('api/contact/add-contact', { ...data })
 
-// CONTACT APIs
+// LOVELIST APIs
 export const addLoveList = data => axiosClient.post('api/ll/add-lovelist', { ...data })
+export const getLoveList = id => axiosClient.get(`api/ll/get-lovelist/${id}`)
