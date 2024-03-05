@@ -1,0 +1,7 @@
+export const CACHE_TTL = {
+    ONE_MINUTE: 1000 * 60,
+    FIVE_MINUTES: 1000 * 60 * 5,
+    TEN_MINUTES: 1000 * 60 * 10,
+}
+
+export const DEFAULT_CACHE_TTL = CACHE_TTL.FIVE_MINUTES

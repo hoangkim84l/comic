@@ -8,6 +8,7 @@ import {
   getStoryViewsHigh
 } from '../../api'
 import { parseApiErrorMessage, removeEmptyValue } from '../../utils/helpers'
+import { CACHE_TTL } from '../../utils/constants'
 
 export const useGetStoriesQuery = params => {
   return useQuery(
@@ -25,7 +26,9 @@ export const useGetStoriesQuery = params => {
           variant: 'error'
         })
       },
-      retry: false
+      retry: false,
+      cacheTime: CACHE_TTL.ONE_MINUTE,
+      staleTime: CACHE_TTL.ONE_MINUTE
     }
   )
 }
@@ -45,7 +48,9 @@ export const useGetStoryDetailQuery = id => {
           variant: 'error'
         })
       },
-      retry: false
+      retry: false,
+      cacheTime: CACHE_TTL.ONE_MINUTE,
+      staleTime: CACHE_TTL.ONE_MINUTE
     }
   )
 }
@@ -65,7 +70,9 @@ export const useGetStoryViewsHighQuery = () => {
           variant: 'error'
         })
       },
-      retry: false
+      retry: false,
+      cacheTime: CACHE_TTL.ONE_MINUTE,
+      staleTime: CACHE_TTL.ONE_MINUTE
     }
   )
 }
@@ -85,7 +92,9 @@ export const useGetStoryNewQuery = () => {
           variant: 'error'
         })
       },
-      retry: false
+      retry: false,
+      cacheTime: CACHE_TTL.ONE_MINUTE,
+      staleTime: CACHE_TTL.ONE_MINUTE
     }
   )
 }
@@ -105,7 +114,9 @@ export const useGetStoryViewRecentlyQuery = id => {
           variant: 'error'
         })
       },
-      retry: false
+      retry: false,
+      cacheTime: CACHE_TTL.ONE_MINUTE,
+      staleTime: CACHE_TTL.ONE_MINUTE
     }
   )
 }
